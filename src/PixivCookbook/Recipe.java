@@ -86,6 +86,15 @@ public class Recipe implements Serializable{
 	public void setCookingTime(int cookingTime) {
 		this.cookingTime = cookingTime;
 	}
+	
+	// change the unit and amount with changing eater numbers
+	public void changeWithServe(int changedNumberOfEaters) {
+		double ratio = (double)changedNumberOfEaters/(double)this.numberOfEaters;
+		this.numberOfEaters = changedNumberOfEaters;
+		for(Ingredient i: ingredients) {
+			i.setNum(i.getNum()*ratio);
+		}
+	}
 
 	@Override
 	public String toString() {

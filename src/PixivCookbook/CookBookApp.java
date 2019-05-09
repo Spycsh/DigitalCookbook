@@ -141,6 +141,13 @@ public class CookBookApp {
 		Recipe recipe = cb.getRecipe("Gong Bao Jiding");
 		if (recipe != null) {
 			System.out.println(recipe);
+			// test recipe info after changed number of Eaters
+			recipe.changeWithServe(8);
+			System.out.println("after changed number of Eaters:");
+			System.out.println(recipe);
+			recipe.changeWithServe(21);
+			System.out.println(recipe);
+
 		} 
 	}
 }

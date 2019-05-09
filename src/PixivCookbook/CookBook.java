@@ -22,11 +22,12 @@ public class CookBook implements Serializable {
 	public void add(Recipe aRecipe) {
 		this.RecipeList.add(aRecipe);
 	}
-
-	public Recipe getRecipe(String RecipeName) {
+	
+	// search the exact Recipe
+	public Recipe getRecipe(String recipeName) {
 		Recipe targetRecipe = null;
 		for (Recipe e : RecipeList) {
-			if (e.getRecipeName() == RecipeName) {
+			if (e.getRecipeName() == recipeName) {
 				targetRecipe = e;
 			}
 		}
