@@ -3,11 +3,13 @@
  */
 package PixivCookbook;
 
+import java.io.Serializable;
+
 /**
  * @author precision 7710
  *
  */
-public class Ingredient {
+public class Ingredient implements Serializable{
 	private String name="";
 	private double num=0.0;
 	private String unit="";
@@ -52,5 +54,8 @@ public class Ingredient {
 	public void setPreparation(String preparation) {
 		this.preparation = preparation;
 	}
-	
+	@Override
+	public String toString(){
+		return this.num+" "+this.unit+" "+this.preparation+" "+this.name;
+	}
 }
