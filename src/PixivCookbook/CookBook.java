@@ -32,9 +32,26 @@ public class CookBook implements Serializable {
 		}
 		return targetRecipe;
 	}
+	
+	public String getCookBookName() {
+		return cookBookName;
+	}
 
+	public void setCookBookName(String cookBookName) {
+		this.cookBookName = cookBookName;
+	}
+
+	public LinkedList<Recipe> getRecipeList() {
+		return RecipeList;
+	}
+
+	public void setRecipeList(LinkedList<Recipe> recipeList) {
+		RecipeList = recipeList;
+	}
+
+	@ Override
 	public String toString() {
 		return this.cookBookName + " " + "Cookbook";
 	}
-
+	
 }
