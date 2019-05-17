@@ -15,7 +15,7 @@ public class Step implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7024797642131895467L;
 	
 	private String content;
 	private int stepNumber;

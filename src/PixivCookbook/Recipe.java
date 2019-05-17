@@ -6,6 +6,7 @@ package PixivCookbook;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * entity class recipe
@@ -14,14 +15,18 @@ import java.util.LinkedList;
  */
 public class Recipe implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8812539449144498327L;
+
 	private String recipeName;
 	private String cuisineName;
 	private int numberOfEaters;
 	private int preparationTime;
 	private int cookingTime;
-	private LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
-	private LinkedList<Step> steps = new LinkedList<Step>();
+	private List<Ingredient> ingredients = new LinkedList<Ingredient>();
+	private List<Step> steps = new LinkedList<Step>();
 
 	private int countSteps = 0;
 	
@@ -45,7 +50,7 @@ public class Recipe implements Serializable{
 		ingredients.add(newIngredient);
 	}
 	
-	public LinkedList<Ingredient> getIngredients() {
+	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
@@ -53,7 +58,7 @@ public class Recipe implements Serializable{
 		this.ingredients = ingredients;
 	}
 	
-	public LinkedList<Step> getSteps() {
+	public List<Step> getSteps() {
 		return steps;
 	}
 

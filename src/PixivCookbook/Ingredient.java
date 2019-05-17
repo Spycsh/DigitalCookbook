@@ -11,6 +11,10 @@ import java.io.Serializable;
  *
  */
 public class Ingredient implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5519338590190678597L;
 	private String name="";
 	private double num=0.0;
 	private String unit="";

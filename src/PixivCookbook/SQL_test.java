@@ -10,7 +10,7 @@ import java.sql.*;
  *
  */
 public class SQL_test {
-	Connection connect;	
+	private Connection connect;	
 	public void run() {
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver");

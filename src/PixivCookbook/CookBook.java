@@ -3,6 +3,7 @@ package PixivCookbook;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Spycsh
@@ -12,9 +13,12 @@ public class CookBook implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7540360778235899360L;
+	/**
+	 * 
+	 */
 	private String cookBookName;
-	private LinkedList<Recipe> RecipeList = new LinkedList<Recipe>();
+	private List<Recipe> RecipeList = new LinkedList<Recipe>();
 
 	public CookBook(String name) {
 		this.cookBookName = name;
@@ -43,7 +47,7 @@ public class CookBook implements Serializable {
 		this.cookBookName = cookBookName;
 	}
 
-	public LinkedList<Recipe> getRecipeList() {
+	public List<Recipe> getRecipeList() {
 		return RecipeList;
 	}
 
