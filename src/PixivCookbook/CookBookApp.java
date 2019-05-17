@@ -1,7 +1,8 @@
+package PixivCookbook;
 /**
  * 
  */
-package PixivCookbook;
+import java.sql.*;
 
 /**
  * @author precision 7710
@@ -133,21 +134,46 @@ public class CookBookApp {
 	 */
 	public static void main(String[] args) {
 		CookBook cb = new CookBook("Chinese Cuisine");
-				
+		SQL_test databaseConection = new SQL_test();
+		databaseConection.run();
+		
 		cb.add(createGongBaoJiding());
 		cb.add(createHongShaoRou());
 		cb.add(createSuanLaFen());
 		
-		Recipe recipe = cb.getRecipe("Gong Bao Jiding");
-		if (recipe != null) {
-			System.out.println(recipe);
-			// test recipe info after changed number of Eaters
-			recipe.changeWithServe(8);
-			System.out.println("after changed number of Eaters:");
-			System.out.println(recipe);
-			recipe.changeWithServe(21);
-			System.out.println(recipe);
+		// get recipe instances
+		Recipe recipe_GBJ = cb.getRecipe("Gong Bao Jiding");
+		Recipe recipe_HSR = cb.getRecipe("Hong Shao Rou");
+		Recipe recipe_SLF = cb.getRecipe("Suan La Fen");
+		
+		// add recipes to the database
+		databaseConection.addRecipetoDatabase(recipe_GBJ,cb.getRecipeList().indexOf(recipe_GBJ));
+		databaseConection.addRecipetoDatabase(recipe_HSR,cb.getRecipeList().indexOf(recipe_HSR));
+		databaseConection.addRecipetoDatabase(recipe_SLF,cb.getRecipeList().indexOf(recipe_SLF));
+		
+		// get all recipes from the database
+		databaseConection.getAllRecipesfromDatabase();
+		
+		// get recipe details from the database
+		databaseConection.getRecipefromDatabase(recipe_GBJ,cb.getRecipeList().indexOf(recipe_GBJ));
+		databaseConection.getRecipefromDatabase(recipe_HSR,cb.getRecipeList().indexOf(recipe_HSR));
+		databaseConection.getRecipefromDatabase(recipe_SLF,cb.getRecipeList().indexOf(recipe_SLF));
 
+		try {
+			databaseConection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (recipe_GBJ != null) {
+			System.out.println(recipe_GBJ);
+			// test recipe info after changed number of Eaters
+			recipe_GBJ.changeWithServe(8);
+			System.out.println("after changed number of Eaters:");
+			System.out.println(recipe_GBJ);
+			recipe_GBJ.changeWithServe(21);
+			System.out.println(recipe_GBJ);
 		} 
 	}
 }

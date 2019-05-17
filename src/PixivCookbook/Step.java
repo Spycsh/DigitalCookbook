@@ -1,7 +1,8 @@
+package PixivCookbook;
 /**
  * 
  */
-package PixivCookbook;
+
 
 import java.io.Serializable;
 
@@ -19,6 +20,14 @@ public class Step implements Serializable {
 	private String content;
 	private int stepNumber;
 	
+	public int getStepNumber() {
+		return stepNumber;
+	}
+
+	public void setStepNumber(int stepNumber) {
+		this.stepNumber = stepNumber;
+	}
+
 	/**
 	 * constructor for class Step
 	 * @param inputContent the content of the step

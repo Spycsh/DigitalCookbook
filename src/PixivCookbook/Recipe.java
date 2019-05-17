@@ -1,7 +1,8 @@
+package PixivCookbook;
 /**
  * 
  */
-package PixivCookbook;
+
 
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -21,6 +22,7 @@ public class Recipe implements Serializable{
 	private int cookingTime;
 	private LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
 	private LinkedList<Step> steps = new LinkedList<Step>();
+
 	private int countSteps = 0;
 	
 	/**
@@ -43,6 +45,21 @@ public class Recipe implements Serializable{
 		ingredients.add(newIngredient);
 	}
 	
+	public LinkedList<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(LinkedList<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
+	
+	public LinkedList<Step> getSteps() {
+		return steps;
+	}
+
+	public void setSteps(LinkedList<Step> steps) {
+		this.steps = steps;
+	}
 	/**
 	 * add one step to the recipe
 	 * @param stepContent the step's content

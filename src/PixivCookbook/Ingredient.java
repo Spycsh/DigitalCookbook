@@ -1,7 +1,8 @@
+package PixivCookbook;
 /**
  * 
  */
-package PixivCookbook;
+
 
 import java.io.Serializable;
 
