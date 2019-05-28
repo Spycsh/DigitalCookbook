@@ -3,7 +3,7 @@ package PixivCookbook;
  * 
  */
 import java.sql.*;
-
+import PixivCookbook.Model.SQL_test;
 /**
  * @author precision 7710
  *
@@ -13,6 +13,8 @@ import java.sql.*;
  * 
  * @author breukerm
  */
+
+
 public class CookBookApp {
 
 	/**
@@ -158,7 +160,41 @@ public class CookBookApp {
 		databaseConection.getRecipefromDatabase(recipe_GBJ,cb.getRecipeList().indexOf(recipe_GBJ));
 		databaseConection.getRecipefromDatabase(recipe_HSR,cb.getRecipeList().indexOf(recipe_HSR));
 		databaseConection.getRecipefromDatabase(recipe_SLF,cb.getRecipeList().indexOf(recipe_SLF));
+		
+		// test the functionthat change the amount with serve
+		if (recipe_GBJ != null) {
+			System.out.println(recipe_GBJ);
+			// test recipe info after changed number of Eaters
+			
+			recipe_GBJ.changeWithServe(8);
+			System.out.println("after changed number of Eaters:");
+			System.out.println(recipe_GBJ);
+			recipe_GBJ.changeWithServe(21);
+			System.out.println(recipe_GBJ);
+		} 
 
+		// 28/05/2019 Chen Sihan
+		// test the function that search the  matched recipes with given string
+		System.out.println("**********Then I test the searchAllMatchedRecipes**********:");
+		System.out.println(databaseConection.searchAllMatchedRecipes("rou"));
+		
+		// 28/05/2019 Chen Sihan
+		// test the func that get 12 latest recipes
+		System.out.println("*********Then I test the getRecipesForMainPage******:");
+		System.out.println(databaseConection.getRecipesForMainPage());
+		
+		// 28/05/2019 Chen Sihan
+		// test the func that add forbidden pair
+		System.out.println("*********Then I test the forbidden pair add func******:");
+		databaseConection.addForbiddenPair("persimmon","milk");
+		System.out.println("Please check the database");
+		
+		// 28/05/2019 Chen Sihan
+		//test the func that get the forbidden pair
+		System.out.println("*********Then I test the forbidden pair get func******:");
+		System.out.println(databaseConection.getForbiddenPair("milk"));
+		
+		
 		try {
 			databaseConection.close();
 		} catch (SQLException e) {
@@ -166,14 +202,7 @@ public class CookBookApp {
 			e.printStackTrace();
 		}
 		
-		if (recipe_GBJ != null) {
-			System.out.println(recipe_GBJ);
-			// test recipe info after changed number of Eaters
-			recipe_GBJ.changeWithServe(8);
-			System.out.println("after changed number of Eaters:");
-			System.out.println(recipe_GBJ);
-			recipe_GBJ.changeWithServe(21);
-			System.out.println(recipe_GBJ);
-		} 
+
+
 	}
 }

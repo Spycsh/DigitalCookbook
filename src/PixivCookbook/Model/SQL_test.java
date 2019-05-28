@@ -1,10 +1,9 @@
-package PixivCookbook;
-/**
- * 
- */
-
+package PixivCookbook.Model;
+import PixivCookbook.*;
 
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 /**
  * @author Ling Wei
  *
@@ -180,5 +179,134 @@ public class SQL_test {
 			e.printStackTrace();
 		}
 	}
+	
+
+	
+	/**
+	 * @param RecipeName
+	 * @return the list of id
+	 * @author csh
+	 * search the matched recipe
+	 * fuzzy query
+	 * capitalization insensitive
+	 */
+	public List<Integer> searchAllMatchedRecipes(String RecipeName){
+		List<Integer> matchedRecipeIdList = new LinkedList<Integer>();
+		PreparedStatement psql;
+		try {
+			psql = this.connect.prepareStatement("select * from Recipe where name like '%"+RecipeName+"%'");
+		
+			ResultSet resultSet = psql.executeQuery();
+			while(resultSet.next()) {
+				int r = resultSet.getInt("recipe_id");
+				matchedRecipeIdList.add(r);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return matchedRecipeIdList;
+	}
+	
+	/**
+	 * @author Spycsh
+	 * @return the latest 12 recipes name for the main page
+	 * if less than 12 return all
+	 */
+	public List<String> getRecipesForMainPage() {
+		Statement statement;
+		List<String> nameList = new LinkedList<String>();
+		try {
+			statement = this.connect.createStatement();
+			String sql = "select * from recipe order by recipe_id desc limit 12";
+			ResultSet rs = statement.executeQuery(sql);
+			
+			while(rs.next()) {
+				nameList.add(rs.getString("name"));
+			}
+			
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		}
+		return nameList;
+	}
+	
+	/**
+	 * @author Spycsh
+	 * @param p1 ForbidIngredient1
+	 * @param p2 ForbidIngredient2
+	 */
+	public void addForbiddenPair(String p1, String p2){
+		PreparedStatement psql;
+		int pairId = 0;
+		try {
+			
+			
+			// find the latest insert pair id
+			Statement statement = this.connect.createStatement();
+			String sql = "select * from DefaultNotAllowedPair order by defaultNotAllowedPair_id desc limit 1";
+			ResultSet rs =  statement.executeQuery(sql);
+			while(rs.next()) {
+				pairId =rs.getInt("DefaultNotAllowedPair_id");
+			}
+			psql = this.connect.prepareStatement("insert into DefaultNotAllowedPair (DefaultNotAllowedPair_id,ForbidIngredient1,ForbidIngredient2)"+ "values(?,?,?)");
+			psql.setInt(1, pairId+1);
+			psql.setString(2,p1);
+			psql.setString(3,p2);
+			psql.executeUpdate();
+			
+			// delete the repeated record
+			Statement statementDeleteToOne = this.connect.createStatement();
+			String sqlDel = "delete from defaultnotallowedpair where (defaultnotallowedpair.ForbidIngredient1,defaultnotallowedpair.ForbidIngredient2) in \r\n" + 
+					"(select a.ForbidIngredient1, a.ForbidIngredient2 from \r\n" + 
+					"(select* from defaultnotallowedpair a\r\n" + 
+					"group by ForbidIngredient1,ForbidIngredient2\r\n" + 
+					"having count(*)>1\r\n" + 
+					")a\r\n" + 
+					")\r\n" + 
+					"and DefaultNotAllowedPair_id not in\r\n" + 
+					"(select  min(DefaultNotAllowedPair_id) from\r\n" + 
+					"(select * from defaultnotallowedpair b\r\n" + 
+					"group by ForbidIngredient1,ForbidIngredient2 having count(*)>1\r\n" + 
+					")b\r\n" + 
+					")";
+			statement.executeUpdate(sqlDel);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * @author Spycsh
+	 * @param p1
+	 * @return the list that the given ingredient cannot match
+	 */
+	public List<String> getForbiddenPair(String p1) {
+		List<String> matchedRecipeIdList = new LinkedList<String>();
+		PreparedStatement psql;
+		try {
+			psql = this.connect.prepareStatement("select ForbidIngredient1 from DefaultNotAllowedPair where ForbidIngredient2='"+
+					p1+"'UNION"+" "+"select ForbidIngredient2 from defaultnotallowedpair where ForbidIngredient1='"+p1+"'"							
+					);
+		
+			ResultSet resultSet = psql.executeQuery();
+			while(resultSet.next()) {
+				String opponentIngredient = resultSet.getString("ForbidIngredient1");
+				matchedRecipeIdList.add(opponentIngredient);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return matchedRecipeIdList;
+	}
+	
+		
+	
 }
 
