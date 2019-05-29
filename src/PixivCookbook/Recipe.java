@@ -187,6 +187,9 @@ public class Recipe implements Serializable{
 	}
 
 	public void setImgAddress(String imgAddress) {
+		this.imgAddress = imgAddress;
+	}
+	public void restoreImg(String imgAddress) {
 		String name=this.recipeName.replaceAll(" ","");
 		String desPath="img\\"+name+".jpg";
 		try
