@@ -3,6 +3,10 @@ package PixivCookbook;
  * 
  */
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 import PixivCookbook.Model.SQL_test;
 /**
  * @author precision 7710
@@ -136,8 +140,8 @@ public class CookBookApp {
 	 */
 	public static void main(String[] args) {
 		CookBook cb = new CookBook("Chinese Cuisine");
-		SQL_test databaseConection = new SQL_test();
-		databaseConection.run();
+		SQL_test databaseConnection = new SQL_test();
+		databaseConnection.run();
 		
 		cb.add(createGongBaoJiding());
 		cb.add(createHongShaoRou());
@@ -149,17 +153,12 @@ public class CookBookApp {
 		Recipe recipe_SLF = cb.getRecipe("Suan La Fen");
 		
 		// add recipes to the database
-		databaseConection.addRecipetoDatabase(recipe_GBJ,cb.getRecipeList().indexOf(recipe_GBJ));
-		databaseConection.addRecipetoDatabase(recipe_HSR,cb.getRecipeList().indexOf(recipe_HSR));
-		databaseConection.addRecipetoDatabase(recipe_SLF,cb.getRecipeList().indexOf(recipe_SLF));
+		databaseConnection.addRecipetoDatabase(recipe_GBJ,cb.getRecipeList().indexOf(recipe_GBJ));
+		databaseConnection.addRecipetoDatabase(recipe_HSR,cb.getRecipeList().indexOf(recipe_HSR));
+		databaseConnection.addRecipetoDatabase(recipe_SLF,cb.getRecipeList().indexOf(recipe_SLF));
 		
-		// get all recipes from the database
-		databaseConection.getAllRecipesfromDatabase();
 		
-		// get recipe details from the database
-		databaseConection.getRecipefromDatabase(recipe_GBJ,cb.getRecipeList().indexOf(recipe_GBJ));
-		databaseConection.getRecipefromDatabase(recipe_HSR,cb.getRecipeList().indexOf(recipe_HSR));
-		databaseConection.getRecipefromDatabase(recipe_SLF,cb.getRecipeList().indexOf(recipe_SLF));
+
 		
 		// test the functionthat change the amount with serve
 		if (recipe_GBJ != null) {
@@ -176,27 +175,52 @@ public class CookBookApp {
 		// 28/05/2019 Chen Sihan
 		// test the function that search the  matched recipes with given string
 		System.out.println("**********Then I test the searchAllMatchedRecipes**********:");
-		System.out.println(databaseConection.searchAllMatchedRecipes("rou"));
+		System.out.println(databaseConnection.searchAllMatchedRecipes("rou"));
+		
+		//29/05/2019 Ling Wei
+		//get recipe details by searching id
+		System.out.println("**********Then I test the getRecipesBySearchfromDatabase**********:");
+		Recipe matchedRecipesDetail = new Recipe("","",0);
+		matchedRecipesDetail = databaseConnection.getRecipeBySearchfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+		System.out.println(matchedRecipesDetail);
+	
+		//29/05/2019 Ling Wei
+		//get ingredient details by searching id
+		System.out.println("**********Then I test the getIngredientsfromDatabase**********:");
+		List<Ingredient> matchedIngredientsDetail = new LinkedList<Ingredient>();
+		matchedIngredientsDetail = databaseConnection.getIngredientsfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+		for (int i = 0; i<matchedIngredientsDetail.size();i++){
+			System.out.println(matchedIngredientsDetail.get(i));
+		}
+		
+		//29/05/2019 Ling Wei
+		//get step details by searching id
+		System.out.println("**********Then I test the getStepsfromDatabase**********:");
+		List<Step> matchedStepsDetail = new LinkedList<Step>();
+		matchedStepsDetail = databaseConnection.getStepsfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+		for (int i = 0; i<matchedStepsDetail.size();i++){
+			System.out.println(matchedStepsDetail.get(i));
+		}
 		
 		// 28/05/2019 Chen Sihan
 		// test the func that get 12 latest recipes
 		System.out.println("*********Then I test the getRecipesForMainPage******:");
-		System.out.println(databaseConection.getRecipesForMainPage());
+		System.out.println(databaseConnection.getRecipesForMainPage());
 		
 		// 28/05/2019 Chen Sihan
 		// test the func that add forbidden pair
 		System.out.println("*********Then I test the forbidden pair add func******:");
-		databaseConection.addForbiddenPair("persimmon","milk");
+		databaseConnection.addForbiddenPair("persimmon","milk");
 		System.out.println("Please check the database");
 		
 		// 28/05/2019 Chen Sihan
 		//test the func that get the forbidden pair
 		System.out.println("*********Then I test the forbidden pair get func******:");
-		System.out.println(databaseConection.getForbiddenPair("milk"));
+		System.out.println(databaseConnection.getForbiddenPair("milk"));
 		
 		
 		try {
-			databaseConection.close();
+			databaseConnection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

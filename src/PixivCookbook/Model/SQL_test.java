@@ -2,8 +2,10 @@ package PixivCookbook.Model;
 import PixivCookbook.*;
 
 import java.sql.*;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 /**
  * @author Ling Wei
  *
@@ -79,105 +81,79 @@ public class SQL_test {
 		}
 	}
 	
-	public void getAllRecipesfromDatabase(){
+	/**
+	 * @param id the id contained by the recipe that we are looking for
+	 * @return a recipe
+	 */
+	public Recipe getRecipeBySearchfromDatabase(int id){
 		Statement statement;
+		Recipe recipe = new Recipe("","",0);
 		try {
 			statement = this.connect.createStatement();
-			String sql = "select * from recipe";
+			String sql = "select * from recipe where recipe_id = '" + id + "'";
 			ResultSet rs = statement.executeQuery(sql);
-			System.out.println("-----------------------------------------------------------------------");
-			System.out.println("Recipe contents are showned as followed");
-			System.out.println("-----------------------------------------------------------------------");
-			System.out.println("recipe_id"+"\t"+"name"+"\t\t"+"servings"+"\t"+"preparationTime"+"\t"+"cookingTime"+"\t"+"description");
-			
-			int recipe_id = 0;
-			String name = null;
-			int servings = 0;
-			int preparationTime = 0;
-			int cookingTime = 0;
-			String description = null;
 			
 			while(rs.next()) {
-				recipe_id = rs.getInt("recipe_id");
-				name = rs.getString("name");
-				servings = rs.getInt("servings");
-				preparationTime = rs.getInt("preparationTime");
-				cookingTime = rs.getInt("cookingTime");
-				description = rs.getString("description");
-				System.out.println(recipe_id+"\t\t"+name+"\t\t"+servings+"\t\t"+preparationTime+"\t\t"+cookingTime+"\t"+description);
+				recipe = new Recipe(rs.getString("name"),rs.getString("description"),rs.getInt("servings"));
+				recipe.setCookingTime(rs.getInt("cookingTime"));
+				recipe.setPreparationTime(rs.getInt("preparationTime"));
 			}
 			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return recipe;
 	}
 	
-	public void getRecipefromDatabase(Recipe output, int id){
-		 getIngredientsfromDatabase(output,id);
-		 getStepsfromDatabase(output,id);
-	}
 	
-	private void getIngredientsfromDatabase(Recipe output, int id){
+	/**
+	 * @param id the id contained by ingredients that we are looking for
+	 * @return a list of ingredients
+	 */
+	public List<Ingredient> getIngredientsfromDatabase(int id){
 		Statement statement;
-		id += 1;
+		List<Ingredient> ingredientList = new LinkedList<Ingredient>();
 		try {
 			statement = this.connect.createStatement();
 			String sql = "select * from ingredient where recipe_id = '"+id+"'";
 			ResultSet rs = statement.executeQuery(sql);
-			System.out.println("-----------------------------------------------------------------------");
-			System.out.println("Ingredient contents of "+output.getRecipeName()+" are showned as followed");
-			System.out.println("-----------------------------------------------------------------------");
-			System.out.println("recipe_id"+"\t"+"name"+"\t\t"+"quantity"+"\t"+"unit"+"\t"+"description");
-			
-			int recipe_id = 0;
-			String name = null;
-			double quantity = 0;
-			String unit = null;
-			String description = null;
 			
 			while(rs.next()) {
-				recipe_id = rs.getInt("recipe_id");
-				name = rs.getString("name");
-				quantity = rs.getDouble("quantity");
-				unit = rs.getString("unit");
-				description = rs.getString("description");
-				System.out.println(recipe_id+"\t\t"+name+"\t\t"+quantity+"\t\t"+unit+"\t\t"+description);
+				Ingredient ingredient = new Ingredient(rs.getString("name"),rs.getDouble("quantity"),rs.getString("unit"),rs.getString("description"));
+				ingredientList.add(ingredient);
 			}
 			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return ingredientList;
 	}
 	
-	private void getStepsfromDatabase(Recipe output, int id){
+	
+	/**
+	 * @param id the id contained by steps that we are looking for
+	 * @return a list of steps
+	 */
+	public List<Step> getStepsfromDatabase(int id){
 		Statement statement;
-		id += 1;
+		List<Step> stepList = new LinkedList<Step>();
 		try {
 			statement = this.connect.createStatement();
 			String sql = "select * from preparation_step where recipe_id = '"+id+"'";
-			ResultSet rs = statement.executeQuery(sql);
-			System.out.println("-----------------------------------------------------------------------");
-			System.out.println("Step contents of "+output.getRecipeName()+" are showned as followed");
-			System.out.println("-----------------------------------------------------------------------");
-			System.out.println("recipe_id"+"\t"+"step"+"\t\t"+"description");
-			
-			int recipe_id = 0;
-			int step = 0;
-			String description = null;
+			ResultSet rs = statement.executeQuery(sql);			
 			
 			while(rs.next()) {
-				recipe_id = rs.getInt("recipe_id");
-				step = rs.getInt("step");
-				description = rs.getString("description");
-				System.out.println(recipe_id+"\t\t"+step+"\t\t"+description);
+				Step step = new Step(rs.getString("description"),rs.getInt("step"));
+				stepList.add(step);
 			}
 			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return stepList;
 	}
 	
 
@@ -305,8 +281,5 @@ public class SQL_test {
 		}
 		return matchedRecipeIdList;
 	}
-	
-		
-	
 }
 
