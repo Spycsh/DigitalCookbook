@@ -57,7 +57,8 @@ public class CookBookApp {
 		
 		recipe.setPreparationTime(30);
 		recipe.setCookingTime(10);
-		
+		recipe.setImgAdress("food.jpg");
+
 		return recipe;
 	}
 	
@@ -89,7 +90,7 @@ public class CookBookApp {
 		
 		recipe.setPreparationTime(5);
 		recipe.setCookingTime(100);
-		
+		recipe.setImgAdress("food.jpg");
 		return recipe;
 	} 
 	
@@ -129,7 +130,8 @@ public class CookBookApp {
 				
 		recipe.setPreparationTime(30);
 		recipe.setCookingTime(5);
-		
+		recipe.setImgAdress("food.jpg");
+
 		return recipe;
 	} 
 	
@@ -151,39 +153,39 @@ public class CookBookApp {
 		Recipe recipe_GBJ = cb.getRecipe("Gong Bao Jiding");
 		Recipe recipe_HSR = cb.getRecipe("Hong Shao Rou");
 		Recipe recipe_SLF = cb.getRecipe("Suan La Fen");
-		
+
 		// add recipes to the database
 		databaseConnection.addRecipetoDatabase(recipe_GBJ,cb.getRecipeList().indexOf(recipe_GBJ));
 		databaseConnection.addRecipetoDatabase(recipe_HSR,cb.getRecipeList().indexOf(recipe_HSR));
 		databaseConnection.addRecipetoDatabase(recipe_SLF,cb.getRecipeList().indexOf(recipe_SLF));
-		
-		
 
-		
+
+
+
 		// test the functionthat change the amount with serve
 		if (recipe_GBJ != null) {
 			System.out.println(recipe_GBJ);
 			// test recipe info after changed number of Eaters
-			
+
 			recipe_GBJ.changeWithServe(8);
 			System.out.println("after changed number of Eaters:");
 			System.out.println(recipe_GBJ);
 			recipe_GBJ.changeWithServe(21);
 			System.out.println(recipe_GBJ);
-		} 
+		}
 
 		// 28/05/2019 Chen Sihan
 		// test the function that search the  matched recipes with given string
 		System.out.println("**********Then I test the searchAllMatchedRecipes**********:");
 		System.out.println(databaseConnection.searchAllMatchedRecipes("rou"));
-		
+
 		//29/05/2019 Ling Wei
 		//get recipe details by searching id
 		System.out.println("**********Then I test the getRecipesBySearchfromDatabase**********:");
 		Recipe matchedRecipesDetail = new Recipe("","",0);
 		matchedRecipesDetail = databaseConnection.getRecipeBySearchfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
 		System.out.println(matchedRecipesDetail);
-	
+
 		//29/05/2019 Ling Wei
 		//get ingredient details by searching id
 		System.out.println("**********Then I test the getIngredientsfromDatabase**********:");
@@ -192,7 +194,7 @@ public class CookBookApp {
 		for (int i = 0; i<matchedIngredientsDetail.size();i++){
 			System.out.println(matchedIngredientsDetail.get(i));
 		}
-		
+
 		//29/05/2019 Ling Wei
 		//get step details by searching id
 		System.out.println("**********Then I test the getStepsfromDatabase**********:");
@@ -201,24 +203,24 @@ public class CookBookApp {
 		for (int i = 0; i<matchedStepsDetail.size();i++){
 			System.out.println(matchedStepsDetail.get(i));
 		}
-		
+
 		// 28/05/2019 Chen Sihan
 		// test the func that get 12 latest recipes
 		System.out.println("*********Then I test the getRecipesForMainPage******:");
 		System.out.println(databaseConnection.getRecipesForMainPage());
-		
+
 		// 28/05/2019 Chen Sihan
 		// test the func that add forbidden pair
 		System.out.println("*********Then I test the forbidden pair add func******:");
 		databaseConnection.addForbiddenPair("persimmon","milk");
 		System.out.println("Please check the database");
-		
+
 		// 28/05/2019 Chen Sihan
 		//test the func that get the forbidden pair
 		System.out.println("*********Then I test the forbidden pair get func******:");
 		System.out.println(databaseConnection.getForbiddenPair("milk"));
-		
-		
+
+
 		try {
 			databaseConnection.close();
 		} catch (SQLException e) {

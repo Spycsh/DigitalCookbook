@@ -21,7 +21,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false",
-						"root", "Fuckyou741@ttg");
+						"root", "sy981222");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -38,13 +38,14 @@ public class SQL_test {
 	public void addRecipetoDatabase(Recipe input,int id) {
 		PreparedStatement psql;
 		try {
-			psql = this.connect.prepareStatement("insert into recipe (recipe_id,name,servings,preparationTime,cookingTime,description)"+ "values(?,?,?,?,?,?)");
+			psql = this.connect.prepareStatement("insert into recipe (recipe_id,name,servings,preparationTime,cookingTime,description,imgAdress)"+ "values(?,?,?,?,?,?,?)");
 			psql.setInt(1, id+1);
 			psql.setString(2,input.getRecipeName());
 			psql.setInt(3,input.getNumberOfEaters());
 			psql.setInt(4,input.getPreparationTime());
 			psql.setInt(5,input.getCookingTime());
 			psql.setString(6,input.getCuisineName());
+			psql.setString(7,input.getImgAdress());
 			
 			psql.executeUpdate();
 
@@ -97,6 +98,7 @@ public class SQL_test {
 				recipe = new Recipe(rs.getString("name"),rs.getString("description"),rs.getInt("servings"));
 				recipe.setCookingTime(rs.getInt("cookingTime"));
 				recipe.setPreparationTime(rs.getInt("preparationTime"));
+                recipe.setImgAdress(rs.getString("imgAdress"));
 			}
 			rs.close();
 		} catch (SQLException e) {

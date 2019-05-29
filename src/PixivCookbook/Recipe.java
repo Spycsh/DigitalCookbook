@@ -4,6 +4,9 @@ package PixivCookbook;
  */
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,6 +25,7 @@ public class Recipe implements Serializable{
 
 	private String recipeName;
 	private String cuisineName;
+	private String imgAdress;
 	private int numberOfEaters;
 	private int preparationTime;
 	private int cookingTime;
@@ -178,11 +182,39 @@ public class Recipe implements Serializable{
 		}
 	}
 
+	public String getImgAdress() {
+		return imgAdress;
+	}
+
+	public void setImgAdress(String imgAdress) {
+		String name=this.recipeName.replaceAll(" ","");
+		String desPath="img\\"+name+".jpg";
+		try
+		{
+			/*
+			FileInputStream fis = new FileInputStream(imgAdress);
+			File file = new File(desPath);
+			FileOutputStream fos = new FileOutputStream(desPath);
+			int len = 0;
+			while ((len = fis.read()) != -1) {
+				fos.write(len);
+			}
+			fos.close();
+			fis.close();
+			*/
+			this.imgAdress = desPath;
+		}
+		catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "Recipe [recipeName=" + recipeName + ", cuisineName=" + cuisineName + ", numberOfEaters="
 				+ numberOfEaters + ", preparationTime=" + preparationTime + ", cookingTime=" + cookingTime
-				+ ", ingredients=" + ingredients + ", steps=" + steps + ", countSteps=" + countSteps + "]";
+				+ ", ingredients=" + ingredients + ", steps=" + steps + ", countSteps=" + countSteps +",imgAdr="+imgAdress+ "]";
 	}
 	
 }
