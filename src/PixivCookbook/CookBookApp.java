@@ -57,7 +57,7 @@ public class CookBookApp {
 		
 		recipe.setPreparationTime(30);
 		recipe.setCookingTime(10);
-		recipe.setImgAdress("food.jpg");
+		recipe.setImgAddress("food.jpg");
 
 		return recipe;
 	}
@@ -90,7 +90,7 @@ public class CookBookApp {
 		
 		recipe.setPreparationTime(5);
 		recipe.setCookingTime(100);
-		recipe.setImgAdress("food.jpg");
+		recipe.setImgAddress("food.jpg");
 		return recipe;
 	} 
 	
@@ -130,7 +130,7 @@ public class CookBookApp {
 				
 		recipe.setPreparationTime(30);
 		recipe.setCookingTime(5);
-		recipe.setImgAdress("food.jpg");
+		recipe.setImgAddress("food.jpg");
 
 		return recipe;
 	} 

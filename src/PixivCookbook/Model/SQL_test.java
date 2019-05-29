@@ -38,14 +38,14 @@ public class SQL_test {
 	public void addRecipetoDatabase(Recipe input,int id) {
 		PreparedStatement psql;
 		try {
-			psql = this.connect.prepareStatement("insert into recipe (recipe_id,name,servings,preparationTime,cookingTime,description,imgAdress)"+ "values(?,?,?,?,?,?,?)");
+			psql = this.connect.prepareStatement("insert into recipe (recipe_id,name,servings,preparationTime,cookingTime,description,imgAddress)"+ "values(?,?,?,?,?,?,?)");
 			psql.setInt(1, id+1);
 			psql.setString(2,input.getRecipeName());
 			psql.setInt(3,input.getNumberOfEaters());
 			psql.setInt(4,input.getPreparationTime());
 			psql.setInt(5,input.getCookingTime());
 			psql.setString(6,input.getCuisineName());
-			psql.setString(7,input.getImgAdress());
+			psql.setString(7,input.getImgAddress());
 			
 			psql.executeUpdate();
 
@@ -98,7 +98,7 @@ public class SQL_test {
 				recipe = new Recipe(rs.getString("name"),rs.getString("description"),rs.getInt("servings"));
 				recipe.setCookingTime(rs.getInt("cookingTime"));
 				recipe.setPreparationTime(rs.getInt("preparationTime"));
-                recipe.setImgAdress(rs.getString("imgAdress"));
+                recipe.setImgAddress(rs.getString("imgAddress"));
 			}
 			rs.close();
 		} catch (SQLException e) {

@@ -25,7 +25,7 @@ public class Recipe implements Serializable{
 
 	private String recipeName;
 	private String cuisineName;
-	private String imgAdress;
+	private String imgAddress;
 	private int numberOfEaters;
 	private int preparationTime;
 	private int cookingTime;
@@ -182,17 +182,17 @@ public class Recipe implements Serializable{
 		}
 	}
 
-	public String getImgAdress() {
-		return imgAdress;
+	public String getImgAddress() {
+		return imgAddress;
 	}
 
-	public void setImgAdress(String imgAdress) {
+	public void setImgAddress(String imgAddress) {
 		String name=this.recipeName.replaceAll(" ","");
 		String desPath="img\\"+name+".jpg";
 		try
 		{
 			/*
-			FileInputStream fis = new FileInputStream(imgAdress);
+			FileInputStream fis = new FileInputStream(imgAddress);
 			File file = new File(desPath);
 			FileOutputStream fos = new FileOutputStream(desPath);
 			int len = 0;
@@ -202,7 +202,7 @@ public class Recipe implements Serializable{
 			fos.close();
 			fis.close();
 			*/
-			this.imgAdress = desPath;
+			this.imgAddress = desPath;
 		}
 		catch (Exception e)
 		{
@@ -214,7 +214,7 @@ public class Recipe implements Serializable{
 	public String toString() {
 		return "Recipe [recipeName=" + recipeName + ", cuisineName=" + cuisineName + ", numberOfEaters="
 				+ numberOfEaters + ", preparationTime=" + preparationTime + ", cookingTime=" + cookingTime
-				+ ", ingredients=" + ingredients + ", steps=" + steps + ", countSteps=" + countSteps +",imgAdr="+imgAdress+ "]";
+				+ ", ingredients=" + ingredients + ", steps=" + steps + ", countSteps=" + countSteps +",imgAdr="+imgAddress+ "]";
 	}
 	
 }
