@@ -74,8 +74,7 @@ public class Recipe implements Serializable{
 	 * @param stepContent the step's content
 	 */
 	public void addPreparationStep(String stepContent) {
-		setCountSteps(getCountSteps() + 1);
-		steps.add(new Step(stepContent,getCountSteps() ));
+		steps.add(new Step(stepContent,steps.size() ));
 	}
 
 	/**

@@ -1,4 +1,5 @@
 package PixivCookbook;
+import java.io.IOException;
 /**
  * 
  */
@@ -155,10 +156,9 @@ public class CookBookApp {
 		Recipe recipe_SLF = cb.getRecipe("Suan La Fen");
 
 		// add recipes to the database
-		databaseConnection.addRecipetoDatabase(recipe_GBJ,cb.getRecipeList().indexOf(recipe_GBJ));
-		databaseConnection.addRecipetoDatabase(recipe_HSR,cb.getRecipeList().indexOf(recipe_HSR));
-		databaseConnection.addRecipetoDatabase(recipe_SLF,cb.getRecipeList().indexOf(recipe_SLF));
-
+		databaseConnection.addRecipetoDatabase(recipe_GBJ,databaseConnection.assignID());
+		databaseConnection.addRecipetoDatabase(recipe_HSR,databaseConnection.assignID());
+		databaseConnection.addRecipetoDatabase(recipe_SLF,databaseConnection.assignID());
 
 
 
@@ -177,20 +177,35 @@ public class CookBookApp {
 		// 28/05/2019 Chen Sihan
 		// test the function that search the  matched recipes with given string
 		System.out.println("**********Then I test the searchAllMatchedRecipes**********:");
-		System.out.println(databaseConnection.searchAllMatchedRecipes("rou"));
+		try {
+			System.out.println(databaseConnection.searchAllMatchedRecipes("rou"));
+		} catch (IndexOutOfBoundsException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 
 		//29/05/2019 Ling Wei
 		//get recipe details by searching id
 		System.out.println("**********Then I test the getRecipesBySearchfromDatabase**********:");
 		Recipe matchedRecipesDetail = new Recipe("","",0);
-		matchedRecipesDetail = databaseConnection.getRecipeBySearchfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+			try {
+				matchedRecipesDetail = databaseConnection.getRecipeBySearchfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+			} catch (IndexOutOfBoundsException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Could not find such recipe!");
+			}
 		System.out.println(matchedRecipesDetail);
 
 		//29/05/2019 Ling Wei
 		//get ingredient details by searching id
 		System.out.println("**********Then I test the getIngredientsfromDatabase**********:");
 		List<Ingredient> matchedIngredientsDetail = new LinkedList<Ingredient>();
-		matchedIngredientsDetail = databaseConnection.getIngredientsfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+		try {
+			matchedIngredientsDetail = databaseConnection.getIngredientsfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+		} catch (IndexOutOfBoundsException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not find such recipe!");
+		}
 		for (int i = 0; i<matchedIngredientsDetail.size();i++){
 			System.out.println(matchedIngredientsDetail.get(i));
 		}
@@ -199,7 +214,12 @@ public class CookBookApp {
 		//get step details by searching id
 		System.out.println("**********Then I test the getStepsfromDatabase**********:");
 		List<Step> matchedStepsDetail = new LinkedList<Step>();
-		matchedStepsDetail = databaseConnection.getStepsfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+		try {
+			matchedStepsDetail = databaseConnection.getStepsfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+		} catch (IndexOutOfBoundsException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not find such recipe!");
+		}
 		for (int i = 0; i<matchedStepsDetail.size();i++){
 			System.out.println(matchedStepsDetail.get(i));
 		}
@@ -221,6 +241,19 @@ public class CookBookApp {
 		System.out.println(databaseConnection.getForbiddenPair("milk"));
 
 
+		// 31/05/2019 Ling Wei
+		//test the func deleting certain recipe and its' ingredients and steps
+		try {
+			System.out.println("*********Then I test deleting certain recipe and its' ingredients and steps******:");
+			//databaseConnection.deleteRecipefromDatabase(databaseConnection.searchAllMatchedRecipes("Hong").get(0));
+			//databaseConnection.deleteRecipefromDatabase(databaseConnection.searchAllMatchedRecipes("Gong").get(0));
+			//databaseConnection.deleteRecipefromDatabase(databaseConnection.searchAllMatchedRecipes("Suan").get(0));
+		} catch (IndexOutOfBoundsException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not find such recipe!");
+		}
+		
+		
 		try {
 			databaseConnection.close();
 		} catch (SQLException e) {

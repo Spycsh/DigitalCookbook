@@ -1,6 +1,7 @@
 package PixivCookbook.Model;
 import PixivCookbook.*;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -21,7 +22,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false",
-						"root", "sy981222");
+						"root", "Fuckyou741@ttg");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -52,6 +53,38 @@ public class SQL_test {
 			addIngredientstoDatabase(input,id);
 			addStepstoDatabase(input,id);
 		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+		
+	/**
+	 * assign ID for new recipe
+	 * @return the largest current ID 
+	 */
+	public int assignID() {
+		PreparedStatement psql;
+		try {
+			psql = this.connect.prepareStatement("SELECT COUNT(recipe_id) AS nums FROM recipe");
+			ResultSet rs = psql.executeQuery();
+			while(rs.next()) {
+			return rs.getInt("nums");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return 1;
+	}
+	
+	public void deleteRecipefromDatabase(int id) {
+		PreparedStatement psql;
+		try {
+			psql = this.connect.prepareStatement("DELETE FROM recipe WHERE recipe_id = '"+id+"'");
+			psql.executeUpdate();
+			psql = this.connect.prepareStatement("UPDATE recipe SET recipe_id = recipe_id-1 WHERE recipe_id > '"+id+"'");
+			psql.executeUpdate();		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -168,7 +201,7 @@ public class SQL_test {
 	 * fuzzy query
 	 * capitalization insensitive
 	 */
-	public List<Integer> searchAllMatchedRecipes(String RecipeName){
+	public List<Integer> searchAllMatchedRecipes(String RecipeName) throws IndexOutOfBoundsException{
 		List<Integer> matchedRecipeIdList = new LinkedList<Integer>();
 		PreparedStatement psql;
 		try {
