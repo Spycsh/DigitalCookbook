@@ -10,16 +10,21 @@
     -fx-font-family: "Vladimir Script";
 }
 .border{
+    -fx-cursor: hand;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 50;
     -fx-background-image: url("refresh.png");
 }
 .search{
+    -fx-cursor: hand;
     -fx-background-repeat: no-repeat;
     -fx-background-color: #f5f5f5;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 30;
     -fx-background-image: url("search.png");
+}
+.pointer{
+    -fx-cursor: hand;
 }

@@ -55,12 +55,14 @@ public class Main extends Application {
             temp.setFitWidth(200);
             temp.setLayoutX(i%4*300+posx);
             temp.setLayoutY(i/4*350+posy);
+            temp.getStyleClass().add("pointer");
             pane.getChildren().add(temp);
             Label label = new Label("asd");
             label.setId("img");
             label.setLayoutX(i%4*300+posx);
             label.setLayoutY(i/4*350+200+posy);
             label.getStyleClass().add("flower");
+            label.getStyleClass().add("pointer");
             pane.getChildren().add(label);
         }
         image = new Image("file:D:\\Work\\CookbookGui\\image\\add.png");
@@ -69,10 +71,12 @@ public class Main extends Application {
         temp.setFitWidth(150);
         temp.setLayoutX(imageAdd.length%4*300+posx+25);
         temp.setLayoutY(imageAdd.length/4*350+posy+25);
+        temp.getStyleClass().add("pointer");
         pane.getChildren().add(temp);
         Label label = new Label("NEW RECIPE");
         label.setLayoutX(imageAdd.length%4*300+posx+30);
         label.setLayoutY(imageAdd.length/4*350+200+posy);
+        label.getStyleClass().add("pointer");
         pane.getChildren().add(label);
         scene.getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
         primaryStage.setScene(scene);
