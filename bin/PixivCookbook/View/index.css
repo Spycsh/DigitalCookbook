@@ -1,0 +1,25 @@
+.root {
+    -fx-background-image: url("bg.png");
+    -fx-font-size: 20px;
+    -fx-font-family: "Arial Black";
+    -fx-fill: #e6e6fa;
+    -fx-font-weight: bold;
+}
+.flower{
+    -fx-font-size: 60px;
+    -fx-font-family: "Vladimir Script";
+}
+.border{
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("refresh.png");
+}
+.search{
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 30;
+    -fx-background-image: url("search.png");
+}
