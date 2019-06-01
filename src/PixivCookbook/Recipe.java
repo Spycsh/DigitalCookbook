@@ -1,12 +1,5 @@
 package PixivCookbook;
-/**
- * 
- */
 
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;

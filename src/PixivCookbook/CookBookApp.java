@@ -1,12 +1,8 @@
 package PixivCookbook;
-import java.io.IOException;
-/**
- * 
- */
+
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import PixivCookbook.Model.SQL_test;
 /**
@@ -156,10 +152,10 @@ public class CookBookApp {
 		Recipe recipe_SLF = cb.getRecipe("Suan La Fen");
 
 		// add recipes to the database
-		databaseConnection.addRecipetoDatabase(recipe_GBJ,databaseConnection.assignID());
-		databaseConnection.addRecipetoDatabase(recipe_HSR,databaseConnection.assignID());
-		databaseConnection.addRecipetoDatabase(recipe_SLF,databaseConnection.assignID());
 
+				databaseConnection.addRecipetoDatabase(recipe_GBJ,databaseConnection.assignID());
+				databaseConnection.addRecipetoDatabase(recipe_HSR,databaseConnection.assignID());
+				databaseConnection.addRecipetoDatabase(recipe_SLF,databaseConnection.assignID());
 
 
 		// test the functionthat change the amount with serve

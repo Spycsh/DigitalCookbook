@@ -1,12 +1,9 @@
 package PixivCookbook.Model;
 import PixivCookbook.*;
 
-import java.io.IOException;
 import java.sql.*;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 /**
  * @author Ling Wei
  *
@@ -36,7 +33,7 @@ public class SQL_test {
 		this.connect.close();
 	}
 	
-	public void addRecipetoDatabase(Recipe input,int id) {
+	public void addRecipetoDatabase(Recipe input,int id){
 		PreparedStatement psql;
 		try {
 			psql = this.connect.prepareStatement("insert into recipe (recipe_id,name,servings,preparationTime,cookingTime,description,imgAddress)"+ "values(?,?,?,?,?,?,?)");
@@ -47,12 +44,26 @@ public class SQL_test {
 			psql.setInt(5,input.getCookingTime());
 			psql.setString(6,input.getCuisineName());
 			psql.setString(7,input.getImgAddress());
-			
+			try {
 			psql.executeUpdate();
-
+			}
+			catch (SQLException e) {
+			    if (e instanceof SQLIntegrityConstraintViolationException) {
+			        System.out.println("Such recipe has already existed!");
+			    } else {
+			        // Other SQL Exception
+			    }
+			}
+			try {
 			addIngredientstoDatabase(input,id);
 			addStepstoDatabase(input,id);
-		
+			}catch (SQLException e) {
+			    if (e instanceof SQLIntegrityConstraintViolationException) {
+			    	// Duplicate entry
+			    } else {
+			        // Other SQL Exception
+			    }
+			}		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,7 +115,7 @@ public class SQL_test {
 		}
 	}
 	
-	private void addStepstoDatabase(Recipe input,int id) throws SQLException{
+	private void addStepstoDatabase(Recipe input,int id) throws SQLException,SQLIntegrityConstraintViolationException{
 		PreparedStatement psql;
 		for(int i = 0; i<input.getSteps().size();i++) {
 			psql = this.connect.prepareStatement("insert into preparation_step (recipe_id,step,description)"+ "values(?,?,?)");
