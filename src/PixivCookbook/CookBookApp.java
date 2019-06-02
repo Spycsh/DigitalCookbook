@@ -54,7 +54,7 @@ public class CookBookApp {
 		
 		recipe.setPreparationTime(30);
 		recipe.setCookingTime(10);
-		recipe.restoreImg("food.jpg");
+		recipe.restoreImg("GBJ.jpg");
 
 		return recipe;
 	}
@@ -87,7 +87,7 @@ public class CookBookApp {
 		
 		recipe.setPreparationTime(5);
 		recipe.setCookingTime(100);
-		recipe.restoreImg("food.jpg");
+		recipe.restoreImg("HSR.jpg");
 		return recipe;
 	} 
 	
@@ -127,7 +127,7 @@ public class CookBookApp {
 				
 		recipe.setPreparationTime(30);
 		recipe.setCookingTime(5);
-		recipe.restoreImg("food.jpg");
+		recipe.restoreImg("SLF.jpg");
 
 		return recipe;
 	} 
@@ -185,7 +185,7 @@ public class CookBookApp {
 		System.out.println("**********Then I test the getRecipesBySearchfromDatabase**********:");
 		Recipe matchedRecipesDetail = new Recipe("","",0);
 			try {
-				matchedRecipesDetail = databaseConnection.getRecipeBySearchfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+				matchedRecipesDetail = databaseConnection.getRecipeBySearchfromDatabase(databaseConnection.searchAllMatchedID("rou").get(0));
 			} catch (IndexOutOfBoundsException e) {
 				// TODO Auto-generated catch block
 				System.out.println("Could not find such recipe!");
@@ -197,7 +197,7 @@ public class CookBookApp {
 		System.out.println("**********Then I test the getIngredientsfromDatabase**********:");
 		List<Ingredient> matchedIngredientsDetail = new LinkedList<Ingredient>();
 		try {
-			matchedIngredientsDetail = databaseConnection.getIngredientsfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+			matchedIngredientsDetail = databaseConnection.getIngredientsfromDatabase(databaseConnection.searchAllMatchedID("rou").get(0));
 		} catch (IndexOutOfBoundsException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("Could not find such recipe!");
@@ -211,7 +211,7 @@ public class CookBookApp {
 		System.out.println("**********Then I test the getStepsfromDatabase**********:");
 		List<Step> matchedStepsDetail = new LinkedList<Step>();
 		try {
-			matchedStepsDetail = databaseConnection.getStepsfromDatabase(databaseConnection.searchAllMatchedRecipes("rou").get(0));
+			matchedStepsDetail = databaseConnection.getStepsfromDatabase(databaseConnection.searchAllMatchedID("rou").get(0));
 		} catch (IndexOutOfBoundsException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("Could not find such recipe!");

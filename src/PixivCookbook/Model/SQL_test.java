@@ -19,7 +19,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false",
-						"root", "fuck");
+						"root", "Fuckyou741@ttg");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -212,7 +212,30 @@ public class SQL_test {
 	 * fuzzy query
 	 * capitalization insensitive
 	 */
-	public List<Integer> searchAllMatchedRecipes(String RecipeName) throws IndexOutOfBoundsException{
+	public List<Recipe> searchAllMatchedRecipes(String RecipeName) throws IndexOutOfBoundsException{
+		List<Recipe> matchedRecipeIdList = new LinkedList<Recipe>();
+		Recipe recipe = new Recipe("","",0);
+		PreparedStatement psql;
+		try {
+			psql = this.connect.prepareStatement("select * from Recipe where name like '%"+RecipeName+"%'");
+		
+			ResultSet rs = psql.executeQuery();
+			while(rs.next()) {
+				recipe = new Recipe(rs.getString("name"),rs.getString("description"),rs.getInt("servings"));
+				recipe.setCookingTime(rs.getInt("cookingTime"));
+				recipe.setPreparationTime(rs.getInt("preparationTime"));
+                recipe.setImgAddress(rs.getString("imgAddress"));
+                matchedRecipeIdList.add(recipe);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return matchedRecipeIdList;
+	}
+	
+	public List<Integer> searchAllMatchedID(String RecipeName) throws IndexOutOfBoundsException{
 		List<Integer> matchedRecipeIdList = new LinkedList<Integer>();
 		PreparedStatement psql;
 		try {

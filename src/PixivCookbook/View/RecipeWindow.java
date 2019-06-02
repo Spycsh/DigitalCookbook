@@ -63,7 +63,7 @@ public class RecipeWindow extends Application {
         pane.getChildren().add(delete);
         posy+=20;
 
-        Image image = new Image("file:D:\\Work\\CookbookGui\\image\\ff.png");
+        Image image = new Image("file:D:\\GitHub\\PixivCookbook\\img\\ff.png");
         ImageView title = new ImageView(image);
         title.setFitHeight(180*2);
         title.setFitWidth(320*2);

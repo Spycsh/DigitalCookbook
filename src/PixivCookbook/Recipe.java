@@ -1,5 +1,8 @@
 package PixivCookbook;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -186,7 +189,6 @@ public class Recipe implements Serializable{
 		String desPath="img\\"+name+".jpg";
 		try
 		{
-			/*
 			FileInputStream fis = new FileInputStream(imgAddress);
 			File file = new File(desPath);
 			FileOutputStream fos = new FileOutputStream(desPath);
@@ -196,7 +198,6 @@ public class Recipe implements Serializable{
 			}
 			fos.close();
 			fis.close();
-			*/
 			this.imgAddress = desPath;
 		}
 		catch (Exception e)
