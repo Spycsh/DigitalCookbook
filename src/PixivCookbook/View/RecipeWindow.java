@@ -23,7 +23,7 @@ public class RecipeWindow extends Application {
     int center=550-160;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        for(int i=0;i<0;i++)
+        for(int i=0;i<10;i++)
             ingredient.add("mian fen 1 gram");
         ingredient.add("yu");
         step.add("sha yu");
@@ -38,21 +38,30 @@ public class RecipeWindow extends Application {
 
         Label nameLabel = new Label();
         nameLabel.setText(name);
-        nameLabel.setLayoutX(600);
+        nameLabel.setLayoutX(450);
         nameLabel.setLayoutY(posy+=lineheight);
+        posy+=lineheight;
+        nameLabel.getStyleClass().add("bigtitle");
         pane.getChildren().add(nameLabel);
-        Button share = new Button("share");
+        Button share = new Button("s");
         share.setLayoutX(900);
         share.setLayoutY(posy+=lineheight);
-        Button star = new Button("star");
-        star.setLayoutX(1050);
+        Button star = new Button("s");
+        star.setLayoutX(980);
         star.setLayoutY(posy);
-        Button delete = new Button("delete");
-        delete.setLayoutX(1200);
+        Button delete = new Button("d");
+        delete.setLayoutX(1060);
         delete.setLayoutY(posy);
+        star.getStyleClass().add("star");
+        star.setMinSize(48,48);
+        delete.getStyleClass().add("delete");
+        delete.setMinSize(48,48);
+        share.getStyleClass().add("share");
+        share.setMinSize(48,48);
         pane.getChildren().add(share);
         pane.getChildren().add(star);
         pane.getChildren().add(delete);
+        posy+=20;
 
         Image image = new Image("file:D:\\Work\\CookbookGui\\image\\ff.png");
         ImageView title = new ImageView(image);
@@ -61,15 +70,18 @@ public class RecipeWindow extends Application {
         title.setLayoutX(center);
         title.setLayoutY(posy+=lineheight);
         pane.getChildren().add(title);
-        posy+=310;
+        posy+=330;
 
         Label descripLabel = new Label();
         descripLabel.setText("Description");
         descripLabel.setLayoutX(center);
         descripLabel.setLayoutY(posy+=lineheight);
-        Button editDescription = new Button("edit");
-        editDescription.setLayoutX(center+150);
+        Button editDescription = new Button("");
+        editDescription.setLayoutX(center+144);
         editDescription.setLayoutY(posy);
+        editDescription.getStyleClass().add("edit");
+        editDescription.setMinSize(36,36);
+        editDescription.setMaxSize(36,36);
         pane.getChildren().add(editDescription);
         pane.getChildren().add(descripLabel);
         Label descrip = new Label();
@@ -87,15 +99,19 @@ public class RecipeWindow extends Application {
         descrip.setLayoutX(center);
         descrip.setLayoutY(posy+=lineheight);
         posy+=lineheight*(line-1);
+        descrip.getStyleClass().add("content");
         pane.getChildren().add(descrip);
 
         Label ingreLabel = new Label();
         ingreLabel.setText("Ingredient");
         ingreLabel.setLayoutX(center);
         ingreLabel.setLayoutY(posy+=lineheight);
-        Button editIngredient = new Button("edit");
-        editIngredient.setLayoutX(center+150);
+        Button editIngredient = new Button("e");
+        editIngredient.setLayoutX(center+144);
         editIngredient.setLayoutY(posy);
+        editIngredient.getStyleClass().add("edit");
+        editIngredient.setMinSize(36,36);
+        editIngredient.setMaxSize(36,36);
         pane.getChildren().add(editIngredient);
         pane.getChildren().add(ingreLabel);
         for(int i=0;i<ingredient.size();i++)
@@ -105,6 +121,7 @@ public class RecipeWindow extends Application {
             label.setText(ingredient.get(i));
             label.setLayoutX(center+20);
             label.setLayoutY(posy+=lineheight);
+            label.getStyleClass().add("content");
             pane.getChildren().add(label);
         }
 
@@ -112,9 +129,12 @@ public class RecipeWindow extends Application {
         stepLabel.setText("Step");
         stepLabel.setLayoutX(center);
         stepLabel.setLayoutY(posy+=lineheight);
-        Button editStep = new Button("edit");
-        editStep.setLayoutX(center+150);
+        Button editStep = new Button("e");
+        editStep.setLayoutX(center+144);
         editStep.setLayoutY(posy);
+        editStep.getStyleClass().add("edit");
+        editStep.setMinSize(36,36);
+        editStep.setMaxSize(36,36);
         pane.getChildren().add(editStep);
         pane.getChildren().add(stepLabel);
         for(int i=0;i<step.size();i++)
@@ -124,6 +144,8 @@ public class RecipeWindow extends Application {
             label.setText(step.get(i));
             label.setLayoutX(center+20);
             label.setLayoutY(posy+=lineheight);
+            label.getStyleClass().add("content");
+            int haha=0;
             pane.getChildren().add(label);
         }
 
