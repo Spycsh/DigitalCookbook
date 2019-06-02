@@ -3,7 +3,7 @@
     -fx-font-size: 20px;
     -fx-font-family: "Arial Black";
     -fx-fill: #e6e6fa;
-    -fx-font-weight: bold;
+    -fx-font-weight: normal;
 }
 .flower{
     -fx-font-size: 30px;
@@ -16,6 +16,9 @@
     -fx-border-radius: 50;
     -fx-background-image: url("refresh.png");
 }
+.bigtitle{
+    -fx-font-size: 48px;
+}
 .search{
     -fx-cursor: hand;
     -fx-background-repeat: no-repeat;
@@ -27,4 +30,40 @@
 }
 .pointer{
     -fx-cursor: hand;
+}
+.content{
+    -fx-font-size: 18px;
+    -fx-font-weight: 100;
+}
+.star{
+    -fx-cursor: hand;
+    -fx-background-color: #FEF4F3;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("star.png");
+}
+.delete{
+    -fx-cursor: hand;
+    -fx-background-color: #FEF4F3;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("delete.png");
+}
+.share{
+    -fx-cursor: hand;
+    -fx-background-color: #FEF4F3;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("share.png");
+}
+.edit{
+    -fx-cursor: hand;
+    -fx-background-color: #FEF4F3;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("edit.png");
 }
