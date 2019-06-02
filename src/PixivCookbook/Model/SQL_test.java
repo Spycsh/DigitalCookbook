@@ -19,7 +19,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false",
-						"root", "Fuckyou741@ttg");
+						"root", "fuck");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -236,16 +236,21 @@ public class SQL_test {
 	 * @return the latest 12 recipes name for the main page
 	 * if less than 12 return all
 	 */
-	public List<String> getRecipesForMainPage() {
+	public List<Recipe> getRecipesForMainPage() {
 		Statement statement;
-		List<String> nameList = new LinkedList<String>();
+		List<Recipe> nameList = new LinkedList<Recipe>();
 		try {
 			statement = this.connect.createStatement();
-			String sql = "select * from recipe order by recipe_id desc limit 12";
+			String sql = "select * from recipe order by recipe_id desc limit 7";
 			ResultSet rs = statement.executeQuery(sql);
 			
 			while(rs.next()) {
-				nameList.add(rs.getString("name"));
+				Recipe recipe = new Recipe(rs.getString("name"),rs.getString("description"),rs.getInt("servings"));
+				recipe.setCookingTime(rs.getInt("cookingTime"));
+				recipe.setPreparationTime(rs.getInt("preparationTime"));
+                recipe.setImgAddress(rs.getString("imgAddress"));
+                
+                nameList.add(recipe);
 			}
 			
 			} catch (SQLException e) {
