@@ -108,6 +108,10 @@ public class Main{
         label[recipe.size()].getStyleClass().add("pointer");
         pane.getChildren().add(label[recipe.size()]);
     }
+    
+    public void clearAll() {
+    	pane.getChildren().clear();
+    }
 
     public void dropAllImageviews() {
         for(int i = 0; i<temp.length;i++) {
@@ -115,8 +119,13 @@ public class Main{
             pane.getChildren().remove(label[i]);
         }
     }
-
-
+	
+	 public ImageView[] getTemp() {
+			return temp;
+		}
+		public void setTemp(ImageView[] temp) {
+			this.temp = temp;
+		}
 
     public Button getRecommendButton() {
         return recommendButton;

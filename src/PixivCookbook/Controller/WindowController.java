@@ -27,9 +27,10 @@ public class WindowController extends Application {
         RecipeWindow recipeWindow= new RecipeWindow();
         Main main = new Main();
         initMain(main);
-        scene = main.getScene();
-        scene.getStylesheets().add(WindowController.class.getResource("index.css").toExternalForm());
-        //primaryStage.setScene(recipeWindow.getScene()); //edit interface
+        //scene = main.getScene();
+        scene = recipeWindow.getScene();
+//        scene.getStylesheets().add(WindowController.class.getResource("index.css").toExternalForm());
+//        //primaryStage.setScene(recipeWindow.getScene()); //edit interface
         primaryStage.setScene(scene);  //main interface
         primaryStage.show();
     }
