@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Main{
 
-    ImageView temp[],title;
+    public ImageView temp[],title;
     public Pane pane = new Pane();
     Image image;
     Scene scene;
@@ -37,8 +37,10 @@ public class Main{
         //this.primaryStage.setTitle("Hello World");
         scene=new Scene(pane, 1400, 900);
         initializeOtherParts();
+        scene.getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
         return scene;
     }
+
 
     public void initializeOtherParts() {
         search = new TextField();

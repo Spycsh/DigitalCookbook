@@ -20,9 +20,10 @@ public class RecipeWindow{
     boolean markName=false;
     Pane pane;
     ScrollPane spane;
-    public String name="haha";
-    public String description = "hahahahahaha";
-    int number=5;
+    public String name;
+    public String description ;
+    public String imgPath;
+
     public LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
     public LinkedList<Step> step = new LinkedList<Step>();
     int posy=0;
@@ -34,11 +35,6 @@ public class RecipeWindow{
     }
 
     public Scene getScene(){
-        for(int i=0;i<15;i++)
-            ingredients.add(new Ingredient("asf",12,"asf"));
-        ingredients.add(new Ingredient("",0,null));
-        step.add(new Step("Shayu",1));
-        step.add(new Step("HongPei",2));
         spane = new ScrollPane();
         pane = new Pane();
         pane.setMinWidth(1375);
@@ -120,7 +116,7 @@ public class RecipeWindow{
 
         if(markImage)
         {
-            Image image = new Image("file:C:\\Users\\sheny\\PixivCookbook\\img\\addimage.png");
+        	Image image = new Image(ClassLoader.getSystemResource("")+"..\\img\\addimage.png");
             ImageView title = new ImageView(image);
             title.setFitHeight(180*2);
             title.setFitWidth(320*2);
@@ -131,7 +127,7 @@ public class RecipeWindow{
         }
         else
         {
-            Image image = new Image("file:C:\\Users\\sheny\\PixivCookbook\\img\\GongBaoJiding.jpg");
+        	Image image = new Image(ClassLoader.getSystemResource("")+"..\\"+imgPath);
             ImageView title = new ImageView(image);
             title.setFitHeight(180*2);
             title.setFitWidth(320*2);
