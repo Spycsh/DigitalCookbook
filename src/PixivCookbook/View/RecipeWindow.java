@@ -1,7 +1,6 @@
 package PixivCookbook.View;
 
 import PixivCookbook.Ingredient;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -9,11 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.util.LinkedList;
 
-public class RecipeWindow extends Application {
+public class RecipeWindow{
     boolean markDescription=false;
     boolean markIngredient=false;
     boolean markImage=false;
@@ -29,8 +27,12 @@ public class RecipeWindow extends Application {
     int posy=0;
     int lineheight=50;
     int center=550-160;
-    @Override
-    public void start(Stage primaryStage) throws Exception{
+    public RecipeWindow()
+    {
+
+    }
+
+    public Scene getScene(){
         for(int i=0;i<5;i++)
             ingredients.add(new Ingredient("asf",12,"asf"));
         ingredients.add(new Ingredient("",0,null));
@@ -40,15 +42,16 @@ public class RecipeWindow extends Application {
         pane = new Pane();
         pane.setMinWidth(1375);
         pane.getStyleClass().add("root");
-        primaryStage.setTitle("Hello World");
+        //primaryStage.setTitle("Hello World");
         spane.setContent(pane);
         Scene scene=new Scene(spane, 1400, 900);
         refresh();
         //System.out.println(root.getChildrenUnmodifiable());
         //label.getStyleClass().add("pointer");
         scene.getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        //primaryStage.setScene(scene);
+        //primaryStage.show();
+        return scene;
     }
 
     public void refresh()
@@ -350,9 +353,5 @@ public class RecipeWindow extends Application {
                 refresh();
             }
         });
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
