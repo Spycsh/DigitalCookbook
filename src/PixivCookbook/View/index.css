@@ -43,6 +43,14 @@
     -fx-border-radius: 50;
     -fx-background-image: url("star.png");
 }
+.home{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("home.png");
+}
 .delete{
     -fx-cursor: hand;
     -fx-background-color: transparent;

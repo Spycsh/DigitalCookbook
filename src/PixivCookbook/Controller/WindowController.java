@@ -7,6 +7,7 @@ import PixivCookbook.Step;
 import PixivCookbook.View.Main;
 import PixivCookbook.View.RecipeWindow;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -19,10 +20,12 @@ public class WindowController extends Application {
 
     SQL_test model = new SQL_test();
     List<Recipe> recipe;
-    Scene scene;
+    Scene mainScene;
+    Scene editScene;
     RecipeWindow recipeWindow = new RecipeWindow();
     Stage primaryStage = new Stage();
-    
+    Stage editStage = new Stage();
+    Main main;
     public static void main(String[] args) {
         launch(args);
     }
@@ -31,25 +34,33 @@ public class WindowController extends Application {
         this.model.run();
         primaryStage = this.primaryStage;
         recipe = this.model.getRecipesForMainPage();
-        recipeWindow= new RecipeWindow();
-        Main main = new Main();
+        main = new Main();
         initMain(main);
-        scene = main.getScene();
+        mainScene = main.getScene();
+        primaryStage.setScene(mainScene);  //main interface
+        primaryStage.show();
+        recipeWindow= new RecipeWindow();
+        editScene = recipeWindow.getScene();
+        editStage.setScene(editScene);
         //scene = recipeWindow.getScene();
 //        scene.getStylesheets().add(WindowController.class.getResource("index.css").toExternalForm());
 //        //primaryStage.setScene(recipeWindow.getScene()); //edit interface
-        primaryStage.setScene(scene);  //main interface
-        primaryStage.show();
     }
     public void initMain(Main main)
     {
+        if(main.temp!=null)
+            main.dropAllImageviews();
         main.initializeMainPage(recipe);
         addRecommandButtonAction(main);
         addSearchButtonAction(main);
         addTempAction(recipe,main);
         //main.getScene().getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
     }
-
+    public void initRecipeWindow(RecipeWindow rwin)
+    {
+        addHomeAction(rwin);
+        addEditAction(rwin);
+    }
     public void addRecommandButtonAction(Main main) {
     	List<Recipe> recipe = model.getRecipesForMainPage();
         main.getRecommendButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
@@ -116,11 +127,101 @@ public class WindowController extends Application {
             	recipeWindow.step = (LinkedList<Step>) model.getStepsfromDatabase(id);
             	recipeWindow.name = model.getRecipeBySearchfromDatabase(id).getRecipeName();
             	recipeWindow.imgPath = model.getRecipeBySearchfromDatabase(id).getImgAddress();
-            	scene = recipeWindow.getScene();
-            	primaryStage.setScene(scene);
-            	primaryStage.show();
+            	primaryStage.close();
+                editStage.show();
+                recipeWindow.refresh();
+                initRecipeWindow(recipeWindow);
             }
         });
     	}
+    }
+    public void addHomeAction(RecipeWindow rmain) {
+        rmain.home.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                editStage.close();
+                primaryStage.show();
+                initMain(main);
+            }
+        });
+    }
+    public void addEditAction(RecipeWindow rwin)
+    {
+        rwin.editTitle.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                rwin.markName=!rwin.markName;
+                rwin.refresh();
+                initRecipeWindow(rwin);
+            }
+        });
+        rwin.editDescription.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                rwin.markDescription=!rwin.markDescription;
+                rwin.refresh();
+                initRecipeWindow(rwin);
+            }
+        });
+        rwin.editIngredient.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                rwin.markIngredient=!rwin.markIngredient;
+                rwin.refresh();
+                initRecipeWindow(rwin);
+            }
+        });
+        rwin.editStep.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                rwin.markStep=!rwin.markStep;
+                rwin.refresh();
+                initRecipeWindow(rwin);
+            }
+        });
+        for(int i=0;i<rwin.addStep.size();i++)
+        {
+            int mark=i;
+            if(rwin.addStep!=null)
+            rwin.addStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    //rwin.step.add(new Step("",mark));
+                    //rwin.refresh();
+                    //initRecipeWindow(rwin);
+                }
+            });
+//            if(rwin.deleteStep!=null)
+//            rwin.deleteStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    //rwin.step.remove(mark);
+//                    //rwin.refresh();
+//                    //initRecipeWindow(rwin);
+//                }
+//            });
+        }
+        for(int i=0;i<rwin.addIngredient.size();i++)
+        {
+            int mark=i;
+            if(rwin.addIngredient!=null)
+            rwin.addStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    //rwin.ingredients.add(new Ingredient("",0,""));
+                    //rwin.refresh();
+                    //initRecipeWindow(rwin);
+                }
+            });
+//            if(rwin.deleteIngredient!=null)
+//            rwin.deleteIngredient.get(i).setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    //rwin.ingredients.remove(mark);
+//                    //rwin.refresh();
+//                    //initRecipeWindow(rwin);
+//                }
+//            });
+        }
     }
 }

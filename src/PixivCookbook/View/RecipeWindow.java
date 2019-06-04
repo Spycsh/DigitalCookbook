@@ -2,8 +2,6 @@ package PixivCookbook.View;
 
 import PixivCookbook.Ingredient;
 import PixivCookbook.Step;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -13,19 +11,30 @@ import javafx.scene.layout.Pane;
 import java.util.LinkedList;
 
 public class RecipeWindow{
-    boolean markDescription=false;
-    boolean markIngredient=false;
-    boolean markImage=false;
-    boolean markStep=false;
-    boolean markName=false;
-    Pane pane;
-    ScrollPane spane;
+    public boolean markDescription=false;
+    public boolean markIngredient=false;
+    public boolean markImage=false;
+    public boolean markStep=false;
+    public boolean markName=false;
+    Pane pane = new Pane();
+    ScrollPane spane = new ScrollPane();
     public String name;
-    public String description ;
+    public String description = new String("asdas");
     public String imgPath;
-
+    public Button home= new Button();
+    public Button star = new Button();
+    public Button delete= new Button();
+    public Button share =new Button();
+    public Button editTitle;
+    public Button editDescription;
+    public Button editIngredient;
+    public Button editStep;
     public LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
     public LinkedList<Step> step = new LinkedList<Step>();
+    public LinkedList<Button> addIngredient;
+    public LinkedList<Button> addStep;
+    public LinkedList<Button> deleteIngredient;
+    public LinkedList<Button> deleteStep;
     int posy=0;
     int lineheight=50;
     int center=550-160;
@@ -35,8 +44,6 @@ public class RecipeWindow{
     }
 
     public Scene getScene(){
-        spane = new ScrollPane();
-        pane = new Pane();
         pane.setMinWidth(1375);
         pane.getStyleClass().add("root");
         //primaryStage.setTitle("Hello World");
@@ -53,6 +60,10 @@ public class RecipeWindow{
 
     public void refresh()
     {
+        addIngredient = new LinkedList<Button>();
+        addStep = new LinkedList<Button>();
+        deleteIngredient = new LinkedList<Button>();
+        deleteStep = new LinkedList<Button>();
         posy=0;
         lineheight=50;
         center=550-160;
@@ -69,7 +80,7 @@ public class RecipeWindow{
             posy+=lineheight/2;
             tf.setMinSize(400,0);
             pane.getChildren().add(tf);
-            Button editTitle= new Button("");
+            editTitle= new Button("");
             editTitle.setMinSize(36,36);
             editTitle.setMaxSize(36,36);
             editTitle.setLayoutX(916);
@@ -83,7 +94,7 @@ public class RecipeWindow{
             nameLabel.setLayoutY(posy+=lineheight);
             posy+=lineheight/2;
             pane.getChildren().add(nameLabel);
-            Button editTitle= new Button("");
+            editTitle= new Button("");
             editTitle.setMinSize(36,36);
             editTitle.setMaxSize(36,36);
             editTitle.setLayoutX(916);
@@ -91,13 +102,19 @@ public class RecipeWindow{
             editTitle.getStyleClass().add("edit");
             pane.getChildren().add(editTitle);
         }
-        Button share = new Button("s");
+        home = new Button("s");
+        home.setLayoutX(820);
+        home.setLayoutY(posy+=lineheight);
+        home.setMinSize(30,30);
+        home.setMaxSize(30,30);
+        home.getStyleClass().add("home");
+        share = new Button("s");
         share.setLayoutX(900);
-        share.setLayoutY(posy+=lineheight);
-        Button star = new Button("s");
+        share.setLayoutY(posy);
+        star = new Button("s");
         star.setLayoutX(980);
         star.setLayoutY(posy);
-        Button delete = new Button("d");
+        delete = new Button("d");
         delete.setLayoutX(1060);
         delete.setLayoutY(posy);
         star.getStyleClass().add("star");
@@ -112,6 +129,7 @@ public class RecipeWindow{
         pane.getChildren().add(share);
         pane.getChildren().add(star);
         pane.getChildren().add(delete);
+        pane.getChildren().add(home);
         posy+=20;
 
         if(markImage)
@@ -141,7 +159,7 @@ public class RecipeWindow{
         descripLabel.setText("Description");
         descripLabel.setLayoutX(center);
         descripLabel.setLayoutY(posy+=lineheight);
-        Button editDescription = new Button("");
+        editDescription = new Button("");
         editDescription.setLayoutX(center+144);
         editDescription.setLayoutY(posy);
         pane.getChildren().add(descripLabel);
@@ -188,7 +206,7 @@ public class RecipeWindow{
         ingreLabel.setText("Ingredient");
         ingreLabel.setLayoutX(center);
         ingreLabel.setLayoutY(posy+=lineheight);
-        Button editIngredient = new Button("e");
+        editIngredient = new Button("e");
         editIngredient.setLayoutX(center+144);
         editIngredient.setLayoutY(posy);
         editIngredient.setMinSize(36,36);
@@ -248,6 +266,7 @@ public class RecipeWindow{
                 button.setLayoutY(posy);
                 button.setMinSize(36,36);
                 button.setMaxSize(36,36);
+                addIngredient.add(button);
                 button.getStyleClass().add("addbutton");
                 pane.getChildren().add(button);
                 button = new Button();
@@ -255,6 +274,7 @@ public class RecipeWindow{
                 button.setLayoutY(posy);
                 button.setMinSize(36,36);
                 button.setMaxSize(36,36);
+                deleteIngredient.add(button);
                 button.getStyleClass().add("deletebutton");
                 pane.getChildren().add(button);
             }
@@ -279,7 +299,7 @@ public class RecipeWindow{
         stepLabel.setText("Step");
         stepLabel.setLayoutX(center);
         stepLabel.setLayoutY(posy+=lineheight);
-        Button editStep = new Button("e");
+        editStep = new Button("e");
         editStep.setLayoutX(center+144);
         editStep.setLayoutY(posy);
         editStep.setMinSize(36,36);
@@ -312,6 +332,7 @@ public class RecipeWindow{
                 button.setMinSize(36,36);
                 button.setMaxSize(36,36);
                 button.getStyleClass().add("addbutton");
+                addStep.add(button);
                 pane.getChildren().add(button);
                 button = new Button();
                 button.setLayoutX(center+340);
@@ -319,6 +340,7 @@ public class RecipeWindow{
                 button.setMinSize(36,36);
                 button.setMaxSize(36,36);
                 button.getStyleClass().add("deletebutton");
+                deleteStep.add(button);
                 pane.getChildren().add(button);
             }
         }
@@ -338,16 +360,16 @@ public class RecipeWindow{
                 pane.getChildren().add(label);
             }
         }
-        star.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                markDescription=!markDescription;
-                markStep=!markStep;
-                markName=!markName;
-                markImage=!markImage;
-                markIngredient=!markIngredient;
-                refresh();
-            }
-        });
+//        star.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                markDescription=!markDescription;
+//                markStep=!markStep;
+//                markName=!markName;
+//                markImage=!markImage;
+//                markIngredient=!markIngredient;
+//                refresh();
+//            }
+//        });
     }
 }

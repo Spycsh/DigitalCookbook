@@ -23,7 +23,7 @@ public class Main{
     Label label[];
     public TextField search;
     Stage primaryStage;
-
+    public Button addButton = new Button();
     public Button recommendButton =new Button();
     public Button searchButton = new Button();
     public Button backButton = new Button();
@@ -73,7 +73,6 @@ public class Main{
     }
 
     public void initializeMainPage(List<Recipe> recipe) {
-
         int posx=100,posy=200;
         temp = new ImageView[recipe.size()+1];
         label = new Label[recipe.size()+1];
