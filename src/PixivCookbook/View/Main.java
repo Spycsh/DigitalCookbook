@@ -2,7 +2,6 @@ package PixivCookbook.View;
 
 import PixivCookbook.Model.SQL_test;
 import PixivCookbook.Recipe;
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,9 +17,9 @@ import java.util.List;
 
 //import com.sun.corba.se.pept.transport.EventHandler;
 
-public class Main extends Application {
+public class Main{
 
-	SQL_test model = new SQL_test();
+    SQL_test model = new SQL_test();
     ImageView temp[],title;
     Pane pane;
     Image image;
@@ -28,28 +27,31 @@ public class Main extends Application {
     Label label[];
     TextField search;
     Stage primaryStage;
-    
+
     private Button recommendButton =new Button();
     private Button searchButton = new Button();
+    public Main()
+    {
 
-    public void start(Stage primaryStage) throws Exception{
-    	this.model.run();
-    	this.primaryStage =primaryStage;
-    	pane = new Pane();
+    }
+    public Scene getScene(){
+        this.model.run();
+        pane = new Pane();
         //Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
-        this.primaryStage.setTitle("Hello World");
+        //this.primaryStage.setTitle("Hello World");
         scene=new Scene(pane, 1400, 900);
-        List<Recipe> recipe = this.model.getRecipesForMainPage();   
+        List<Recipe> recipe = this.model.getRecipesForMainPage();
         addRecommandButtonAction(recipe);
         addSearchButtonAction();
         initializeOtherParts();
         initializeMainPage(recipe);
+        return scene;
     }
-    
+
     public void initializeOtherParts() {
-    	search = new TextField();
+        search = new TextField();
         //search.setMaxSize(100,10);
-        
+
         //relative path
         image = new Image(ClassLoader.getSystemResource("")+"..\\img\\title2.png");
         title = new ImageView(image);
@@ -71,14 +73,14 @@ public class Main extends Application {
         recommendButton.setLayoutX(1000);
         recommendButton.setLayoutY(150);
         recommendButton.setMinSize(20,20);
-        recommendButton.getStyleClass().add("border");      
+        recommendButton.getStyleClass().add("border");
         pane.getChildren().add(recommendButton);
-        //System.out.println(root.getChildrenUnmodifiable());   	
+        //System.out.println(root.getChildrenUnmodifiable());
     }
-    
-    public void initializeMainPage(List<Recipe> recipe) { 
 
-    	int posx=100,posy=200;
+    public void initializeMainPage(List<Recipe> recipe) {
+
+        int posx=100,posy=200;
         temp = new ImageView[recipe.size()+1];
         label = new Label[recipe.size()+1];
         for(int i=0;i<recipe.size();i++)
@@ -113,80 +115,76 @@ public class Main extends Application {
         label[recipe.size()].getStyleClass().add("pointer");
         pane.getChildren().add(label[recipe.size()]);
         scene.getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        }
+        //primaryStage.setScene(scene);
+        //primaryStage.show();
+    }
 
     public void dropAllImageviews() {
-    	for(int i = 0; i<temp.length;i++) {
-    	pane.getChildren().remove(temp[i]);
-    	pane.getChildren().remove(label[i]);
-    	}
+        for(int i = 0; i<temp.length;i++) {
+            pane.getChildren().remove(temp[i]);
+            pane.getChildren().remove(label[i]);
+        }
     }
-    
-    
-    
+
+
+
     public Button getRecommendButton() {
-		return recommendButton;
-	}
-    
+        return recommendButton;
+    }
+
     public Button getSearchButton() {
-    	return searchButton;
+        return searchButton;
     }
     public void setSearchButton(Button searchButton) {
-		this.searchButton = searchButton;
-	}
+        this.searchButton = searchButton;
+    }
 
-	public void setRecommendButton(Button recommendButton) {
-		this.recommendButton = recommendButton;
-	}
-	
-	public void addRecommandButtonAction(List<Recipe> recipe) {
-		this.getRecommendButton().addEventHandler(MouseEvent.MOUSE_CLICKED, 
-				new EventHandler<MouseEvent>() { 
-			        @Override 
-			        public void handle(MouseEvent e) { 
-			        	dropAllImageviews();
-			        	initializeMainPage(recipe);
-			        }
-			    });
-	}
-	
-	public void addSearchButtonAction() {
-		this.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
-				new EventHandler<MouseEvent>() { 
-			        @Override 
-			        public void handle(MouseEvent e) { 
-			        	Button backButton = new Button();
-			        	backButton.setText("back");
-			        	backButton.setLayoutX(600);
-			        	backButton.setLayoutY(150);
-			        	backButton.setMinSize(20,20);
-			        	pane.getChildren().add(backButton);
-			        	addBackButtonAction(backButton);
-			        	String searchName = search.getText();
-			        	dropAllImageviews();
-			        	List<Recipe> result = model.searchAllMatchedRecipes(searchName);
-			        	initializeMainPage(result);
-			        }
-			    });
-	}
-	
-	public void addBackButtonAction(Button backButton) {
-		backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, 
-				new EventHandler<MouseEvent>() { 
-			        @Override 
-			        public void handle(MouseEvent e) { 
-			        	dropAllImageviews();
-			        	List<Recipe> recipe = model.getRecipesForMainPage();
-			        	pane.getChildren().remove(backButton);
-			        	initializeMainPage(recipe);
-			        }
-			    });
-	}
+    public void setRecommendButton(Button recommendButton) {
+        this.recommendButton = recommendButton;
+    }
 
-	public static void main(String[] args) {
-        launch(args);
+    public void addRecommandButtonAction(List<Recipe> recipe) {
+        this.getRecommendButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        dropAllImageviews();
+                        initializeMainPage(recipe);
+                    }
+                });
+    }
+
+    public void addSearchButtonAction() {
+        this.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        Button backButton = new Button();
+                        backButton.setText("back");
+                        backButton.setLayoutX(600);
+                        backButton.setLayoutY(150);
+                        backButton.setMinSize(20,20);
+                        pane.getChildren().add(backButton);
+                        addBackButtonAction(backButton);
+                        String searchName = search.getText();
+                        dropAllImageviews();
+                        List<Recipe> result = model.searchAllMatchedRecipes(searchName);
+                        initializeMainPage(result);
+                    }
+                });
+    }
+
+    public void addBackButtonAction(Button backButton) {
+        backButton.addEventHandler(MouseEvent.MOUSE_CLICKED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        dropAllImageviews();
+                        List<Recipe> recipe = model.getRecipesForMainPage();
+                        pane.getChildren().remove(backButton);
+                        initializeMainPage(recipe);
+                    }
+                });
     }
 
 
