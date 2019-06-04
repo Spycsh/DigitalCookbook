@@ -1,15 +1,12 @@
 package PixivCookbook.View;
 
-import PixivCookbook.Model.SQL_test;
 import PixivCookbook.Recipe;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -19,34 +16,27 @@ import java.util.List;
 
 public class Main{
 
-    SQL_test model = new SQL_test();
     ImageView temp[],title;
-    Pane pane;
+    public Pane pane = new Pane();
     Image image;
     Scene scene;
     Label label[];
-    TextField search;
+    public TextField search;
     Stage primaryStage;
 
-    private Button recommendButton =new Button();
-    private Button searchButton = new Button();
-    private Button backButton = new Button();
+    public Button recommendButton =new Button();
+    public Button searchButton = new Button();
+    public Button backButton = new Button();
     
     public Main()
     {
 
     }
     public Scene getScene(){
-        this.model.run();
-        pane = new Pane();
         //Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
         //this.primaryStage.setTitle("Hello World");
         scene=new Scene(pane, 1400, 900);
-        List<Recipe> recipe = this.model.getRecipesForMainPage();
-        addRecommandButtonAction(recipe);
-        addSearchButtonAction();
         initializeOtherParts();
-        initializeMainPage(recipe);
         return scene;
     }
 
@@ -88,6 +78,7 @@ public class Main{
         for(int i=0;i<recipe.size();i++)
         {
             image = new Image(ClassLoader.getSystemResource("")+"..\\"+recipe.get(i).getImgAddress());
+            //System.out.println(recipe.get(i).getImgAddress());
             temp[i] = new ImageView(image);
             temp[i].setFitHeight(200);
             temp[i].setFitWidth(200);
@@ -116,9 +107,6 @@ public class Main{
         label[recipe.size()].setLayoutY(recipe.size()/4*350+200+posy);
         label[recipe.size()].getStyleClass().add("pointer");
         pane.getChildren().add(label[recipe.size()]);
-        scene.getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
-        //primaryStage.setScene(scene);
-        //primaryStage.show();
     }
 
     public void dropAllImageviews() {
@@ -144,56 +132,4 @@ public class Main{
     public void setRecommendButton(Button recommendButton) {
         this.recommendButton = recommendButton;
     }
-
-	public void addRecommandButtonAction(List<Recipe> recipe) {
-		this.getRecommendButton().addEventHandler(MouseEvent.MOUSE_CLICKED, 
-				new EventHandler<MouseEvent>() { 
-			        @Override 
-			        public void handle(MouseEvent e) { 
-			        	dropAllImageviews();
-			        	initializeMainPage(recipe);
-			        	if(backButton.getText() == "back") {
-			        		pane.getChildren().remove(backButton);
-			        		backButton.setText("");
-			        	}
-			        }
-			    });
-	}
-
-    public void addSearchButtonAction() {
-		this.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
-				new EventHandler<MouseEvent>() { 
-			        @Override 
-			        public void handle(MouseEvent e) { 
-			        	if(backButton.getText() != "back") {
-			        		backButton.setText("back");
-				        	backButton.setLayoutX(600);
-				        	backButton.setLayoutY(150);
-				        	backButton.setMinSize(20,20);
-				        	pane.getChildren().add(backButton);
-				        	addBackButtonAction();
-			        	}
-			        	String searchName = search.getText();
-			        	dropAllImageviews();
-			        	List<Recipe> result = model.searchAllMatchedRecipes(searchName);
-			        	initializeMainPage(result);
-			        }
-			    });
-    }
-    
-		public void addBackButtonAction() {
-			backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, 
-					new EventHandler<MouseEvent>() { 
-				        @Override 
-				        public void handle(MouseEvent e) { 
-				        	dropAllImageviews();
-				        	List<Recipe> recipe = model.getRecipesForMainPage();
-				        	pane.getChildren().remove(backButton);
-				        	backButton.setText("");
-				        	initializeMainPage(recipe);
-				        }
-				    });
-		}
-
-
 }

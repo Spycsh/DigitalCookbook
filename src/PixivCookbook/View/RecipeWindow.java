@@ -33,7 +33,7 @@ public class RecipeWindow{
     }
 
     public Scene getScene(){
-        for(int i=0;i<5;i++)
+        for(int i=0;i<15;i++)
             ingredients.add(new Ingredient("asf",12,"asf"));
         ingredients.add(new Ingredient("",0,null));
         step.add("sha yu");
