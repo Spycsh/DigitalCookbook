@@ -30,6 +30,8 @@ public class Main{
 
     private Button recommendButton =new Button();
     private Button searchButton = new Button();
+    private Button backButton = new Button();
+    
     public Main()
     {
 
@@ -143,49 +145,55 @@ public class Main{
         this.recommendButton = recommendButton;
     }
 
-    public void addRecommandButtonAction(List<Recipe> recipe) {
-        this.getRecommendButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent e) {
-                        dropAllImageviews();
-                        initializeMainPage(recipe);
-                    }
-                });
-    }
+	public void addRecommandButtonAction(List<Recipe> recipe) {
+		this.getRecommendButton().addEventHandler(MouseEvent.MOUSE_CLICKED, 
+				new EventHandler<MouseEvent>() { 
+			        @Override 
+			        public void handle(MouseEvent e) { 
+			        	dropAllImageviews();
+			        	initializeMainPage(recipe);
+			        	if(backButton.getText() == "back") {
+			        		pane.getChildren().remove(backButton);
+			        		backButton.setText("");
+			        	}
+			        }
+			    });
+	}
 
     public void addSearchButtonAction() {
-        this.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent e) {
-                        Button backButton = new Button();
-                        backButton.setText("back");
-                        backButton.setLayoutX(600);
-                        backButton.setLayoutY(150);
-                        backButton.setMinSize(20,20);
-                        pane.getChildren().add(backButton);
-                        addBackButtonAction(backButton);
-                        String searchName = search.getText();
-                        dropAllImageviews();
-                        List<Recipe> result = model.searchAllMatchedRecipes(searchName);
-                        initializeMainPage(result);
-                    }
-                });
+		this.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
+				new EventHandler<MouseEvent>() { 
+			        @Override 
+			        public void handle(MouseEvent e) { 
+			        	if(backButton.getText() != "back") {
+			        		backButton.setText("back");
+				        	backButton.setLayoutX(600);
+				        	backButton.setLayoutY(150);
+				        	backButton.setMinSize(20,20);
+				        	pane.getChildren().add(backButton);
+				        	addBackButtonAction();
+			        	}
+			        	String searchName = search.getText();
+			        	dropAllImageviews();
+			        	List<Recipe> result = model.searchAllMatchedRecipes(searchName);
+			        	initializeMainPage(result);
+			        }
+			    });
     }
-
-    public void addBackButtonAction(Button backButton) {
-        backButton.addEventHandler(MouseEvent.MOUSE_CLICKED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent e) {
-                        dropAllImageviews();
-                        List<Recipe> recipe = model.getRecipesForMainPage();
-                        pane.getChildren().remove(backButton);
-                        initializeMainPage(recipe);
-                    }
-                });
-    }
+    
+		public void addBackButtonAction() {
+			backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, 
+					new EventHandler<MouseEvent>() { 
+				        @Override 
+				        public void handle(MouseEvent e) { 
+				        	dropAllImageviews();
+				        	List<Recipe> recipe = model.getRecipesForMainPage();
+				        	pane.getChildren().remove(backButton);
+				        	backButton.setText("");
+				        	initializeMainPage(recipe);
+				        }
+				    });
+		}
 
 
 }
