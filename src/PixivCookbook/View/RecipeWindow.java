@@ -251,6 +251,13 @@ public class RecipeWindow extends Application {
                 button.setMaxSize(36,36);
                 button.getStyleClass().add("addbutton");
                 pane.getChildren().add(button);
+                button = new Button();
+                button.setLayoutX(center+570);
+                button.setLayoutY(posy);
+                button.setMinSize(36,36);
+                button.setMaxSize(36,36);
+                button.getStyleClass().add("deletebutton");
+                pane.getChildren().add(button);
             }
         }
         else
@@ -306,6 +313,13 @@ public class RecipeWindow extends Application {
                 button.setMinSize(36,36);
                 button.setMaxSize(36,36);
                 button.getStyleClass().add("addbutton");
+                pane.getChildren().add(button);
+                button = new Button();
+                button.setLayoutX(center+340);
+                button.setLayoutY(posy);
+                button.setMinSize(36,36);
+                button.setMaxSize(36,36);
+                button.getStyleClass().add("deletebutton");
                 pane.getChildren().add(button);
             }
         }

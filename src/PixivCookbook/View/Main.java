@@ -1,26 +1,22 @@
 package PixivCookbook.View;
 
-import java.util.List;
-
-import PixivCookbook.Recipe;
 import PixivCookbook.Model.SQL_test;
-
-//import com.sun.corba.se.pept.transport.EventHandler;
-
+import PixivCookbook.Recipe;
 import javafx.application.Application;
-import javafx.scene.Node;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import javafx.event.EventHandler;
+import java.util.List;
 
-import javafx.scene.input.MouseEvent; 
+//import com.sun.corba.se.pept.transport.EventHandler;
 
 public class Main extends Application {
 
@@ -35,8 +31,7 @@ public class Main extends Application {
     
     private Button recommendButton =new Button();
     private Button searchButton = new Button();
-    
-    
+
     public void start(Stage primaryStage) throws Exception{
     	this.model.run();
     	this.primaryStage =primaryStage;

@@ -22,7 +22,7 @@
 .search{
     -fx-cursor: hand;
     -fx-background-repeat: no-repeat;
-    -fx-background-color: #f5f5f5;
+    -fx-background-color: transparent;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 30;
@@ -37,7 +37,7 @@
 }
 .star{
     -fx-cursor: hand;
-    -fx-background-color: #FEF4F3;
+    -fx-background-color: transparent;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 50;
@@ -45,7 +45,7 @@
 }
 .delete{
     -fx-cursor: hand;
-    -fx-background-color: #FEF4F3;
+    -fx-background-color: transparent;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 50;
@@ -53,7 +53,7 @@
 }
 .share{
     -fx-cursor: hand;
-    -fx-background-color: #FEF4F3;
+    -fx-background-color: transparent;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 50;
@@ -61,7 +61,7 @@
 }
 .edit{
     -fx-cursor: hand;
-    -fx-background-color: #FEF4F3;
+    -fx-background-color: transparent;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 50;
@@ -69,7 +69,7 @@
 }
 .save{
     -fx-cursor: hand;
-    -fx-background-color: #FEF4F3;
+    -fx-background-color: transparent;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 50;
@@ -77,9 +77,17 @@
 }
 .addbutton{
     -fx-cursor: hand;
-    -fx-background-color: #FEF4F3;
+    -fx-background-color: transparent;
     -fx-text-fill: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 50;
     -fx-background-image: url("addbutton.png");
+}
+.deletebutton{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("delete3.png");
 }
