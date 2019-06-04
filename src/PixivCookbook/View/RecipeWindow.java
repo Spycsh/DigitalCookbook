@@ -60,6 +60,7 @@ public class RecipeWindow{
 
     public void refresh()
     {
+        pane.getChildren().clear();
         addIngredient = new LinkedList<Button>();
         addStep = new LinkedList<Button>();
         deleteIngredient = new LinkedList<Button>();

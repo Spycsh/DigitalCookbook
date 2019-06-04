@@ -182,46 +182,42 @@ public class WindowController extends Application {
         for(int i=0;i<rwin.addStep.size();i++)
         {
             int mark=i;
-            if(rwin.addStep!=null)
             rwin.addStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    //rwin.step.add(new Step("",mark));
-                    //rwin.refresh();
-                    //initRecipeWindow(rwin);
+                    rwin.step.add(mark,new Step("",mark));
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
                 }
             });
-//            if(rwin.deleteStep!=null)
-//            rwin.deleteStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    //rwin.step.remove(mark);
-//                    //rwin.refresh();
-//                    //initRecipeWindow(rwin);
-//                }
-//            });
+            rwin.deleteStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    rwin.step.remove(mark);
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
+                }
+            });
         }
         for(int i=0;i<rwin.addIngredient.size();i++)
         {
             int mark=i;
-            if(rwin.addIngredient!=null)
-            rwin.addStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
+            rwin.addIngredient.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    //rwin.ingredients.add(new Ingredient("",0,""));
-                    //rwin.refresh();
-                    //initRecipeWindow(rwin);
+                    rwin.ingredients.add(mark,new Ingredient("",0,""));
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
                 }
             });
-//            if(rwin.deleteIngredient!=null)
-//            rwin.deleteIngredient.get(i).setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    //rwin.ingredients.remove(mark);
-//                    //rwin.refresh();
-//                    //initRecipeWindow(rwin);
-//                }
-//            });
+            rwin.deleteIngredient.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    rwin.ingredients.remove(mark);
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
+                }
+            });
         }
     }
 }
