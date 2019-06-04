@@ -1,7 +1,9 @@
 package PixivCookbook.View;
 
 import PixivCookbook.Model.SQL_test;
+import PixivCookbook.Ingredient;
 import PixivCookbook.Recipe;
+import PixivCookbook.Step;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.LinkedList;
 import java.util.List;
 
 //import com.sun.corba.se.pept.transport.EventHandler;
@@ -20,13 +23,14 @@ import java.util.List;
 public class Main{
 
     SQL_test model = new SQL_test();
-    ImageView temp[],title;
-    Pane pane;
+	ImageView temp[],title;
+
+	Pane pane;
     Image image;
     Scene scene;
     Label label[];
     TextField search;
-    Stage primaryStage;
+    int tempCount;
 
     private Button recommendButton =new Button();
     private Button searchButton = new Button();
@@ -47,6 +51,7 @@ public class Main{
         addSearchButtonAction();
         initializeOtherParts();
         initializeMainPage(recipe);
+        addtempAction(recipe);
         return scene;
     }
 
@@ -111,6 +116,7 @@ public class Main{
         temp[recipe.size()].setLayoutY(recipe.size()/4*350+posy+25);
         temp[recipe.size()].getStyleClass().add("pointer");
         pane.getChildren().add(temp[recipe.size()]);
+        addtempAction(recipe);
         label[recipe.size()] = new Label("NEW RECIPE");
         label[recipe.size()].setLayoutX(recipe.size()%4*300+posx+30);
         label[recipe.size()].setLayoutY(recipe.size()/4*350+200+posy);
@@ -120,6 +126,10 @@ public class Main{
         //primaryStage.setScene(scene);
         //primaryStage.show();
     }
+    
+    public void clearAll() {
+    	pane.getChildren().clear();
+    }
 
     public void dropAllImageviews() {
         for(int i = 0; i<temp.length;i++) {
@@ -127,8 +137,19 @@ public class Main{
             pane.getChildren().remove(label[i]);
         }
     }
-
-
+    public SQL_test getModel() {
+		return model;
+	}
+	public void setModel(SQL_test model) {
+		this.model = model;
+	}
+	
+	 public ImageView[] getTemp() {
+			return temp;
+		}
+		public void setTemp(ImageView[] temp) {
+			this.temp = temp;
+		}
 
     public Button getRecommendButton() {
         return recommendButton;
@@ -194,6 +215,24 @@ public class Main{
 				        }
 				    });
 		}
-
-
+		
+		public void addtempAction(List<Recipe> recipe) {
+			for (int i=0;i<recipe.size();i++) {
+			tempCount = i;
+			this.getTemp()[i].addEventHandler(MouseEvent.MOUSE_CLICKED, 
+					new EventHandler<MouseEvent>() { 
+				        @Override 
+				        public void handle(MouseEvent e) { 
+				        	 clearAll();
+				        	 int id = model.searchAllMatchedID(recipe.get(tempCount).getRecipeName()).get(0);
+				        	 RecipeWindow recipeWindow= new RecipeWindow();
+				        	 recipeWindow.name = recipe.get(tempCount).getRecipeName();
+				        	 recipeWindow.description = recipe.get(tempCount).getCuisineName();
+				        	 recipeWindow.ingredients = (LinkedList<Ingredient>) model.getIngredientsfromDatabase(id);
+				        	 recipeWindow.step = (LinkedList<Step>) model.getStepsfromDatabase(id);
+				        	 scene = recipeWindow.getScene();
+				        	}
+				        });
+				}
+		}
 }

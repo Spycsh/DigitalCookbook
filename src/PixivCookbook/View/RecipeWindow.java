@@ -1,6 +1,7 @@
 package PixivCookbook.View;
 
 import PixivCookbook.Ingredient;
+import PixivCookbook.Step;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -19,11 +20,11 @@ public class RecipeWindow{
     boolean markName=false;
     Pane pane;
     ScrollPane spane;
-    String name="Yang wang xin kong";
-    String description="This is a good dish This is a good dish Tis is a good dish This is a good dish This is a good dish This is a good dish This is a good dish This is a good dish This is a good dish This is a good dish ";
+    public String name;
+    public String description;
     int number=5;
-    LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
-    LinkedList<String> step = new LinkedList<String>();
+    public LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
+    public LinkedList<Step> step = new LinkedList<Step>();
     int posy=0;
     int lineheight=50;
     int center=550-160;
@@ -36,8 +37,8 @@ public class RecipeWindow{
         for(int i=0;i<5;i++)
             ingredients.add(new Ingredient("asf",12,"asf"));
         ingredients.add(new Ingredient("",0,null));
-        step.add("sha yu");
-        step.add("hong pei");
+        step.add(new Step("Shayu",1));
+        step.add(new Step("HongPei",2));
         spane = new ScrollPane();
         pane = new Pane();
         pane.setMinWidth(1375);
@@ -305,7 +306,7 @@ public class RecipeWindow{
                 label.setLayoutY(posy+8);
                 label.getStyleClass().add("content");
                 pane.getChildren().add(label);
-                TextField tf = new TextField(step.get(i));
+                TextField tf = new TextField(step.get(i).getContent());
                 tf.setLayoutX(center+20);
                 tf.setLayoutY(posy);
                 tf.getStyleClass().add("content");
@@ -334,7 +335,7 @@ public class RecipeWindow{
             {
                 if(step.get(i)==null) continue;
                 Label label = new Label();
-                label.setText(step.get(i));
+                label.setText(step.get(i).getContent());
                 label.setLayoutX(center+20);
                 label.setLayoutY(posy+=lineheight);
                 label.getStyleClass().add("content");
