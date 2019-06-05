@@ -17,7 +17,7 @@ public class RecipeWindow{
     public boolean markStep=false;
     public boolean markName=false;
     Pane pane = new Pane();
-    ScrollPane spane = new ScrollPane();
+    public ScrollPane spane;
     public String name;
     public String description = new String("asdas");
     public String imgPath;
@@ -47,6 +47,7 @@ public class RecipeWindow{
         pane.setMinWidth(1375);
         pane.getStyleClass().add("root");
         //primaryStage.setTitle("Hello World");
+        spane = new ScrollPane();
         spane.setContent(pane);
         Scene scene=new Scene(spane, 1400, 900);
         refresh();
@@ -60,6 +61,10 @@ public class RecipeWindow{
 
     public void refresh()
     {
+        double posv=spane.getVvalue();
+        System.out.println("pre"+spane.getVvalue());
+        //double posv=spane.getVvalue();
+        //spane.setVvalue(posv);
         pane.getChildren().clear();
         addIngredient = new LinkedList<Button>();
         addStep = new LinkedList<Button>();
@@ -73,6 +78,11 @@ public class RecipeWindow{
         nameLabel.setText(name);
         nameLabel.getStyleClass().add("bigtitle");
         //pane.getChildren().add(nameLabel);
+        pane.layout();
+        pane.applyCss();
+        spane.applyCss();
+        spane.layout();
+        spane.setVvalue(posv);
         if(markName)
         {
             TextField tf = new TextField(name);

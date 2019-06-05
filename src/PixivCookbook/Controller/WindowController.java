@@ -150,33 +150,57 @@ public class WindowController extends Application {
         rwin.editTitle.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("middle: "+ rwin.spane.getVvalue());
+                double posx=editStage.getX();
+                double posy=editStage.getY();
                 rwin.markName=!rwin.markName;
                 rwin.refresh();
                 initRecipeWindow(rwin);
+                editStage.setX(posx);;
+                editStage.setY(posy);
             }
         });
         rwin.editDescription.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                double posx=editStage.getX();
+                double posy=editStage.getY();
+                
                 rwin.markDescription=!rwin.markDescription;
                 rwin.refresh();
                 initRecipeWindow(rwin);
+                editStage.setX(posx);;
+                editStage.setY(posy);
+                
+                
             }
         });
         rwin.editIngredient.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                double posx=editStage.getX();
+                double posy=editStage.getY();
+                
                 rwin.markIngredient=!rwin.markIngredient;
                 rwin.refresh();
                 initRecipeWindow(rwin);
+                editStage.setX(posx);;
+                editStage.setY(posy);
             }
         });
         rwin.editStep.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                double posx=editStage.getX();
+                double posy=editStage.getY();
+                
                 rwin.markStep=!rwin.markStep;
                 rwin.refresh();
                 initRecipeWindow(rwin);
+                editStage.setX(posx);;
+                editStage.setY(posy);
+                
+                
             }
         });
         for(int i=0;i<rwin.addStep.size();i++)
@@ -185,17 +209,28 @@ public class WindowController extends Application {
             rwin.addStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    double posx=editStage.getX();
+                    double posy=editStage.getY();
+                    
                     rwin.step.add(mark,new Step("",mark));
                     rwin.refresh();
                     initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
                 }
             });
             rwin.deleteStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    double posx=editStage.getX();
+                    double posy=editStage.getY();
+                    
                     rwin.step.remove(mark);
                     rwin.refresh();
                     initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+                    
                 }
             });
         }
@@ -205,17 +240,29 @@ public class WindowController extends Application {
             rwin.addIngredient.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    double posx=editStage.getX();
+                    double posy=editStage.getY();
+                    
                     rwin.ingredients.add(mark,new Ingredient("",0,""));
                     rwin.refresh();
                     initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+                    
                 }
             });
             rwin.deleteIngredient.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    double posx=editStage.getX();
+                    double posy=editStage.getY();
+                    
                     rwin.ingredients.remove(mark);
                     rwin.refresh();
                     initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+                    
                 }
             });
         }
