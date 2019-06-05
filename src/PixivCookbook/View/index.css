@@ -5,6 +5,10 @@
     -fx-fill: #e6e6fa;
     -fx-font-weight: normal;
 }
+.button:hover
+{
+    -fx-background-color: grey;
+}
 .flower{
     -fx-font-size: 30px;
     -fx-font-family: "Vladimir Script";
@@ -12,6 +16,7 @@
 .border{
     -fx-cursor: hand;
     -fx-text-fill: transparent;
+    -fx-background-color: transparent;
     -fx-background-radius: 25;
     -fx-border-radius: 50;
     -fx-background-image: url("refresh.png");

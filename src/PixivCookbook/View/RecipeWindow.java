@@ -359,13 +359,22 @@ public class RecipeWindow{
         {
             editStep.getStyleClass().add("edit");
             pane.getChildren().add(editStep);
+            int cnt=0;
             for(int i=0;i<step.size();i++)
             {
                 if(step.get(i)==null) continue;
+                cnt++;
                 Label label = new Label();
+                label.setText(Integer.toString(i)+".");
+                label.setLayoutX(center-10);
+                posy+=lineheight;
+                label.setLayoutY(posy);
+                label.getStyleClass().add("content");
+                pane.getChildren().add(label);
+                label = new Label();
                 label.setText(step.get(i).getContent());
                 label.setLayoutX(center+20);
-                label.setLayoutY(posy+=lineheight);
+                label.setLayoutY(posy);
                 label.getStyleClass().add("content");
                 int haha=0;
                 pane.getChildren().add(label);
