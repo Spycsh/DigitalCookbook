@@ -29,6 +29,10 @@ public class RecipeWindow{
     public Button editDescription;
     public Button editIngredient;
     public Button editStep;
+    
+    public ImageView title;
+    public String editImgPath;  // here is the editImg
+    
     public LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
     public LinkedList<Step> step = new LinkedList<Step>();
     public LinkedList<Button> addIngredient;
@@ -146,7 +150,7 @@ public class RecipeWindow{
         if(markImage)
         {
         	Image image = new Image(ClassLoader.getSystemResource("")+"..\\img\\addimage.png");
-            ImageView title = new ImageView(image);
+            title = new ImageView(image);
             title.setFitHeight(180*2);
             title.setFitWidth(320*2);
             title.setLayoutX(center);
@@ -156,8 +160,16 @@ public class RecipeWindow{
         }
         else
         {
-        	Image image = new Image(ClassLoader.getSystemResource("")+"..\\"+imgPath);
-            ImageView title = new ImageView(image);
+        	Image image;
+        	if(this.editImgPath!=null) {
+//        		System.out.println(editImgPath);
+        		image = new Image("file:/"+editImgPath);   // "file:/" is important!
+        	}
+        	else {
+        		image = new Image(ClassLoader.getSystemResource("")+"..\\"+imgPath);
+        	}
+        		
+            title = new ImageView(image);
             title.setFitHeight(180*2);
             title.setFitWidth(320*2);
             title.setLayoutX(center);

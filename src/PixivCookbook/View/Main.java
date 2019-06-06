@@ -18,7 +18,7 @@ public class Main{
 
     public ImageView temp[],title;
     public Pane pane = new Pane();
-    Image image;
+    public Image image;
     Scene scene;
     Label label[];
     public TextField search;

@@ -13,8 +13,13 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class WindowController extends Application {
 
@@ -54,12 +59,15 @@ public class WindowController extends Application {
         addRecommandButtonAction(main);
         addSearchButtonAction(main);
         addTempAction(recipe,main);
+        
+        addAddAction(recipe,main );
         //main.getScene().getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
     }
     public void initRecipeWindow(RecipeWindow rwin)
     {
         addHomeAction(rwin);
         addEditAction(rwin);
+
     }
     public void addRecommandButtonAction(Main main) {
     	List<Recipe> recipe = model.getRecipesForMainPage();
@@ -127,6 +135,7 @@ public class WindowController extends Application {
             	recipeWindow.step = (LinkedList<Step>) model.getStepsfromDatabase(id);
             	recipeWindow.name = model.getRecipeBySearchfromDatabase(id).getRecipeName();
             	recipeWindow.imgPath = model.getRecipeBySearchfromDatabase(id).getImgAddress();
+//            	System.out.print(recipeWindow.imgPath);
             	primaryStage.close();
                 editStage.show();
                 recipeWindow.refresh();
@@ -160,6 +169,38 @@ public class WindowController extends Application {
                 editStage.setY(posy);
             }
         });
+        
+        // image
+    	rwin.title.addEventHandler(MouseEvent.MOUSE_CLICKED,
+                new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+            	System.out.println("click img");
+            	
+            	JFileChooser chooser = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("JPEG file", "jpg", "jpeg");
+				chooser.setFileFilter(filter);
+				int returnVal = chooser.showOpenDialog(null);
+				if (returnVal == JFileChooser.APPROVE_OPTION) {
+					System.out.println("You choose to open this image: " + chooser.getSelectedFile().getPath());
+					rwin.editImgPath = chooser.getSelectedFile().getPath();
+					String fileName = chooser.getSelectedFile().getName();
+					
+	                double posx=editStage.getX();
+	                double posy=editStage.getY();
+//                    rwin.markImage = false;
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+//					System.out.println(fileName);
+//					System.out.println(filePath);
+
+				}
+            }
+            
+    	});
+        
         rwin.editDescription.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -266,5 +307,40 @@ public class WindowController extends Application {
                 }
             });
         }
+    }
+    
+    public void addAddAction(List<Recipe> recipe, Main main) {
+    	 main.temp[recipe.size()].addEventHandler(MouseEvent.MOUSE_CLICKED,
+                 new EventHandler<MouseEvent>() {
+                     @Override
+                     public void handle(MouseEvent e) {
+                    	 // after add recipe, all attributes are default
+                    	 recipeWindow.description = "";
+
+						Ingredient defaultIngredient = new Ingredient("Default", 0.0, "0");
+						recipeWindow.ingredients = new LinkedList<Ingredient>() {{
+							add(defaultIngredient);
+						}};
+						Step defaultStep = new Step(" ",0);
+						recipeWindow.step = new LinkedList<Step>() {{
+							add(defaultStep);
+						}};
+						recipeWindow.name = "Default";
+						
+						recipeWindow.markImage = true;
+//						recipeWindow.imgPath = "img\\addImage.png";  // default image
+						
+						primaryStage.close();
+						editStage.show();
+						recipeWindow.refresh();
+						initRecipeWindow(recipeWindow);
+						recipeWindow.markImage = false;
+                     }
+                     
+                 });
+    }
+    
+    public void addEditImg(RecipeWindow rwin) {
+
     }
 }
