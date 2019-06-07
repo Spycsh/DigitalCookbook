@@ -130,7 +130,7 @@ public class SQL_test {
 		Statement statement;
 		try {
 			statement = this.connect.createStatement();
-			String sql = "UPDATE recipe SET name ='"+newName+"WHERE recipe_id ='"+id+"'";
+			String sql = "UPDATE cookbook.recipe SET name ='"+newName+"'"+"WHERE recipe_id ='"+id+"'";
 			statement.execute(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

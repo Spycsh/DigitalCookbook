@@ -359,7 +359,6 @@ public class WindowController extends Application {
 						editStage.show();
 						recipeWindow.refresh();
 						initRecipeWindow(recipeWindow);
-						recipeWindow.markImage = false;
                      }
                      
                  });
