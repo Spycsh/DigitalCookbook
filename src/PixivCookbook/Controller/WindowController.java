@@ -339,8 +339,8 @@ public class WindowController extends Application {
 						}};
 						recipeWindow.name = "Default";
 						
-						recipeWindow.markImage = true;
-//						recipeWindow.imgPath = "img\\addImage.png";  // default image
+						recipeWindow.markImage = true; // wait for add image
+						recipeWindow.imgPath = "img\\addImage.png";  // set default image
 						
 						primaryStage.close();
 						editStage.show();
