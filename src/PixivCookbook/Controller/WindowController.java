@@ -206,6 +206,7 @@ public class WindowController extends Application {
                 double posx=editStage.getX();
                 double posy=editStage.getY();
                 rwin.markName=!rwin.markName;
+                rwin.saveData();
                 rwin.refresh();
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
@@ -235,6 +236,7 @@ public class WindowController extends Application {
             		if(alertSwitch == 1) {
             			alertSwitch = 0;
             			rwin.markName=!rwin.markName;
+            			rwin.saveData();
                         rwin.refresh();
                         initRecipeWindow(rwin);
                         editStage.setX(posx);;
@@ -242,6 +244,7 @@ public class WindowController extends Application {
             		}else{
 	            		rwin.name =newName;
 	            		rwin.markName=!rwin.markName;
+	            		rwin.saveData();
 	                    rwin.refresh();
 	                    initRecipeWindow(rwin);
 	                    editStage.setX(posx);;
@@ -272,6 +275,7 @@ public class WindowController extends Application {
 	                double posx=editStage.getX();
 	                double posy=editStage.getY();
 //                    rwin.markImage = false;
+                    rwin.saveData();
                     rwin.refresh();
                     initRecipeWindow(rwin);
                     editStage.setX(posx);;
@@ -292,6 +296,7 @@ public class WindowController extends Application {
                 double posy=editStage.getY();
                 
                 rwin.markDescription=!rwin.markDescription;
+                rwin.saveData();
                 rwin.refresh();
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
@@ -302,6 +307,7 @@ public class WindowController extends Application {
                     rwin.description = rwin.tf_Description.getText();
                     model.saveDescription(id, rwin.description);
                     rwin.markDescription=!rwin.markDescription;
+                    rwin.saveData();
                     rwin.refresh();
                     initRecipeWindow(rwin);
                     editStage.setX(posx);;
@@ -316,6 +322,7 @@ public class WindowController extends Application {
                 double posy=editStage.getY();
                 
                 rwin.markIngredient=!rwin.markIngredient;
+                rwin.saveData();
                 rwin.refresh();
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
@@ -328,8 +335,9 @@ public class WindowController extends Application {
             public void handle(ActionEvent event) {
                 double posx=editStage.getX();
                 double posy=editStage.getY();
-                
+                //rwin.saveData();
                 rwin.markStep=!rwin.markStep;
+                rwin.saveData();
                 rwin.refresh();
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;

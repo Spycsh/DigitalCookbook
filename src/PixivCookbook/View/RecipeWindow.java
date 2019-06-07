@@ -29,19 +29,28 @@ public class RecipeWindow{
     public Button editDescription;
     public Button editIngredient;
     public Button editStep;
-    
     public TextField tf_RecipeName;
-    public TextArea tf_Description;
-    
+    public TextField tf_Description;
+    public TextField tf_Preparation;
+    public TextField tf_Cookingtime;
+    public TextField tf_Serveing;
     public ImageView title;
     public String editImgPath;  // here is the editImg
     
     public LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
     public LinkedList<Step> step = new LinkedList<Step>();
+    public double preparationTime=0;
+    public double cookingTime=0;
+    public double servings=0;
+
     public LinkedList<Button> addIngredient;
     public LinkedList<Button> addStep;
     public LinkedList<Button> deleteIngredient;
     public LinkedList<Button> deleteStep;
+    public LinkedList<TextField> ingredientText3= new LinkedList<TextField>();
+    public LinkedList<TextField> ingredientText2= new LinkedList<TextField>();
+    public LinkedList<TextField> ingredientText1= new LinkedList<TextField>();
+    public LinkedList<TextField> stepText= new LinkedList<TextField>();
     int posy=0;
     int lineheight=50;
     int center=550-160;
@@ -54,6 +63,7 @@ public class RecipeWindow{
         pane.setMinWidth(1375);
         pane.getStyleClass().add("root");
         //primaryStage.setTitle("Hello World");
+        System.out.println();
         spane = new ScrollPane();
         spane.setMinHeight(900);
         spane.setContent(pane);
@@ -70,7 +80,7 @@ public class RecipeWindow{
     public void refresh()
     {
         double posv=spane.getVvalue();
-        System.out.println("pre"+spane.getVvalue());
+        //System.out.println("pre"+spane.getVvalue());
         //double posv=spane.getVvalue();
         //spane.setVvalue(posv);
         pane.getChildren().clear();
@@ -183,50 +193,120 @@ public class RecipeWindow{
         }
 //mark
         Label descripLabel = new Label();
-        descripLabel.setText("Description");
+        descripLabel.setText("Main Information");
         descripLabel.setLayoutX(center);
         descripLabel.setLayoutY(posy+=lineheight);
         editDescription = new Button("");
-        editDescription.setLayoutX(center+144);
+        editDescription.setLayoutX(center+244);
         editDescription.setLayoutY(posy);
         pane.getChildren().add(descripLabel);
-        int line=0;
-        String disDes="";
-        for(int i=0;i<description.length();i++)
-        {
-            if(i%60==0)
-            {
-                disDes +=(description.substring(i,Math.min(description.length(),i+60))+'\n');
-                i++;
-                line++;
-            }
-        }
+        int line=1;
+        String disDes=description;
         if(markDescription)
         {
+            center+=20;
             editDescription.getStyleClass().add("save");
             editDescription.setMinSize(36,36);
             editDescription.setMaxSize(36,36);
             pane.getChildren().add(editDescription);
-            tf_Description = new TextArea(disDes);
-            tf_Description.setLayoutX(center);
-            tf_Description.setLayoutY(posy+=lineheight);
-            posy+=140;
-            tf_Description.setMaxSize(900,140);
+            Label desLabel = new Label("Descriptoon:");
+            tf_Description = new TextField(disDes);
+            desLabel.setLayoutX(center);
+            posy+=lineheight;
+            desLabel.setLayoutY(posy+8);
+            desLabel.getStyleClass().add("content");
+            pane.getChildren().add(desLabel);
+            tf_Description.setLayoutX(center+200);
+            tf_Description.setLayoutY(posy);
             pane.getChildren().add(tf_Description);
+            Label prepaLable = new Label("Preparation Time:");
+            tf_Preparation = new TextField(Double.toString(preparationTime));
+            prepaLable.setLayoutX(center);
+            posy+=lineheight;
+            prepaLable.setLayoutY(posy+8);
+            prepaLable.getStyleClass().add("content");
+            pane.getChildren().add(prepaLable);
+            tf_Preparation.setLayoutX(center+200);
+            tf_Preparation.setLayoutY(posy);
+            pane.getChildren().add(tf_Preparation);
+            Label cookLabel = new Label("Cook Time:");
+            tf_Cookingtime = new TextField(Double.toString(cookingTime));
+            cookLabel.setLayoutX(center);
+            posy+=lineheight;
+            cookLabel.setLayoutY(posy+8);
+            cookLabel.getStyleClass().add("content");
+            pane.getChildren().add(cookLabel);
+            tf_Cookingtime.setLayoutX(center+200);
+            tf_Cookingtime.setLayoutY(posy);
+            pane.getChildren().add(tf_Cookingtime);
+            Label serveLabel = new Label("Servings:");
+            tf_Serveing = new TextField(Double.toString(servings));
+            serveLabel.setLayoutX(center);
+            posy+=lineheight;
+            serveLabel.setLayoutY(posy+8);
+            serveLabel.getStyleClass().add("content");
+            pane.getChildren().add(serveLabel);
+            tf_Serveing.setLayoutX(center+200);
+            tf_Serveing.setLayoutY(posy);
+            pane.getChildren().add(tf_Serveing);
+            center-=20;
         }
         else
         {
+            center+=20;
             editDescription.getStyleClass().add("edit");
             editDescription.setMinSize(36,36);
             editDescription.setMaxSize(36,36);
             pane.getChildren().add(editDescription);
-            Label descrip = new Label();
-            descrip.setText(disDes);
-            descrip.setLayoutX(center);
-            descrip.setLayoutY(posy+=lineheight);
-            posy+=lineheight*(line-1);
-            descrip.getStyleClass().add("content");
-            pane.getChildren().add(descrip);
+            Label desLabel = new Label("Descriptoon:");
+            desLabel.setLayoutX(center);
+            posy+=lineheight;
+            desLabel.setLayoutY(posy);
+            desLabel.getStyleClass().add("content");
+            pane.getChildren().add(desLabel);
+            Label descLabel = new Label();
+            descLabel.setText(description);
+            descLabel.setLayoutX(center+200);
+            descLabel.setLayoutY(posy);
+            descLabel.getStyleClass().add("content");
+            pane.getChildren().add(descLabel);
+            Label prepaLable = new Label("Preparation Time:");
+            prepaLable.setLayoutX(center);
+            posy+=lineheight;
+            prepaLable.setLayoutY(posy);
+            prepaLable.getStyleClass().add("content");
+            pane.getChildren().add(prepaLable);
+            Label prepaLabel = new Label();
+            prepaLabel.setText(Double.toString(preparationTime));
+            prepaLabel.setLayoutX(center+200);
+            prepaLabel.setLayoutY(posy);
+            prepaLabel.getStyleClass().add("content");
+            pane.getChildren().add(prepaLabel);
+            Label cookLabel = new Label("Cook Time:");
+            cookLabel.setLayoutX(center);
+            posy+=lineheight;
+            cookLabel.setLayoutY(posy);
+            cookLabel.getStyleClass().add("content");
+            pane.getChildren().add(cookLabel);
+            Label cooLabel = new Label();
+            cooLabel.setText(Double.toString(cookingTime));
+            cooLabel.setLayoutX(center+200);
+            cooLabel.setLayoutY(posy);
+            cooLabel.getStyleClass().add("content");
+            pane.getChildren().add(cooLabel);
+            Label serveLabel = new Label("Servings:");
+            serveLabel.setLayoutX(center);
+            posy+=lineheight;
+            serveLabel.setLayoutY(posy);
+            serveLabel.getStyleClass().add("content");
+            pane.getChildren().add(serveLabel);
+            Label servLabel = new Label();
+            servLabel.setText(Double.toString(servings));
+            servLabel.setLayoutX(center+200);
+            servLabel.setLayoutY(posy);
+            servLabel.getStyleClass().add("content");
+            pane.getChildren().add(servLabel);
+            center-=20;
         }
 
         Label ingreLabel = new Label();
@@ -270,7 +350,7 @@ public class RecipeWindow{
                 label.setLayoutY(posy+8);
                 label.getStyleClass().add("content");
                 pane.getChildren().add(label);
-                TextField tf1 = new TextField(ingredients.get(i).getName().toString());
+                TextField tf1 = new TextField(Double.toString(ingredients.get(i).getNum()));
                 tf1.setLayoutX(center+20);
                 tf1.setLayoutY(posy);
                 tf1.setMaxSize(150,200);
@@ -304,6 +384,18 @@ public class RecipeWindow{
                 deleteIngredient.add(button);
                 button.getStyleClass().add("deletebutton");
                 pane.getChildren().add(button);
+                if(i>=ingredientText1.size())
+                {
+                    ingredientText1.add(tf1);
+                    ingredientText2.add(tf2);
+                    ingredientText3.add(tf3);
+                }
+                else
+                {
+                    ingredientText1.set(i,tf1);
+                    ingredientText2.set(i,tf2);
+                    ingredientText3.set(i,tf3);
+                }
             }
         }
         else
@@ -369,6 +461,9 @@ public class RecipeWindow{
                 button.getStyleClass().add("deletebutton");
                 deleteStep.add(button);
                 pane.getChildren().add(button);
+                if(i>=stepText.size())
+                    stepText.add(tf);
+                else stepText.set(i,tf);
             }
         }
         else
@@ -381,7 +476,7 @@ public class RecipeWindow{
                 if(step.get(i)==null) continue;
                 cnt++;
                 Label label = new Label();
-                label.setText(Integer.toString(i)+".");
+                label.setText(Integer.toString(i+1)+".");
                 label.setLayoutX(center-10);
                 posy+=lineheight;
                 label.setLayoutY(posy);
@@ -407,5 +502,29 @@ public class RecipeWindow{
 //                refresh();
 //            }
 //        });
+    }
+    public void saveData()
+    {
+        if(markDescription&&tf_Preparation!=null)
+        {
+            this.servings=Double.parseDouble(tf_Serveing.getText());
+            this.cookingTime=Double.parseDouble(tf_Cookingtime.getText());
+            this.preparationTime=Double.parseDouble(tf_Preparation.getText());
+            this.description=tf_Description.getText();
+        }
+        if(ingredientText3.size()>0)
+            for(int i=0;i<ingredientText3.size();i++)
+            {
+                if(ingredients.size()<=i) break;
+                ingredients.get(i).setName(ingredientText3.get(i).getText());
+                ingredients.get(i).setNum(Double.parseDouble(ingredientText1.get(i).getText()));
+                ingredients.get(i).setUnit(ingredientText2.get(i).getText());
+            }
+        if(stepText.size()>0)
+            for(int i=0;i<stepText.size();i++)
+            {
+                if(step.size()<=i) break;
+                step.get(i).setContent(stepText.get(i).getText());
+            }
     }
 }
