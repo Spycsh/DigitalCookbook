@@ -112,3 +112,19 @@
     -fx-border-radius: 50;
     -fx-background-image: url("delete3.png");
 }
+.upbutton{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("up.png");
+}
+.downbutton{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("down.png");
+}

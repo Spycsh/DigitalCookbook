@@ -47,6 +47,8 @@ public class RecipeWindow{
     public LinkedList<Button> addStep;
     public LinkedList<Button> deleteIngredient;
     public LinkedList<Button> deleteStep;
+    public LinkedList<Button> upStep;
+    public LinkedList<Button> downStep;
     public LinkedList<TextField> ingredientText3= new LinkedList<TextField>();
     public LinkedList<TextField> ingredientText2= new LinkedList<TextField>();
     public LinkedList<TextField> ingredientText1= new LinkedList<TextField>();
@@ -88,6 +90,8 @@ public class RecipeWindow{
         addStep = new LinkedList<Button>();
         deleteIngredient = new LinkedList<Button>();
         deleteStep = new LinkedList<Button>();
+        upStep=new LinkedList<Button>();
+        downStep=new LinkedList<Button>();
         posy=0;
         lineheight=50;
         center=550-160;
@@ -460,6 +464,22 @@ public class RecipeWindow{
                 button.setMaxSize(36,36);
                 button.getStyleClass().add("deletebutton");
                 deleteStep.add(button);
+                pane.getChildren().add(button);
+                button = new Button();
+                button.setLayoutX(center+260);
+                button.setLayoutY(posy);
+                button.setMinSize(36,18);
+                button.setMaxSize(36,18);
+                button.getStyleClass().add("upbutton");
+                upStep.add(button);
+                pane.getChildren().add(button);
+                button = new Button();
+                button.setLayoutX(center+260);
+                button.setLayoutY(posy+18);
+                button.setMinSize(36,18);
+                button.setMaxSize(36,18);
+                button.getStyleClass().add("downbutton");
+                downStep.add(button);
                 pane.getChildren().add(button);
                 if(i>=stepText.size())
                     stepText.add(tf);

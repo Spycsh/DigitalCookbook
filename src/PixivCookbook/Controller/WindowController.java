@@ -382,6 +382,46 @@ public class WindowController extends Application {
                     
                 }
             });
+            rwin.upStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    double posx=editStage.getX();
+                    double posy=editStage.getY();
+                    rwin.saveData();
+                    if(mark>0)
+                    {
+                        Step step1=rwin.step.get(mark);
+                        Step step2=rwin.step.get(mark-1);
+                        rwin.step.set(mark-1,step1);
+                        rwin.step.set(mark,step2);
+                    }
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+
+                }
+            });
+            rwin.downStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    double posx=editStage.getX();
+                    double posy=editStage.getY();
+                    rwin.saveData();
+                    if(mark<rwin.addStep.size()-1)
+                    {
+                        Step step1=rwin.step.get(mark);
+                        Step step2=rwin.step.get(mark+1);
+                        rwin.step.set(mark+1,step1);
+                        rwin.step.set(mark,step2);
+                    }
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+
+                }
+            });
         }
         for(int i=0;i<rwin.addIngredient.size();i++)
         {
