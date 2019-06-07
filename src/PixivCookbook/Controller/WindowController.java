@@ -29,13 +29,22 @@ public class WindowController extends Application {
     Stage primaryStage = new Stage();
     Stage editStage = new Stage();
     Main main;
+    static int id;
     static int alertSwitch = 0;
     static Alert alert;
     
-    public static void alertBox() {
+    public static void alertBoxDuplicate() {
     	alert = new Alert(Alert.AlertType.ERROR);
     	alert.setTitle("Warning");
     	alert.setContentText("Such recipe has already existed");
+    	alert.show();
+    	alertSwitch = 1;
+    }
+    
+    public static void alertBoxDefault() {
+    	alert = new Alert(Alert.AlertType.ERROR);
+    	alert.setTitle("Warning");
+    	alert.setContentText("Please enter another name!");
     	alert.show();
     	alertSwitch = 1;
     }
@@ -180,8 +189,15 @@ public class WindowController extends Application {
             }
         });
     }
+    
     public void addEditAction(RecipeWindow rwin)
     {
+    	
+    	if(rwin.name != "Default") {
+    	id = model.searchAllMatchedID(rwin.name).get(0);
+    	}else if(rwin.name =="Default") {
+    		id = model.assignID();
+    	}
         rwin.editTitle.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -197,9 +213,25 @@ public class WindowController extends Application {
             	}else {
             		double posx=editStage.getX();
                     double posy=editStage.getY();
-            		int id = model.searchAllMatchedID(rwin.name).get(0);
             		String newName=rwin.tf_RecipeName.getText();
-            		model.saveRecipName(id, newName);
+            		
+            		if(!rwin.name.matches("Default")) {
+            			if(newName.matches("Default")) {
+            				alertBoxDefault();
+            			}else {
+            			model.saveRecipName(id, newName);
+            			}
+            		}else if(rwin.name.matches("Default")) {
+            			if(newName.matches("Default")) {
+            				alertBoxDefault();
+            			}else {
+            			//description by default is null, and serving is 4
+                		Recipe recipe = new Recipe(newName,"",4);
+                		model.addRecipetoDatabase(recipe,id);
+                		model.saveImagePath(id+1, "");
+            			}
+                	}
+            		
             		if(alertSwitch == 1) {
             			alertSwitch = 0;
             			rwin.markName=!rwin.markName;
@@ -208,12 +240,12 @@ public class WindowController extends Application {
                         editStage.setX(posx);;
                         editStage.setY(posy);
             		}else{
-            		rwin.name =newName;
-            		rwin.markName=!rwin.markName;
-                    rwin.refresh();
-                    initRecipeWindow(rwin);
-                    editStage.setX(posx);;
-                    editStage.setY(posy);
+	            		rwin.name =newName;
+	            		rwin.markName=!rwin.markName;
+	                    rwin.refresh();
+	                    initRecipeWindow(rwin);
+	                    editStage.setX(posx);;
+	                    editStage.setY(posy);
             		}
             	}
             }
@@ -233,7 +265,8 @@ public class WindowController extends Application {
 				int returnVal = chooser.showOpenDialog(null);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					System.out.println("You choose to open this image: " + chooser.getSelectedFile().getPath());
-					rwin.editImgPath = chooser.getSelectedFile().getPath();
+						rwin.editImgPath = chooser.getSelectedFile().getPath();
+					model.saveImagePath(id, rwin.editImgPath);
 					String fileName = chooser.getSelectedFile().getName();
 					
 	                double posx=editStage.getX();
@@ -254,6 +287,7 @@ public class WindowController extends Application {
         rwin.editDescription.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+            	if(rwin.markDescription == false) {
                 double posx=editStage.getX();
                 double posy=editStage.getY();
                 
@@ -261,9 +295,18 @@ public class WindowController extends Application {
                 rwin.refresh();
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
-                editStage.setY(posy);
-                
-                
+                editStage.setY(posy);             
+            	}else {
+            		double posx=editStage.getX();
+                    double posy=editStage.getY();
+                    rwin.description = rwin.tf_Description.getText();
+                    model.saveDescription(id, rwin.description);
+                    rwin.markDescription=!rwin.markDescription;
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+            	}
             }
         });
         rwin.editIngredient.setOnAction(new EventHandler<ActionEvent>() {
@@ -279,6 +322,7 @@ public class WindowController extends Application {
                 editStage.setY(posy);
             }
         });
+        
         rwin.editStep.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

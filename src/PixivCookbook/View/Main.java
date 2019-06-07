@@ -11,6 +11,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //import com.sun.corba.se.pept.transport.EventHandler;
 
@@ -78,8 +80,15 @@ public class Main{
         label = new Label[recipe.size()+1];
         for(int i=0;i<recipe.size();i++)
         {
+        	String patternstr = "([A-Z]{1}:)";
+			Pattern p = Pattern.compile(patternstr);
+			Matcher matcher = p.matcher(recipe.get(i).getImgAddress());
+			if(matcher.find()) {
+			image = new Image("file:\\"+recipe.get(i).getImgAddress());
+			}else {
             image = new Image(ClassLoader.getSystemResource("")+"..\\"+recipe.get(i).getImgAddress());
             //System.out.println(recipe.get(i).getImgAddress());
+			}
             temp[i] = new ImageView(image);
             temp[i].setFitHeight(200);
             temp[i].setFitWidth(200);

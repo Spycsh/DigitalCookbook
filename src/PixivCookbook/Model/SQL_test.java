@@ -50,7 +50,7 @@ public class SQL_test {
 			}
 			catch (SQLException e) {
 			    if (e instanceof SQLIntegrityConstraintViolationException) {
-			        System.out.println("Such recipe has already existed!");
+			        WindowController.alertBoxDuplicate();
 			    } else {
 			        // Other SQL Exception
 			    }
@@ -136,10 +136,43 @@ public class SQL_test {
 			statement.execute(sql);
 			}catch (SQLException e) {
 			    if (e instanceof SQLIntegrityConstraintViolationException) {
-			        WindowController.alertBox();
+			        WindowController.alertBoxDuplicate();
 			    } else {
 			        // Other SQL Exception
 			    }
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void saveDescription(int id, String newDescription) {
+		Statement statement;
+		try {
+			statement = this.connect.createStatement();
+			String sql = "UPDATE cookbook.recipe SET description ='"+newDescription+"'"+"WHERE recipe_id ='"+id+"'";
+			statement.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void saveImagePath(int id, String newPath) {
+		PreparedStatement psql;
+		try {
+			if(newPath != "") {
+				String sql = "UPDATE cookbook.recipe SET imgAddress =? WHERE recipe_id = ?";
+				psql = this.connect.prepareStatement(sql);
+				psql.setString(1, newPath);
+				psql.setInt(2, id);
+				psql.executeUpdate();
+			}else {
+				newPath = new String("img"+"\\\\"+"Default.jpg");
+				String sql = "UPDATE cookbook.recipe SET imgAddress ='"+newPath+"'"+"WHERE recipe_id ='"+id+"'";
+				psql = this.connect.prepareStatement(sql);
+				psql.execute();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

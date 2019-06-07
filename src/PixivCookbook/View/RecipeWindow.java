@@ -31,6 +31,7 @@ public class RecipeWindow{
     public Button editStep;
     
     public TextField tf_RecipeName;
+    public TextArea tf_Description;
     
     public ImageView title;
     public String editImgPath;  // here is the editImg
@@ -41,12 +42,6 @@ public class RecipeWindow{
     public LinkedList<Button> addStep;
     public LinkedList<Button> deleteIngredient;
     public LinkedList<Button> deleteStep;
-    public LinkedList<TextField> ingredientText1 = new LinkedList<TextField>();
-    public LinkedList<TextField> ingredientText2 = new LinkedList<TextField>();
-    public LinkedList<TextField> ingredientText3 = new LinkedList<TextField>();
-    public LinkedList<TextField> stepText=new LinkedList<TextField>();;
-    public TextField titleText=new TextField();;
-    public TextArea descriptionText;
     int posy=0;
     int lineheight=50;
     int center=550-160;
@@ -60,6 +55,7 @@ public class RecipeWindow{
         pane.getStyleClass().add("root");
         //primaryStage.setTitle("Hello World");
         spane = new ScrollPane();
+        spane.setMinHeight(900);
         spane.setContent(pane);
         Scene scene=new Scene(spane, 1400, 900);
         refresh();
@@ -73,7 +69,6 @@ public class RecipeWindow{
 
     public void refresh()
     {
-        //saveData();
         double posv=spane.getVvalue();
         System.out.println("pre"+spane.getVvalue());
         //double posv=spane.getVvalue();
@@ -95,7 +90,6 @@ public class RecipeWindow{
         pane.applyCss();
         spane.applyCss();
         spane.layout();
-        spane.setMinHeight(900);
         spane.setVvalue(posv);
         if(markName)
         {
@@ -104,7 +98,6 @@ public class RecipeWindow{
             tf_RecipeName.setLayoutY(posy+=lineheight);
             posy+=lineheight/2;
             tf_RecipeName.setMinSize(400,0);
-            titleText=tf_RecipeName;
             pane.getChildren().add(tf_RecipeName);
             editTitle= new Button("");
             editTitle.setMinSize(36,36);
@@ -203,9 +196,7 @@ public class RecipeWindow{
         {
             if(i%60==0)
             {
-                if(i+60>description.length())
-                    disDes +=(description.substring(i,Math.min(description.length(),i+60)));
-                else disDes +=(description.substring(i,Math.min(description.length(),i+60))+'\n');
+                disDes +=(description.substring(i,Math.min(description.length(),i+60))+'\n');
                 i++;
                 line++;
             }
@@ -216,12 +207,12 @@ public class RecipeWindow{
             editDescription.setMinSize(36,36);
             editDescription.setMaxSize(36,36);
             pane.getChildren().add(editDescription);
-            descriptionText = new TextArea(disDes);
-            descriptionText.setLayoutX(center);
-            descriptionText.setLayoutY(posy+=lineheight);
+            tf_Description = new TextArea(disDes);
+            tf_Description.setLayoutX(center);
+            tf_Description.setLayoutY(posy+=lineheight);
             posy+=140;
-            descriptionText.setMaxSize(900,140);
-            pane.getChildren().add(descriptionText);
+            tf_Description.setMaxSize(900,140);
+            pane.getChildren().add(tf_Description);
         }
         else
         {
@@ -270,7 +261,7 @@ public class RecipeWindow{
             int cnt=0;
             for(int i=0;i<ingredients.size();i++)
             {
-                //if(ingredients.get(i)==null) continue;
+                if(ingredients.get(i)==null) continue;
                 cnt++;
                 Label label = new Label();
                 label.setText(Integer.toString(cnt));
@@ -279,7 +270,7 @@ public class RecipeWindow{
                 label.setLayoutY(posy+8);
                 label.getStyleClass().add("content");
                 pane.getChildren().add(label);
-                TextField tf1 = new TextField(Double.toString(ingredients.get(i).getNum()));
+                TextField tf1 = new TextField(ingredients.get(i).getName().toString());
                 tf1.setLayoutX(center+20);
                 tf1.setLayoutY(posy);
                 tf1.setMaxSize(150,200);
@@ -313,15 +304,6 @@ public class RecipeWindow{
                 deleteIngredient.add(button);
                 button.getStyleClass().add("deletebutton");
                 pane.getChildren().add(button);
-                if(ingredientText1.size()<=i)
-                    ingredientText1.add(tf1);
-                else ingredientText1.set(i,tf1);
-                if(ingredientText2.size()<=i)
-                    ingredientText2.add(tf2);
-                else ingredientText2.set(i,tf2);
-                if(ingredientText3.size()<=i)
-                    ingredientText3.add(tf3);
-                else ingredientText3.set(i,tf3);
             }
         }
         else
@@ -387,9 +369,6 @@ public class RecipeWindow{
                 button.getStyleClass().add("deletebutton");
                 deleteStep.add(button);
                 pane.getChildren().add(button);
-                if(stepText.size()<=i)
-                    stepText.add(tf);
-                else stepText.set(i,tf);
             }
         }
         else
@@ -417,28 +396,16 @@ public class RecipeWindow{
                 pane.getChildren().add(label);
             }
         }
-    }
-    public void saveData()
-    {
-        if(descriptionText!=null)
-        {
-            description=descriptionText.getText();
-            //System.out.println(descriptionText.getText());
-        }
-//        if(markName)
-//            name=titleText.getText();
-        if(ingredientText3.size()>0)
-            for(int i=0;i<ingredientText3.size();i++)
-            {
-
-                ingredients.get(i).setName(ingredientText3.get(i).getText());
-                ingredients.get(i).setNum(Double.parseDouble(ingredientText1.get(i).getText()));
-                ingredients.get(i).setUnit(ingredientText2.get(i).getText());
-            }
-        if(stepText.size()>0)
-            for(int i=0;i<stepText.size();i++)
-            {
-                step.get(i).setContent(stepText.get(i).getText());
-            }
+//        star.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                markDescription=!markDescription;
+//                markStep=!markStep;
+//                markName=!markName;
+//                markImage=!markImage;
+//                markIngredient=!markIngredient;
+//                refresh();
+//            }
+//        });
     }
 }
