@@ -142,6 +142,11 @@ public class WindowController extends Application {
             	recipeWindow.step = (LinkedList<Step>) model.getStepsfromDatabase(id);
             	recipeWindow.name = model.getRecipeBySearchfromDatabase(id).getRecipeName();
             	recipeWindow.imgPath = model.getRecipeBySearchfromDatabase(id).getImgAddress();
+            	recipeWindow.markDescription = false;
+            	recipeWindow.markName = false;
+            	recipeWindow.markImage = false;
+            	recipeWindow.markStep = false;
+            	recipeWindow.markIngredient = false;
 //            	System.out.print(recipeWindow.imgPath);
             	primaryStage.close();
                 editStage.show();
