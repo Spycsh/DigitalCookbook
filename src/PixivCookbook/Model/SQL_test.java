@@ -126,6 +126,18 @@ public class SQL_test {
 		}
 	}
 	
+	public void saveRecipName(int id, String newName) {
+		Statement statement;
+		try {
+			statement = this.connect.createStatement();
+			String sql = "UPDATE recipe SET name ='"+newName+"WHERE recipe_id ='"+id+"'";
+			statement.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * @param id the id contained by the recipe that we are looking for
 	 * @return a recipe
