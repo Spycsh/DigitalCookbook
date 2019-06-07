@@ -1,5 +1,6 @@
 package PixivCookbook.Model;
 import PixivCookbook.*;
+import PixivCookbook.Controller.WindowController;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -131,13 +132,40 @@ public class SQL_test {
 		try {
 			statement = this.connect.createStatement();
 			String sql = "UPDATE cookbook.recipe SET name ='"+newName+"'"+"WHERE recipe_id ='"+id+"'";
+			try {
 			statement.execute(sql);
+			}catch (SQLException e) {
+			    if (e instanceof SQLIntegrityConstraintViolationException) {
+			        WindowController.alertBox();
+			    } else {
+			        // Other SQL Exception
+			    }
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	public List<String> getAllRecipeNamesfromDatabase(){
+		List<String> names = new LinkedList<String>();
+		Statement statement;
+		try {
+			statement = this.connect.createStatement();
+			String sql = "select name from recipe";
+			ResultSet rs = statement.executeQuery(sql);
+			
+			while(rs.next()) {
+				names.add(rs.getString("name"));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return names;
+		
+	}
 	/**
 	 * @param id the id contained by the recipe that we are looking for
 	 * @return a recipe
