@@ -82,31 +82,35 @@ public class WindowController extends Application {
                             main.pane.getChildren().remove(main.backButton);
                             main.backButton.setText("");
                         }
+                        main.search.setText("");
+                        addAddAction(recipe,main);
                     }
                 });
     }
 
-    public void addSearchButtonAction(Main main) {
-        main.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent e) {
-                        if(main.backButton.getText() != "back") {
-                            main.backButton.setText("back");
-                            main.backButton.setLayoutX(600);
-                            main.backButton.setLayoutY(150);
-                            main.backButton.setMinSize(20,20);
-                            main.pane.getChildren().add(main.backButton);
-                            addBackButtonAction(main);
-                        }
-                        String searchName = main.search.getText();
-                        main.dropAllImageviews();
-                        List<Recipe> result = model.searchAllMatchedRecipes(searchName);
-                        main.initializeMainPage(result);
-                        addTempAction(result,main);
-                    }
-                });
-    }
+	public void addSearchButtonAction(Main main) {
+		main.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent e) {
+				if (!main.search.getText().isEmpty()) {
+					if (main.backButton.getText() != "back") {
+						main.backButton.setText("back");
+						main.backButton.setLayoutX(600);
+						main.backButton.setLayoutY(150);
+						main.backButton.setMinSize(20, 20);
+						main.pane.getChildren().add(main.backButton);
+						addBackButtonAction(main);
+					}
+					String searchName = main.search.getText();
+					main.dropAllImageviews();
+					List<Recipe> result = model.searchAllMatchedRecipes(searchName);
+					main.initializeMainPage(result);
+					addTempAction(result, main);
+					addAddAction(result,main);
+				}
+			}
+		});
+	}
 
     public void addBackButtonAction(Main main) {
         main.backButton.addEventHandler(MouseEvent.MOUSE_CLICKED,
@@ -118,6 +122,9 @@ public class WindowController extends Application {
                         main.pane.getChildren().remove(main.backButton);
                         main.backButton.setText("");
                         main.initializeMainPage(recipe);
+                        addTempAction(recipe,main);
+                        addAddAction(recipe,main);
+                        main.search.setText("");
                     }
                 });
     }
@@ -150,7 +157,12 @@ public class WindowController extends Application {
             public void handle(ActionEvent event) {
                 editStage.close();
                 primaryStage.show();
-                initMain(main);
+                String searchName = main.search.getText();
+                main.dropAllImageviews();
+                List<Recipe> result = model.searchAllMatchedRecipes(searchName);
+                main.initializeMainPage(result);
+                addTempAction(result,main);
+                addAddAction(result,main);
             }
         });
     }
