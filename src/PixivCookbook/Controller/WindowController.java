@@ -1,7 +1,7 @@
 package PixivCookbook.Controller;
 
-import PixivCookbook.Model.SQL_test;
 import PixivCookbook.Ingredient;
+import PixivCookbook.Model.SQL_test;
 import PixivCookbook.Recipe;
 import PixivCookbook.Step;
 import PixivCookbook.View.Main;
@@ -14,13 +14,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.LinkedList;
 import java.util.List;
-
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class WindowController extends Application {
 
@@ -304,7 +301,7 @@ public class WindowController extends Application {
                 public void handle(ActionEvent event) {
                     double posx=editStage.getX();
                     double posy=editStage.getY();
-                    
+                    rwin.saveData();
                     rwin.step.add(mark,new Step("",mark));
                     rwin.refresh();
                     initRecipeWindow(rwin);
@@ -317,7 +314,7 @@ public class WindowController extends Application {
                 public void handle(ActionEvent event) {
                     double posx=editStage.getX();
                     double posy=editStage.getY();
-                    
+                    rwin.saveData();
                     rwin.step.remove(mark);
                     rwin.refresh();
                     initRecipeWindow(rwin);
@@ -335,7 +332,7 @@ public class WindowController extends Application {
                 public void handle(ActionEvent event) {
                     double posx=editStage.getX();
                     double posy=editStage.getY();
-                    
+                    rwin.saveData();
                     rwin.ingredients.add(mark,new Ingredient("",0,""));
                     rwin.refresh();
                     initRecipeWindow(rwin);
@@ -349,7 +346,7 @@ public class WindowController extends Application {
                 public void handle(ActionEvent event) {
                     double posx=editStage.getX();
                     double posy=editStage.getY();
-                    
+                    rwin.saveData();
                     rwin.ingredients.remove(mark);
                     rwin.refresh();
                     initRecipeWindow(rwin);
@@ -360,7 +357,7 @@ public class WindowController extends Application {
             });
         }
     }
-    
+
     public void addAddAction(List<Recipe> recipe, Main main) {
     	 main.temp[recipe.size()].addEventHandler(MouseEvent.MOUSE_CLICKED,
                  new EventHandler<MouseEvent>() {
