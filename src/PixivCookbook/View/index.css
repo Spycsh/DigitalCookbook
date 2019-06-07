@@ -48,6 +48,14 @@
     -fx-border-radius: 50;
     -fx-background-image: url("star.png");
 }
+.bigstar{
+    -fx-cursor: hand;
+    -fx-text-fill: transparent;
+    -fx-background-color: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("bigstar.png");
+}
 .home{
     -fx-cursor: hand;
     -fx-background-color: transparent;

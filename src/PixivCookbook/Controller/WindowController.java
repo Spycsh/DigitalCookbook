@@ -137,6 +137,14 @@ public class WindowController extends Application {
                     public void handle(MouseEvent e) {
                         main.dropAllImageviews();
                         List<Recipe> recipe = model.getRecipesForMainPage();
+//                        List<Recipe> showRecipe = new LinkedList<Recipe>();
+//                        for(int i=0;i<recipe.size();i++)
+//                        {
+//                            int temp=i+1;
+//                            for(int j=0;j<10;j++)
+//                                temp=(temp*131+temp)%recipe.size();
+//                            showRecipe.add(recipe.get(temp-1));
+//                        }
                         main.pane.getChildren().remove(main.backButton);
                         main.backButton.setText("");
                         main.initializeMainPage(recipe);
@@ -148,7 +156,7 @@ public class WindowController extends Application {
     }
     
     public void addTempAction(List<Recipe> recipe, Main main) {
-    	for(int i = 0; i< recipe.size();i++) {
+    	for(int i = 0; i< Math.min(7,recipe.size());i++) {
     		int tempCount = i;
     		main.temp[i].addEventHandler(MouseEvent.MOUSE_CLICKED,
                 new EventHandler<MouseEvent>() {
@@ -202,7 +210,6 @@ public class WindowController extends Application {
             @Override
             public void handle(ActionEvent event) {
             	if(rwin.markName == false) {
-                System.out.println("middle: "+ rwin.spane.getVvalue());
                 double posx=editStage.getX();
                 double posy=editStage.getY();
                 rwin.markName=!rwin.markName;
@@ -411,7 +418,7 @@ public class WindowController extends Application {
     }
 
     public void addAddAction(List<Recipe> recipe, Main main) {
-    	 main.temp[recipe.size()].addEventHandler(MouseEvent.MOUSE_CLICKED,
+    	 main.temp[Math.min(7,recipe.size())].addEventHandler(MouseEvent.MOUSE_CLICKED,
                  new EventHandler<MouseEvent>() {
                      @Override
                      public void handle(MouseEvent e) {

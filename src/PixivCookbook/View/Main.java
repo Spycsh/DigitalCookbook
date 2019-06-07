@@ -27,6 +27,7 @@ public class Main{
     Stage primaryStage;
     public Button addButton = new Button();
     public Button recommendButton =new Button();
+    public Button favoriteButton = new Button();
     public Button searchButton = new Button();
     public Button backButton = new Button();
     
@@ -71,6 +72,12 @@ public class Main{
         recommendButton.setMinSize(20,20);
         recommendButton.getStyleClass().add("border");
         pane.getChildren().add(recommendButton);
+        favoriteButton.setText("C");
+        favoriteButton.setLayoutX(1050);
+        favoriteButton.setLayoutY(150);
+        favoriteButton.setMinSize(20,20);
+        favoriteButton.getStyleClass().add("bigstar");
+        pane.getChildren().add(favoriteButton);
         //System.out.println(root.getChildrenUnmodifiable());
     }
 
@@ -78,7 +85,7 @@ public class Main{
         int posx=100,posy=200;
         temp = new ImageView[recipe.size()+1];
         label = new Label[recipe.size()+1];
-        for(int i=0;i<recipe.size();i++)
+        for(int i=0;i<Math.min(7,recipe.size());i++)
         {
         	String patternstr = "([A-Z]{1}:)";
 			Pattern p = Pattern.compile(patternstr);
@@ -105,18 +112,18 @@ public class Main{
             pane.getChildren().add(label[i]);
         }
         image = new Image(ClassLoader.getSystemResource("")+"..\\img\\add.png");
-        temp[recipe.size()] = new ImageView(image);
-        temp[recipe.size()].setFitHeight(150);
-        temp[recipe.size()].setFitWidth(150);
-        temp[recipe.size()].setLayoutX(recipe.size()%4*300+posx+25);
-        temp[recipe.size()].setLayoutY(recipe.size()/4*350+posy+25);
-        temp[recipe.size()].getStyleClass().add("pointer");
-        pane.getChildren().add(temp[recipe.size()]);
-        label[recipe.size()] = new Label("NEW RECIPE");
-        label[recipe.size()].setLayoutX(recipe.size()%4*300+posx+30);
-        label[recipe.size()].setLayoutY(recipe.size()/4*350+200+posy);
-        label[recipe.size()].getStyleClass().add("pointer");
-        pane.getChildren().add(label[recipe.size()]);
+        temp[Math.min(7,recipe.size())] = new ImageView(image);
+        temp[Math.min(7,recipe.size())].setFitHeight(150);
+        temp[Math.min(7,recipe.size())].setFitWidth(150);
+        temp[Math.min(7,recipe.size())].setLayoutX(Math.min(7,recipe.size())%4*300+posx+25);
+        temp[Math.min(7,recipe.size())].setLayoutY(Math.min(7,recipe.size())/4*350+posy+25);
+        temp[Math.min(7,recipe.size())].getStyleClass().add("pointer");
+        pane.getChildren().add(temp[Math.min(7,recipe.size())]);
+        label[Math.min(7,recipe.size())] = new Label("NEW RECIPE");
+        label[Math.min(7,recipe.size())].setLayoutX(Math.min(7,recipe.size())%4*300+posx+30);
+        label[Math.min(7,recipe.size())].setLayoutY(Math.min(7,recipe.size())/4*350+200+posy);
+        label[Math.min(7,recipe.size())].getStyleClass().add("pointer");
+        pane.getChildren().add(label[Math.min(7,recipe.size())]);
     }
     
     public void clearAll() {
