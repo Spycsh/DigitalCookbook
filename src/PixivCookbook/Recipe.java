@@ -22,9 +22,9 @@ public class Recipe implements Serializable{
 	private String recipeName;
 	private String cuisineName;
 	private String imgAddress;
-	private int numberOfEaters;
-	private int preparationTime;
-	private int cookingTime;
+	private int numberOfEaters = 0;
+	private int preparationTime = 0;
+	private int cookingTime = 0;
 	private List<Ingredient> ingredients = new LinkedList<Ingredient>();
 	private List<Step> steps = new LinkedList<Step>();
 
@@ -189,6 +189,7 @@ public class Recipe implements Serializable{
 		String desPath="img\\"+name+".jpg";
 		try
 		{
+			/*
 			FileInputStream fis = new FileInputStream(imgAddress);
 			File file = new File(desPath);
 			FileOutputStream fos = new FileOutputStream(desPath);
@@ -198,6 +199,7 @@ public class Recipe implements Serializable{
 			}
 			fos.close();
 			fis.close();
+			*/
 			this.imgAddress = desPath;
 		}
 		catch (Exception e)

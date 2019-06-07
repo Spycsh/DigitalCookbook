@@ -31,6 +31,7 @@ public class RecipeWindow{
     public Button editStep;
     
     public TextField tf_RecipeName;
+    public TextArea tf_Description;
     
     public ImageView title;
     public String editImgPath;  // here is the editImg
@@ -206,12 +207,12 @@ public class RecipeWindow{
             editDescription.setMinSize(36,36);
             editDescription.setMaxSize(36,36);
             pane.getChildren().add(editDescription);
-            TextArea tf = new TextArea(disDes);
-            tf.setLayoutX(center);
-            tf.setLayoutY(posy+=lineheight);
+            tf_Description = new TextArea(disDes);
+            tf_Description.setLayoutX(center);
+            tf_Description.setLayoutY(posy+=lineheight);
             posy+=140;
-            tf.setMaxSize(900,140);
-            pane.getChildren().add(tf);
+            tf_Description.setMaxSize(900,140);
+            pane.getChildren().add(tf_Description);
         }
         else
         {

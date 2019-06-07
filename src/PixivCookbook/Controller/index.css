@@ -1,0 +1,93 @@
+.root {
+    -fx-background-image: url("bg2.png");
+    -fx-font-size: 20px;
+    -fx-font-family: "Arial Black";
+    -fx-fill: #e6e6fa;
+    -fx-font-weight: normal;
+}
+.flower{
+    -fx-font-size: 30px;
+    -fx-font-family: "Vladimir Script";
+}
+.border{
+    -fx-cursor: hand;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("refresh.png");
+}
+.bigtitle{
+    -fx-font-size: 36px;
+}
+.search{
+    -fx-cursor: hand;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 30;
+    -fx-background-image: url("search.png");
+}
+.pointer{
+    -fx-cursor: hand;
+}
+.content{
+    -fx-font-size: 18px;
+    -fx-font-weight: 100;
+}
+.star{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("star.png");
+}
+.delete{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("delete.png");
+}
+.share{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("share.png");
+}
+.edit{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("edit.png");
+}
+.save{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("save.png");
+}
+.addbutton{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("addbutton.png");
+}
+.deletebutton{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("delete3.png");
+}
