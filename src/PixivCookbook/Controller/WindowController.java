@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -31,6 +32,17 @@ public class WindowController extends Application {
     Stage primaryStage = new Stage();
     Stage editStage = new Stage();
     Main main;
+    static int alertSwitch = 0;
+    static Alert alert;
+    
+    public static void alertBox() {
+    	alert = new Alert(Alert.AlertType.ERROR);
+    	alert.setTitle("Warning");
+    	alert.setContentText("Such recipe has already existed");
+    	alert.show();
+    	alertSwitch = 1;
+    }
+    
     public static void main(String[] args) {
         launch(args);
     }
@@ -189,16 +201,27 @@ public class WindowController extends Application {
             		double posx=editStage.getX();
                     double posy=editStage.getY();
             		int id = model.searchAllMatchedID(rwin.name).get(0);
-            		rwin.name=rwin.tf_RecipeName.getText();
-            		model.saveRecipName(id, rwin.name);
+            		String newName=rwin.tf_RecipeName.getText();
+            		model.saveRecipName(id, newName);
+            		if(alertSwitch == 1) {
+            			alertSwitch = 0;
+            			rwin.markName=!rwin.markName;
+                        rwin.refresh();
+                        initRecipeWindow(rwin);
+                        editStage.setX(posx);;
+                        editStage.setY(posy);
+            		}else{
+            		rwin.name =newName;
             		rwin.markName=!rwin.markName;
                     rwin.refresh();
                     initRecipeWindow(rwin);
                     editStage.setX(posx);;
                     editStage.setY(posy);
+            		}
             	}
             }
         });
+        
         
         // image
     	rwin.title.addEventHandler(MouseEvent.MOUSE_CLICKED,
@@ -270,8 +293,7 @@ public class WindowController extends Application {
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
                 editStage.setY(posy);
-                
-                
+                              
             }
         });
         for(int i=0;i<rwin.addStep.size();i++)
