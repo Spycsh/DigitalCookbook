@@ -171,6 +171,7 @@ public class WindowController extends Application {
         rwin.editTitle.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+            	if(rwin.markName == false) {
                 System.out.println("middle: "+ rwin.spane.getVvalue());
                 double posx=editStage.getX();
                 double posy=editStage.getY();
@@ -179,6 +180,18 @@ public class WindowController extends Application {
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
                 editStage.setY(posy);
+            	}else {
+            		double posx=editStage.getX();
+                    double posy=editStage.getY();
+            		int id = model.searchAllMatchedID(rwin.name).get(0);
+            		rwin.name=rwin.tf_RecipeName.getText();
+            		model.saveRecipName(id, rwin.name);
+            		rwin.markName=!rwin.markName;
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+            	}
             }
         });
         
@@ -346,7 +359,6 @@ public class WindowController extends Application {
 						editStage.show();
 						recipeWindow.refresh();
 						initRecipeWindow(recipeWindow);
-						recipeWindow.markImage = false;
                      }
                      
                  });

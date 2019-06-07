@@ -30,6 +30,8 @@ public class RecipeWindow{
     public Button editIngredient;
     public Button editStep;
     
+    public TextField tf_RecipeName;
+    
     public ImageView title;
     public String editImgPath;  // here is the editImg
     
@@ -52,6 +54,7 @@ public class RecipeWindow{
         pane.getStyleClass().add("root");
         //primaryStage.setTitle("Hello World");
         spane = new ScrollPane();
+        spane.setMinHeight(900);
         spane.setContent(pane);
         Scene scene=new Scene(spane, 1400, 900);
         refresh();
@@ -89,12 +92,12 @@ public class RecipeWindow{
         spane.setVvalue(posv);
         if(markName)
         {
-            TextField tf = new TextField(name);
-            tf.setLayoutX(500);
-            tf.setLayoutY(posy+=lineheight);
+            tf_RecipeName = new TextField(name);
+            tf_RecipeName.setLayoutX(500);
+            tf_RecipeName.setLayoutY(posy+=lineheight);
             posy+=lineheight/2;
-            tf.setMinSize(400,0);
-            pane.getChildren().add(tf);
+            tf_RecipeName.setMinSize(400,0);
+            pane.getChildren().add(tf_RecipeName);
             editTitle= new Button("");
             editTitle.setMinSize(36,36);
             editTitle.setMaxSize(36,36);
