@@ -28,9 +28,11 @@ public class Main{
     public Button addButton = new Button();
     public Button recommendButton =new Button();
     public Button favoriteButton = new Button();
+    public Button favoriteButton2 = new Button();
     public Button searchButton = new Button();
     public Button backButton = new Button();
     public boolean favorite=false;
+    public Label littleTitle;
     public Main()
     {
 
@@ -48,7 +50,6 @@ public class Main{
     public void initializeOtherParts() {
         search = new TextField();
         //search.setMaxSize(100,10);
-
         //relative path
         image = new Image(ClassLoader.getSystemResource("")+"..\\img\\title2.png");
         title = new ImageView(image);
@@ -65,6 +66,10 @@ public class Main{
         searchButton.getStyleClass().add("search");
         pane.getChildren().add(search);
         pane.getChildren().add(searchButton);
+        littleTitle = new Label();
+        littleTitle.setLayoutX(600);
+        littleTitle.setLayoutY(150);
+        pane.getChildren().add(littleTitle);
 //        Button recommendButton = new Button();
         recommendButton.setText("C");
         recommendButton.setLayoutX(1000);
@@ -77,12 +82,27 @@ public class Main{
         favoriteButton.setLayoutX(1050);
         favoriteButton.setLayoutY(150);
         favoriteButton.setMinSize(20,20);
-        if(favorite) favoriteButton.getStyleClass().add("yellowbigstar");
-        else favoriteButton.getStyleClass().add("bigstar");
+        favoriteButton.getStyleClass().add("bigstar");
         pane.getChildren().add(favoriteButton);
+        favoriteButton2.setText("C");
+        favoriteButton2.setLayoutX(1050);
+        favoriteButton2.setLayoutY(150);
+        favoriteButton2.setMinSize(20,20);
+        favoriteButton2.getStyleClass().add("yellowbigstar");
+        pane.getChildren().add(favoriteButton2);
     }
 
     public void initializeMainPage(List<Recipe> recipe) {
+        if(favorite)
+        {
+            favoriteButton.setVisible(false);
+            favoriteButton2.setVisible(true);
+        }
+        else
+        {
+            favoriteButton2.setVisible(false);
+            favoriteButton.setVisible(true);
+        }
         int posx=100,posy=200;
         temp = new ImageView[recipe.size()+1];
         label = new Label[recipe.size()+1];

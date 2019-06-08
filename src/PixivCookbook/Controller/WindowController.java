@@ -107,7 +107,15 @@ public class WindowController extends Application {
         main.favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println(main.favorite);
+                //System.out.println(main.favorite);
+                main.favorite=!main.favorite;
+                initMain(main);
+            }
+        });
+        main.favoriteButton2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //System.out.println(main.favorite);
                 main.favorite=!main.favorite;
                 initMain(main);
             }
@@ -121,12 +129,13 @@ public class WindowController extends Application {
 				if (!main.search.getText().isEmpty()) {
 					if (main.backButton.getText() != "back") {
 						main.backButton.setText("back");
-						main.backButton.setLayoutX(600);
+						main.backButton.setLayoutX(400);
 						main.backButton.setLayoutY(150);
 						main.backButton.setMinSize(20, 20);
 						main.pane.getChildren().add(main.backButton);
 						addBackButtonAction(main);
 					}
+					main.littleTitle.setText("Search Results");
 					String searchName = main.search.getText();
 					main.dropAllImageviews();
 					List<Recipe> result = model.searchAllMatchedRecipes(searchName);
@@ -143,6 +152,7 @@ public class WindowController extends Application {
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent e) {
+                        main.littleTitle.setText("");
                         main.dropAllImageviews();
                         List<Recipe> recipe = model.getRecipesForMainPage();
 //                        List<Recipe> showRecipe = new LinkedList<Recipe>();
