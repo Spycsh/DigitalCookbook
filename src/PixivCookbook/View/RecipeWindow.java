@@ -42,6 +42,7 @@ public class RecipeWindow{
     public double preparationTime=0;
     public double cookingTime=0;
     public double servings=0;
+    public boolean favorite = false;
 
     public LinkedList<Button> addIngredient;
     public LinkedList<Button> addStep;
@@ -150,7 +151,8 @@ public class RecipeWindow{
         delete = new Button("d");
         delete.setLayoutX(1060);
         delete.setLayoutY(posy);
-        star.getStyleClass().add("star");
+        if(favorite) star.getStyleClass().add("yellowstar");
+        else star.getStyleClass().add("star");
         star.setMinSize(30,30);
         star.setMaxSize(30,30);
         delete.getStyleClass().add("delete");

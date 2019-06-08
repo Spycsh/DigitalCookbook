@@ -104,6 +104,14 @@ public class WindowController extends Application {
                         addAddAction(recipe,main);
                     }
                 });
+        main.favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(main.favorite);
+                main.favorite=!main.favorite;
+                initMain(main);
+            }
+        });
     }
 
 	public void addSearchButtonAction(Main main) {
@@ -166,6 +174,9 @@ public class WindowController extends Application {
             	recipeWindow.description = model.getRecipeBySearchfromDatabase(id).getCuisineName();
             	recipeWindow.ingredients = (LinkedList<Ingredient>) model.getIngredientsfromDatabase(id);
             	recipeWindow.step = (LinkedList<Step>) model.getStepsfromDatabase(id);
+            	recipeWindow.preparationTime=model.getRecipeBySearchfromDatabase(id).getPreparationTime();
+            	recipeWindow.servings=model.getRecipeBySearchfromDatabase(id).getServings();
+            	recipeWindow.cookingTime=model.getRecipeBySearchfromDatabase(id).getCookingTime();
             	recipeWindow.name = model.getRecipeBySearchfromDatabase(id).getRecipeName();
             	recipeWindow.imgPath = model.getRecipeBySearchfromDatabase(id).getImgAddress();
             	recipeWindow.markDescription = false;
@@ -194,6 +205,15 @@ public class WindowController extends Application {
                 main.initializeMainPage(result);
                 addTempAction(result,main);
                 addAddAction(result,main);
+            }
+        });
+        rmain.star.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                rmain.favorite=!rmain.favorite;
+                rmain.saveData();
+                rmain.refresh();
+                initRecipeWindow(rmain);
             }
         });
     }
@@ -375,6 +395,8 @@ public class WindowController extends Application {
                     double posy=editStage.getY();
                     rwin.saveData();
                     rwin.step.remove(mark);
+                    if(rwin.step.size()==0)
+                        rwin.step.add(new Step("default",0));
                     rwin.refresh();
                     initRecipeWindow(rwin);
                     editStage.setX(posx);;
@@ -447,6 +469,8 @@ public class WindowController extends Application {
                     double posy=editStage.getY();
                     rwin.saveData();
                     rwin.ingredients.remove(mark);
+                    if(rwin.ingredients.size()==0)
+                        rwin.ingredients.add(new Ingredient("default",0,""));
                     rwin.refresh();
                     initRecipeWindow(rwin);
                     editStage.setX(posx);;

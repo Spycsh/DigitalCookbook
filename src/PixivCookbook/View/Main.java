@@ -30,7 +30,7 @@ public class Main{
     public Button favoriteButton = new Button();
     public Button searchButton = new Button();
     public Button backButton = new Button();
-    
+    public boolean favorite=false;
     public Main()
     {
 
@@ -72,13 +72,14 @@ public class Main{
         recommendButton.setMinSize(20,20);
         recommendButton.getStyleClass().add("border");
         pane.getChildren().add(recommendButton);
+        //System.out.println(root.getChildrenUnmodifiable());
         favoriteButton.setText("C");
         favoriteButton.setLayoutX(1050);
         favoriteButton.setLayoutY(150);
         favoriteButton.setMinSize(20,20);
-        favoriteButton.getStyleClass().add("bigstar");
+        if(favorite) favoriteButton.getStyleClass().add("yellowbigstar");
+        else favoriteButton.getStyleClass().add("bigstar");
         pane.getChildren().add(favoriteButton);
-        //System.out.println(root.getChildrenUnmodifiable());
     }
 
     public void initializeMainPage(List<Recipe> recipe) {

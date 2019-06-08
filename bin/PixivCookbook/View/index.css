@@ -48,6 +48,14 @@
     -fx-border-radius: 50;
     -fx-background-image: url("star.png");
 }
+.yellowstar{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("yellowstar.png");
+}
 .bigstar{
     -fx-cursor: hand;
     -fx-text-fill: transparent;
@@ -55,6 +63,14 @@
     -fx-background-radius: 25;
     -fx-border-radius: 50;
     -fx-background-image: url("bigstar.png");
+}
+.yellowbigstar{
+    -fx-cursor: hand;
+    -fx-text-fill: transparent;
+    -fx-background-color: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 50;
+    -fx-background-image: url("bigyellowstar.png");
 }
 .home{
     -fx-cursor: hand;

@@ -1,8 +1,5 @@
 package PixivCookbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +22,16 @@ public class Recipe implements Serializable{
 	private int numberOfEaters = 0;
 	private int preparationTime = 0;
 	private int cookingTime = 0;
+
+	public int getServings() {
+		return servings;
+	}
+
+	public void setServings(int servings) {
+		this.servings = servings;
+	}
+
+	private int servings = 0;
 	private List<Ingredient> ingredients = new LinkedList<Ingredient>();
 	private List<Step> steps = new LinkedList<Step>();
 
