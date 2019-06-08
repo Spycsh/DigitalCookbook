@@ -324,6 +324,19 @@ public class WindowController extends Application {
             	alertBoxDelete();
             	if(alertDelete == 1) {
             		model.deleteRecipefromDatabase(id);
+            		editStage.close();
+                    primaryStage.show();
+                    List<Recipe> recipe = model.getRecipesForMainPage();
+                    main.littleTitle.setText("");
+                    main.dropAllImageviews();
+                    main.initializeMainPage(recipe);
+                    addTempAction(recipe,main);
+                    if(main.backButton.getText() == "back") {
+                        main.pane.getChildren().remove(main.backButton);
+                        main.backButton.setText("");
+                    }
+                    main.search.setText("");
+                    addAddAction(recipe,main);
             		alertDelete = 0;
             	}else {
             		alertDelete = 0;

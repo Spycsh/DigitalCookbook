@@ -20,7 +20,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false",
-						"root", "");
+						"root", "Fuckyou741@ttg");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -149,7 +149,7 @@ public class SQL_test {
 		for(int i = 0; i<input.size();i++) {
 			psql = this.connect.prepareStatement("insert into preparation_step (recipe_id,step,description)"+ "values(?,?,?)");
 			psql.setInt(1, id);
-			psql.setInt(2,input.get(i).getStepNumber());
+			psql.setInt(2,i+1);
 			psql.setString(3,input.get(i).getContent());			
 			psql.executeUpdate();
 		}
