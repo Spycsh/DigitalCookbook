@@ -11,6 +11,14 @@ import java.sql.*;
  */
 public class SQL_test {
 	private Connection connect;	
+	public Connection getConnect() {
+		return connect;
+	}
+
+	public void setConnect(Connection connect) {
+		this.connect = connect;
+	}
+
 	public void run() {
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver");

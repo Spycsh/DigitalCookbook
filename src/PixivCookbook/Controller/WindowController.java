@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +38,7 @@ public class WindowController extends Application {
     static int id;
     static int alertSwitch = 0;
     static int alertDelete = 0;
+    static int alertForbid = 0;
     static Alert alert;
     
     public static void alertBoxDuplicate() {
@@ -65,6 +67,19 @@ public class WindowController extends Application {
     	alertDelete = 1;
     	}else{
 
+    	}
+    }
+    
+    public static void alertBoxForbidPair() {
+    	alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	alert.setTitle("Warning");
+    	alert.setContentText("Your ingredient list contains something not compatible with each other, are you sure to add this recipe?");
+    	
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if(result.get() == ButtonType.OK) {
+    		alertForbid = 1;
+    	}else {
+    		
     	}
     }
     
@@ -420,7 +435,24 @@ public class WindowController extends Application {
                 
                 rwin.markIngredient=!rwin.markIngredient;
                 rwin.saveData();
-                rwin.refresh();
+                List<String> aList = new LinkedList<String>();
+                for(int i=0;i<rwin.ingredientText3.size();i++)
+                {
+                	aList.add(rwin.ingredientText3.get(i).getText());
+                	System.out.println(rwin.ingredientText3.get(i).getText());
+                	List<String> opponentList =  model.getForbiddenPair(rwin.ingredientText3.get(i).getText());
+                	for(String e:aList) {
+                		if(opponentList.contains(e)) {
+                			System.out.println("forbidden pair exists!");
+                			alertBoxForbidPair();
+                			break;
+                		}
+                	}
+                }
+                if(alertForbid == 1) { 
+                	alertForbid = 0;
+                	rwin.refresh();
+                
                 try {
 					model.addIngredientstoDatabase(rwin.ingredients, id);
 				} catch (SQLException e) {
@@ -430,6 +462,15 @@ public class WindowController extends Application {
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
                 editStage.setY(posy);
+                }
+                else {
+                	rwin.refresh();
+                    initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+                }
+                
+                
             }
         });
         

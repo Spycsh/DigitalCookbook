@@ -11,6 +11,14 @@ import java.util.List;
  */
 public class SQL_test {
 	private Connection connect;	
+	public Connection getConnect() {
+		return connect;
+	}
+
+	public void setConnect(Connection connect) {
+		this.connect = connect;
+	}
+
 	public void run() {
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -20,7 +28,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true",
-						"root", "Fuckyou741@ttg");
+						"root", "fuck");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -46,7 +54,7 @@ public class SQL_test {
 			psql.setString(6,input.getCuisineName());
 			psql.setString(7,input.getImgAddress());
 			try {
-			psql.executeUpdate();
+				psql.executeUpdate();
 			}
 			catch (SQLException e) {
 			    if (e instanceof SQLIntegrityConstraintViolationException) {
@@ -463,18 +471,17 @@ public class SQL_test {
 			// delete the repeated record
 			Statement statementDeleteToOne = this.connect.createStatement();
 			String sqlDel = "delete from defaultnotallowedpair where (defaultnotallowedpair.ForbidIngredient1,defaultnotallowedpair.ForbidIngredient2) in \r\n" + 
-					"(select a.ForbidIngredient1, a.ForbidIngredient2 from \r\n" + 
-					"(select* from defaultnotallowedpair a\r\n" + 
+					"(select ForbidIngredient1,ForbidIngredient2 from\r\n" + 
+					"(select a.ForbidIngredient1,a.ForbidIngredient2  from defaultnotallowedpair a\r\n" + 
 					"group by ForbidIngredient1,ForbidIngredient2\r\n" + 
-					"having count(*)>1\r\n" + 
-					")a\r\n" + 
-					")\r\n" + 
-					"and DefaultNotAllowedPair_id not in\r\n" + 
-					"(select  min(DefaultNotAllowedPair_id) from\r\n" + 
-					"(select * from defaultnotallowedpair b\r\n" + 
-					"group by ForbidIngredient1,ForbidIngredient2 having count(*)>1\r\n" + 
-					")b\r\n" + 
-					")";
+					"having count(*)>1)\r\n" + 
+					"a)\r\n" + 
+					"and defaultnotallowedpair.DefaultNotAllowedPair_id not in\r\n" + 
+					"(SELECT DefaultNotAllowedPair_id from\r\n" + 
+					"(select min(DefaultNotAllowedPair_id) as DefaultNotAllowedPair_id from defaultnotallowedpair b\r\n" + 
+					"group by ForbidIngredient1,ForbidIngredient2\r\n" + 
+					"having count(*)>1)\r\n" + 
+					"b)";
 			statement.executeUpdate(sqlDel);
 			
 		} catch (SQLException e) {
