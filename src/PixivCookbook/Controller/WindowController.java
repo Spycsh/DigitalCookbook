@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -106,11 +107,13 @@ public class WindowController extends Application {
 
     }
     public void addRecommandButtonAction(Main main) {
-    	List<Recipe> recipe = model.getRecipesForMainPage();
+    	//List<Recipe> recipe = model.getRecipesForMainPage();
         main.getRecommendButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent e) {
+                        List<Recipe> recipe = model.getRecipesForMainPage();
+                        main.littleTitle.setText("");
                         main.dropAllImageviews();
                         main.initializeMainPage(recipe);
                         addTempAction(recipe,main);
@@ -213,6 +216,10 @@ public class WindowController extends Application {
             	recipeWindow.markImage = false;
             	recipeWindow.markStep = false;
             	recipeWindow.markIngredient = false;
+            	recipeWindow.stepText= new LinkedList<TextField>();
+                recipeWindow.ingredientText1= new LinkedList<TextField>();
+                recipeWindow.ingredientText2= new LinkedList<TextField>();
+                recipeWindow.ingredientText3= new LinkedList<TextField>();
 //            	System.out.print(recipeWindow.imgPath);
             	primaryStage.close();
                 editStage.show();
@@ -570,7 +577,9 @@ public class WindowController extends Application {
 		            	recipeWindow.markImage = false;
 		            	recipeWindow.markStep = false;
 		            	recipeWindow.markIngredient = false;
-						
+                        recipeWindow.ingredientText1= new LinkedList<TextField>();
+                        recipeWindow.ingredientText2= new LinkedList<TextField>();
+                        recipeWindow.ingredientText3= new LinkedList<TextField>();
 						primaryStage.close();
 						editStage.show();
 						recipeWindow.editImgPath = null;
