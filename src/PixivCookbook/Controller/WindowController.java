@@ -188,6 +188,7 @@ public class WindowController extends Application {
             	recipeWindow.servings=model.getRecipeBySearchfromDatabase(id).getNumberOfEaters();
             	recipeWindow.cookingTime=model.getRecipeBySearchfromDatabase(id).getCookingTime();
             	recipeWindow.name = model.getRecipeBySearchfromDatabase(id).getRecipeName();
+            	recipeWindow.editImgPath = null;
             	recipeWindow.imgPath = model.getRecipeBySearchfromDatabase(id).getImgAddress();
             	recipeWindow.markDescription = false;
             	recipeWindow.markName = false;
@@ -230,14 +231,14 @@ public class WindowController extends Application {
     
     public void addEditAction(RecipeWindow rwin)
     {
+    	if(rwin.name != "Default") {
+        	id = model.getIDbyName(rwin.name);
+        	}else if(rwin.name =="Default") {
+        		id = model.assignID();
+        	}
         rwin.editTitle.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	if(rwin.name != "Default") {
-                	id = model.getIDbyName(rwin.name);
-                	}else if(rwin.name =="Default") {
-                		id = model.assignID();
-                	}
             	if(rwin.markName == false) {
 	                double posx=editStage.getX();
 	                double posy=editStage.getY();
@@ -307,7 +308,6 @@ public class WindowController extends Application {
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					System.out.println("You choose to open this image: " + chooser.getSelectedFile().getPath());
 					if(rwin.name != "Default") {
-						System.out.println(rwin.name);
 						rwin.editImgPath = chooser.getSelectedFile().getPath();
 						model.saveImagePath(id, rwin.editImgPath);
 					}else {
@@ -519,11 +519,12 @@ public class WindowController extends Application {
 						}};
 						recipeWindow.name = "Default";
 						
-						recipeWindow.markImage = true; // wait for add image
+						recipeWindow.markImage = false; // wait for add image
 						recipeWindow.imgPath = "img\\addImage.png";  // set default image
 						
 						primaryStage.close();
 						editStage.show();
+						recipeWindow.editImgPath = null;
 						recipeWindow.refresh();
 						initRecipeWindow(recipeWindow);
                      }
