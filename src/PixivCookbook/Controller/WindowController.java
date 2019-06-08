@@ -220,6 +220,7 @@ public class WindowController extends Application {
                 recipeWindow.ingredientText1= new LinkedList<TextField>();
                 recipeWindow.ingredientText2= new LinkedList<TextField>();
                 recipeWindow.ingredientText3= new LinkedList<TextField>();
+                recipeWindow.spane.setVvalue(0);
 //            	System.out.print(recipeWindow.imgPath);
             	primaryStage.close();
                 editStage.show();

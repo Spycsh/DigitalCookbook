@@ -351,6 +351,7 @@ public class RecipeWindow{
         editIngredient.setMinSize(36,36);
         editIngredient.setMaxSize(36,36);
         pane.getChildren().add(ingreLabel);
+        if(ingredients.size()==0) ingredients.add(new Ingredient("Default",0,""));
         if(markIngredient)
         {
             editIngredient.getStyleClass().add("save");
@@ -456,6 +457,7 @@ public class RecipeWindow{
         editStep.setMinSize(36,36);
         editStep.setMaxSize(36,36);
         pane.getChildren().add(stepLabel);
+        if(step.size()==0) step.add(new Step("Default",0));
         if(markStep)
         {
             editStep.getStyleClass().add("save");
