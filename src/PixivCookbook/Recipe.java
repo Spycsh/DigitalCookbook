@@ -23,15 +23,8 @@ public class Recipe implements Serializable{
 	private int preparationTime = 0;
 	private int cookingTime = 0;
 
-	public int getServings() {
-		return servings;
-	}
 
-	public void setServings(int servings) {
-		this.servings = servings;
-	}
 
-	private int servings = 0;
 	private List<Ingredient> ingredients = new LinkedList<Ingredient>();
 	private List<Step> steps = new LinkedList<Step>();
 

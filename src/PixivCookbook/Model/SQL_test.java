@@ -20,7 +20,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false",
-						"root", "sy981222");
+						"root", "Fuckyou741@ttg");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -158,7 +158,43 @@ public class SQL_test {
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void saveServings(int id, double newserving) {
+		Statement statement;
+		try {
+			statement = this.connect.createStatement();
+			String sql = "UPDATE cookbook.recipe SET servings ='"+(int)newserving+"'"+"WHERE recipe_id ='"+id+"'";
+			statement.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void savePreparationtime(int id, double nerPreparationtime) {
+		Statement statement;
+		try {
+			statement = this.connect.createStatement();
+			String sql = "UPDATE cookbook.recipe SET preparationTime ='"+(int)nerPreparationtime+"'"+"WHERE recipe_id ='"+id+"'";
+			statement.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void saveCooktime(int id, double nerCooktime) {
+		Statement statement;
+		try {
+			statement = this.connect.createStatement();
+			String sql = "UPDATE cookbook.recipe SET cookingTime ='"+(int)nerCooktime+"'"+"WHERE recipe_id ='"+id+"'";
+			statement.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public void saveImagePath(int id, String newPath) {
 		PreparedStatement psql;
 		try {
@@ -345,7 +381,6 @@ public class SQL_test {
 				recipe.setCookingTime(rs.getInt("cookingTime"));
 				recipe.setPreparationTime(rs.getInt("preparationTime"));
                 recipe.setImgAddress(rs.getString("imgAddress"));
-                
                 nameList.add(recipe);
 			}
 			

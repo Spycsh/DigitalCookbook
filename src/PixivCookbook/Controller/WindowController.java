@@ -175,7 +175,7 @@ public class WindowController extends Application {
             	recipeWindow.ingredients = (LinkedList<Ingredient>) model.getIngredientsfromDatabase(id);
             	recipeWindow.step = (LinkedList<Step>) model.getStepsfromDatabase(id);
             	recipeWindow.preparationTime=model.getRecipeBySearchfromDatabase(id).getPreparationTime();
-            	recipeWindow.servings=model.getRecipeBySearchfromDatabase(id).getServings();
+            	recipeWindow.servings=model.getRecipeBySearchfromDatabase(id).getNumberOfEaters();
             	recipeWindow.cookingTime=model.getRecipeBySearchfromDatabase(id).getCookingTime();
             	recipeWindow.name = model.getRecipeBySearchfromDatabase(id).getRecipeName();
             	recipeWindow.imgPath = model.getRecipeBySearchfromDatabase(id).getImgAddress();
@@ -329,10 +329,14 @@ public class WindowController extends Application {
                 editStage.setX(posx);;
                 editStage.setY(posy);             
             	}else {
+            	    rwin.saveData();
             		double posx=editStage.getX();
                     double posy=editStage.getY();
                     rwin.description = rwin.tf_Description.getText();
                     model.saveDescription(id, rwin.description);
+                    model.saveCooktime(id,rwin.cookingTime);
+                    model.savePreparationtime(id,rwin.preparationTime);
+                    model.saveServings(id,rwin.servings);
                     rwin.markDescription=!rwin.markDescription;
                     rwin.saveData();
                     rwin.refresh();
