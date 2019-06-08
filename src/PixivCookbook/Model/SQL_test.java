@@ -19,7 +19,7 @@ public class SQL_test {
 				e.printStackTrace();
 			}
 			try {
-				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false",
+				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true",
 						"root", "Fuckyou741@ttg");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
