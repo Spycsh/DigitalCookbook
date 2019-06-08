@@ -116,6 +116,21 @@ public class SQL_test {
 		}
 	}
 	
+	public void addIngredientstoDatabase(List<Ingredient> input,int id) throws SQLException {
+		PreparedStatement psql;
+		psql = this.connect.prepareStatement("delete from ingredient where recipe_id ='"+id+"'");
+		psql.executeUpdate();
+		for(int i = 0; i<input.size();i++) {
+			psql = this.connect.prepareStatement("insert into ingredient (recipe_id,name,quantity,unit,description)"+ "values(?,?,?,?,?)");
+			psql.setInt(1, id);
+			psql.setString(2,input.get(i).getName());
+			psql.setDouble(3,input.get(i).getNum());
+			psql.setString(4,input.get(i).getUnit());
+			psql.setString(5,input.get(i).getPreparation());			
+			psql.executeUpdate();
+		}
+	}
+	
 	private void addStepstoDatabase(Recipe input,int id) throws SQLException,SQLIntegrityConstraintViolationException{
 		PreparedStatement psql;
 		for(int i = 0; i<input.getSteps().size();i++) {
@@ -123,6 +138,19 @@ public class SQL_test {
 			psql.setInt(1, id+1);
 			psql.setInt(2,input.getSteps().get(i).getStepNumber());
 			psql.setString(3,input.getSteps().get(i).getContent());			
+			psql.executeUpdate();
+		}
+	}
+	
+	public void addStepstoDatabase(List<Step> input,int id) throws SQLException,SQLIntegrityConstraintViolationException{
+		PreparedStatement psql;
+		psql = this.connect.prepareStatement("delete from preparation_step where recipe_id ='"+id+"'");
+		psql.executeUpdate();
+		for(int i = 0; i<input.size();i++) {
+			psql = this.connect.prepareStatement("insert into preparation_step (recipe_id,step,description)"+ "values(?,?,?)");
+			psql.setInt(1, id);
+			psql.setInt(2,input.get(i).getStepNumber());
+			psql.setString(3,input.get(i).getContent());			
 			psql.executeUpdate();
 		}
 	}

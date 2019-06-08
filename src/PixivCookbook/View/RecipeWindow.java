@@ -21,7 +21,7 @@ public class RecipeWindow{
     Pane pane = new Pane();
     public ScrollPane spane;
     public String name = "Default";
-    public String description = new String("asdas");
+    public String description;
     public String imgPath;
     public Button home= new Button();
     public Button star = new Button();

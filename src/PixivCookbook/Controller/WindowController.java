@@ -11,13 +11,17 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class WindowController extends Application {
 
@@ -31,6 +35,7 @@ public class WindowController extends Application {
     Main main;
     static int id;
     static int alertSwitch = 0;
+    static int alertDelete = 0;
     static Alert alert;
     
     public static void alertBoxDuplicate() {
@@ -47,6 +52,19 @@ public class WindowController extends Application {
     	alert.setContentText("Please enter another recipe name!");
     	alert.show();
     	alertSwitch = 1;
+    }
+    
+    public static void alertBoxDelete() {
+    	alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	alert.setTitle("Warning");
+    	alert.setContentText("Are you sure you want to delete this recipe?");
+    	
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if(result.get() == ButtonType.OK) {
+    	alertDelete = 1;
+    	}else{
+
+    	}
     }
     
     public static void main(String[] args) {
@@ -293,6 +311,18 @@ public class WindowController extends Application {
             }
         });
         
+        rwin.delete.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	alertBoxDelete();
+            	if(alertDelete == 1) {
+            		model.deleteRecipefromDatabase(id);
+            		alertDelete = 0;
+            	}else {
+            		alertDelete = 0;
+            	}
+            }
+        });
         
         // image
     	rwin.title.addEventHandler(MouseEvent.MOUSE_CLICKED,
@@ -335,15 +365,14 @@ public class WindowController extends Application {
             @Override
             public void handle(ActionEvent event) {
             	if(rwin.markDescription == false) {
-                double posx=editStage.getX();
-                double posy=editStage.getY();
-                
-                rwin.markDescription=!rwin.markDescription;
-                rwin.saveData();
-                rwin.refresh();
-                initRecipeWindow(rwin);
-                editStage.setX(posx);;
-                editStage.setY(posy);             
+	                double posx=editStage.getX();
+	                double posy=editStage.getY();
+	                
+	                rwin.markDescription=!rwin.markDescription;
+	                rwin.refresh();
+	                initRecipeWindow(rwin);
+	                editStage.setX(posx);;
+	                editStage.setY(posy);             
             	}else {
             	    rwin.saveData();
             		double posx=editStage.getX();
@@ -371,6 +400,12 @@ public class WindowController extends Application {
                 rwin.markIngredient=!rwin.markIngredient;
                 rwin.saveData();
                 rwin.refresh();
+                try {
+					model.addIngredientstoDatabase(rwin.ingredients, id);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
                 editStage.setY(posy);
@@ -386,6 +421,12 @@ public class WindowController extends Application {
                 rwin.markStep=!rwin.markStep;
                 rwin.saveData();
                 rwin.refresh();
+                try {
+					model.addStepstoDatabase(rwin.step, id);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
                 editStage.setY(posy);
@@ -507,8 +548,10 @@ public class WindowController extends Application {
                      @Override
                      public void handle(MouseEvent e) {
                     	 // after add recipe, all attributes are default
-                    	 recipeWindow.description = "";
-
+                    	recipeWindow.description = "";
+                    	recipeWindow.preparationTime=0;
+                     	recipeWindow.servings=0;
+                     	recipeWindow.cookingTime=0;
 						Ingredient defaultIngredient = new Ingredient("Default", 0.0, "0");
 						recipeWindow.ingredients = new LinkedList<Ingredient>() {{
 							add(defaultIngredient);
@@ -521,6 +564,12 @@ public class WindowController extends Application {
 						
 						recipeWindow.markImage = false; // wait for add image
 						recipeWindow.imgPath = "img\\addImage.png";  // set default image
+						
+						recipeWindow.markDescription = false;
+		            	recipeWindow.markName = false;
+		            	recipeWindow.markImage = false;
+		            	recipeWindow.markStep = false;
+		            	recipeWindow.markIngredient = false;
 						
 						primaryStage.close();
 						editStage.show();
