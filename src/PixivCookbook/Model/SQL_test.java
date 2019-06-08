@@ -20,7 +20,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false",
-						"root", "sy981222");
+						"root", "Fuckyou741@ttg");
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -342,6 +342,23 @@ public class SQL_test {
 			e.printStackTrace();
 		}
 		return matchedRecipeIdList;
+	}
+	
+	public int getIDbyName(String RecipeName){
+		int id = 0;
+		PreparedStatement psql;
+		try {
+			psql = this.connect.prepareStatement("select recipe_id from Recipe where name = '"+RecipeName+"'");
+		
+			ResultSet resultSet = psql.executeQuery();
+			while(resultSet.next()) {
+				id = resultSet.getInt("recipe_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
 	}
 	
 	public List<Integer> searchAllMatchedID(String RecipeName) throws IndexOutOfBoundsException{

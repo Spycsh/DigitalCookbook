@@ -44,7 +44,7 @@ public class WindowController extends Application {
     public static void alertBoxDefault() {
     	alert = new Alert(Alert.AlertType.ERROR);
     	alert.setTitle("Warning");
-    	alert.setContentText("Please enter another name!");
+    	alert.setContentText("Please enter another recipe name!");
     	alert.show();
     	alertSwitch = 1;
     }
@@ -180,7 +180,7 @@ public class WindowController extends Application {
                 new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-            	int id = model.searchAllMatchedID(recipe.get(tempCount).getRecipeName()).get(0);  
+            	int id = model.getIDbyName(recipe.get(tempCount).getRecipeName());  
             	recipeWindow.description = model.getRecipeBySearchfromDatabase(id).getCuisineName();
             	recipeWindow.ingredients = (LinkedList<Ingredient>) model.getIngredientsfromDatabase(id);
             	recipeWindow.step = (LinkedList<Step>) model.getStepsfromDatabase(id);
@@ -230,24 +230,23 @@ public class WindowController extends Application {
     
     public void addEditAction(RecipeWindow rwin)
     {
-    	
-    	if(rwin.name != "Default") {
-    	id = model.searchAllMatchedID(rwin.name).get(0);
-    	}else if(rwin.name =="Default") {
-    		id = model.assignID();
-    	}
         rwin.editTitle.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+            	if(rwin.name != "Default") {
+                	id = model.getIDbyName(rwin.name);
+                	}else if(rwin.name =="Default") {
+                		id = model.assignID();
+                	}
             	if(rwin.markName == false) {
-                double posx=editStage.getX();
-                double posy=editStage.getY();
-                rwin.markName=!rwin.markName;
-                rwin.saveData();
-                rwin.refresh();
-                initRecipeWindow(rwin);
-                editStage.setX(posx);;
-                editStage.setY(posy);
+	                double posx=editStage.getX();
+	                double posy=editStage.getY();
+	                rwin.markName=!rwin.markName;
+	                rwin.saveData();
+	                rwin.refresh();
+	                initRecipeWindow(rwin);
+	                editStage.setX(posx);;
+	                editStage.setY(posy);
             	}else {
             		double posx=editStage.getX();
                     double posy=editStage.getY();
@@ -257,16 +256,18 @@ public class WindowController extends Application {
             			if(newName.matches("Default")) {
             				alertBoxDefault();
             			}else {
+            			System.out.println(newName);
             			model.saveRecipName(id, newName);
             			}
             		}else if(rwin.name.matches("Default")) {
             			if(newName.matches("Default")) {
             				alertBoxDefault();
             			}else {
-            			//description by default is null, and serving is 4
-                		Recipe recipe = new Recipe(newName,"",4);
-                		model.addRecipetoDatabase(recipe,id);
-                		model.saveImagePath(id+1, "");
+	            			//description by default is null, and serving is 4
+	                		Recipe recipe = new Recipe(newName,"",4);
+	                		rwin.name = newName;
+	                		model.addRecipetoDatabase(recipe,id);
+	                		model.saveImagePath(id+1, "");
             			}
                 	}
             		
@@ -279,7 +280,7 @@ public class WindowController extends Application {
                         editStage.setX(posx);;
                         editStage.setY(posy);
             		}else{
-	            		rwin.name =newName;
+	            		rwin.name = newName;
 	            		rwin.markName=!rwin.markName;
 	            		rwin.saveData();
 	                    rwin.refresh();
@@ -305,8 +306,13 @@ public class WindowController extends Application {
 				int returnVal = chooser.showOpenDialog(null);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					System.out.println("You choose to open this image: " + chooser.getSelectedFile().getPath());
+					if(rwin.name != "Default") {
+						System.out.println(rwin.name);
 						rwin.editImgPath = chooser.getSelectedFile().getPath();
-					model.saveImagePath(id, rwin.editImgPath);
+						model.saveImagePath(id, rwin.editImgPath);
+					}else {
+						alertBoxDefault();
+					}
 					String fileName = chooser.getSelectedFile().getName();
 					
 	                double posx=editStage.getX();

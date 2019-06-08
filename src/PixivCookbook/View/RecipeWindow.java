@@ -9,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.util.LinkedList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RecipeWindow{
     public boolean markDescription=false;
@@ -18,7 +20,7 @@ public class RecipeWindow{
     public boolean markName=false;
     Pane pane = new Pane();
     public ScrollPane spane;
-    public String name;
+    public String name = "Default";
     public String description = new String("asdas");
     public String imgPath;
     public Button home= new Button();
@@ -181,22 +183,48 @@ public class RecipeWindow{
         else
         {
         	Image image;
-        	if(this.editImgPath!=null) {
+        	if(this.editImgPath!=null && imgPath == null) {
 //        		System.out.println(editImgPath);
         		image = new Image("file:/"+editImgPath);   // "file:/" is important!
+        		title = new ImageView(image);
+	            title.setFitHeight(180*2);
+	            title.setFitWidth(320*2);
+	            title.setLayoutX(center);
+	            title.setLayoutY(posy+=lineheight);
+	            pane.getChildren().add(title);
+	            posy+=330;
         	}
         	else {
-        		image = new Image(ClassLoader.getSystemResource("")+"..\\"+imgPath);
+        		if(imgPath == null && editImgPath == null) {
+        			
+        		}else {
+        		System.out.println(imgPath);
+        		System.out.println(editImgPath);
+        		String patternstr = "([A-Z]{1}:)";
+    			Pattern p = Pattern.compile(patternstr);
+    			Matcher matcher = p.matcher(imgPath);
+    			if(matcher.find()) {
+    				image = new Image("file:\\"+imgPath);
+    				title = new ImageView(image);
+		            title.setFitHeight(180*2);
+		            title.setFitWidth(320*2);
+		            title.setLayoutX(center);
+		            title.setLayoutY(posy+=lineheight);
+		            pane.getChildren().add(title);
+		            posy+=330;
+    			}else {
+    				image = new Image(ClassLoader.getSystemResource("")+"..\\"+imgPath);
+    				 title = new ImageView(image);
+    		            title.setFitHeight(180*2);
+    		            title.setFitWidth(320*2);
+    		            title.setLayoutX(center);
+    		            title.setLayoutY(posy+=lineheight);
+    		            pane.getChildren().add(title);
+    		            posy+=330;
+    			}
         	}
-        		
-            title = new ImageView(image);
-            title.setFitHeight(180*2);
-            title.setFitWidth(320*2);
-            title.setLayoutX(center);
-            title.setLayoutY(posy+=lineheight);
-            pane.getChildren().add(title);
-            posy+=330;
         }
+      }
 //mark
         Label descripLabel = new Label();
         descripLabel.setText("Main Information");
