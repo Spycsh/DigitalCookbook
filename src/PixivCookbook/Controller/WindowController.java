@@ -439,7 +439,7 @@ public class WindowController extends Application {
                 for(int i=0;i<rwin.ingredientText3.size();i++)
                 {
                 	aList.add(rwin.ingredientText3.get(i).getText());
-                	System.out.println(rwin.ingredientText3.get(i).getText());
+//                	System.out.println(rwin.ingredientText3.get(i).getText());
                 	List<String> opponentList =  model.getForbiddenPair(rwin.ingredientText3.get(i).getText());
                 	for(String e:aList) {
                 		if(opponentList.contains(e)) {

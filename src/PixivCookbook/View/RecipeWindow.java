@@ -241,7 +241,7 @@ public class RecipeWindow{
             editDescription.setMinSize(36,36);
             editDescription.setMaxSize(36,36);
             pane.getChildren().add(editDescription);
-            Label desLabel = new Label("Descriptoon:");
+            Label desLabel = new Label("Description:");
             tf_Description = new TextField(disDes);
             desLabel.setLayoutX(center);
             posy+=lineheight;
@@ -290,7 +290,7 @@ public class RecipeWindow{
             editDescription.setMinSize(36,36);
             editDescription.setMaxSize(36,36);
             pane.getChildren().add(editDescription);
-            Label desLabel = new Label("Descriptoon:");
+            Label desLabel = new Label("Description:");
             desLabel.setLayoutX(center);
             posy+=lineheight;
             desLabel.setLayoutY(posy);
