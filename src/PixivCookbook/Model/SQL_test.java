@@ -426,7 +426,7 @@ public class SQL_test {
 		List<Recipe> nameList = new LinkedList<Recipe>();
 		try {
 			statement = this.connect.createStatement();
-			String sql = "select * from recipe order by recipe_id desc limit 7";
+			String sql = "select * from recipe order by rand() desc limit 7";
 			ResultSet rs = statement.executeQuery(sql);
 			
 			while(rs.next()) {

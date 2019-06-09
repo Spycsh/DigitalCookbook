@@ -37,6 +37,8 @@ public class WindowController extends Application {
     Stage primaryStage = new Stage();
     Stage editStage = new Stage();
     Main main;
+    
+    
     static int id;
     static int alertSwitch = 0;
     static int alertDelete = 0;
@@ -313,7 +315,6 @@ public class WindowController extends Application {
     	List<String> forbidInfo = new LinkedList<String>();
     	// forbid pair info
     	List<String> aList = new LinkedList<String>();
-    	System.out.println(rwin.ingredients.size());
         for(int i=0;i<rwin.ingredients.size();i++)
         {
         	String currentIngredient = rwin.ingredients.get(i).getName();
@@ -328,10 +329,12 @@ public class WindowController extends Application {
         		}
         	}
         }
-        if((forbidInfo.size()!=0)) {
-//        	this.infoOnce = 1;
-        	alertBoxForbidPairView(forbidInfo);
-        }
+        System.out.println(alertForbid);
+        if(alertForbid == 0)
+	        if((forbidInfo.size()!=0)) {
+	  
+	        	alertBoxForbidPairView(forbidInfo);
+	        }
     }
     
     public void addEditAction(RecipeWindow rwin)
@@ -510,7 +513,7 @@ public class WindowController extends Application {
                 double posy=editStage.getY();
                 
                 rwin.markIngredient=!rwin.markIngredient;
-                
+                rwin.saveData();
                 rwin.refresh();
                 
                 rwin.saveData();
