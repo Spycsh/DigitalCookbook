@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import org.omg.CORBA.Current;
+
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
@@ -70,10 +72,36 @@ public class WindowController extends Application {
     	}
     }
     
-    public static void alertBoxForbidPair() {
+//    public static void alertImgAddress() {
+//    	alert = new Alert(AlertType.ERROR);
+//    	alert.setTitle("Warning");
+//    	alert.setContentText("Image path illegal, maybe the path contains some illegal brackets!");
+//    	alert.show();
+//    	alertSwitch = 1;
+//    }
+    
+    public static void alertInputMainInfo() {
+    	alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Warning");
+    	alert.setContentText("Input illegal, Please check the main infomation format!");
+    	alert.show();
+    	alertSwitch = 1;
+    }
+    
+    public static void alertInputIngredientInfo() {
+    	alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Warning");
+    	alert.setContentText("Input illegal, Please check the Ingredient infomation format!");
+    	alert.show();
+    	alertSwitch = 1;
+    }
+    
+    // click save ingredient
+    public static void alertBoxForbidPair(String forbid1, String forbid2) {
     	alert = new Alert(Alert.AlertType.CONFIRMATION);
     	alert.setTitle("Warning");
-    	alert.setContentText("Your ingredient list contains something not compatible with each other, are you sure to add this recipe?");
+    	alert.setContentText("Your ingredient list contains something not compatible with each other,("+
+    							forbid1+":"+forbid2+"), are you sure to save them?");
     	
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
@@ -81,6 +109,16 @@ public class WindowController extends Application {
     	}else {
     		
     	}
+    }
+    
+    // display forbid ingredient when view the recipe
+    public static void alertBoxForbidPairView(List<String> forbidInfo) {
+    	alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Warning");
+    	alert.setContentText("Your ingredient list contains something not compatible with each other:"
+    							+"\n"+forbidInfo+" \n"+"please check them");
+    	
+    	alert.show();
     }
     
     public static void main(String[] args) {
@@ -119,6 +157,7 @@ public class WindowController extends Application {
     {
         addHomeAction(rwin);
         addEditAction(rwin);
+        addForbidAction(rwin);
 
     }
     public void addRecommandButtonAction(Main main) {
@@ -270,8 +309,36 @@ public class WindowController extends Application {
         });
     }
     
+    public void addForbidAction(RecipeWindow rwin) {
+    	List<String> forbidInfo = new LinkedList<String>();
+    	// forbid pair info
+    	List<String> aList = new LinkedList<String>();
+    	System.out.println(rwin.ingredients.size());
+        for(int i=0;i<rwin.ingredients.size();i++)
+        {
+        	String currentIngredient = rwin.ingredients.get(i).getName();
+        	aList.add(currentIngredient);
+        	List<String> opponentList =  model.getForbiddenPair(currentIngredient);
+        	for(String e:aList) {
+        		if(opponentList.contains(e)) {
+        			System.out.println("forbidden pair exists:("+e+":"+currentIngredient+")");
+        			forbidInfo.add(e+" and "+currentIngredient);
+//        			alertBoxForbidPair(e,currentIngredient);
+        			break;
+        		}
+        	}
+        }
+        if((forbidInfo.size()!=0)) {
+//        	this.infoOnce = 1;
+        	alertBoxForbidPairView(forbidInfo);
+        }
+    }
+    
     public void addEditAction(RecipeWindow rwin)
     {
+
+    		
+    	
     	if(rwin.name != "Default") {
         	id = model.getIDbyName(rwin.name);
         	}else if(rwin.name =="Default") {
@@ -337,25 +404,30 @@ public class WindowController extends Application {
         rwin.delete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	alertBoxDelete();
-            	if(alertDelete == 1) {
-            		model.deleteRecipefromDatabase(id);
-            		editStage.close();
-                    primaryStage.show();
-                    List<Recipe> recipe = model.getRecipesForMainPage();
-                    main.littleTitle.setText("");
-                    main.dropAllImageviews();
-                    main.initializeMainPage(recipe);
-                    addTempAction(recipe,main);
-                    if(main.backButton.getText() == "back") {
-                        main.pane.getChildren().remove(main.backButton);
-                        main.backButton.setText("");
-                    }
-                    main.search.setText("");
-                    addAddAction(recipe,main);
-            		alertDelete = 0;
+            	if(rwin.name.matches("Default")) {
+
             	}else {
-            		alertDelete = 0;
+
+	            	alertBoxDelete();
+	            	if(alertDelete == 1) {
+	            		model.deleteRecipefromDatabase(id);
+	            		editStage.close();
+	                    primaryStage.show();
+	                    List<Recipe> recipe = model.getRecipesForMainPage();
+	                    main.littleTitle.setText("");
+	                    main.dropAllImageviews();
+	                    main.initializeMainPage(recipe);
+	                    addTempAction(recipe,main);
+	                    if(main.backButton.getText() == "back") {
+	                        main.pane.getChildren().remove(main.backButton);
+	                        main.backButton.setText("");
+	                    }
+	                    main.search.setText("");
+	                    addAddAction(recipe,main);
+	            		alertDelete = 0;
+	            	}else {
+	            		alertDelete = 0;
+	            	}
             	}
             }
         });
@@ -397,6 +469,7 @@ public class WindowController extends Application {
             
     	});
         
+    	//  edit main information
         rwin.editDescription.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -427,6 +500,9 @@ public class WindowController extends Application {
             	}
             }
         });
+        
+        // every eidt and save click will cause warning
+        // if forbidden pair exists
         rwin.editIngredient.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -434,40 +510,43 @@ public class WindowController extends Application {
                 double posy=editStage.getY();
                 
                 rwin.markIngredient=!rwin.markIngredient;
+                
+                rwin.refresh();
+                
                 rwin.saveData();
-                List<String> aList = new LinkedList<String>();
-                for(int i=0;i<rwin.ingredientText3.size();i++)
-                {
-                	aList.add(rwin.ingredientText3.get(i).getText());
-//                	System.out.println(rwin.ingredientText3.get(i).getText());
-                	List<String> opponentList =  model.getForbiddenPair(rwin.ingredientText3.get(i).getText());
-                	for(String e:aList) {
-                		if(opponentList.contains(e)) {
-                			System.out.println("forbidden pair exists!");
-                			alertBoxForbidPair();
-                			break;
-                		}
-                	}
+                if(rwin.markIngredient == false) {
+	                List<String> aList = new LinkedList<String>();
+	                for(int i=0;i<rwin.ingredientText3.size();i++)
+	                {
+	                	aList.add(rwin.ingredientText3.get(i).getText());
+	                	String currentIngredient = rwin.ingredientText3.get(i).getText();
+	                	List<String> opponentList =  model.getForbiddenPair(currentIngredient);
+	                	for(String e:aList) {
+	                		if(opponentList.contains(e)) {
+	                			System.out.println("forbidden pair exists:("+e+":"+currentIngredient+")");
+	                			alertBoxForbidPair(e,currentIngredient);
+	                			break;
+	                		}
+	                	}
+	                }
                 }
                 if(alertForbid == 1) { 
                 	alertForbid = 0;
-                	rwin.refresh();
-                
-                try {
-					model.addIngredientstoDatabase(rwin.ingredients, id);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
                 editStage.setY(posy);
                 }
                 else {
-                	rwin.refresh();
-                    initRecipeWindow(rwin);
-                    editStage.setX(posx);;
-                    editStage.setY(posy);
+                	try {
+ 						model.addIngredientstoDatabase(rwin.ingredients, id);
+ 					} catch (SQLException e) {
+ 						// TODO Auto-generated catch block
+ 						e.printStackTrace();
+ 					}
+ 	                initRecipeWindow(rwin);
+ 	                editStage.setX(posx);;
+ 	                editStage.setY(posy);
                 }
                 
                 

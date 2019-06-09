@@ -43,7 +43,7 @@ public class RecipeWindow{
     public LinkedList<Step> step = new LinkedList<Step>();
     public double preparationTime=0;
     public double cookingTime=0;
-    public double servings=0;
+    public int servings=0;
     public boolean favorite = false;
 
     public LinkedList<Button> addIngredient;
@@ -272,7 +272,7 @@ public class RecipeWindow{
             tf_Cookingtime.setLayoutY(posy);
             pane.getChildren().add(tf_Cookingtime);
             Label serveLabel = new Label("Servings:");
-            tf_Serveing = new TextField(Double.toString(servings));
+            tf_Serveing = new TextField(Integer.toString(servings));
             serveLabel.setLayoutX(center);
             posy+=lineheight;
             serveLabel.setLayoutY(posy+8);
@@ -333,7 +333,7 @@ public class RecipeWindow{
             serveLabel.getStyleClass().add("content");
             pane.getChildren().add(serveLabel);
             Label servLabel = new Label();
-            servLabel.setText(Double.toString(servings));
+            servLabel.setText(Integer.toString(servings));
             servLabel.setLayoutX(center+200);
             servLabel.setLayoutY(posy);
             servLabel.getStyleClass().add("content");
@@ -557,7 +557,7 @@ public class RecipeWindow{
     {
         if(markDescription&&tf_Preparation!=null)
         {
-            this.servings=Double.parseDouble(tf_Serveing.getText());
+            this.servings=Integer.parseInt(tf_Serveing.getText());
             this.cookingTime=Double.parseDouble(tf_Cookingtime.getText());
             this.preparationTime=Double.parseDouble(tf_Preparation.getText());
             this.description=tf_Description.getText();
