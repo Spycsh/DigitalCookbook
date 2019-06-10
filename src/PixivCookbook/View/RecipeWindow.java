@@ -569,9 +569,6 @@ public class RecipeWindow{
 
     public void formVerify()
     {
-        boolean wrongServe = false;
-        boolean wrongcookingTime = false;
-        boolean wrongpreparationTime = false;
         boolean longNmae = false;
         boolean wrongIngredientnum[];
         boolean longDescription=false;
@@ -593,21 +590,6 @@ public class RecipeWindow{
                 message.add("Description Name is too long!");
                 tf_RecipeName.setText(tf_Description.getText().substring(0, 29));
             }
-            if (!isInt(tf_Serveing.getText())) {
-                message.add("Servings can only be integer!");
-                wrongServe = true;
-                tf_Serveing.setText(Integer.toString(servings));
-            }
-            if (!isInt(tf_Preparation.getText())) {
-                message.add("Preparation time can only be integer!");
-                wrongpreparationTime = true;
-                tf_Preparation.setText(Integer.toString(preparationTime));
-            }
-            if (!isInt(tf_Cookingtime.getText())) {
-                message.add("Cooking time can only be integer!");
-                wrongcookingTime = true;
-                tf_Cookingtime.setText(Integer.toString(cookingTime));
-            }
         }
         if(markIngredient&&ingredientText1!=null)
         {
@@ -620,7 +602,7 @@ public class RecipeWindow{
                 if (!isDouble(ingredientText1.get(i).getText())) {
                     message.add("Ingredient "+i+1+": Ingredient number can only be rational number!");
                     wrongIngredientnum[i] = true;
-                    ingredientText1.get(i).setText(Double.toString(ingredients.get(i).getNum()));
+                    ingredientText1.get(i).setText("1");
                 }
             }
             for(int i=0;i<ingredientText2.size();i++)
