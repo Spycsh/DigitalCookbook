@@ -26,8 +26,6 @@ public class ForbiddenEditWindow{
     public Button home = new Button();
 
     public Scene getScene(){
-        for(int i=0;i<10;i++)
-            data.add(new Pair<>("a","b"));
         pane.setMinWidth(1375);
         pane.getStyleClass().add("root");
         //primaryStage.setTitle("Hello World");
@@ -40,7 +38,6 @@ public class ForbiddenEditWindow{
         {
             mark.add(0);
         }
-        spane.setMinHeight(900);
         refresh();
         scene.getStylesheets().add(ForbiddenEditWindow.class.getResource("index.css").toExternalForm());
         return scene;

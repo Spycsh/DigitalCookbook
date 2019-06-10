@@ -621,7 +621,7 @@ public class RecipeWindow{
             wrongIngredientnum=new boolean[ingredientText1.size()];
             longIngredientname=new boolean[ingredientText1.size()];
             longIngredientunit=new boolean[ingredientText1.size()];
-            for(int i=0;i<ingredientText1.size();i++)
+            for(int i=0;i<ingredients.size();i++)
             {
                 wrongIngredientnum[i] = false;
                 if (!isDouble(ingredientText1.get(i).getText())) {
@@ -633,7 +633,7 @@ public class RecipeWindow{
                 	ingredients.get(i).setNum(Double.parseDouble(ingredientText1.get(i).getText()));
                 }
             }
-            for(int i=0;i<ingredientText2.size();i++)
+            for(int i=0;i<ingredients.size();i++)
             {
                 longIngredientunit[i]=false;
                 if(ingredientText2.get(i).getText().length()>15)
@@ -643,7 +643,7 @@ public class RecipeWindow{
                     ingredientText2.get(i).setText(ingredientText2.get(i).getText().substring(0,14));
                 }
             }
-            for(int i=0;i<ingredientText3.size();i++)
+            for(int i=0;i<ingredients.size();i++)
             {
                 longIngredientname[i]=false;
                 if(ingredientText3.get(i).getText().length()>30)
@@ -657,7 +657,7 @@ public class RecipeWindow{
         if(markStep&&stepText!=null)
         {
             longStep=new boolean[stepText.size()];
-            for(int i=0;i<stepText.size();i++)
+            for(int i=0;i<step.size();i++)
             {
                 if(stepText.get(i).getText().length()>90)
                 {

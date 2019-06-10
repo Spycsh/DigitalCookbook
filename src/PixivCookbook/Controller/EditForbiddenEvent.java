@@ -1,5 +1,6 @@
 package PixivCookbook.Controller;
 
+import PixivCookbook.Model.SQL_test;
 import PixivCookbook.View.ForbiddenEditWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,7 +9,7 @@ import javafx.util.Pair;
 
 public class EditForbiddenEvent
 {
-    public void addForbiddenEvent(ForbiddenEditWindow forW, Stage forbiddenStage)
+    public void addForbiddenEvent(ForbiddenEditWindow forW, Stage forbiddenStage, SQL_test model)
     {
         forW.home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -34,12 +35,14 @@ public class EditForbiddenEvent
                         {
                             s1=forW.forbidenText1.get(j).getText();
                             s2=forW.forbidenText2.get(j).getText();
+                            model.deleteAllForbiddenPair();
+                            model.addForbiddenPair(s1,s2);
                             forW.data.set(j,new Pair<>(s1,s2));
                         }
                     }
                     forW.mark.set(temp,1-forW.mark.get(temp));
                     forW.refresh();
-                    addForbiddenEvent(forW,forbiddenStage);
+                    addForbiddenEvent(forW,forbiddenStage,model);
                 }
             });
             forW.deleteForbidden.get(i).setOnAction(new EventHandler<ActionEvent>() {
@@ -48,8 +51,9 @@ public class EditForbiddenEvent
                     forW.data.remove(temp);
                     forW.mark.remove(temp);
                     forW.mark.add(1);
+                    if(forW.data.size()==0) forW.data.add(new Pair<>("a","b"));
                     forW.refresh();
-                    addForbiddenEvent(forW,forbiddenStage);
+                    addForbiddenEvent(forW,forbiddenStage,model);
                 }
             });
             forW.addForbidden.get(i).setOnAction(new EventHandler<ActionEvent>() {
@@ -58,7 +62,7 @@ public class EditForbiddenEvent
                     forW.data.add(temp,new Pair<>("Deafault","Deafault"));
                     forW.mark.add(temp,1);
                     forW.refresh();
-                    addForbiddenEvent(forW,forbiddenStage);
+                    addForbiddenEvent(forW,forbiddenStage,model);
                 }
             });
         }

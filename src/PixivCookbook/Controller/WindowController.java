@@ -17,6 +17,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -62,7 +63,7 @@ public class WindowController extends Application {
         ForbiddenEditWindow forbidden = new ForbiddenEditWindow();
         Scene forbiddenScene= forbidden.getScene();
         forbiddenStage.setScene(forbiddenScene);
-        initEditForbidden(forbidden,forbiddenStage);
+        initEditForbidden(forbidden,forbiddenStage,model);
         //primaryStage.close();
         //forbiddenStage.show();
     }
@@ -740,6 +741,7 @@ public class WindowController extends Application {
                 public void handle(ActionEvent event) {
                     double posx=editStage.getX();
                     double posy=editStage.getY();
+                    //System.out.println(mark);
                     rwin.saveData();
                     rwin.ingredients.remove(mark);
                     if(rwin.ingredients.size()==0)
@@ -794,10 +796,14 @@ public class WindowController extends Application {
                      
                  });
     }
-    public void initEditForbidden(ForbiddenEditWindow forw,Stage forbiddenStage)
+    public void initEditForbidden(ForbiddenEditWindow forw,Stage forbiddenStage,SQL_test model)
     {
+        LinkedList<Pair<String,String>> data;
+        data=model.getAllForbiddenPair();
         EditForbiddenEvent editFor = new EditForbiddenEvent();
-        editFor.addForbiddenEvent(forw,forbiddenStage);
+        forw.data=data;
+        forw.refresh();
+        editFor.addForbiddenEvent(forw,forbiddenStage,model);
     }
 
     public void addEditImg(RecipeWindow rwin) {
