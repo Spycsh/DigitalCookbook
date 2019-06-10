@@ -24,6 +24,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class WindowController extends Application {
 
@@ -42,6 +44,7 @@ public class WindowController extends Application {
     static int alertSwitch = 0;
     static int alertDelete = 0;
     static int alertForbid = 0;
+    static StringBuffer alertWrongType_SB = new StringBuffer("");
     static Alert alert;
     @Override
     public void start(Stage primaryStage) {
@@ -140,6 +143,22 @@ public class WindowController extends Application {
     	
     	alert.show();
     }
+    
+    public static void alertBoxWrongtypeDES() {
+    	alert = new Alert(Alert.AlertType.ERROR);
+    	alert.setTitle("Warning");
+    	alert.setContentText(alertWrongType_SB.toString());
+    	alert.show();
+    }
+    public static boolean isDouble(String input){
+    	Matcher mer = Pattern.compile("^[+-]?[0-9.]+$").matcher(input);
+    	return mer.find();
+   	}
+    
+    public static boolean isInteger(String input){
+    	Matcher mer = Pattern.compile("^[+-]?[0-9]+$").matcher(input);
+    	return mer.find();
+    	}
     
     public static void main(String[] args) {
         launch(args);
@@ -488,22 +507,69 @@ public class WindowController extends Application {
 	                initRecipeWindow(rwin);
 	                editStage.setX(posx);;
 	                editStage.setY(posy);             
-            	}else {
-            	    rwin.saveData();
-            		double posx=editStage.getX();
-                    double posy=editStage.getY();
-                    rwin.description = rwin.tf_Description.getText();
-                    model.saveDescription(id, rwin.description);
-                    model.saveCooktime(id,rwin.cookingTime);
-                    model.savePreparationtime(id,rwin.preparationTime);
-                    model.saveServings(id,rwin.servings);
-                    rwin.markDescription=!rwin.markDescription;
-                    rwin.saveData();
-                    rwin.refresh();
-                    initRecipeWindow(rwin);
-                    editStage.setX(posx);;
-                    editStage.setY(posy);
-            	}
+            	}else { 	
+            		if(isInteger(rwin.tf_Serveing.getText()) && Integer.parseInt(rwin.tf_Serveing.getText()) == 0) {
+        
+            				alertWrongType_SB.append("Servings can't be 0!\n");
+      
+            			if(!isDouble(rwin.tf_Cookingtime.getText())|!isDouble(rwin.tf_Preparation.getText())) {
+	            			if(!isDouble(rwin.tf_Preparation.getText())) {
+	            				alertWrongType_SB.append("Wrong type for preparation time!\n");
+	            			}
+	            			if(!isDouble(rwin.tf_Cookingtime.getText())) {
+	            				alertWrongType_SB.append("Wrong type for cooking time\n");
+	            			}
+	            			if(!isInteger(rwin.tf_Serveing.getText())) {
+	            				alertWrongType_SB.append("Wrong type for servings!\n");
+	            			}
+            			}	
+	            			alertBoxWrongtypeDES();
+	            			alertWrongType_SB =new StringBuffer("");
+	            			double posx=editStage.getX();
+		                    double posy=editStage.getY();
+		                    rwin.refresh();
+		                    initRecipeWindow(rwin);
+		                    editStage.setX(posx);;
+		                    editStage.setY(posy);
+	            		}else if(!isDouble(rwin.tf_Cookingtime.getText())|!isDouble(rwin.tf_Preparation.getText())|!isInteger(rwin.tf_Serveing.getText())) {
+	            			if(!isDouble(rwin.tf_Preparation.getText())) {
+	            				alertWrongType_SB.append("Wrong type for preparation time!\n");
+	            			}
+	            			if(!isDouble(rwin.tf_Cookingtime.getText())) {
+	            				alertWrongType_SB.append("Wrong type for cooking time\n");
+	            			}
+	            			if(!isInteger(rwin.tf_Serveing.getText())) {
+	            				alertWrongType_SB.append("Wrong type for servings!\n");
+	            			}
+	            			alertBoxWrongtypeDES();
+	            			alertWrongType_SB =new StringBuffer("");
+	            			double posx=editStage.getX();
+		                    double posy=editStage.getY();
+		                    rwin.refresh();
+		                    initRecipeWindow(rwin);
+		                    editStage.setX(posx);;
+		                    editStage.setY(posy);
+	            		}else{
+		            	    rwin.saveData();
+		            		double posx=editStage.getX();
+		                    double posy=editStage.getY();
+		                    model.saveDescription(id, rwin.description);
+		                    model.saveCooktime(id,rwin.cookingTime);
+		                    model.savePreparationtime(id,rwin.preparationTime);
+		                    model.saveServings(id,rwin.servings);
+		                    rwin.markDescription=!rwin.markDescription;
+		                    try {
+								model.addIngredientstoDatabase(rwin.ingredients, id);
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+		                    rwin.refresh();
+		                    initRecipeWindow(rwin);
+		                    editStage.setX(posx);;
+		                    editStage.setY(posy);
+	            		}
+	            	}
             }
         });
         

@@ -569,9 +569,6 @@ public class RecipeWindow{
 
     public void formVerify()
     {
-        boolean wrongServe = false;
-        boolean wrongcookingTime = false;
-        boolean wrongpreparationTime = false;
         boolean longNmae = false;
         boolean wrongIngredientnum[];
         boolean longDescription=false;
@@ -592,21 +589,6 @@ public class RecipeWindow{
                 longDescription = true;
                 message.add("Description Name is too long!");
                 tf_RecipeName.setText(tf_Description.getText().substring(0, 29));
-            }
-            if (!isInt(tf_Serveing.getText())) {
-                message.add("Servings can only be integer!");
-                wrongServe = true;
-                tf_Serveing.setText("1");
-            }
-            if (!isInt(tf_Preparation.getText())) {
-                message.add("Preparation time can only be integer!");
-                wrongpreparationTime = true;
-                tf_Preparation.setText("60");
-            }
-            if (!isInt(tf_Cookingtime.getText())) {
-                message.add("Cooking time can only be integer!");
-                wrongcookingTime = true;
-                tf_Cookingtime.setText("60");
             }
         }
         if(markIngredient&&ingredientText1!=null)
