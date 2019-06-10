@@ -16,6 +16,10 @@ public class EditForbiddenEvent
         forW.home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                forW.savedata();
+                model.deleteAllForbiddenPair();
+                for(int k=0;k<forW.data.size();k++)
+                    model.addForbiddenPair(forW.data.get(k).getKey(),forW.data.get(k).getValue());
                 forbiddenStage.close();
             }
         });
@@ -52,6 +56,7 @@ public class EditForbiddenEvent
             forW.deleteForbidden.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    forW.savedata();
                     forW.data.remove(temp);
                     forW.mark.remove(temp);
                     forW.mark.add(1);
@@ -77,6 +82,7 @@ public class EditForbiddenEvent
                         id++;
                     }
                     //System.out.println(id);
+                    forW.savedata();
                     forW.data.add(temp,new ForbiddenPair("Deafault","Deafault",id));
                     forW.mark.add(temp,1);
                     forW.refresh();

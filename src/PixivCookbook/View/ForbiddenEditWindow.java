@@ -54,7 +54,6 @@ public class ForbiddenEditWindow{
         editForbidden=new LinkedList<Button>();
         deleteForbidden=new LinkedList<Button>();
         addForbidden = new LinkedList<Button>();
-        savedata();
         posy=0;
         lineheight=50;
         center=620-160;
