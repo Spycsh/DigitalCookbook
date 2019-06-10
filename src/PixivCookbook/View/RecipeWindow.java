@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,6 +45,7 @@ public class RecipeWindow{
     public int preparationTime=0;
     public int cookingTime=0;
     public int servings=0;
+    private int formerServings=0;
     public boolean favorite = false;
 
     public LinkedList<Button> addIngredient;
@@ -443,6 +445,21 @@ public class RecipeWindow{
                 label.setLayoutY(posy+=lineheight);
                 label.getStyleClass().add("content");
                 pane.getChildren().add(label);
+                TextField tf1 = new TextField(Double.toString(ingredients.get(i).getNum()));
+                TextField tf2 = new TextField(ingredients.get(i).getUnit());
+                TextField tf3 = new TextField(ingredients.get(i).getName());
+                if(i>=ingredientText1.size())
+                {
+                    ingredientText1.add(tf1);
+                    ingredientText2.add(tf2);
+                    ingredientText3.add(tf3);
+                }
+                else
+                {
+                    ingredientText1.set(i,tf1);
+                    ingredientText2.set(i,tf2);
+                    ingredientText3.set(i,tf3);
+                }
             }
         }
 
@@ -544,9 +561,18 @@ public class RecipeWindow{
     public void saveData()
     {
         formVerify();
+
         if(markDescription&&tf_Preparation!=null)
         {
+        	formerServings = this.servings;
             this.servings=Integer.parseInt(tf_Serveing.getText());
+            for(int i = 0;i<ingredientText1.size();i++) {
+            	DecimalFormat df1=new DecimalFormat("0.0000");
+            	DecimalFormat df2=new DecimalFormat("0.0");
+            	ingredients.get(i).setNum(Double.parseDouble(df2.format(ingredients.get(i).getNum()*
+            			Double.parseDouble(df1.format((float)this.servings/(float)this.formerServings)))));
+            }
+            formerServings = this.servings;
             this.cookingTime=Integer.parseInt(tf_Cookingtime.getText());
             this.preparationTime=Integer.parseInt(tf_Preparation.getText());
             this.description=tf_Description.getText();
@@ -643,8 +669,6 @@ public class RecipeWindow{
         }
         if(message.size()>0)
             alertForm(message);
-        for(int i=0;i<message.size();i++)
-            System.out.println(message.get(i));
     }
 
     public void alertForm(LinkedList<String> message)

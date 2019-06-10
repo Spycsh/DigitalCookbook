@@ -350,7 +350,6 @@ public class WindowController extends Application {
         		}
         	}
         }
-        System.out.println(alertForbid);
         if(alertForbid == 0)
 	        if((forbidInfo.size()!=0)) {
 	  
