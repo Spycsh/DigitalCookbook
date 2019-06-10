@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2b44ddb-5bf0-46cc-85ec-4d7dfd7949fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/PixivCookbook/ForbiddenPair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$10.class" afterDir="false" />
@@ -27,12 +28,11 @@
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/View/RecipeWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/View/RecipeWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Model/SQL_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Model/SQL_test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/EditForbiddenEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/EditForbiddenEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Model/SQL_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Model/SQL_test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="611" column="22" lean-forward="true" selection-start-line="611" selection-start-column="22" selection-end-line="611" selection-end-column="22" />
+            <state relative-caret-position="1101">
+              <caret line="801" column="41" selection-start-line="801" selection-start-column="41" selection-end-line="801" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5338#5339#0" expanded="true" />
@@ -68,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/EditForbiddenEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="38" column="58" lean-forward="true" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
+            <state relative-caret-position="170">
+              <caret line="43" column="110" lean-forward="true" selection-start-line="43" selection-start-column="110" selection-end-line="43" selection-end-column="110" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,29 +80,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2243">
-              <caret line="16" column="87" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="87" />
+            <state relative-caret-position="348">
+              <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#456#477#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="661" column="41" selection-start-line="661" selection-start-column="41" selection-end-line="661" selection-end-column="41" />
-              <folding>
-                <element signature="e#1357#1369#0" expanded="true" />
-                <element signature="e#1422#1428#0" expanded="true" />
-                <element signature="e#1911#1922#0" expanded="true" />
-                <element signature="e#1990#2001#0" expanded="true" />
-                <element signature="e#2069#2080#0" expanded="true" />
-                <element signature="e#2141#2152#0" expanded="true" />
-                <element signature="e#23807#23815#0" expanded="true" />
+                <element signature="e#486#501#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,35 +93,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Model/SQL_test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1368">
-              <caret line="72" column="38" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PixivCookbook/SQL_test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="268" column="67" selection-start-line="268" selection-start-column="67" selection-end-line="268" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Model/JunitTestSQL_testTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+            <state relative-caret-position="397">
+              <caret line="34" column="67" lean-forward="true" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -181,6 +136,7 @@
       <find>getIngredients</find>
       <find>setMinHeight</find>
       <find>delete</find>
+      <find>data</find>
     </findStrings>
     <replaceStrings>
       <replace>setContent</replace>
@@ -204,9 +160,11 @@
         <option value="$PROJECT_DIR$/src/PixivCookbook/View/index.css" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/View/Main.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" />
-        <option value="$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java" />
+        <option value="$PROJECT_DIR$/src/PixivCookbook/Controller/ForbiddenPair.java" />
+        <option value="$PROJECT_DIR$/src/PixivCookbook/ForbiddenPair.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/Controller/EditForbiddenEvent.java" />
+        <option value="$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/Model/SQL_test.java" />
       </list>
     </option>
@@ -350,7 +308,7 @@
       <module name="PixivCookbook" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="PixivCookbook.Controller.*" />
+          <option name="PATTERN" value="PixivCookbook.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -436,7 +394,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124599000" />
+    <option name="totallyTimeSpent" value="127393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
@@ -588,13 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Step.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -606,13 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -649,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/JunitRecipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/CookBookApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-969">
@@ -686,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/SQL_test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="268" column="67" selection-start-line="268" selection-start-column="67" selection-end-line="268" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Model/JunitTestSQL_testTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -700,21 +630,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Step.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2243">
-          <caret line="16" column="87" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="87" />
+        <state relative-caret-position="152">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/JunitRecipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#456#477#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/SQL_test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="268" column="67" selection-start-line="268" selection-start-column="67" selection-end-line="268" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/ForbiddenPair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#486#487#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/EditForbiddenEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="38" column="58" lean-forward="true" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
+        <state relative-caret-position="170">
+          <caret line="43" column="110" lean-forward="true" selection-start-line="43" selection-start-column="110" selection-end-line="43" selection-end-column="110" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -723,8 +694,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="611" column="22" lean-forward="true" selection-start-line="611" selection-start-column="22" selection-end-line="611" selection-end-column="22" />
+        <state relative-caret-position="1101">
+          <caret line="801" column="41" selection-start-line="801" selection-start-column="41" selection-end-line="801" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5338#5339#0" expanded="true" />
@@ -735,10 +706,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#486#501#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Model/SQL_test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        <state relative-caret-position="397">
+          <caret line="34" column="67" lean-forward="true" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
         </state>
       </provider>
     </entry>

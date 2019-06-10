@@ -1,5 +1,6 @@
 package PixivCookbook.Controller;
 
+import PixivCookbook.ForbiddenPair;
 import PixivCookbook.Ingredient;
 import PixivCookbook.Model.SQL_test;
 import PixivCookbook.Recipe;
@@ -17,7 +18,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -798,7 +798,7 @@ public class WindowController extends Application {
     }
     public void initEditForbidden(ForbiddenEditWindow forw,Stage forbiddenStage,SQL_test model)
     {
-        LinkedList<Pair<String,String>> data;
+        LinkedList<ForbiddenPair> data;
         data=model.getAllForbiddenPair();
         EditForbiddenEvent editFor = new EditForbiddenEvent();
         forw.data=data;

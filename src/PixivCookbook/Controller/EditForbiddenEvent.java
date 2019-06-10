@@ -1,11 +1,13 @@
 package PixivCookbook.Controller;
 
+import PixivCookbook.ForbiddenPair;
 import PixivCookbook.Model.SQL_test;
 import PixivCookbook.View.ForbiddenEditWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import javafx.util.Pair;
+
+import java.util.Arrays;
 
 public class EditForbiddenEvent
 {
@@ -33,11 +35,13 @@ public class EditForbiddenEvent
                         int j=temp;
                         //for(int j=0;j<forW.forbidenText1.size();j++)
                         {
+                            int id = forW.data.get(j).getId();
                             s1=forW.forbidenText1.get(j).getText();
                             s2=forW.forbidenText2.get(j).getText();
                             model.deleteAllForbiddenPair();
-                            model.addForbiddenPair(s1,s2);
-                            forW.data.set(j,new Pair<>(s1,s2));
+                            forW.data.set(j,new ForbiddenPair(s1,s2,forW.data.get(j).getId()));
+                            for(int k=0;k<forW.data.size();k++)
+                                model.addForbiddenPair(forW.data.get(k).getKey(),forW.data.get(k).getValue());
                         }
                     }
                     forW.mark.set(temp,1-forW.mark.get(temp));
@@ -51,7 +55,7 @@ public class EditForbiddenEvent
                     forW.data.remove(temp);
                     forW.mark.remove(temp);
                     forW.mark.add(1);
-                    if(forW.data.size()==0) forW.data.add(new Pair<>("a","b"));
+                    if(forW.data.size()==0) forW.data.add(new ForbiddenPair("a","b",0));
                     forW.refresh();
                     addForbiddenEvent(forW,forbiddenStage,model);
                 }
@@ -59,7 +63,21 @@ public class EditForbiddenEvent
             forW.addForbidden.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    forW.data.add(temp,new Pair<>("Deafault","Deafault"));
+                    int id=0;
+                    Integer a[]=new Integer[20000];
+                    int cnt=0;
+                    for(int j=0;j<forW.data.size();j++)
+                    {
+                        a[cnt++]=forW.data.get(j).getId();
+                    }
+                    Arrays.sort(a,0,cnt);
+                    for(int j=0;j<cnt;j++)
+                    {
+                        if(id!=a[j]) break;
+                        id++;
+                    }
+                    //System.out.println(id);
+                    forW.data.add(temp,new ForbiddenPair("Deafault","Deafault",id));
                     forW.mark.add(temp,1);
                     forW.refresh();
                     addForbiddenEvent(forW,forbiddenStage,model);

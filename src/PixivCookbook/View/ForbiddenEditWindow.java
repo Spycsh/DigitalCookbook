@@ -1,12 +1,12 @@
 package PixivCookbook.View;
 
+import PixivCookbook.ForbiddenPair;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.util.Pair;
 
 import java.util.LinkedList;
 
@@ -14,7 +14,7 @@ public class ForbiddenEditWindow{
     int posy=0;
     int lineheight=50;
     int center=550-160;
-    public LinkedList<Pair<String,String>> data = new LinkedList<Pair<String,String>>();
+    public LinkedList<ForbiddenPair> data = new LinkedList<ForbiddenPair>();
     public Pane pane = new Pane();
     public ScrollPane spane = new ScrollPane();
     public LinkedList<Button> editForbidden = new LinkedList<Button>();
@@ -54,6 +54,7 @@ public class ForbiddenEditWindow{
         editForbidden=new LinkedList<Button>();
         deleteForbidden=new LinkedList<Button>();
         addForbidden = new LinkedList<Button>();
+        savedata();
         posy=0;
         lineheight=50;
         center=620-160;
@@ -152,6 +153,15 @@ public class ForbiddenEditWindow{
             deleteForbidden.add(button);
             pane.getChildren().add(button);
             posv=spane.getVvalue();
+        }
+    }
+    public void savedata()
+    {
+        for(int i=0;i<forbidenText1.size();i++)
+        {
+            if(i>=data.size()) break;
+            data.get(i).setKey(forbidenText1.get(i).getText());
+            data.get(i).setValue(forbidenText2.get(i).getText());
         }
     }
 

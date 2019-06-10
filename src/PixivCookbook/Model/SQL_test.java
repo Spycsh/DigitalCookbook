@@ -1,10 +1,10 @@
 package PixivCookbook.Model;
 
 import PixivCookbook.Controller.WindowController;
+import PixivCookbook.ForbiddenPair;
 import PixivCookbook.Ingredient;
 import PixivCookbook.Recipe;
 import PixivCookbook.Step;
-import javafx.util.Pair;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -520,8 +520,8 @@ public class SQL_test {
 		return matchedRecipeIdList;
 	}
 
-	public LinkedList<Pair<String,String>> getAllForbiddenPair() {
-		LinkedList<Pair<String,String>> matchedRecipeIdList = new LinkedList<Pair<String,String>>();
+	public LinkedList<ForbiddenPair> getAllForbiddenPair() {
+		LinkedList<ForbiddenPair> matchedRecipeIdList = new LinkedList<ForbiddenPair>();
 		PreparedStatement psql;
 		try {
 			psql = this.connect.prepareStatement("select * from DefaultNotAllowedPair"
@@ -529,9 +529,10 @@ public class SQL_test {
 
 			ResultSet resultSet = psql.executeQuery();
 			while(resultSet.next()) {
+				int id = resultSet.getInt("DefaultNotAllowedPair_id");
 				String first = resultSet.getString("ForbidIngredient1");
 				String second = resultSet.getString("ForbidIngredient2");
-				matchedRecipeIdList.add(new Pair<>(first,second));
+				matchedRecipeIdList.add(new ForbiddenPair(first,second,id));
 			}
 
 		} catch (SQLException e) {
@@ -542,17 +543,18 @@ public class SQL_test {
 	}
 
 	public void deleteAllForbiddenPair() {
-//		PreparedStatement psql;
-//		try {
-//			psql = this.connect.prepareStatement("DELETE FROM DefaultNotAllowedPair"
-//			);
-//
-//			ResultSet resultSet = psql.executeQuery();
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		PreparedStatement psql;
+		try {
+			psql = this.connect.prepareStatement("delete from defaultnotallowedpair "
+			);
+
+			psql.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+
 }
 
