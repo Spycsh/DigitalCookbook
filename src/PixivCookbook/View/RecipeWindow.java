@@ -556,7 +556,6 @@ public class RecipeWindow{
             {
                 if(ingredients.size()<=i) break;
                 ingredients.get(i).setName(ingredientText3.get(i).getText());
-                ingredients.get(i).setNum(Double.parseDouble(ingredientText1.get(i).getText()));
                 ingredients.get(i).setUnit(ingredientText2.get(i).getText());
             }
         if(stepText!=null)
@@ -600,9 +599,12 @@ public class RecipeWindow{
             {
                 wrongIngredientnum[i] = false;
                 if (!isDouble(ingredientText1.get(i).getText())) {
-                    message.add("Ingredient "+i+1+": Ingredient number can only be rational number!");
+                	int position = i+1;
+                    message.add("Ingredient "+position+": Ingredient number can only be rational number!");
                     wrongIngredientnum[i] = true;
-                    ingredientText1.get(i).setText("1");
+                }
+                if(!wrongIngredientnum[i]) {
+                	ingredients.get(i).setNum(Double.parseDouble(ingredientText1.get(i).getText()));
                 }
             }
             for(int i=0;i<ingredientText2.size();i++)
