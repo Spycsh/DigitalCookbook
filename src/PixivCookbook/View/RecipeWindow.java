@@ -41,8 +41,8 @@ public class RecipeWindow{
     
     public LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
     public LinkedList<Step> step = new LinkedList<Step>();
-    public double preparationTime=0;
-    public double cookingTime=0;
+    public int preparationTime=0;
+    public int cookingTime=0;
     public int servings=0;
     public boolean favorite = false;
 
@@ -68,7 +68,6 @@ public class RecipeWindow{
         pane.setMinWidth(1375);
         pane.getStyleClass().add("root");
         //primaryStage.setTitle("Hello World");
-        System.out.println();
         spane = new ScrollPane();
         spane.setMinHeight(900);
         spane.setContent(pane);
@@ -252,7 +251,7 @@ public class RecipeWindow{
             tf_Description.setLayoutY(posy);
             pane.getChildren().add(tf_Description);
             Label prepaLable = new Label("Preparation Time:");
-            tf_Preparation = new TextField(Double.toString(preparationTime));
+            tf_Preparation = new TextField(Integer.toString(preparationTime));
             prepaLable.setLayoutX(center);
             posy+=lineheight;
             prepaLable.setLayoutY(posy+8);
@@ -262,7 +261,7 @@ public class RecipeWindow{
             tf_Preparation.setLayoutY(posy);
             pane.getChildren().add(tf_Preparation);
             Label cookLabel = new Label("Cook Time:");
-            tf_Cookingtime = new TextField(Double.toString(cookingTime));
+            tf_Cookingtime = new TextField(Integer.toString(cookingTime));
             cookLabel.setLayoutX(center);
             posy+=lineheight;
             cookLabel.setLayoutY(posy+8);
@@ -309,7 +308,7 @@ public class RecipeWindow{
             prepaLable.getStyleClass().add("content");
             pane.getChildren().add(prepaLable);
             Label prepaLabel = new Label();
-            prepaLabel.setText(Double.toString(preparationTime));
+            prepaLabel.setText(Integer.toString(preparationTime));
             prepaLabel.setLayoutX(center+200);
             prepaLabel.setLayoutY(posy);
             prepaLabel.getStyleClass().add("content");
@@ -321,7 +320,7 @@ public class RecipeWindow{
             cookLabel.getStyleClass().add("content");
             pane.getChildren().add(cookLabel);
             Label cooLabel = new Label();
-            cooLabel.setText(Double.toString(cookingTime));
+            cooLabel.setText(Integer.toString(cookingTime));
             cooLabel.setLayoutX(center+200);
             cooLabel.setLayoutY(posy);
             cooLabel.getStyleClass().add("content");
@@ -541,28 +540,18 @@ public class RecipeWindow{
                 pane.getChildren().add(label);
             }
         }
-//        star.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                markDescription=!markDescription;
-//                markStep=!markStep;
-//                markName=!markName;
-//                markImage=!markImage;
-//                markIngredient=!markIngredient;
-//                refresh();
-//            }
-//        });
     }
     public void saveData()
     {
+        formVerify();
         if(markDescription&&tf_Preparation!=null)
         {
             this.servings=Integer.parseInt(tf_Serveing.getText());
-            this.cookingTime=Double.parseDouble(tf_Cookingtime.getText());
-            this.preparationTime=Double.parseDouble(tf_Preparation.getText());
+            this.cookingTime=Integer.parseInt(tf_Cookingtime.getText());
+            this.preparationTime=Integer.parseInt(tf_Preparation.getText());
             this.description=tf_Description.getText();
         }
-        if(ingredientText3.size()>0)
+        if(ingredientText3!=null)
             for(int i=0;i<ingredientText3.size();i++)
             {
                 if(ingredients.size()<=i) break;
@@ -570,11 +559,137 @@ public class RecipeWindow{
                 ingredients.get(i).setNum(Double.parseDouble(ingredientText1.get(i).getText()));
                 ingredients.get(i).setUnit(ingredientText2.get(i).getText());
             }
-        if(stepText.size()>0)
+        if(stepText!=null)
             for(int i=0;i<stepText.size();i++)
             {
                 if(step.size()<=i) break;
                 step.get(i).setContent(stepText.get(i).getText());
             }
     }
+
+    public void formVerify()
+    {
+        boolean wrongServe = false;
+        boolean wrongcookingTime = false;
+        boolean wrongpreparationTime = false;
+        boolean longNmae = false;
+        boolean wrongIngredientnum[];
+        boolean longDescription=false;
+        boolean longIngredientname[]=null;
+        boolean longIngredientunit[]=null;
+        boolean longStep[]=null;
+        LinkedList<String> message = new LinkedList<String>();
+        if(tf_RecipeName!=null)
+            if(tf_RecipeName.getText().length()>20)
+            {
+                longDescription = true;
+                message.add("You stupid guy ! "+"Recipe Name is too long!");
+                tf_RecipeName.setText(tf_RecipeName.getText().substring(0,19));
+                this.name=tf_RecipeName.getText().substring(0,19);
+            }
+        if(markDescription&&tf_Description!=null) {
+            if (tf_Description.getText().length() > 30) {
+                longDescription = true;
+                message.add("Description Name is too long!");
+                tf_RecipeName.setText(tf_Description.getText().substring(0, 29));
+            }
+            if (!isInt(tf_Serveing.getText())) {
+                message.add("Servings can only be integer!");
+                wrongServe = true;
+                tf_Serveing.setText("1");
+            }
+            if (!isInt(tf_Preparation.getText())) {
+                message.add("Preparation time can only be integer!");
+                wrongpreparationTime = true;
+                tf_Preparation.setText("60");
+            }
+            if (!isInt(tf_Cookingtime.getText())) {
+                message.add("Cooking time can only be integer!");
+                wrongcookingTime = true;
+                tf_Cookingtime.setText("60");
+            }
+        }
+        if(markIngredient&&ingredientText1!=null)
+        {
+            wrongIngredientnum=new boolean[ingredientText1.size()];
+            longIngredientname=new boolean[ingredientText1.size()];
+            longIngredientunit=new boolean[ingredientText1.size()];
+            for(int i=0;i<ingredientText1.size();i++)
+            {
+                wrongIngredientnum[i] = false;
+                if (!isDouble(ingredientText1.get(i).getText())) {
+                    message.add("Ingredient "+i+1+": Ingredient number can only be rational number!");
+                    wrongIngredientnum[i] = true;
+                    ingredientText1.get(i).setText("1");
+                }
+            }
+            for(int i=0;i<ingredientText2.size();i++)
+            {
+                longIngredientunit[i]=false;
+                if(ingredientText2.get(i).getText().length()>15)
+                {
+                    message.add("Ingredient "+i+1+": Ingredient unit is too long!");
+                    longIngredientunit[i] = true;
+                    ingredientText2.get(i).setText(ingredientText2.get(i).getText().substring(0,14));
+                }
+            }
+            for(int i=0;i<ingredientText3.size();i++)
+            {
+                longIngredientname[i]=false;
+                if(ingredientText3.get(i).getText().length()>30)
+                {
+                    message.add("Ingredient "+i+1+": Ingredient name is too long!");
+                    longIngredientname[i] = true;
+                    ingredientText3.get(i).setText(ingredientText3.get(i).getText().substring(0,29));
+                }
+            }
+        }
+        if(markStep&&stepText!=null)
+        {
+            longStep=new boolean[stepText.size()];
+            for(int i=0;i<stepText.size();i++)
+            {
+                if(stepText.get(i).getText().length()>90)
+                {
+                    message.add("Step "+i+1+" is too long");
+                    stepText.get(i).setText(stepText.get(i).getText().substring(0,89));
+                    longStep[i]=true;
+                }
+            }
+        }
+        if(message.size()>0)
+            alertForm(message);
+        for(int i=0;i<message.size();i++)
+            System.out.println(message.get(i));
+    }
+
+    public void alertForm(LinkedList<String> message)
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Form varify");
+        alert.setHeaderText("The data you type in have some errors.");
+        String s="";
+        for(int i=0;i<message.size();i++)
+        {
+            s+="You stupid guy ! ";
+            if(i==message.size()-1)
+                s+=(message.get(i));
+            else s+=(message.get(i)+"\n");
+        }
+        alert.setContentText(s);
+        alert.showAndWait();
+    }
+
+    public boolean isInt(String s)
+    {
+        Pattern pattern = Pattern.compile("[0-9]*");
+        return pattern.matcher(s).matches();
+    }
+
+    public boolean isDouble(String s)
+    {
+        Pattern pattern = Pattern.compile("[0-9]*\\.?[0-9]*");
+        return pattern.matcher(s).matches();
+    }
+
 }

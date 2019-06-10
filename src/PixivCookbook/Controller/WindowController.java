@@ -4,6 +4,7 @@ import PixivCookbook.Ingredient;
 import PixivCookbook.Model.SQL_test;
 import PixivCookbook.Recipe;
 import PixivCookbook.Step;
+import PixivCookbook.View.ForbiddenEditWindow;
 import PixivCookbook.View.Main;
 import PixivCookbook.View.RecipeWindow;
 import javafx.application.Application;
@@ -19,9 +20,6 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import org.omg.CORBA.Current;
-
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +34,7 @@ public class WindowController extends Application {
     RecipeWindow recipeWindow = new RecipeWindow();
     Stage primaryStage = new Stage();
     Stage editStage = new Stage();
+    Stage forbiddenStage = new Stage();
     Main main;
     
     
@@ -44,7 +43,26 @@ public class WindowController extends Application {
     static int alertDelete = 0;
     static int alertForbid = 0;
     static Alert alert;
-    
+    @Override
+    public void start(Stage primaryStage) {
+        this.model.run();
+        primaryStage = this.primaryStage;
+        recipe = this.model.getRecipesForMainPage();
+        main = new Main();
+        initMain(main);
+        mainScene = main.getScene();
+        primaryStage.setScene(mainScene);  //main interface
+        primaryStage.show();
+        recipeWindow= new RecipeWindow();
+        editScene = recipeWindow.getScene();
+        editStage.setScene(editScene);
+        ForbiddenEditWindow forbidden = new ForbiddenEditWindow();
+        Scene forbiddenScene= forbidden.getScene();
+        forbiddenStage.setScene(forbiddenScene);
+        initEditForbidden(forbidden,forbiddenStage);
+        //primaryStage.close();
+        //forbiddenStage.show();
+    }
     public static void alertBoxDuplicate() {
     	alert = new Alert(Alert.AlertType.ERROR);
     	alert.setTitle("Warning");
@@ -68,7 +86,7 @@ public class WindowController extends Application {
     	
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
-    	alertDelete = 1;
+    		alertDelete = 1;
     	}else{
 
     	}
@@ -107,7 +125,7 @@ public class WindowController extends Application {
     	
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
-    		alertForbid = 1;
+    		alertForbid = 0;
     	}else {
     		
     	}
@@ -126,23 +144,6 @@ public class WindowController extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    @Override
-    public void start(Stage primaryStage) {
-        this.model.run();
-        primaryStage = this.primaryStage;
-        recipe = this.model.getRecipesForMainPage();
-        main = new Main();
-        initMain(main);
-        mainScene = main.getScene();
-        primaryStage.setScene(mainScene);  //main interface
-        primaryStage.show();
-        recipeWindow= new RecipeWindow();
-        editScene = recipeWindow.getScene();
-        editStage.setScene(editScene);
-        //scene = recipeWindow.getScene();
-//        scene.getStylesheets().add(WindowController.class.getResource("index.css").toExternalForm());
-//        //primaryStage.setScene(recipeWindow.getScene()); //edit interface
-    }
     public void initMain(Main main)
     {
         if(main.temp!=null)
@@ -151,7 +152,7 @@ public class WindowController extends Application {
         addRecommandButtonAction(main);
         addSearchButtonAction(main);
         addTempAction(recipe,main);
-        
+
         addAddAction(recipe,main );
         //main.getScene().getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
     }
@@ -185,7 +186,8 @@ public class WindowController extends Application {
             @Override
             public void handle(ActionEvent event) {
                 //System.out.println(main.favorite);
-                main.favorite=!main.favorite;
+                //main.favorite=!main.favorite;
+                forbiddenStage.show();
                 initMain(main);
             }
         });
@@ -353,8 +355,8 @@ public class WindowController extends Application {
             	if(rwin.markName == false) {
 	                double posx=editStage.getX();
 	                double posy=editStage.getY();
-	                rwin.markName=!rwin.markName;
 	                rwin.saveData();
+	                rwin.markName=!rwin.markName;
 	                rwin.refresh();
 	                initRecipeWindow(rwin);
 	                editStage.setX(posx);;
@@ -362,6 +364,7 @@ public class WindowController extends Application {
             	}else {
             		double posx=editStage.getX();
                     double posy=editStage.getY();
+                    rwin.saveData();
             		String newName=rwin.tf_RecipeName.getText();
             		
             		if(!rwin.name.matches("Default")) {
@@ -385,16 +388,16 @@ public class WindowController extends Application {
             		
             		if(alertSwitch == 1) {
             			alertSwitch = 0;
+                        rwin.saveData();
             			rwin.markName=!rwin.markName;
-            			rwin.saveData();
                         rwin.refresh();
                         initRecipeWindow(rwin);
                         editStage.setX(posx);;
                         editStage.setY(posy);
             		}else{
 	            		rwin.name = newName;
+                        rwin.saveData();
 	            		rwin.markName=!rwin.markName;
-	            		rwin.saveData();
 	                    rwin.refresh();
 	                    initRecipeWindow(rwin);
 	                    editStage.setX(posx);;
@@ -511,9 +514,8 @@ public class WindowController extends Application {
             public void handle(ActionEvent event) {
                 double posx=editStage.getX();
                 double posy=editStage.getY();
-                
-                rwin.markIngredient=!rwin.markIngredient;
                 rwin.saveData();
+                rwin.markIngredient=!rwin.markIngredient;
                 rwin.refresh();
                 
                 rwin.saveData();
@@ -534,6 +536,7 @@ public class WindowController extends Application {
 	                }
                 }
                 if(alertForbid == 1) { 
+                	
                 	alertForbid = 0;
 
                 initRecipeWindow(rwin);
@@ -561,7 +564,7 @@ public class WindowController extends Application {
             public void handle(ActionEvent event) {
                 double posx=editStage.getX();
                 double posy=editStage.getY();
-                //rwin.saveData();
+                rwin.saveData();
                 rwin.markStep=!rwin.markStep;
                 rwin.saveData();
                 rwin.refresh();
@@ -726,7 +729,12 @@ public class WindowController extends Application {
                      
                  });
     }
-    
+    public void initEditForbidden(ForbiddenEditWindow forw,Stage forbiddenStage)
+    {
+        EditForbiddenEvent editFor = new EditForbiddenEvent();
+        editFor.addForbiddenEvent(forw,forbiddenStage);
+    }
+
     public void addEditImg(RecipeWindow rwin) {
 
     }

@@ -28,7 +28,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true",
-						"root", "fuck");
+						"root", "Fuckyou741@ttg"); //Fuckyou741@ttg
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -207,7 +207,7 @@ public class SQL_test {
 		}
 	}
 
-	public void savePreparationtime(int id, double nerPreparationtime) {
+	public void savePreparationtime(int id, int nerPreparationtime) {
 		Statement statement;
 		try {
 			statement = this.connect.createStatement();
@@ -219,7 +219,7 @@ public class SQL_test {
 		}
 	}
 
-	public void saveCooktime(int id, double nerCooktime) {
+	public void saveCooktime(int id, int nerCooktime) {
 		Statement statement;
 		try {
 			statement = this.connect.createStatement();

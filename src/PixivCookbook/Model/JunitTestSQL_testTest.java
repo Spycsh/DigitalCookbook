@@ -2,10 +2,7 @@ package PixivCookbook.Model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,8 +14,7 @@ import PixivCookbook.Ingredient;
 import PixivCookbook.Recipe;
 import PixivCookbook.Step;
 
-class JUnitSQL_test {
-	
+class JunitTestSQL_testTest {
 	SQL_test aSql_test;
 	Recipe aRecipe;
 	Ingredient aIngredient;
