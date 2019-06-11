@@ -567,6 +567,8 @@ public class RecipeWindow{
         	formerServings = this.servings;
             this.servings=Integer.parseInt(tf_Serveing.getText());
             for(int i = 0;i<ingredientText1.size();i++) {
+            	if(i>=ingredients.size())
+            		break;
             	DecimalFormat df1=new DecimalFormat("0.0000");
             	DecimalFormat df2=new DecimalFormat("0.0");
             	ingredients.get(i).setNum(Double.parseDouble(df2.format(ingredients.get(i).getNum()*
@@ -618,11 +620,12 @@ public class RecipeWindow{
         }
         if(markIngredient&&ingredientText1!=null)
         {
-            wrongIngredientnum=new boolean[ingredientText1.size()];
-            longIngredientname=new boolean[ingredientText1.size()];
-            longIngredientunit=new boolean[ingredientText1.size()];
+            wrongIngredientnum=new boolean[ingredients.size()];
+            longIngredientname=new boolean[ingredients.size()];
+            longIngredientunit=new boolean[ingredients.size()];
             for(int i=0;i<ingredients.size();i++)
             {
+            	if(i>=ingredientText1.size()) break;
                 wrongIngredientnum[i] = false;
                 if (!isDouble(ingredientText1.get(i).getText())) {
                 	int position = i+1;
@@ -635,6 +638,7 @@ public class RecipeWindow{
             }
             for(int i=0;i<ingredients.size();i++)
             {
+            	if(i>=ingredientText2.size()) break;
                 longIngredientunit[i]=false;
                 if(ingredientText2.get(i).getText().length()>15)
                 {
@@ -645,6 +649,7 @@ public class RecipeWindow{
             }
             for(int i=0;i<ingredients.size();i++)
             {
+            	if(i>=ingredientText3.size()) break;
                 longIngredientname[i]=false;
                 if(ingredientText3.get(i).getText().length()>30)
                 {
@@ -656,9 +661,10 @@ public class RecipeWindow{
         }
         if(markStep&&stepText!=null)
         {
-            longStep=new boolean[stepText.size()];
+            longStep=new boolean[step.size()];
             for(int i=0;i<step.size();i++)
             {
+            	if(i>=stepText.size()) break;
                 if(stepText.get(i).getText().length()>90)
                 {
                     message.add("Step "+i+1+" is too long");

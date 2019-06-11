@@ -39,6 +39,7 @@ public class WindowController extends Application {
     Stage editStage = new Stage();
     Stage forbiddenStage = new Stage();
     Main main;
+	private boolean displayForbidInfo = true;
     
     
     static int id;
@@ -180,8 +181,11 @@ public class WindowController extends Application {
     {
         addHomeAction(rwin);
         addEditAction(rwin);
-        addForbidAction(rwin);
-
+        
+        if(displayForbidInfo  == true) {
+	        addForbidAction(rwin);
+	        displayForbidInfo = false;
+        }
     }
     public void addRecommandButtonAction(Main main) {
     	//List<Recipe> recipe = model.getRecipesForMainPage();
@@ -209,6 +213,14 @@ public class WindowController extends Application {
                 //main.favorite=!main.favorite;
                 forbiddenStage.show();
                 initMain(main);
+                editStage.close();
+                primaryStage.show();
+                String searchName = main.search.getText();
+                main.dropAllImageviews();
+                List<Recipe> result = model.searchAllMatchedRecipes(searchName);
+                main.initializeMainPage(result);
+                addTempAction(result,main);
+                addAddAction(result,main);
             }
         });
         main.favoriteButton2.setOnAction(new EventHandler<ActionEvent>() {
@@ -320,6 +332,7 @@ public class WindowController extends Application {
                 main.initializeMainPage(result);
                 addTempAction(result,main);
                 addAddAction(result,main);
+                displayForbidInfo = true;
             }
         });
         rmain.star.setOnAction(new EventHandler<ActionEvent>() {
@@ -508,9 +521,9 @@ public class WindowController extends Application {
 	                editStage.setX(posx);;
 	                editStage.setY(posy);             
             	}else { 	
-            		if(isInteger(rwin.tf_Serveing.getText()) && Integer.parseInt(rwin.tf_Serveing.getText()) == 0) {
+            		if(isInteger(rwin.tf_Serveing.getText()) && Integer.parseInt(rwin.tf_Serveing.getText()) <= 0) {
         
-            				alertWrongType_SB.append("Servings can't be 0!\n");
+            				alertWrongType_SB.append("Servings must be a positive integer!\n");
       
             			if(!isDouble(rwin.tf_Cookingtime.getText())|!isDouble(rwin.tf_Preparation.getText())) {
 	            			if(!isDouble(rwin.tf_Preparation.getText())) {
@@ -780,7 +793,7 @@ public class WindowController extends Application {
 						recipeWindow.imgPath = "img\\addImage.png";  // set default image
 						
 						recipeWindow.markDescription = false;
-		            	recipeWindow.markName = false;
+		            	recipeWindow.markName = true;
 		            	recipeWindow.markImage = false;
 		            	recipeWindow.markStep = false;
 		            	recipeWindow.markIngredient = false;
