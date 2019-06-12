@@ -1,4 +1,4 @@
-package PixivCookbook;
+package PixivCookbook.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,6 +7,9 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import PixivCookbook.Ingredient;
+import PixivCookbook.Recipe;
 
 class JunitRecipe {
 	Recipe aRecipe;
@@ -21,6 +24,10 @@ class JunitRecipe {
 	void tearDown() throws Exception {
 	}
 
+
+	/**
+	 * test add ingredient
+	 */
 	@Test
 	void testAddIngredient() {
 		aRecipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"));
@@ -31,15 +38,21 @@ class JunitRecipe {
 		assertEquals(aRecipe.getIngredients().get(2).toString(), "12.0 pieces stemmed, halved crosswise, and seeded dried red chilis");
 	}
 
+	/**
+	 * test add preparation step
+	 */
 	@Test
 	void testAddPreparationStep() {
 		aRecipe.addPreparationStep("Mix together cornstarch and 1 tbsp. of the soy sauce in a medium bowl.");
 		aRecipe.addPreparationStep("Add chicken, toss well, and set aside to marinate for 30 minutes.");
-		assertEquals(aRecipe.getSteps().get(0).toString(),"Mix together cornstarch and 1 tbsp. of the soy sauce in a medium bowl.");
-		assertEquals(aRecipe.getSteps().get(1).toString(),"Add chicken, toss well, and set aside to marinate for 30 minutes.");
+		assertEquals(aRecipe.getSteps().get(0).toString(),"Step1[content=Mix together cornstarch and 1 tbsp. of the soy sauce in a medium bowl.]");
+		assertEquals(aRecipe.getSteps().get(1).toString(),"Step2[content=Add chicken, toss well, and set aside to marinate for 30 minutes.]");
 		
 	}
 
+	/**
+	 * test change with serve
+	 */
 	@Test
 	void testChangeWithServe() {
 		aRecipe.addIngredient(new Ingredient("defaultName", 25.0, "defaultUnit"));

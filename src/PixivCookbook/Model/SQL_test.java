@@ -10,8 +10,12 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 /**
+ * this is the interface class dealing with database
+ * 
  * @author Ling Wei
- *
+ * @author Shen Yu
+ * @author Chen Sihan
+ * 
  */
 public class SQL_test {
 	private Connection connect;	
@@ -32,7 +36,7 @@ public class SQL_test {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true",
-						"root", "Fuckyou741@ttg"); //Fuckyou741@ttg
+						"root", "fuck"); //Fuckyou741@ttg
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {
@@ -46,6 +50,15 @@ public class SQL_test {
 		this.connect.close();
 	}
 	
+	/**
+	 * @param input
+	 * @param id
+	 * insert a given recipe to database
+	 * always use with assinID function
+	 * which given the max id of recipes in database
+	 * and insert the recipe as the (maxID+1) recipe
+	 * 
+	 */
 	public void addRecipetoDatabase(Recipe input,int id){
 		PreparedStatement psql;
 		try {
@@ -102,6 +115,10 @@ public class SQL_test {
 		return 1;
 	}
 	
+	/**
+	 * @param id
+	 * delete recipe by id
+	 */
 	public void deleteRecipefromDatabase(int id) {
 		PreparedStatement psql;
 		try {
@@ -115,6 +132,14 @@ public class SQL_test {
 		}
 	}
 	
+	
+	/**
+	 * @param input		// the recipe that the ingredient belongs to
+	 * @param id		// the ingredients
+	 * @throws SQLException
+	 * 
+	 * add ingredients by recipe id
+	 */
 	private void addIngredientstoDatabase(Recipe input,int id) throws SQLException {
 		PreparedStatement psql;
 		for(int i = 0; i<input.getIngredients().size();i++) {
@@ -128,6 +153,14 @@ public class SQL_test {
 		}
 	}
 	
+	/**
+	 * @param input  	// the list of ingredient
+	 * @param id  		// the recipe id
+	 * @throws SQLException
+	 * 
+	 * delete all ingredients first and insert into database a new one
+	 * 
+	 */
 	public void addIngredientstoDatabase(List<Ingredient> input,int id) throws SQLException {
 		PreparedStatement psql;
 		psql = this.connect.prepareStatement("delete from ingredient where recipe_id ='"+id+"'");
@@ -143,6 +176,15 @@ public class SQL_test {
 		}
 	}
 	
+	/**
+	 * @param input		// the recipe the steps belong to
+	 * @param id		// the recipe id
+	 * @throws SQLException
+	 * @throws SQLIntegrityConstraintViolationException
+	 * 
+	 * add steps by recipe id
+	 * 
+	 */
 	private void addStepstoDatabase(Recipe input,int id) throws SQLException,SQLIntegrityConstraintViolationException{
 		PreparedStatement psql;
 		for(int i = 0; i<input.getSteps().size();i++) {
@@ -154,6 +196,15 @@ public class SQL_test {
 		}
 	}
 	
+	/**
+	 * @param input		// the list of step of the recipe
+	 * @param id		// the recpie id
+	 * @throws SQLException
+	 * @throws SQLIntegrityConstraintViolationException
+	 * 
+	 * add steps to the given recipe
+	 * 
+	 */
 	public void addStepstoDatabase(List<Step> input,int id) throws SQLException,SQLIntegrityConstraintViolationException{
 		PreparedStatement psql;
 		psql = this.connect.prepareStatement("delete from preparation_step where recipe_id ='"+id+"'");
@@ -167,6 +218,13 @@ public class SQL_test {
 		}
 	}
 	
+	/**
+	 * @param id		// the recipe id
+	 * @param newName	// the new name
+	 * 
+	 * update the recipe name to be the given one
+	 * 
+	 */
 	public void saveRecipName(int id, String newName) {
 		Statement statement;
 		try {
@@ -187,6 +245,12 @@ public class SQL_test {
 		}
 	}
 	
+	/**
+	 * @param id				// recipe id
+	 * @param newDescription	// the new descrition of recipe
+	 * 
+	 * update the description of the given recipe
+	 */
 	public void saveDescription(int id, String newDescription) {
 		Statement statement;
 		try {
@@ -199,6 +263,13 @@ public class SQL_test {
 		}
 	}
 
+	/**
+	 * @param id			// the recipe id
+	 * @param newserving	// the new serving
+	 * 
+	 * update the serving of the given recipe
+	 * 
+	 */
 	public void saveServings(int id, double newserving) {
 		Statement statement;
 		try {
@@ -211,11 +282,18 @@ public class SQL_test {
 		}
 	}
 
-	public void savePreparationtime(int id, int nerPreparationtime) {
+	/**
+	 * @param id					// the recipe id
+	 * @param nerPreparationtime	// the new Preparation time
+	 * 
+	 * update the time of the given recipe
+	 * 
+	 */
+	public void savePreparationtime(int id, int newPreparationtime) {
 		Statement statement;
 		try {
 			statement = this.connect.createStatement();
-			String sql = "UPDATE cookbook.recipe SET preparationTime ='"+(int)nerPreparationtime+"'"+"WHERE recipe_id ='"+id+"'";
+			String sql = "UPDATE cookbook.recipe SET preparationTime ='"+(int)newPreparationtime+"'"+"WHERE recipe_id ='"+id+"'";
 			statement.execute(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -223,11 +301,17 @@ public class SQL_test {
 		}
 	}
 
-	public void saveCooktime(int id, int nerCooktime) {
+	/**
+	 * @param id			// the recipe id
+	 * @param newCooktime	// the new cook time
+	 * 
+	 * 
+	 */
+	public void saveCooktime(int id, int newCooktime) {
 		Statement statement;
 		try {
 			statement = this.connect.createStatement();
-			String sql = "UPDATE cookbook.recipe SET cookingTime ='"+(int)nerCooktime+"'"+"WHERE recipe_id ='"+id+"'";
+			String sql = "UPDATE cookbook.recipe SET cookingTime ='"+(int)newCooktime+"'"+"WHERE recipe_id ='"+id+"'";
 			statement.execute(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -235,6 +319,10 @@ public class SQL_test {
 		}
 	}
 
+	/**
+	 * @param id		// the recipe id
+	 * @param newPath	// the new path of the recipe
+	 */
 	public void saveImagePath(int id, String newPath) {
 		PreparedStatement psql;
 		try {
@@ -256,6 +344,10 @@ public class SQL_test {
 		}
 	}
 	
+	/**
+	 * @return 	// all the recipe names in the database as a list
+	 * 
+	 */
 	public List<String> getAllRecipeNamesfromDatabase(){
 		List<String> names = new LinkedList<String>();
 		Statement statement;
@@ -276,8 +368,8 @@ public class SQL_test {
 		
 	}
 	/**
-	 * @param id the id contained by the recipe that we are looking for
-	 * @return a recipe
+	 * @param id 	// the id contained by the recipe that we are looking for
+	 * @return the recipe
 	 */
 	public Recipe getRecipeBySearchfromDatabase(int id){
 		Statement statement;
@@ -303,7 +395,7 @@ public class SQL_test {
 	
 	
 	/**
-	 * @param id the id contained by ingredients that we are looking for
+	 * @param id 	// the id contained by ingredients that we are looking for
 	 * @return a list of ingredients
 	 */
 	public List<Ingredient> getIngredientsfromDatabase(int id){
@@ -328,7 +420,7 @@ public class SQL_test {
 	
 	
 	/**
-	 * @param id the id contained by steps that we are looking for
+	 * @param id 	// the id contained by steps that we are looking for
 	 * @return a list of steps
 	 */
 	public List<Step> getStepsfromDatabase(int id){
@@ -421,7 +513,6 @@ public class SQL_test {
 	}
 	
 	/**
-	 * @author Spycsh
 	 * @return the latest 12 recipes name for the main page
 	 * if less than 12 return all
 	 */
@@ -449,7 +540,6 @@ public class SQL_test {
 	}
 	
 	/**
-	 * @author Spycsh
 	 * @param p1 ForbidIngredient1
 	 * @param p2 ForbidIngredient2
 	 */
@@ -495,7 +585,6 @@ public class SQL_test {
 	}
 	
 	/**
-	 * @author Spycsh
 	 * @param p1
 	 * @return the list that the given ingredient cannot match
 	 */
