@@ -83,6 +83,9 @@ public class RecipeWindow{
         return scene;
     }
 
+    /**
+     * refresh the whole window
+     */
     public void refresh()
     {
         double posv=spane.getVvalue();

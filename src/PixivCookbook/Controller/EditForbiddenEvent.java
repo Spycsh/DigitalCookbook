@@ -11,6 +11,11 @@ import java.util.Arrays;
 
 public class EditForbiddenEvent
 {
+    /**
+     * @param forW
+     * @param forbiddenStage
+     * @param model
+     */
     public void addForbiddenEvent(ForbiddenEditWindow forW, Stage forbiddenStage, SQL_test model)
     {
         forW.home.setOnAction(new EventHandler<ActionEvent>() {
