@@ -5,24 +5,15 @@ import java.io.Serializable;
 /**
  * @author Ling Wei
  *
+ * entity class step
  */
 public class Step implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7024797642131895467L;
 	
 	private String content;
 	private int stepNumber;
 	
-	public int getStepNumber() {
-		return stepNumber;
-	}
-
-	public void setStepNumber(int stepNumber) {
-		this.stepNumber = stepNumber+1;
-	}
 
 	/**
 	 * constructor for class Step
@@ -34,21 +25,43 @@ public class Step implements Serializable {
 		setStepNumber(stepNumber); 
 	}
 
+
+
 	/**
-	 * default getter for the content of the step
-	 * @return the content of the step
+	 * @return the content
 	 */
 	public String getContent() {
 		return content;
 	}
 
+
+
 	/**
-	 * default setter for the content of the step
-	 * @param content input the content for the step
+	 * @param content the content to set
 	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+
+
+	/**
+	 * @return the stepNumber
+	 */
+	public int getStepNumber() {
+		return stepNumber;
+	}
+
+
+
+	/**
+	 * @param stepNumber the stepNumber to set
+	 */
+	public void setStepNumber(int stepNumber) {
+		this.stepNumber = stepNumber;
+	}
+
+
 
 	@Override
 	public String toString() {

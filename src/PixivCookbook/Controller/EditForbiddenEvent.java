@@ -1,7 +1,7 @@
 package PixivCookbook.Controller;
 
 import PixivCookbook.Model.ForbiddenPair;
-import PixivCookbook.Model.DBController;
+import PixivCookbook.Controller.DBController;
 import PixivCookbook.View.ForbiddenEditWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

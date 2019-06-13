@@ -7,16 +7,13 @@ import java.util.List;
 
 /**
  * @author Spycsh
- *
+ * entity class cookbook
+ * 
  */
 public class CookBook implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -7540360778235899360L;
-	/**
-	 * 
-	 */
+
 	private String cookBookName;
 	private List<Recipe> RecipeList = new LinkedList<Recipe>();
 
@@ -28,7 +25,10 @@ public class CookBook implements Serializable {
 		this.RecipeList.add(aRecipe);
 	}
 	
-	// search the exact Recipe
+	/**
+	 * @param recipeName
+	 * @return the exact recipe 
+	 */
 	public Recipe getRecipe(String recipeName) {
 		Recipe targetRecipe = null;
 		for (Recipe e : RecipeList) {
@@ -38,20 +38,32 @@ public class CookBook implements Serializable {
 		}
 		return targetRecipe;
 	}
-	
+
+	/**
+	 * @return the cookBookName
+	 */
 	public String getCookBookName() {
 		return cookBookName;
 	}
 
+	/**
+	 * @param cookBookName the cookBookName to set
+	 */
 	public void setCookBookName(String cookBookName) {
 		this.cookBookName = cookBookName;
 	}
 
+	/**
+	 * @return the recipeList
+	 */
 	public List<Recipe> getRecipeList() {
 		return RecipeList;
 	}
 
-	public void setRecipeList(LinkedList<Recipe> recipeList) {
+	/**
+	 * @param recipeList the recipeList to set
+	 */
+	public void setRecipeList(List<Recipe> recipeList) {
 		RecipeList = recipeList;
 	}
 

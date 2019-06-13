@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import PixivCookbook.Model.Ingredient;
 import PixivCookbook.Model.Recipe;
 import PixivCookbook.Model.Step;
-import PixivCookbook.Model.DBController;
+import PixivCookbook.Controller.DBController;
 
 /**
  * @author Spycsh
@@ -26,7 +26,7 @@ import PixivCookbook.Model.DBController;
  * 
  */
 @FixMethodOrder(MethodSorters.JVM)  // run the test function with given order
-class JunitTestSQL_testTest {
+public class JunitDBController {
 	DBController aSql_test;
 	Recipe aRecipe;
 	Ingredient aIngredient;
@@ -35,7 +35,7 @@ class JunitTestSQL_testTest {
 	
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 		aSql_test = new DBController();
 		aSql_test.run();
 		testRecipe = new Recipe("testRecipe","Shanghai dish" , 4);
@@ -43,16 +43,16 @@ class JunitTestSQL_testTest {
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {
+	public void tearDown() throws Exception {
 	}
 
 	@Test
-	void testRun() throws SQLException {
+	public void testRun() throws SQLException {
 		assertTrue(!aSql_test.getConnect().isClosed());
 	}
 
 	@Test
-	void testClose() throws SQLException {
+	public void testClose() throws SQLException {
 		aSql_test.getConnect().close();
 		assertTrue(aSql_test.getConnect().isClosed());
 	}
@@ -62,7 +62,7 @@ class JunitTestSQL_testTest {
 	 * test search by approximate name
 	 */
 	@Test
-	void testSearchAllMatchedRecipes() {
+	public void testSearchAllMatchedRecipes() {
 		List<Recipe> atestRecipeList = aSql_test.searchAllMatchedRecipes("ong");
 		List<Recipe> aRecipeList = new LinkedList<Recipe>() {{
 			add(aSql_test.getRecipeBySearchfromDatabase(1));  // Gong Bao Jiding
@@ -77,7 +77,7 @@ class JunitTestSQL_testTest {
 	 * if you set the recipe id to be 999, then the new one id will be 999+1
 	 */
 	@Test
-	void testAddRecipetoDatabase() {
+	public void testAddRecipetoDatabase() {
 		aSql_test.addRecipetoDatabase(testRecipe, 665);  // will be 666
 		aRecipe = aSql_test.getRecipeBySearchfromDatabase(666);
 		assertEquals(aRecipe.getRecipeName(), "testRecipe");
@@ -89,7 +89,7 @@ class JunitTestSQL_testTest {
 	 * the whole number of the recipes
 	 */
 	@Test
-	void testAssignID() {
+	public void testAssignID() {
 		int aID = aSql_test.assignID();
 		assertEquals(aID, aSql_test.getAllRecipeNamesfromDatabase().size());
 	}
@@ -101,7 +101,7 @@ class JunitTestSQL_testTest {
 	 * test update the name function
 	 */
 	@Test
-	void testSaveRecipName() throws InterruptedException {
+	public void testSaveRecipName() throws InterruptedException {
 		aSql_test.saveRecipName(1, "testRecipe_modified");
 		aRecipe = aSql_test.getRecipeBySearchfromDatabase(1);
 		assertEquals(aRecipe.getRecipeName(), "testRecipe_modified");
@@ -115,7 +115,7 @@ class JunitTestSQL_testTest {
 	 * test the update description function
 	 */
 	@Test
-	void testSaveDescription() {
+	public void testSaveDescription() {
 		aSql_test.saveDescription(1, "aaaaa");
 		aRecipe = aSql_test.getRecipeBySearchfromDatabase(1);
 		assertEquals(aRecipe.getCuisineName(), "aaaaa");
@@ -127,7 +127,7 @@ class JunitTestSQL_testTest {
 	 * test the save image path function
 	 */
 	@Test
-	void testSaveImagePath() {
+	public void testSaveImagePath() {
 		aSql_test.saveImagePath(1, "change.jpg");
 		aRecipe = aSql_test.getRecipeBySearchfromDatabase(1);
 		assertEquals(aRecipe.getImgAddress(), "change.jpg");
@@ -137,7 +137,7 @@ class JunitTestSQL_testTest {
 	 * test the get all recipe names from database
 	 */
 	@Test
-	void testGetAllRecipeNamesfromDatabase() {
+	public void testGetAllRecipeNamesfromDatabase() {
 		List<String> atestList= new LinkedList<String>() {{
 			add("Gong Bao Jiding");
 			add("Hong Shao Rou");
@@ -154,7 +154,7 @@ class JunitTestSQL_testTest {
 	 * test 
 	 */
 	@Test
-	void testGetRecipeBySearchfromDatabase() {
+	public void testGetRecipeBySearchfromDatabase() {
 		aRecipe = aSql_test.getRecipeBySearchfromDatabase(666);
 		assertEquals(aRecipe.getRecipeName(), "testRecipe");
 	}
@@ -163,7 +163,7 @@ class JunitTestSQL_testTest {
 	 * test get ingredient list from database
 	 */
 	@Test
-	void testGetIngredientsfromDatabase() {
+	public void testGetIngredientsfromDatabase() {
 		List<Ingredient> aIngredientList = aSql_test.getIngredientsfromDatabase(1);
 		assertEquals(aIngredientList.get(0).getName(),"Chiangang vinegar");
 	}
@@ -172,7 +172,7 @@ class JunitTestSQL_testTest {
 	 * test get step list from database
 	 */
 	@Test
-	void testGetStepsfromDatabase() {
+	public void testGetStepsfromDatabase() {
 		List<Step> aStepList = aSql_test.getStepsfromDatabase(1);  // recipe 1's step
 		assertEquals(aStepList.get(3).getContent(),"Set aside." );
 	}
@@ -187,7 +187,7 @@ class JunitTestSQL_testTest {
 	 * "Hong Shao rou"
 	 */
 	@Test
-	void testSearchAllMatchedID() {
+	public void testSearchAllMatchedID() {
 		List<Integer> aList = aSql_test.searchAllMatchedID("ong");
 		List<Integer> atestList = new LinkedList<Integer>() {{
 			add(1);
@@ -198,7 +198,7 @@ class JunitTestSQL_testTest {
 	
 	// Random get, cannot test
 //	@Test
-//	void testGetRecipesForMainPage() {
+//	public void testGetRecipesForMainPage() {
 //		List<Recipe> aList= aSql_test.getRecipesForMainPage();   // list desc, so first element with index 0 is testRecipe!
 //		assertEquals(aList.get(0).getRecipeName(),"testRecipe");
 //		
@@ -208,7 +208,7 @@ class JunitTestSQL_testTest {
 	 * test add forbidden pair
 	 */
 	@Test
-	void testAddForbiddenPair() {
+	public void testAddForbiddenPair() {
 		aSql_test.addForbiddenPair("f_2", "f_1");
 		LinkedList<String> aList = new LinkedList<String>();
 		aList.add("f_2");
@@ -219,7 +219,7 @@ class JunitTestSQL_testTest {
 	 * test add forbidden pair to database
 	 */
 	@Test
-	void testGetForbiddenPair() {
+	public void testGetForbiddenPair() {
 		LinkedList<String> alist = new LinkedList<String>();
 		alist.add("persimmon");
 		assertEquals(aSql_test.getForbiddenPair("milk"),alist);

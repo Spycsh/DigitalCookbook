@@ -77,7 +77,7 @@ public class RecipeWindow{
         refresh();
         //System.out.println(root.getChildrenUnmodifiable());
         //label.getStyleClass().add("pointer");
-        scene.getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
+        scene.getStylesheets().add(Main.class.getResource("source/index.css").toExternalForm());
         //primaryStage.setScene(scene);
         //primaryStage.show();
         return scene;
@@ -597,6 +597,10 @@ public class RecipeWindow{
             }
     }
 
+    /**
+     * alert when input length
+     * exceed the default size
+     */
     public void formVerify()
     {
         boolean longNmae = false;
@@ -610,7 +614,7 @@ public class RecipeWindow{
             if(tf_RecipeName.getText().length()>20)
             {
                 longDescription = true;
-                message.add("You stupid guy ! "+"Recipe Name is too long!");
+                message.add("Recipe Name is too long!");
                 tf_RecipeName.setText(tf_RecipeName.getText().substring(0,19));
                 this.name=tf_RecipeName.getText().substring(0,19);
             }
@@ -680,15 +684,18 @@ public class RecipeWindow{
             alertForm(message);
     }
 
+    /**
+     * @param message error 
+     */
     public void alertForm(LinkedList<String> message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Form varify");
+        alert.setTitle("Form verify");
         alert.setHeaderText("The data you type in have some errors.");
         String s="";
         for(int i=0;i<message.size();i++)
         {
-            s+="You stupid guy ! ";
+            s+="";
             if(i==message.size()-1)
                 s+=(message.get(i));
             else s+=(message.get(i)+"\n");
@@ -697,12 +704,20 @@ public class RecipeWindow{
         alert.showAndWait();
     }
 
+    /**
+     * @param s the string need to check as integer
+     * @return if the string is integer
+     */
     public boolean isInt(String s)
     {
         Pattern pattern = Pattern.compile("[0-9]*");
         return pattern.matcher(s).matches();
     }
 
+    /**
+     * @param s the string need to check as double
+     * @return if the string is double
+     */
     public boolean isDouble(String s)
     {
         Pattern pattern = Pattern.compile("[0-9]*\\.?[0-9]*");

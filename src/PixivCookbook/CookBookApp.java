@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import PixivCookbook.Model.*;
-import PixivCookbook.Model.DBController;
+import PixivCookbook.Controller.DBController;
 /**
  * @author precision 7710
  *

@@ -44,8 +44,8 @@ class JunitRecipe {
 	void testAddPreparationStep() {
 		aRecipe.addPreparationStep("Mix together cornstarch and 1 tbsp. of the soy sauce in a medium bowl.");
 		aRecipe.addPreparationStep("Add chicken, toss well, and set aside to marinate for 30 minutes.");
-		assertEquals(aRecipe.getSteps().get(0).toString(),"Step1[content=Mix together cornstarch and 1 tbsp. of the soy sauce in a medium bowl.]");
-		assertEquals(aRecipe.getSteps().get(1).toString(),"Step2[content=Add chicken, toss well, and set aside to marinate for 30 minutes.]");
+		assertEquals(aRecipe.getSteps().get(0).toString(),"Step0[content=Mix together cornstarch and 1 tbsp. of the soy sauce in a medium bowl.]");
+		assertEquals(aRecipe.getSteps().get(1).toString(),"Step1[content=Add chicken, toss well, and set aside to marinate for 30 minutes.]");
 		
 	}
 

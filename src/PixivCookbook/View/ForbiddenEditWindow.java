@@ -46,7 +46,7 @@ public class ForbiddenEditWindow{
             mark.add(0);
         }
         refresh();
-        scene.getStylesheets().add(ForbiddenEditWindow.class.getResource("index.css").toExternalForm());
+        scene.getStylesheets().add(ForbiddenEditWindow.class.getResource("source/index.css").toExternalForm());
         return scene;
     }
 

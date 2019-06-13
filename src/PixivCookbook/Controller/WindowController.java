@@ -2,7 +2,7 @@ package PixivCookbook.Controller;
 
 import PixivCookbook.Model.ForbiddenPair;
 import PixivCookbook.Model.Ingredient;
-import PixivCookbook.Model.DBController;
+import PixivCookbook.Controller.DBController;
 import PixivCookbook.Model.Recipe;
 import PixivCookbook.Model.Step;
 import PixivCookbook.View.ForbiddenEditWindow;
@@ -240,6 +240,10 @@ public class WindowController extends Application {
     	return mer.find();
     	}
     
+    /**
+     * @param input
+     * @return if the image suffix is valid
+     */
     public static boolean imgValid(String input) {
     	Matcher mer = Pattern.compile("^.*(.JPEG|.jpeg|.png|.PNG)$").matcher(input);
     	return mer.find();
@@ -820,8 +824,6 @@ public class WindowController extends Application {
  	                editStage.setX(posx);;
  	                editStage.setY(posy);
                 }
-                
-                
             }
         });
     }

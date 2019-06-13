@@ -7,13 +7,12 @@ import java.util.List;
 /**
  * entity class recipe
  * @author Ling Wei
- *
+ * 
+ * entity class recipe
+ * 
  */
 public class Recipe implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8812539449144498327L;
 
 	private String recipeName;
@@ -22,8 +21,6 @@ public class Recipe implements Serializable{
 	private int numberOfEaters = 0;
 	private int preparationTime = 0;
 	private int cookingTime = 0;
-
-
 
 	private List<Ingredient> ingredients = new LinkedList<Ingredient>();
 	private List<Step> steps = new LinkedList<Step>();
@@ -50,21 +47,35 @@ public class Recipe implements Serializable{
 		ingredients.add(newIngredient);
 	}
 	
+	
+	/**
+	 * @return the ingredients
+	 */
 	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(LinkedList<Ingredient> ingredients) {
+	/**
+	 * @param ingredients the ingredients to set
+	 */
+	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
-	
+
+	/**
+	 * @return the steps
+	 */
 	public List<Step> getSteps() {
 		return steps;
 	}
 
-	public void setSteps(LinkedList<Step> steps) {
+	/**
+	 * @param steps the steps to set
+	 */
+	public void setSteps(List<Step> steps) {
 		this.steps = steps;
 	}
+
 	/**
 	 * add one step to the recipe
 	 * @param stepContent the step's content
@@ -168,7 +179,12 @@ public class Recipe implements Serializable{
 		this.cookingTime = cookingTime;
 	}
 	
-	// change the unit and amount with changing eater numbers
+	/**
+	 * @param changedNumberOfEaters
+	 * change amount and unit of ingredients
+	 * with the ratio of new number of eater divided by 
+	 * original number of eaters
+	 */
 	public void changeWithServe(int changedNumberOfEaters) {
 		double ratio = (double)changedNumberOfEaters/(double)this.numberOfEaters;
 		this.numberOfEaters = changedNumberOfEaters;
@@ -177,13 +193,26 @@ public class Recipe implements Serializable{
 		}
 	}
 
+
+	/**
+	 * @return the imgAddress
+	 */
 	public String getImgAddress() {
 		return imgAddress;
 	}
 
+	/**
+	 * @param imgAddress the imgAddress to set
+	 */
 	public void setImgAddress(String imgAddress) {
 		this.imgAddress = imgAddress;
 	}
+
+	/**
+	 * @param imgAddress
+	 * set image path attribute with a specific path format
+	 * 
+	 */
 	public void restoreImg(String imgAddress) {
 		String name=this.recipeName.replaceAll(" ","");
 		String desPath="img\\"+name+".jpg";

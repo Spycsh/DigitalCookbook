@@ -41,7 +41,7 @@ public class Main{
         //this.primaryStage.setTitle("Hello World");
         scene=new Scene(pane, 1400, 900);
         initializeOtherParts();
-        scene.getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
+        scene.getStylesheets().add(Main.class.getResource("source/index.css").toExternalForm());
         return scene;
     }
 

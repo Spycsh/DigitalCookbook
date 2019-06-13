@@ -8,7 +8,8 @@ import java.io.Serializable;
 
 /**
  * @author precision 7710
- *
+ * 
+ * entity class ingredient
  */
 public class Ingredient implements Serializable{
 	/**
@@ -19,8 +20,12 @@ public class Ingredient implements Serializable{
 	private double num=0.0;
 	private String unit="";
 	private String preparation="";
+
 	/**
-	 * 
+	 * constructor
+	 * @param name ingredient name
+	 * @param num ingredient amount
+	 * @param unit ingredient unit
 	 */
 	public Ingredient(String name,double num,String unit) {
 		// TODO Auto-generated constructor stub
@@ -28,6 +33,13 @@ public class Ingredient implements Serializable{
 		this.num=num;
 		this.unit=unit;
 	}
+	/**
+	 * constructor
+	 * @param name ingredient name
+	 * @param num ingredient amount
+	 * @param unit ingredient unit
+	 * @param preparation preparation time
+	 */
 	public Ingredient(String name,double num,String unit,String preparation) {
 		// TODO Auto-generated constructor stub
 		this.name=name;

@@ -1,4 +1,4 @@
-package PixivCookbook.Model;
+package PixivCookbook.Controller;
 
 import PixivCookbook.Controller.WindowController;
 import PixivCookbook.Model.ForbiddenPair;
@@ -134,8 +134,8 @@ public class DBController {
 	
 	
 	/**
-	 * @param input		// the recipe that the ingredient belongs to
-	 * @param id		// the ingredients
+	 * @param input		 the recipe that the ingredient belongs to
+	 * @param id		 the ingredients
 	 * @throws SQLException
 	 * 
 	 * add ingredients by recipe id
@@ -154,8 +154,8 @@ public class DBController {
 	}
 	
 	/**
-	 * @param input  	// the list of ingredient
-	 * @param id  		// the recipe id
+	 * @param input  	 the list of ingredient
+	 * @param id  		 the recipe id
 	 * @throws SQLException
 	 * 
 	 * delete all ingredients first and insert into database a new one
@@ -219,8 +219,8 @@ public class DBController {
 	}
 	
 	/**
-	 * @param id		// the recipe id
-	 * @param newName	// the new name
+	 * @param id		 the recipe id
+	 * @param newName	 the new name
 	 * 
 	 * update the recipe name to be the given one
 	 * 
@@ -246,8 +246,8 @@ public class DBController {
 	}
 	
 	/**
-	 * @param id				// recipe id
-	 * @param newDescription	// the new descrition of recipe
+	 * @param id				 recipe id
+	 * @param newDescription	 the new descrition of recipe
 	 * 
 	 * update the description of the given recipe
 	 */
@@ -264,8 +264,8 @@ public class DBController {
 	}
 
 	/**
-	 * @param id			// the recipe id
-	 * @param newserving	// the new serving
+	 * @param id			 the recipe id
+	 * @param newserving	 the new serving
 	 * 
 	 * update the serving of the given recipe
 	 * 
@@ -283,8 +283,8 @@ public class DBController {
 	}
 
 	/**
-	 * @param id					// the recipe id
-	 * @param nerPreparationtime	// the new Preparation time
+	 * @param id					 the recipe id
+	 * @param newPreparationtime	 the new Preparation time
 	 * 
 	 * update the time of the given recipe
 	 * 
@@ -302,8 +302,8 @@ public class DBController {
 	}
 
 	/**
-	 * @param id			// the recipe id
-	 * @param newCooktime	// the new cook time
+	 * @param id			 the recipe id
+	 * @param newCooktime	 the new cook time
 	 * 
 	 * 
 	 */
@@ -320,8 +320,8 @@ public class DBController {
 	}
 
 	/**
-	 * @param id		// the recipe id
-	 * @param newPath	// the new path of the recipe
+	 * @param id		 the recipe id
+	 * @param newPath	 the new path of the recipe
 	 */
 	public void saveImagePath(int id, String newPath) {
 		PreparedStatement psql;
@@ -345,7 +345,7 @@ public class DBController {
 	}
 	
 	/**
-	 * @return 	// all the recipe names in the database as a list
+	 * @return 	 all the recipe names in the database as a list
 	 * 
 	 */
 	public List<String> getAllRecipeNamesfromDatabase(){
@@ -368,7 +368,7 @@ public class DBController {
 		
 	}
 	/**
-	 * @param id 	// the id contained by the recipe that we are looking for
+	 * @param id 	 the id contained by the recipe that we are looking for
 	 * @return the recipe
 	 */
 	public Recipe getRecipeBySearchfromDatabase(int id){
@@ -395,7 +395,7 @@ public class DBController {
 	
 	
 	/**
-	 * @param id 	// the id contained by ingredients that we are looking for
+	 * @param id 	 the id contained by ingredients that we are looking for
 	 * @return a list of ingredients
 	 */
 	public List<Ingredient> getIngredientsfromDatabase(int id){
@@ -420,7 +420,7 @@ public class DBController {
 	
 	
 	/**
-	 * @param id 	// the id contained by steps that we are looking for
+	 * @param id 	 the id contained by steps that we are looking for
 	 * @return a list of steps
 	 */
 	public List<Step> getStepsfromDatabase(int id){
@@ -476,6 +476,10 @@ public class DBController {
 		return matchedRecipeIdList;
 	}
 	
+	/**
+	 * @param RecipeName
+	 * @return the id the recipe name matches to
+	 */
 	public int getIDbyName(String RecipeName){
 		int id = 0;
 		PreparedStatement psql;
@@ -493,6 +497,11 @@ public class DBController {
 		return id;
 	}
 	
+	/**
+	 * @param RecipeName
+	 * @return a list of matched recipes with given names
+	 * @throws IndexOutOfBoundsException
+	 */
 	public List<Integer> searchAllMatchedID(String RecipeName) throws IndexOutOfBoundsException{
 		List<Integer> matchedRecipeIdList = new LinkedList<Integer>();
 		PreparedStatement psql;
@@ -513,8 +522,8 @@ public class DBController {
 	}
 	
 	/**
-	 * @return the latest 12 recipes name for the main page
-	 * if less than 12 return all
+	 * @return the random 7 recipes name for the main page
+	 * if less than 7 return all
 	 */
 	public List<Recipe> getRecipesForMainPage() {
 		Statement statement;
@@ -609,6 +618,9 @@ public class DBController {
 		return matchedRecipeIdList;
 	}
 
+	/**
+	 * @return a list of all forbidden pairs
+	 */
 	public LinkedList<ForbiddenPair> getAllForbiddenPair() {
 		LinkedList<ForbiddenPair> matchedRecipeIdList = new LinkedList<ForbiddenPair>();
 		PreparedStatement psql;
@@ -631,6 +643,9 @@ public class DBController {
 		return matchedRecipeIdList;
 	}
 
+	/**
+	 * delete all forbidden pairs
+	 */
 	public void deleteAllForbiddenPair() {
 		PreparedStatement psql;
 		try {
