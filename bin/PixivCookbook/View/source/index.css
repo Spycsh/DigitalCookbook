@@ -144,3 +144,14 @@
     -fx-border-radius: 50;
     -fx-background-image: url("down.png");
 }
+.sticky{
+    -fx-cursor: hand;
+    -fx-background-image: url("sticky.png");
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+}
+.sticky:hover
+{
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+}

@@ -2,7 +2,6 @@ package PixivCookbook.Controller;
 
 import PixivCookbook.Model.ForbiddenPair;
 import PixivCookbook.Model.Ingredient;
-import PixivCookbook.Controller.DBController;
 import PixivCookbook.Model.Recipe;
 import PixivCookbook.Model.Step;
 import PixivCookbook.View.ForbiddenEditWindow;
@@ -311,6 +310,23 @@ public class WindowController extends Application {
                     }
                 });
         main.favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //System.out.println(main.favorite);
+                //main.favorite=!main.favorite;
+//                forbiddenStage.show();
+//                initMain(main);
+//                editStage.close();
+//                primaryStage.show();
+//                String searchName = main.search.getText();
+//                main.dropAllImageviews();
+//                List<Recipe> result = model.searchAllMatchedRecipes(searchName);
+//                main.initializeMainPage(result);
+//                addTempAction(result,main);
+//                addAddAction(result,main);
+            }
+        });
+        main.sticky.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 //System.out.println(main.favorite);
@@ -1003,6 +1019,8 @@ public class WindowController extends Application {
 		            	recipeWindow.markName = true;
 		            	recipeWindow.markImage = false;
 		            	recipeWindow.markStep = false;
+		            	recipeWindow.servings=2;
+		            	recipeWindow.favorite=false;
 		            	recipeWindow.markIngredient = false;
                         recipeWindow.ingredientText1= new LinkedList<TextField>();
                         recipeWindow.ingredientText2= new LinkedList<TextField>();
@@ -1028,7 +1046,7 @@ public class WindowController extends Application {
     {
         LinkedList<ForbiddenPair> data;
         data=model.getAllForbiddenPair();
-        EditForbiddenEvent editFor = new EditForbiddenEvent();
+        EditForbiddenPairController editFor = new EditForbiddenPairController();
         forw.data=data;
         forw.refresh();
         editFor.addForbiddenEvent(forw,forbiddenStage,model);

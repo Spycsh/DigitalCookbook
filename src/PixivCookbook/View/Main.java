@@ -30,6 +30,7 @@ public class Main{
     public Button favoriteButton2 = new Button();
     public Button searchButton = new Button();
     public Button backButton = new Button();
+    public Button sticky = new Button();
     public boolean favorite=false;
     public Label littleTitle;
 
@@ -76,6 +77,12 @@ public class Main{
         recommendButton.setMinSize(20,20);
         recommendButton.getStyleClass().add("border");
         pane.getChildren().add(recommendButton);
+		sticky.setText("C");
+		sticky.setLayoutX(1200);
+		sticky.setLayoutY(30);
+		sticky.setMinSize(200,200);
+		sticky.getStyleClass().add("sticky");
+		pane.getChildren().add(sticky);
         //System.out.println(root.getChildrenUnmodifiable());
         favoriteButton.setText("C");
         favoriteButton.setLayoutX(1050);

@@ -85,6 +85,14 @@ public class ForbiddenEditWindow{
         home.getStyleClass().add("home");
         pane.getChildren().add(home);
         posy+=20;
+		Button lay = new Button();
+		lay.setText("a");
+		lay.setLayoutX(920);
+		lay.setLayoutY(900);
+		lay.setMinSize(1,1);
+		lay.setMaxSize(1,1);
+		lay.getStyleClass().add("home");
+		pane.getChildren().add(lay);
         for(int i=0;i<data.size();i++)
         {
             if(data.get(i)==null) continue;

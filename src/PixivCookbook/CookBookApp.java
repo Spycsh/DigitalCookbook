@@ -10,7 +10,7 @@ import PixivCookbook.Controller.DBController;
  * @author precision 7710
  *
  */
-/**
+/**E
  * A class for the program entry point and some test recipes.
  * 
  * @author breukerm
