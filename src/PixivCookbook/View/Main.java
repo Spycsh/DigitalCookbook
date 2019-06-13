@@ -53,9 +53,9 @@ public class Main{
         //relative path
         image = new Image(ClassLoader.getSystemResource("")+"..\\img\\title2.png");
         title = new ImageView(image);
-        title.setFitHeight(120);
-        title.setFitWidth(600);
-        title.setLayoutX(400);
+        title.setFitHeight(100);
+        title.setFitWidth(666);
+        title.setLayoutX(350);
         title.setLayoutY(0);
         pane.getChildren().add(title);
         searchButton.setText("sa");

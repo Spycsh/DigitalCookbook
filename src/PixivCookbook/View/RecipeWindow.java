@@ -168,7 +168,7 @@ public class RecipeWindow{
 //        share.setMinSize(30,30);
 //        share.setMaxSize(30,30);
 //        pane.getChildren().add(share);
-        pane.getChildren().add(star);
+//        pane.getChildren().add(star);
         pane.getChildren().add(delete);
         pane.getChildren().add(home);
         posy+=20;
