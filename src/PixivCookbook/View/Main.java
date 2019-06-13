@@ -156,26 +156,255 @@ public class Main{
             pane.getChildren().remove(label[i]);
         }
     }
+
+
+	/**
+	 * @return the temp
+	 */
+	public ImageView[] getTemp() {
+		return temp;
+	}
+
+
+	/**
+	 * @param temp the temp to set
+	 */
+	public void setTemp(ImageView[] temp) {
+		this.temp = temp;
+	}
+
+
+	/**
+	 * @return the title
+	 */
+	public ImageView getTitle() {
+		return title;
+	}
+
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(ImageView title) {
+		this.title = title;
+	}
+
+
+	/**
+	 * @return the pane
+	 */
+	public Pane getPane() {
+		return pane;
+	}
+
+
+	/**
+	 * @param pane the pane to set
+	 */
+	public void setPane(Pane pane) {
+		this.pane = pane;
+	}
+
+
+	/**
+	 * @return the image
+	 */
+	public Image getImage() {
+		return image;
+	}
+
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+
+	/**
+	 * @return the label
+	 */
+	public Label[] getLabel() {
+		return label;
+	}
+
+
+	/**
+	 * @param label the label to set
+	 */
+	public void setLabel(Label[] label) {
+		this.label = label;
+	}
+
+
+	/**
+	 * @return the search
+	 */
+	public TextField getSearch() {
+		return search;
+	}
+
+
+	/**
+	 * @param search the search to set
+	 */
+	public void setSearch(TextField search) {
+		this.search = search;
+	}
+
+
+	/**
+	 * @return the primaryStage
+	 */
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+
+
+	/**
+	 * @param primaryStage the primaryStage to set
+	 */
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
+
+
+	/**
+	 * @return the addButton
+	 */
+	public Button getAddButton() {
+		return addButton;
+	}
+
+
+	/**
+	 * @param addButton the addButton to set
+	 */
+	public void setAddButton(Button addButton) {
+		this.addButton = addButton;
+	}
+
+
+	/**
+	 * @return the recommendButton
+	 */
+	public Button getRecommendButton() {
+		return recommendButton;
+	}
+
+
+	/**
+	 * @param recommendButton the recommendButton to set
+	 */
+	public void setRecommendButton(Button recommendButton) {
+		this.recommendButton = recommendButton;
+	}
+
+
+	/**
+	 * @return the favoriteButton
+	 */
+	public Button getFavoriteButton() {
+		return favoriteButton;
+	}
+
+
+	/**
+	 * @param favoriteButton the favoriteButton to set
+	 */
+	public void setFavoriteButton(Button favoriteButton) {
+		this.favoriteButton = favoriteButton;
+	}
+
+
+	/**
+	 * @return the favoriteButton2
+	 */
+	public Button getFavoriteButton2() {
+		return favoriteButton2;
+	}
+
+
+	/**
+	 * @param favoriteButton2 the favoriteButton2 to set
+	 */
+	public void setFavoriteButton2(Button favoriteButton2) {
+		this.favoriteButton2 = favoriteButton2;
+	}
+
+
+	/**
+	 * @return the searchButton
+	 */
+	public Button getSearchButton() {
+		return searchButton;
+	}
+
+
+	/**
+	 * @param searchButton the searchButton to set
+	 */
+	public void setSearchButton(Button searchButton) {
+		this.searchButton = searchButton;
+	}
+
+
+	/**
+	 * @return the backButton
+	 */
+	public Button getBackButton() {
+		return backButton;
+	}
+
+
+	/**
+	 * @param backButton the backButton to set
+	 */
+	public void setBackButton(Button backButton) {
+		this.backButton = backButton;
+	}
+
+
+	/**
+	 * @return the favorite
+	 */
+	public boolean isFavorite() {
+		return favorite;
+	}
+
+
+	/**
+	 * @param favorite the favorite to set
+	 */
+	public void setFavorite(boolean favorite) {
+		this.favorite = favorite;
+	}
+
+
+	/**
+	 * @return the littleTitle
+	 */
+	public Label getLittleTitle() {
+		return littleTitle;
+	}
+
+
+	/**
+	 * @param littleTitle the littleTitle to set
+	 */
+	public void setLittleTitle(Label littleTitle) {
+		this.littleTitle = littleTitle;
+	}
+
+
+	/**
+	 * @param scene the scene to set
+	 */
+	public void setScene(Scene scene) {
+		this.scene = scene;
+	}
 	
-	 public ImageView[] getTemp() {
-			return temp;
-		}
-		public void setTemp(ImageView[] temp) {
-			this.temp = temp;
-		}
 
-    public Button getRecommendButton() {
-        return recommendButton;
-    }
 
-    public Button getSearchButton() {
-        return searchButton;
-    }
-    public void setSearchButton(Button searchButton) {
-        this.searchButton = searchButton;
-    }
-
-    public void setRecommendButton(Button recommendButton) {
-        this.recommendButton = recommendButton;
-    }
 }

@@ -174,4 +174,186 @@ public class ForbiddenEditWindow{
         }
     }
 
+	/**
+	 * @return the posy
+	 */
+	public int getPosy() {
+		return posy;
+	}
+
+	/**
+	 * @param posy the posy to set
+	 */
+	public void setPosy(int posy) {
+		this.posy = posy;
+	}
+
+	/**
+	 * @return the lineheight
+	 */
+	public int getLineheight() {
+		return lineheight;
+	}
+
+	/**
+	 * @param lineheight the lineheight to set
+	 */
+	public void setLineheight(int lineheight) {
+		this.lineheight = lineheight;
+	}
+
+	/**
+	 * @return the center
+	 */
+	public int getCenter() {
+		return center;
+	}
+
+	/**
+	 * @param center the center to set
+	 */
+	public void setCenter(int center) {
+		this.center = center;
+	}
+
+	/**
+	 * @return the data
+	 */
+	public LinkedList<ForbiddenPair> getData() {
+		return data;
+	}
+
+	/**
+	 * @param data the data to set
+	 */
+	public void setData(LinkedList<ForbiddenPair> data) {
+		this.data = data;
+	}
+
+	/**
+	 * @return the pane
+	 */
+	public Pane getPane() {
+		return pane;
+	}
+
+	/**
+	 * @param pane the pane to set
+	 */
+	public void setPane(Pane pane) {
+		this.pane = pane;
+	}
+
+	/**
+	 * @return the spane
+	 */
+	public ScrollPane getSpane() {
+		return spane;
+	}
+
+	/**
+	 * @param spane the spane to set
+	 */
+	public void setSpane(ScrollPane spane) {
+		this.spane = spane;
+	}
+
+	/**
+	 * @return the editForbidden
+	 */
+	public LinkedList<Button> getEditForbidden() {
+		return editForbidden;
+	}
+
+	/**
+	 * @param editForbidden the editForbidden to set
+	 */
+	public void setEditForbidden(LinkedList<Button> editForbidden) {
+		this.editForbidden = editForbidden;
+	}
+
+	/**
+	 * @return the addForbidden
+	 */
+	public LinkedList<Button> getAddForbidden() {
+		return addForbidden;
+	}
+
+	/**
+	 * @param addForbidden the addForbidden to set
+	 */
+	public void setAddForbidden(LinkedList<Button> addForbidden) {
+		this.addForbidden = addForbidden;
+	}
+
+	/**
+	 * @return the deleteForbidden
+	 */
+	public LinkedList<Button> getDeleteForbidden() {
+		return deleteForbidden;
+	}
+
+	/**
+	 * @param deleteForbidden the deleteForbidden to set
+	 */
+	public void setDeleteForbidden(LinkedList<Button> deleteForbidden) {
+		this.deleteForbidden = deleteForbidden;
+	}
+
+	/**
+	 * @return the forbidenText1
+	 */
+	public LinkedList<TextField> getForbidenText1() {
+		return forbidenText1;
+	}
+
+	/**
+	 * @param forbidenText1 the forbidenText1 to set
+	 */
+	public void setForbidenText1(LinkedList<TextField> forbidenText1) {
+		this.forbidenText1 = forbidenText1;
+	}
+
+	/**
+	 * @return the forbidenText2
+	 */
+	public LinkedList<TextField> getForbidenText2() {
+		return forbidenText2;
+	}
+
+	/**
+	 * @param forbidenText2 the forbidenText2 to set
+	 */
+	public void setForbidenText2(LinkedList<TextField> forbidenText2) {
+		this.forbidenText2 = forbidenText2;
+	}
+
+	/**
+	 * @return the mark
+	 */
+	public LinkedList<Integer> getMark() {
+		return mark;
+	}
+
+	/**
+	 * @param mark the mark to set
+	 */
+	public void setMark(LinkedList<Integer> mark) {
+		this.mark = mark;
+	}
+
+	/**
+	 * @return the home
+	 */
+	public Button getHome() {
+		return home;
+	}
+
+	/**
+	 * @param home the home to set
+	 */
+	public void setHome(Button home) {
+		this.home = home;
+	}
+
 }

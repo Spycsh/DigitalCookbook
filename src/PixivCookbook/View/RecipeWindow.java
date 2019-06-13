@@ -724,4 +724,635 @@ public class RecipeWindow{
         return pattern.matcher(s).matches();
     }
 
+	/**
+	 * @return the markDescription
+	 */
+	public boolean isMarkDescription() {
+		return markDescription;
+	}
+
+	/**
+	 * @param markDescription the markDescription to set
+	 */
+	public void setMarkDescription(boolean markDescription) {
+		this.markDescription = markDescription;
+	}
+
+	/**
+	 * @return the markIngredient
+	 */
+	public boolean isMarkIngredient() {
+		return markIngredient;
+	}
+
+	/**
+	 * @param markIngredient the markIngredient to set
+	 */
+	public void setMarkIngredient(boolean markIngredient) {
+		this.markIngredient = markIngredient;
+	}
+
+	/**
+	 * @return the markImage
+	 */
+	public boolean isMarkImage() {
+		return markImage;
+	}
+
+	/**
+	 * @param markImage the markImage to set
+	 */
+	public void setMarkImage(boolean markImage) {
+		this.markImage = markImage;
+	}
+
+	/**
+	 * @return the markStep
+	 */
+	public boolean isMarkStep() {
+		return markStep;
+	}
+
+	/**
+	 * @param markStep the markStep to set
+	 */
+	public void setMarkStep(boolean markStep) {
+		this.markStep = markStep;
+	}
+
+	/**
+	 * @return the markName
+	 */
+	public boolean isMarkName() {
+		return markName;
+	}
+
+	/**
+	 * @param markName the markName to set
+	 */
+	public void setMarkName(boolean markName) {
+		this.markName = markName;
+	}
+
+	/**
+	 * @return the pane
+	 */
+	public Pane getPane() {
+		return pane;
+	}
+
+	/**
+	 * @param pane the pane to set
+	 */
+	public void setPane(Pane pane) {
+		this.pane = pane;
+	}
+
+	/**
+	 * @return the spane
+	 */
+	public ScrollPane getSpane() {
+		return spane;
+	}
+
+	/**
+	 * @param spane the spane to set
+	 */
+	public void setSpane(ScrollPane spane) {
+		this.spane = spane;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the imgPath
+	 */
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	/**
+	 * @param imgPath the imgPath to set
+	 */
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	/**
+	 * @return the home
+	 */
+	public Button getHome() {
+		return home;
+	}
+
+	/**
+	 * @param home the home to set
+	 */
+	public void setHome(Button home) {
+		this.home = home;
+	}
+
+	/**
+	 * @return the star
+	 */
+	public Button getStar() {
+		return star;
+	}
+
+	/**
+	 * @param star the star to set
+	 */
+	public void setStar(Button star) {
+		this.star = star;
+	}
+
+	/**
+	 * @return the delete
+	 */
+	public Button getDelete() {
+		return delete;
+	}
+
+	/**
+	 * @param delete the delete to set
+	 */
+	public void setDelete(Button delete) {
+		this.delete = delete;
+	}
+
+	/**
+	 * @return the share
+	 */
+	public Button getShare() {
+		return share;
+	}
+
+	/**
+	 * @param share the share to set
+	 */
+	public void setShare(Button share) {
+		this.share = share;
+	}
+
+	/**
+	 * @return the editTitle
+	 */
+	public Button getEditTitle() {
+		return editTitle;
+	}
+
+	/**
+	 * @param editTitle the editTitle to set
+	 */
+	public void setEditTitle(Button editTitle) {
+		this.editTitle = editTitle;
+	}
+
+	/**
+	 * @return the editDescription
+	 */
+	public Button getEditDescription() {
+		return editDescription;
+	}
+
+	/**
+	 * @param editDescription the editDescription to set
+	 */
+	public void setEditDescription(Button editDescription) {
+		this.editDescription = editDescription;
+	}
+
+	/**
+	 * @return the editIngredient
+	 */
+	public Button getEditIngredient() {
+		return editIngredient;
+	}
+
+	/**
+	 * @param editIngredient the editIngredient to set
+	 */
+	public void setEditIngredient(Button editIngredient) {
+		this.editIngredient = editIngredient;
+	}
+
+	/**
+	 * @return the editStep
+	 */
+	public Button getEditStep() {
+		return editStep;
+	}
+
+	/**
+	 * @param editStep the editStep to set
+	 */
+	public void setEditStep(Button editStep) {
+		this.editStep = editStep;
+	}
+
+	/**
+	 * @return the tf_RecipeName
+	 */
+	public TextField getTf_RecipeName() {
+		return tf_RecipeName;
+	}
+
+	/**
+	 * @param tf_RecipeName the tf_RecipeName to set
+	 */
+	public void setTf_RecipeName(TextField tf_RecipeName) {
+		this.tf_RecipeName = tf_RecipeName;
+	}
+
+	/**
+	 * @return the tf_Description
+	 */
+	public TextField getTf_Description() {
+		return tf_Description;
+	}
+
+	/**
+	 * @param tf_Description the tf_Description to set
+	 */
+	public void setTf_Description(TextField tf_Description) {
+		this.tf_Description = tf_Description;
+	}
+
+	/**
+	 * @return the tf_Preparation
+	 */
+	public TextField getTf_Preparation() {
+		return tf_Preparation;
+	}
+
+	/**
+	 * @param tf_Preparation the tf_Preparation to set
+	 */
+	public void setTf_Preparation(TextField tf_Preparation) {
+		this.tf_Preparation = tf_Preparation;
+	}
+
+	/**
+	 * @return the tf_Cookingtime
+	 */
+	public TextField getTf_Cookingtime() {
+		return tf_Cookingtime;
+	}
+
+	/**
+	 * @param tf_Cookingtime the tf_Cookingtime to set
+	 */
+	public void setTf_Cookingtime(TextField tf_Cookingtime) {
+		this.tf_Cookingtime = tf_Cookingtime;
+	}
+
+	/**
+	 * @return the tf_Serveing
+	 */
+	public TextField getTf_Serveing() {
+		return tf_Serveing;
+	}
+
+	/**
+	 * @param tf_Serveing the tf_Serveing to set
+	 */
+	public void setTf_Serveing(TextField tf_Serveing) {
+		this.tf_Serveing = tf_Serveing;
+	}
+
+	/**
+	 * @return the title
+	 */
+	public ImageView getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(ImageView title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return the editImgPath
+	 */
+	public String getEditImgPath() {
+		return editImgPath;
+	}
+
+	/**
+	 * @param editImgPath the editImgPath to set
+	 */
+	public void setEditImgPath(String editImgPath) {
+		this.editImgPath = editImgPath;
+	}
+
+	/**
+	 * @return the ingredients
+	 */
+	public LinkedList<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	/**
+	 * @param ingredients the ingredients to set
+	 */
+	public void setIngredients(LinkedList<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
+
+	/**
+	 * @return the step
+	 */
+	public LinkedList<Step> getStep() {
+		return step;
+	}
+
+	/**
+	 * @param step the step to set
+	 */
+	public void setStep(LinkedList<Step> step) {
+		this.step = step;
+	}
+
+	/**
+	 * @return the preparationTime
+	 */
+	public int getPreparationTime() {
+		return preparationTime;
+	}
+
+	/**
+	 * @param preparationTime the preparationTime to set
+	 */
+	public void setPreparationTime(int preparationTime) {
+		this.preparationTime = preparationTime;
+	}
+
+	/**
+	 * @return the cookingTime
+	 */
+	public int getCookingTime() {
+		return cookingTime;
+	}
+
+	/**
+	 * @param cookingTime the cookingTime to set
+	 */
+	public void setCookingTime(int cookingTime) {
+		this.cookingTime = cookingTime;
+	}
+
+	/**
+	 * @return the servings
+	 */
+	public int getServings() {
+		return servings;
+	}
+
+	/**
+	 * @param servings the servings to set
+	 */
+	public void setServings(int servings) {
+		this.servings = servings;
+	}
+
+	/**
+	 * @return the formerServings
+	 */
+	public int getFormerServings() {
+		return formerServings;
+	}
+
+	/**
+	 * @param formerServings the formerServings to set
+	 */
+	public void setFormerServings(int formerServings) {
+		this.formerServings = formerServings;
+	}
+
+	/**
+	 * @return the favorite
+	 */
+	public boolean isFavorite() {
+		return favorite;
+	}
+
+	/**
+	 * @param favorite the favorite to set
+	 */
+	public void setFavorite(boolean favorite) {
+		this.favorite = favorite;
+	}
+
+	/**
+	 * @return the addIngredient
+	 */
+	public LinkedList<Button> getAddIngredient() {
+		return addIngredient;
+	}
+
+	/**
+	 * @param addIngredient the addIngredient to set
+	 */
+	public void setAddIngredient(LinkedList<Button> addIngredient) {
+		this.addIngredient = addIngredient;
+	}
+
+	/**
+	 * @return the addStep
+	 */
+	public LinkedList<Button> getAddStep() {
+		return addStep;
+	}
+
+	/**
+	 * @param addStep the addStep to set
+	 */
+	public void setAddStep(LinkedList<Button> addStep) {
+		this.addStep = addStep;
+	}
+
+	/**
+	 * @return the deleteIngredient
+	 */
+	public LinkedList<Button> getDeleteIngredient() {
+		return deleteIngredient;
+	}
+
+	/**
+	 * @param deleteIngredient the deleteIngredient to set
+	 */
+	public void setDeleteIngredient(LinkedList<Button> deleteIngredient) {
+		this.deleteIngredient = deleteIngredient;
+	}
+
+	/**
+	 * @return the deleteStep
+	 */
+	public LinkedList<Button> getDeleteStep() {
+		return deleteStep;
+	}
+
+	/**
+	 * @param deleteStep the deleteStep to set
+	 */
+	public void setDeleteStep(LinkedList<Button> deleteStep) {
+		this.deleteStep = deleteStep;
+	}
+
+	/**
+	 * @return the upStep
+	 */
+	public LinkedList<Button> getUpStep() {
+		return upStep;
+	}
+
+	/**
+	 * @param upStep the upStep to set
+	 */
+	public void setUpStep(LinkedList<Button> upStep) {
+		this.upStep = upStep;
+	}
+
+	/**
+	 * @return the downStep
+	 */
+	public LinkedList<Button> getDownStep() {
+		return downStep;
+	}
+
+	/**
+	 * @param downStep the downStep to set
+	 */
+	public void setDownStep(LinkedList<Button> downStep) {
+		this.downStep = downStep;
+	}
+
+	/**
+	 * @return the ingredientText3
+	 */
+	public LinkedList<TextField> getIngredientText3() {
+		return ingredientText3;
+	}
+
+	/**
+	 * @param ingredientText3 the ingredientText3 to set
+	 */
+	public void setIngredientText3(LinkedList<TextField> ingredientText3) {
+		this.ingredientText3 = ingredientText3;
+	}
+
+	/**
+	 * @return the ingredientText2
+	 */
+	public LinkedList<TextField> getIngredientText2() {
+		return ingredientText2;
+	}
+
+	/**
+	 * @param ingredientText2 the ingredientText2 to set
+	 */
+	public void setIngredientText2(LinkedList<TextField> ingredientText2) {
+		this.ingredientText2 = ingredientText2;
+	}
+
+	/**
+	 * @return the ingredientText1
+	 */
+	public LinkedList<TextField> getIngredientText1() {
+		return ingredientText1;
+	}
+
+	/**
+	 * @param ingredientText1 the ingredientText1 to set
+	 */
+	public void setIngredientText1(LinkedList<TextField> ingredientText1) {
+		this.ingredientText1 = ingredientText1;
+	}
+
+	/**
+	 * @return the stepText
+	 */
+	public LinkedList<TextField> getStepText() {
+		return stepText;
+	}
+
+	/**
+	 * @param stepText the stepText to set
+	 */
+	public void setStepText(LinkedList<TextField> stepText) {
+		this.stepText = stepText;
+	}
+
+	/**
+	 * @return the posy
+	 */
+	public int getPosy() {
+		return posy;
+	}
+
+	/**
+	 * @param posy the posy to set
+	 */
+	public void setPosy(int posy) {
+		this.posy = posy;
+	}
+
+	/**
+	 * @return the lineheight
+	 */
+	public int getLineheight() {
+		return lineheight;
+	}
+
+	/**
+	 * @param lineheight the lineheight to set
+	 */
+	public void setLineheight(int lineheight) {
+		this.lineheight = lineheight;
+	}
+
+	/**
+	 * @return the center
+	 */
+	public int getCenter() {
+		return center;
+	}
+
+	/**
+	 * @param center the center to set
+	 */
+	public void setCenter(int center) {
+		this.center = center;
+	}
+
+    
 }
