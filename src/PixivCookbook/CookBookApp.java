@@ -1,11 +1,14 @@
 package PixivCookbook;
 
-import java.sql.*;
+import PixivCookbook.Controller.DBController;
+import PixivCookbook.Model.CookBook;
+import PixivCookbook.Model.Ingredient;
+import PixivCookbook.Model.Recipe;
+import PixivCookbook.Model.Step;
+
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-
-import PixivCookbook.Model.*;
-import PixivCookbook.Controller.DBController;
 /**
  * @author precision 7710
  *
@@ -140,7 +143,7 @@ public class CookBookApp {
 	 */
 	public static void main(String[] args) {
 		CookBook cb = new CookBook("Chinese Cuisine");
-		DBController databaseConnection = new DBController();
+		DBController databaseConnection = DBController.getInstance();
 		databaseConnection.run();
 		
 		cb.add(createGongBaoJiding());

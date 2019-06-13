@@ -39,6 +39,17 @@ public class MainWindow{
     public boolean favorite=false;
     public Label littleTitle;
 
+	/**
+	 *     Singleton pattern
+	 */
+	private final static MainWindow INSTANCE = new MainWindow();
+    private MainWindow()
+	{
+
+	}
+	public static MainWindow getInstance(){
+		return INSTANCE;
+	}
     /**
      * @return 	 scene of the main window
      */
@@ -71,9 +82,16 @@ public class MainWindow{
         searchButton.getStyleClass().add("search");
         pane.getChildren().add(search);
         pane.getChildren().add(searchButton);
+		backButton.setText("s");
+		backButton.setLayoutX(400);
+		backButton.setLayoutY(150);
+		backButton.getStyleClass().add("back");
+		pane.getChildren().add(backButton);
+		backButton.setVisible(false);
         littleTitle = new Label();
-        littleTitle.setLayoutX(600);
-        littleTitle.setLayoutY(150);
+        littleTitle.setLayoutX(560);
+        littleTitle.setLayoutY(140);
+		littleTitle.getStyleClass().add("littleTitle");
         pane.getChildren().add(littleTitle);
 //        Button recommendButton = new Button();
         recommendButton.setText("C");
@@ -84,7 +102,7 @@ public class MainWindow{
         pane.getChildren().add(recommendButton);
 		sticky.setText("C");
 		sticky.setLayoutX(1200);
-		sticky.setLayoutY(30);
+		sticky.setLayoutY(0);
 		sticky.setMinSize(200,200);
 		sticky.getStyleClass().add("sticky");
 		pane.getChildren().add(sticky);

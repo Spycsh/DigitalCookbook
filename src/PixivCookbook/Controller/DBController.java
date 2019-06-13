@@ -25,7 +25,14 @@ public class DBController {
 	public void setConnect(Connection connect) {
 		this.connect = connect;
 	}
+	private final static DBController INSTANCE = new DBController();
+	private DBController()
+	{
 
+	}
+	public static DBController getInstance(){
+		return INSTANCE;
+	}
 	public void run() {
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,7 +42,7 @@ public class DBController {
 			}
 			try {
 				this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookBook?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true",
-						"root", "fuck"); //Fuckyou741@ttg
+						"root", "Fuckyou741@ttg"); //Fuckyou741@ttg
 				System.out.println(this.connect);
 				System.out.println("You have successfully connected the server!");
 			} catch (SQLException e) {

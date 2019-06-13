@@ -34,11 +34,11 @@ import java.util.regex.Pattern;
  * 
  */
 public class WindowController extends Application {
-    DBController model = new DBController();
+    DBController model = DBController.getInstance();
     List<Recipe> recipe;
     Scene mainScene;
     Scene editScene;
-    RecipeWindow recipeWindow = new RecipeWindow();
+    RecipeWindow recipeWindow;
     Stage primaryStage = new Stage();
     Stage editStage = new Stage();
     Stage forbiddenStage = new Stage();
@@ -62,15 +62,15 @@ public class WindowController extends Application {
         this.model.run();
         primaryStage = this.primaryStage;
         recipe = this.model.getRecipesForMainPage();
-        main = new MainWindow();
+        main = MainWindow.getInstance();
         initMain(main);
         mainScene = main.getScene();
         primaryStage.setScene(mainScene);  //main interface
         primaryStage.show();
-        recipeWindow= new RecipeWindow();
+        recipeWindow= RecipeWindow.getInstance();
         editScene = recipeWindow.getScene();
         editStage.setScene(editScene);
-        ForbiddenEditWindow forbidden = new ForbiddenEditWindow();
+        ForbiddenEditWindow forbidden = ForbiddenEditWindow.getInstance();
         Scene forbiddenScene= forbidden.getScene();
         forbiddenStage.setScene(forbiddenScene);
         initEditForbidden(forbidden,forbiddenStage,model);
@@ -260,6 +260,7 @@ public class WindowController extends Application {
         main.initializeMainPage(recipe);
         addRecommendButtonAction(main);
         addSearchButtonAction(main);
+        addBackButtonAction(main);
         addTempAction(recipe,main);
         addAddAction(recipe,main );
         //main.getScene().getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
@@ -303,6 +304,8 @@ public class WindowController extends Application {
                         main.dropAllImageviews();
                         main.initializeMainPage(recipe);
                         addTempAction(recipe,main);
+                        main.searchButton.setVisible(true);
+                        main.backButton.setVisible(false);
                         if(main.backButton.getText() == "back") {
                             main.pane.getChildren().remove(main.backButton);
                             main.backButton.setText("");
@@ -360,14 +363,8 @@ public class WindowController extends Application {
 			@Override
 			public void handle(MouseEvent e) {
 				if (!main.search.getText().isEmpty()) {
-					if (main.backButton.getText() != "back") {
-						main.backButton.setText("back");
-						main.backButton.setLayoutX(400);
-						main.backButton.setLayoutY(150);
-						main.backButton.setMinSize(20, 20);
-						main.pane.getChildren().add(main.backButton);
-						addBackButtonAction(main);
-					}
+				    main.backButton.setVisible(true);
+				    main.searchButton.setVisible(false);
 					main.littleTitle.setText("Search Results");
 					String searchName = main.search.getText();
 					main.dropAllImageviews();
@@ -385,6 +382,8 @@ public class WindowController extends Application {
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent e) {
+                        main.backButton.setVisible(false);
+                        main.searchButton.setVisible(true);
                         main.littleTitle.setText("");
                         main.dropAllImageviews();
                         List<Recipe> recipe = model.getRecipesForMainPage();
@@ -396,8 +395,6 @@ public class WindowController extends Application {
 //                                temp=(temp*131+temp)%recipe.size();
 //                            showRecipe.add(recipe.get(temp-1));
 //                        }
-                        main.pane.getChildren().remove(main.backButton);
-                        main.backButton.setText("");
                         main.initializeMainPage(recipe);
                         addTempAction(recipe,main);
                         addAddAction(recipe,main);
@@ -462,6 +459,7 @@ public class WindowController extends Application {
         rmain.home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+
                 editStage.close();
                 primaryStage.show();
                 String searchName = main.search.getText();
@@ -1071,5 +1069,4 @@ public class WindowController extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }

@@ -52,7 +52,7 @@ public class RecipeWindow{
     public int servings=0;
     private int formerServings=0;
     public boolean favorite = false;
-
+    public boolean illegal;
     public LinkedList<Button> addIngredient;
     public LinkedList<Button> addStep;
     public LinkedList<Button> deleteIngredient;
@@ -67,7 +67,14 @@ public class RecipeWindow{
     int lineheight=50;
     int center=550-160;
 
+    private final static RecipeWindow INSTANCE = new RecipeWindow();
+    private  RecipeWindow()
+    {
 
+    }
+    public static RecipeWindow getInstance(){
+        return INSTANCE;
+    }
     /**
      * initialize the scene
      * @return

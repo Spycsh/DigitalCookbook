@@ -29,7 +29,14 @@ public class ForbiddenEditWindow{
     public LinkedList<TextField> forbidenText2 = new LinkedList<TextField>();
     public LinkedList<Integer> mark= new LinkedList<>();
     public Button home = new Button();
+	private final static ForbiddenEditWindow INSTANCE = new ForbiddenEditWindow();
+	private ForbiddenEditWindow()
+	{
 
+	}
+	public static ForbiddenEditWindow getInstance(){
+		return INSTANCE;
+	}
     /**
      * @return the scene with given style
      */

@@ -36,6 +36,28 @@
     -fx-border-radius: 30;
     -fx-background-image: url("search.png");
 }
+.search{
+    -fx-cursor: hand;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 30;
+    -fx-background-image: url("search.png");
+}
+.littleTitle{
+    -fx-font-size: 40px;
+    -fx-font-weight: 900;
+}
+.back{
+    -fx-cursor: hand;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-radius: 25;
+    -fx-border-radius: 30;
+    -fx-background-image: url("back.png");
+}
 .pointer{
     -fx-cursor: hand;
 }
