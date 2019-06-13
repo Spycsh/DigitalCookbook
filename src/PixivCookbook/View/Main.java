@@ -84,17 +84,17 @@ public class Main{
 		sticky.getStyleClass().add("sticky");
 		pane.getChildren().add(sticky);
         //System.out.println(root.getChildrenUnmodifiable());
-        favoriteButton.setText("C");
-        favoriteButton.setLayoutX(1050);
-        favoriteButton.setLayoutY(150);
-        favoriteButton.setMinSize(20,20);
-        favoriteButton.getStyleClass().add("bigstar");
-        pane.getChildren().add(favoriteButton);
-        favoriteButton2.setText("C");
-        favoriteButton2.setLayoutX(1050);
-        favoriteButton2.setLayoutY(150);
-        favoriteButton2.setMinSize(20,20);
-        favoriteButton2.getStyleClass().add("yellowbigstar");
+//        favoriteButton.setText("C");
+//        favoriteButton.setLayoutX(1050);
+//        favoriteButton.setLayoutY(150);
+//        favoriteButton.setMinSize(20,20);
+//        favoriteButton.getStyleClass().add("bigstar");
+//        pane.getChildren().add(favoriteButton);
+//        favoriteButton2.setText("C");
+//        favoriteButton2.setLayoutX(1050);
+//        favoriteButton2.setLayoutY(150);
+//        favoriteButton2.setMinSize(20,20);
+//        favoriteButton2.getStyleClass().add("yellowbigstar");
         pane.getChildren().add(favoriteButton2);
     }
 

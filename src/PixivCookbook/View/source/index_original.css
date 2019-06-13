@@ -1,12 +1,9 @@
 .root {
-    -fx-background-image: url("0bg.jpg");
+    -fx-background-image: url("bg2.png");
     -fx-font-size: 20px;
-    -fx-font-family: "Microsoft JhengHei";
+    -fx-font-family: "Arial Black";
     -fx-fill: #e6e6fa;
     -fx-font-weight: normal;
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
-    -fx-font-weight: bold;
 }
 .button:hover
 {
@@ -14,7 +11,7 @@
 }
 .flower{
     -fx-font-size: 30px;
-    -fx-font-family: "Microsoft JhengHei";
+    -fx-font-family: "Vladimir Script";
 }
 .border{
     -fx-cursor: hand;
