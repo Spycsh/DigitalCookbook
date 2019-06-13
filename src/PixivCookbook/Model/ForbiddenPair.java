@@ -3,8 +3,9 @@ package PixivCookbook.Model;
 import java.io.Serializable;
 
 /**
- * @author Spycsh
  * entity class forbidden pair
+ * @author Spycsh
+
  */
 public class ForbiddenPair implements Serializable {
 

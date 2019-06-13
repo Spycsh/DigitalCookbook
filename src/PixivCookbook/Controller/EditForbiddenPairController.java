@@ -12,13 +12,14 @@ import java.util.Arrays;
 public class EditForbiddenPairController
 {
     /**
+
      * @param forW forbidden edit window
      * @param forbiddenStage forbidden stage
      * @param model	 the functions to operate the database
-     * 
      * bind the forbidden pair window
      * with edit, add and delete function
      * and the home button to go back to shut down the stage
+
      */
     public void addForbiddenEvent(ForbiddenEditWindow forW, Stage forbiddenStage, DBController model)
     {

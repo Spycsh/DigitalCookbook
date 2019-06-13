@@ -10,6 +10,12 @@ import org.junit.jupiter.api.Test;
 
 import PixivCookbook.Model.*;
 
+/**
+ * test functions in
+ * the entity class recipe
+ * @author Spycsh
+ *
+ */
 class JunitRecipe {
 	Recipe aRecipe;
 	List<Ingredient> aIngredientList;

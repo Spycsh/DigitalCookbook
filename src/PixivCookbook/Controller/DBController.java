@@ -50,12 +50,13 @@ public class DBController {
 	}
 	
 	/**
-	 * @param input
-	 * @param id
 	 * insert a given recipe to database
 	 * always use with assinID function
 	 * which given the max id of recipes in database
 	 * and insert the recipe as the (maxID+1) recipe
+	 * @param input
+	 * @param id
+
 	 * 
 	 */
 	public void addRecipetoDatabase(Recipe input,int id){
@@ -115,8 +116,9 @@ public class DBController {
 	}
 	
 	/**
-	 * @param id
 	 * delete recipe by id
+	 * @param id
+	 * 
 	 */
 	public void deleteRecipefromDatabase(int id) {
 		PreparedStatement psql;
@@ -133,11 +135,12 @@ public class DBController {
 	
 	
 	/**
-	 * @param input		 the recipe that the ingredient belongs to
-	 * @param id		 the ingredients
-	 * @throws SQLException
-	 * 
 	 * add ingredients by recipe id
+	 * @param input		 the recipe that the ingredient belongs to
+	 * @param id the ingredients
+	 * @throws SQLException sequel exception
+	 * 
+	 * 
 	 */
 	private void addIngredientstoDatabase(Recipe input,int id) throws SQLException {
 		PreparedStatement psql;
@@ -153,11 +156,13 @@ public class DBController {
 	}
 	
 	/**
+	 * 
+	 * delete all ingredients first and insert into database a new one
 	 * @param input  	 the list of ingredient
 	 * @param id  		 the recipe id
 	 * @throws SQLException
 	 * 
-	 * delete all ingredients first and insert into database a new one
+	 * 
 	 * 
 	 */
 	public void addIngredientstoDatabase(List<Ingredient> input,int id) throws SQLException {
@@ -176,12 +181,12 @@ public class DBController {
 	}
 	
 	/**
+	 * 
+	 * add steps by recipe id
 	 * @param input		// the recipe the steps belong to
 	 * @param id		// the recipe id
 	 * @throws SQLException
 	 * @throws SQLIntegrityConstraintViolationException
-	 * 
-	 * add steps by recipe id
 	 * 
 	 */
 	private void addStepstoDatabase(Recipe input,int id) throws SQLException,SQLIntegrityConstraintViolationException{
@@ -196,12 +201,11 @@ public class DBController {
 	}
 	
 	/**
+	 * add steps to the given recipe
 	 * @param input		// the list of step of the recipe
 	 * @param id		// the recpie id
 	 * @throws SQLException
 	 * @throws SQLIntegrityConstraintViolationException
-	 * 
-	 * add steps to the given recipe
 	 * 
 	 */
 	public void addStepstoDatabase(List<Step> input,int id) throws SQLException,SQLIntegrityConstraintViolationException{
@@ -218,10 +222,10 @@ public class DBController {
 	}
 	
 	/**
-	 * @param id		 the recipe id
-	 * @param newName	 the new name
 	 * 
 	 * update the recipe name to be the given one
+	 * @param id		 the recipe id
+	 * @param newName	 the new name
 	 * 
 	 */
 	public void saveRecipName(int id, String newName) {
@@ -245,10 +249,10 @@ public class DBController {
 	}
 	
 	/**
+	 * update the description of the given recipe
 	 * @param id				 recipe id
 	 * @param newDescription	 the new descrition of recipe
 	 * 
-	 * update the description of the given recipe
 	 */
 	public void saveDescription(int id, String newDescription) {
 		Statement statement;
@@ -263,10 +267,9 @@ public class DBController {
 	}
 
 	/**
+	 * update the serving of the given recipe
 	 * @param id			 the recipe id
 	 * @param newserving	 the new serving
-	 * 
-	 * update the serving of the given recipe
 	 * 
 	 */
 	public void saveServings(int id, double newserving) {
@@ -282,10 +285,10 @@ public class DBController {
 	}
 
 	/**
-	 * @param id					 the recipe id
-	 * @param newPreparationtime	 the new Preparation time
 	 * 
 	 * update the time of the given recipe
+	 * @param id					 the recipe id
+	 * @param newPreparationtime	 the new Preparation time
 	 * 
 	 */
 	public void savePreparationtime(int id, int newPreparationtime) {
@@ -303,7 +306,6 @@ public class DBController {
 	/**
 	 * @param id			 the recipe id
 	 * @param newCooktime	 the new cook time
-	 * 
 	 * 
 	 */
 	public void saveCooktime(int id, int newCooktime) {
@@ -367,7 +369,7 @@ public class DBController {
 		
 	}
 	/**
-	 * @param id 	 the id contained by the recipe that we are looking for
+	 * @param id the id contained by the recipe that we are looking for
 	 * @return the recipe
 	 */
 	public Recipe getRecipeBySearchfromDatabase(int id){
@@ -394,7 +396,7 @@ public class DBController {
 	
 	
 	/**
-	 * @param id 	 the id contained by ingredients that we are looking for
+	 * @param id the id contained by ingredients that we are looking for
 	 * @return a list of ingredients
 	 */
 	public List<Ingredient> getIngredientsfromDatabase(int id){
@@ -419,7 +421,7 @@ public class DBController {
 	
 	
 	/**
-	 * @param id 	 the id contained by steps that we are looking for
+	 * @param id the id contained by steps that we are looking for
 	 * @return a list of steps
 	 */
 	public List<Step> getStepsfromDatabase(int id){
@@ -445,12 +447,13 @@ public class DBController {
 
 	
 	/**
+	 * fuzzy query
+	 * search the matched recipe
+	 * capitalization insensitive
 	 * @param RecipeName
 	 * @return the list of id
 	 * @author csh
-	 * search the matched recipe
-	 * fuzzy query
-	 * capitalization insensitive
+	 * 
 	 */
 	public List<Recipe> searchAllMatchedRecipes(String RecipeName) throws IndexOutOfBoundsException{
 		List<Recipe> matchedRecipeIdList = new LinkedList<Recipe>();
@@ -521,8 +524,10 @@ public class DBController {
 	}
 	
 	/**
-	 * @return the random 7 recipes name for the main page
 	 * if less than 7 return all
+	 * return the random 7 recipes name for the main page
+	 * @return the random list
+	 * 
 	 */
 	public List<Recipe> getRecipesForMainPage() {
 		Statement statement;

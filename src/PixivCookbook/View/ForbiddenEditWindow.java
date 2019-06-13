@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import java.util.LinkedList;
 
 /**
+ * this is the forbidden edit window
  * @author Shen yu
  * 
  */
@@ -51,7 +52,7 @@ public class ForbiddenEditWindow{
     }
 
     /**
-     * set the forbidden edit window
+     * refresh the forbidden edit window
      */
     public void refresh()
     {
@@ -183,6 +184,7 @@ public class ForbiddenEditWindow{
     }
 
 	/**
+	 * get the y position
 	 * @return the posy
 	 */
 	public int getPosy() {
@@ -190,6 +192,7 @@ public class ForbiddenEditWindow{
 	}
 
 	/**
+	 * set the y position
 	 * @param posy the posy to set
 	 */
 	public void setPosy(int posy) {

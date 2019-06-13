@@ -16,6 +16,11 @@ import java.util.regex.Pattern;
 
 //import com.sun.corba.se.pept.transport.EventHandler;
 
+/**
+ * this is the main window
+ * @author Shen yu
+ *
+ */
 public class Main{
     public ImageView temp[],title;
     public Pane pane = new Pane();

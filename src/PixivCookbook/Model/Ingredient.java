@@ -6,10 +6,10 @@ package PixivCookbook.Model;
 
 import java.io.Serializable;
 
-/**
+/**entity class ingredient
  * @author precision 7710
  * 
- * entity class ingredient
+ * 
  */
 public class Ingredient implements Serializable{
 	/**

@@ -283,12 +283,14 @@ public class WindowController extends Application {
     
     
     /**
-     * @param main
      * bind actions on recommend button
      * flush, get 7 recipes by random from database
      * if in a search state
      * then eliminate the back button
      * clear the search box
+     * 
+     * @param main
+
      */
     public void addRecommendButtonAction(Main main) {
     	//List<Recipe> recipe = model.getRecipesForMainPage();
@@ -405,12 +407,14 @@ public class WindowController extends Application {
     }
     
     /**
-     * @param recipe  a list of recipes displayed
-     * @param main main window
-     * 
      * set the 7 recipes on the main window with action
      * and prepare the information for display on the
      * recipe window
+     * 
+     * @param recipe  a list of recipes displayed
+     * @param main main window
+     * 
+
      * 
      */
     public void addTempAction(List<Recipe> recipe, Main main) {
@@ -450,8 +454,9 @@ public class WindowController extends Application {
     	}
     }
     /**
-     * @param rmain
      * home action
+     * @param rmain
+
      */
     public void addHomeAction(RecipeWindow rmain) {
         rmain.home.setOnAction(new EventHandler<ActionEvent>() {
@@ -480,10 +485,11 @@ public class WindowController extends Application {
     }
     
     /**
-     * @param rwin recipe window
      * 
      * when view a recipe
      * it will check if the recipe contains a forbidden pair
+     * 
+     * @param rwin recipe window
      * 
      */
     public void addForbidAction(RecipeWindow rwin) {
@@ -512,10 +518,11 @@ public class WindowController extends Application {
     }
     
     /**
-     * @param rwin
-     * 
      * control the actions and display
      * when edit a recipe
+     * 
+     * @param rwin
+     * 
      * 
      */
     public void addEditAction(RecipeWindow rwin)
@@ -543,11 +550,9 @@ public class WindowController extends Application {
     
     
     /**
-     * @param rwin
-     * 
      * bind title part with action
      * should be renamed
-     * 
+     * @param rwin
      */
     public void editTitle(RecipeWindow rwin) {
     	rwin.editTitle.setOnAction(new EventHandler<ActionEvent>() {
@@ -610,8 +615,9 @@ public class WindowController extends Application {
 	}
     
     /**
-     * @param rwin
      * bind delete button action
+     * @param rwin
+     * 
      */
     public void editDeleteButton(RecipeWindow rwin) {
     	rwin.delete.setOnAction(new EventHandler<ActionEvent>() {
@@ -647,7 +653,7 @@ public class WindowController extends Application {
 	}
     
     /**
-     * @param rwin
+     * 
      * 
      * first check the title and make sure title valid
      * then bind image part with action
@@ -655,6 +661,8 @@ public class WindowController extends Application {
      * add it to the recipe
      * if not in a valid image format
      * then not flush
+     * 
+     * @param rwin
      */
     public void editImage(RecipeWindow rwin) {
     	rwin.title.addEventHandler(MouseEvent.MOUSE_CLICKED,
@@ -703,11 +711,11 @@ public class WindowController extends Application {
     
 
 	/**
-	 * @param rwin
+	 * 
 	 * 
 	 * bind main information part with action
 	 * with different illegal input warning
-	 * 
+	 * @param rwin
 	 */
 	public void editMainInfo(RecipeWindow rwin) {
     	rwin.editDescription.setOnAction(new EventHandler<ActionEvent>() {
@@ -790,9 +798,10 @@ public class WindowController extends Application {
     }
     
     /**
+     * bind action to the ingredients
      * @param rwin
      * 
-     * bind action to the ingredients
+     * 
      */
     public void editIngredient(RecipeWindow rwin) {
     	rwin.editIngredient.setOnAction(new EventHandler<ActionEvent>() {
@@ -845,9 +854,9 @@ public class WindowController extends Application {
     }
     
     /**
+     * bind action to step part
      * @param rwin
      * 
-     * bind action to step part
      */
     public void editStep(RecipeWindow rwin) {
     	rwin.editStep.setOnAction(new EventHandler<ActionEvent>() {
@@ -984,12 +993,13 @@ public class WindowController extends Application {
 
 
 
-    /**
+    /** 
+     * bind action to add recipe buttton on main window
+     * initialization for the recipe window
      * @param recipe
      * @param main
      * 
-     * bind action to add recipe buttton on main window
-     * initialization for the recipe window
+
      * 
      */
     public void addAddAction(List<Recipe> recipe, Main main) {
@@ -1035,11 +1045,12 @@ public class WindowController extends Application {
                  });
     }
     /**
+     * initialize the forbidden window
      * @param forw 
      * @param forbiddenStage
      * @param model
      * 
-     * initialize the forbidden window
+     * 
      * 
      */
     public void initEditForbidden(ForbiddenEditWindow forw,Stage forbiddenStage,DBController model)
@@ -1053,9 +1064,8 @@ public class WindowController extends Application {
     }
 
     /**
-     * @param args
-     * 
      * launch the PixivCookbook here
+     * @param args
      * 
      */
     public static void main(String[] args) {

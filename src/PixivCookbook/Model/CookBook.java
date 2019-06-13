@@ -6,8 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author Spycsh
  * entity class cookbook
+ * @author Spycsh
+ * 
  * 
  */
 public class CookBook implements Serializable {

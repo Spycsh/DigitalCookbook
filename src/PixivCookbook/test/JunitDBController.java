@@ -19,10 +19,11 @@ import PixivCookbook.Model.Step;
 import PixivCookbook.Controller.DBController;
 
 /**
- * @author Spycsh
  * Before run this test please make sure you
  * have deleted the records of your database
  * and initialize it with CookBookApp
+ * @author Spycsh
+
  *
  */
 @FixMethodOrder(MethodSorters.JVM)  // run the test function with given order
@@ -96,9 +97,9 @@ public class JunitDBController {
 
 
 
-	/**
+	/**test update the name function
 	 * @throws InterruptedException
-	 * test update the name function
+	 * 
 	 */
 	@Test
 	public void testSaveRecipName() throws InterruptedException {

@@ -13,6 +13,11 @@ import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * this is the recipe window
+ * @author Shen Yu
+ *
+ */
 public class RecipeWindow{
     public boolean markDescription=false;
     public boolean markIngredient=false;
@@ -61,11 +66,12 @@ public class RecipeWindow{
     int posy=0;
     int lineheight=50;
     int center=550-160;
-    public RecipeWindow()
-    {
 
-    }
 
+    /**
+     * initialize the scene
+     * @return
+     */
     public Scene getScene(){
         pane.setMinWidth(1375);
         pane.getStyleClass().add("root");
@@ -685,6 +691,7 @@ public class RecipeWindow{
     }
 
     /**
+     * a substring of the message of error
      * @param message error 
      */
     public void alertForm(LinkedList<String> message)
@@ -705,8 +712,9 @@ public class RecipeWindow{
     }
 
     /**
-     * @param s the string need to check as integer
-     * @return if the string is integer
+     * check if the string denotes a integer
+     * @param s the string need to check
+     * @return true or false
      */
     public boolean isInt(String s)
     {
@@ -715,8 +723,9 @@ public class RecipeWindow{
     }
 
     /**
-     * @param s the string need to check as double
-     * @return if the string is double
+     * check if the string denotes a double
+     * @param s the string need to check
+     * @return
      */
     public boolean isDouble(String s)
     {

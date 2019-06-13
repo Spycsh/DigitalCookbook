@@ -8,8 +8,6 @@ import java.util.List;
  * entity class recipe
  * @author Ling Wei
  * 
- * entity class recipe
- * 
  */
 public class Recipe implements Serializable{
 

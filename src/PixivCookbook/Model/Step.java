@@ -2,10 +2,10 @@ package PixivCookbook.Model;
 
 import java.io.Serializable;
 
-/**
+/**entity class step
  * @author Ling Wei
  *
- * entity class step
+ * 
  */
 public class Step implements Serializable {
 	
