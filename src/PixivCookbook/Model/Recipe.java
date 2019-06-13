@@ -211,7 +211,7 @@ public class Recipe implements Serializable{
 	 * set image path attribute with a specific path format
 	 * 
 	 */
-	public void restoreImg(String imgAddress) {
+	public void restoreImg() {
 		String name=this.recipeName.replaceAll(" ","");
 		String desPath="img\\"+name+".jpg";
 		try

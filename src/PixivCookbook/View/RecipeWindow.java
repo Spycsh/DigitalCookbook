@@ -83,7 +83,7 @@ public class RecipeWindow{
         refresh();
         //System.out.println(root.getChildrenUnmodifiable());
         //label.getStyleClass().add("pointer");
-        scene.getStylesheets().add(Main.class.getResource("source/index.css").toExternalForm());
+        scene.getStylesheets().add(MainWindow.class.getResource("source/index.css").toExternalForm());
         //primaryStage.setScene(scene);
         //primaryStage.show();
         return scene;

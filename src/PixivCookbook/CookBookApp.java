@@ -55,7 +55,7 @@ public class CookBookApp {
 		
 		recipe.setPreparationTime(30);
 		recipe.setCookingTime(10);
-		recipe.restoreImg("GBJ.jpg");
+		recipe.restoreImg();
 
 		return recipe;
 	}
@@ -88,7 +88,7 @@ public class CookBookApp {
 		
 		recipe.setPreparationTime(5);
 		recipe.setCookingTime(100);
-		recipe.restoreImg("HSR.jpg");
+		recipe.restoreImg();
 		return recipe;
 	} 
 	
@@ -128,7 +128,7 @@ public class CookBookApp {
 				
 		recipe.setPreparationTime(30);
 		recipe.setCookingTime(5);
-		recipe.restoreImg("SLF.jpg");
+		recipe.restoreImg();
 
 		return recipe;
 	} 

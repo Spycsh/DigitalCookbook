@@ -5,7 +5,7 @@ import PixivCookbook.Model.Ingredient;
 import PixivCookbook.Model.Recipe;
 import PixivCookbook.Model.Step;
 import PixivCookbook.View.ForbiddenEditWindow;
-import PixivCookbook.View.Main;
+import PixivCookbook.View.MainWindow;
 import PixivCookbook.View.RecipeWindow;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -42,7 +42,7 @@ public class WindowController extends Application {
     Stage primaryStage = new Stage();
     Stage editStage = new Stage();
     Stage forbiddenStage = new Stage();
-    Main main;
+    MainWindow main;
 	private boolean displayForbidInfo = true;
     
     static int id;
@@ -62,7 +62,7 @@ public class WindowController extends Application {
         this.model.run();
         primaryStage = this.primaryStage;
         recipe = this.model.getRecipesForMainPage();
-        main = new Main();
+        main = new MainWindow();
         initMain(main);
         mainScene = main.getScene();
         primaryStage.setScene(mainScene);  //main interface
@@ -253,7 +253,7 @@ public class WindowController extends Application {
      * @param main
      * initialize the main window
      */
-    public void initMain(Main main)
+    public void initMain(MainWindow main)
     {
         if(main.temp!=null)
             main.dropAllImageviews();
@@ -292,7 +292,7 @@ public class WindowController extends Application {
      * @param main
 
      */
-    public void addRecommendButtonAction(Main main) {
+    public void addRecommendButtonAction(MainWindow main) {
     	//List<Recipe> recipe = model.getRecipesForMainPage();
         main.getRecommendButton().addEventHandler(MouseEvent.MOUSE_CLICKED,
                 new EventHandler<MouseEvent>() {
@@ -355,7 +355,7 @@ public class WindowController extends Application {
         });
     }
 
-	public void addSearchButtonAction(Main main) {
+	public void addSearchButtonAction(MainWindow main) {
 		main.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
@@ -380,7 +380,7 @@ public class WindowController extends Application {
 		});
 	}
 
-    public void addBackButtonAction(Main main) {
+    public void addBackButtonAction(MainWindow main) {
         main.backButton.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 new EventHandler<MouseEvent>() {
                     @Override
@@ -417,7 +417,7 @@ public class WindowController extends Application {
 
      * 
      */
-    public void addTempAction(List<Recipe> recipe, Main main) {
+    public void addTempAction(List<Recipe> recipe, MainWindow main) {
     	for(int i = 0; i< Math.min(7,recipe.size());i++) {
     		int tempCount = i;
     		main.temp[i].addEventHandler(MouseEvent.MOUSE_CLICKED,
@@ -1002,7 +1002,7 @@ public class WindowController extends Application {
 
      * 
      */
-    public void addAddAction(List<Recipe> recipe, Main main) {
+    public void addAddAction(List<Recipe> recipe, MainWindow main) {
     	 main.temp[Math.min(7,recipe.size())].addEventHandler(MouseEvent.MOUSE_CLICKED,
                  new EventHandler<MouseEvent>() {
                      @Override

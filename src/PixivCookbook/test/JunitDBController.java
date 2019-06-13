@@ -40,7 +40,7 @@ public class JunitDBController {
 		aSql_test = new DBController();
 		aSql_test.run();
 		testRecipe = new Recipe("testRecipe","Shanghai dish" , 4);
-		testRecipe.restoreImg("test0.jpg");
+		testRecipe.restoreImg();
 	}
 
 	@AfterEach
