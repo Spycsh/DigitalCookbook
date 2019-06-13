@@ -1,10 +1,10 @@
 package PixivCookbook.Controller;
 
-import PixivCookbook.ForbiddenPair;
-import PixivCookbook.Ingredient;
-import PixivCookbook.Model.SQL_test;
-import PixivCookbook.Recipe;
-import PixivCookbook.Step;
+import PixivCookbook.Model.ForbiddenPair;
+import PixivCookbook.Model.Ingredient;
+import PixivCookbook.Model.DBController;
+import PixivCookbook.Model.Recipe;
+import PixivCookbook.Model.Step;
 import PixivCookbook.View.ForbiddenEditWindow;
 import PixivCookbook.View.Main;
 import PixivCookbook.View.RecipeWindow;
@@ -28,9 +28,14 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class WindowController extends Application {
 
-    SQL_test model = new SQL_test();
+/**
+ * This is the controller class for
+ * main window class
+ * 
+ */
+public class WindowController extends Application {
+    DBController model = new DBController();
     List<Recipe> recipe;
     Scene mainScene;
     Scene editScene;
@@ -150,8 +155,8 @@ public class WindowController extends Application {
     }
     
     /**
-     * @param forbid1	// one of the forbidden pair
-     * @param forbid2	// the other of the forbidden pair
+     * @param forbid1 one of the forbidden pair
+     * @param forbid2 the other of the forbidden pair
      * alert box
      * ask whether user want to save ingredients in the database
      * although they may collide with each other
@@ -172,7 +177,7 @@ public class WindowController extends Application {
     }
     
     /**
-     * @param forbidInfo	// the forbidden ingredient pair information
+     * @param forbidInfo the forbidden ingredient pair information
      * 
      * alert box
      * user enter in some ingredients and 
@@ -216,8 +221,8 @@ public class WindowController extends Application {
     
     
     /**
-     * @param input		// given input string
-     * @return			// true if denotes a double 
+     * @param input	 given input string
+     * @return true if denotes a double 
      * 
      */
     public static boolean isDouble(String input){
@@ -227,8 +232,8 @@ public class WindowController extends Application {
     
     
     /**
-     * @param input		// given input string
-     * @return			// true if denotes an integer
+     * @param input  given input string
+     * @return	 true if denotes an integer
      */
     public static boolean isInteger(String input){
     	Matcher mer = Pattern.compile("^[+-]?[0-9]+$").matcher(input);
@@ -380,8 +385,8 @@ public class WindowController extends Application {
     }
     
     /**
-     * @param recipe 	// a list of recipes displayed
-     * @param main		// main window
+     * @param recipe  a list of recipes displayed
+     * @param main main window
      * 
      * set the 7 recipes on the main window with action
      * and prepare the information for display on the
@@ -455,7 +460,7 @@ public class WindowController extends Application {
     }
     
     /**
-     * @param rwin		// recipe window
+     * @param rwin recipe window
      * 
      * when view a recipe
      * it will check if the recipe contains a forbidden pair
@@ -1017,7 +1022,7 @@ public class WindowController extends Application {
      * initialize the forbidden window
      * 
      */
-    public void initEditForbidden(ForbiddenEditWindow forw,Stage forbiddenStage,SQL_test model)
+    public void initEditForbidden(ForbiddenEditWindow forw,Stage forbiddenStage,DBController model)
     {
         LinkedList<ForbiddenPair> data;
         data=model.getAllForbiddenPair();

@@ -8,8 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import PixivCookbook.Ingredient;
-import PixivCookbook.Recipe;
+import PixivCookbook.Model.*;
 
 class JunitRecipe {
 	Recipe aRecipe;

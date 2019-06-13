@@ -1,7 +1,7 @@
 package PixivCookbook.Controller;
 
-import PixivCookbook.ForbiddenPair;
-import PixivCookbook.Model.SQL_test;
+import PixivCookbook.Model.ForbiddenPair;
+import PixivCookbook.Model.DBController;
 import PixivCookbook.View.ForbiddenEditWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,11 +12,15 @@ import java.util.Arrays;
 public class EditForbiddenEvent
 {
     /**
-     * @param forW
-     * @param forbiddenStage
-     * @param model
+     * @param forW forbidden edit window
+     * @param forbiddenStage forbidden stage
+     * @param model	 the functions to operate the database
+     * 
+     * bind the forbidden pair window
+     * with edit, add and delete function
+     * and the home button to go back to shut down the stage
      */
-    public void addForbiddenEvent(ForbiddenEditWindow forW, Stage forbiddenStage, SQL_test model)
+    public void addForbiddenEvent(ForbiddenEditWindow forW, Stage forbiddenStage, DBController model)
     {
         forW.home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -28,11 +32,15 @@ public class EditForbiddenEvent
                 forbiddenStage.close();
             }
         });
+        
+        // each line has three buttons: edit, add and delete
         for(int i=0;i<forW.data.size();i++)
         {
             if(forW.deleteForbidden.size()==0) break;
             if(i>=forW.editForbidden.size()) break;
             int temp=i;
+            
+            // edit button
             forW.editForbidden.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -58,6 +66,8 @@ public class EditForbiddenEvent
                     addForbiddenEvent(forW,forbiddenStage,model);
                 }
             });
+            
+            // delete button
             forW.deleteForbidden.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -70,6 +80,8 @@ public class EditForbiddenEvent
                     addForbiddenEvent(forW,forbiddenStage,model);
                 }
             });
+            
+            // add button
             forW.addForbidden.get(i).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -88,7 +100,7 @@ public class EditForbiddenEvent
                     }
                     //System.out.println(id);
                     forW.savedata();
-                    forW.data.add(temp,new ForbiddenPair("Deafault","Deafault",id));
+                    forW.data.add(temp,new ForbiddenPair("Default","Default",id));
                     forW.mark.add(temp,1);
                     forW.refresh();
                     addForbiddenEvent(forW,forbiddenStage,model);

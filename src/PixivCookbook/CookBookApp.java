@@ -4,7 +4,8 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
-import PixivCookbook.Model.SQL_test;
+import PixivCookbook.Model.*;
+import PixivCookbook.Model.DBController;
 /**
  * @author precision 7710
  *
@@ -139,7 +140,7 @@ public class CookBookApp {
 	 */
 	public static void main(String[] args) {
 		CookBook cb = new CookBook("Chinese Cuisine");
-		SQL_test databaseConnection = new SQL_test();
+		DBController databaseConnection = new DBController();
 		databaseConnection.run();
 		
 		cb.add(createGongBaoJiding());

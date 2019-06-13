@@ -1,6 +1,6 @@
 package PixivCookbook.View;
 
-import PixivCookbook.Recipe;
+import PixivCookbook.Model.Recipe;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
 //import com.sun.corba.se.pept.transport.EventHandler;
 
 public class Main{
-
     public ImageView temp[],title;
     public Pane pane = new Pane();
     public Image image;
@@ -33,10 +32,10 @@ public class Main{
     public Button backButton = new Button();
     public boolean favorite=false;
     public Label littleTitle;
-    public Main()
-    {
 
-    }
+    /**
+     * @return 	 scene of the main window
+     */
     public Scene getScene(){
         //Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
         //this.primaryStage.setTitle("Hello World");

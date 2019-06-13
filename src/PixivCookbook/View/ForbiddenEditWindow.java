@@ -1,6 +1,6 @@
 package PixivCookbook.View;
 
-import PixivCookbook.ForbiddenPair;
+import PixivCookbook.Model.ForbiddenPair;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,6 +10,10 @@ import javafx.scene.layout.Pane;
 
 import java.util.LinkedList;
 
+/**
+ * @author Shen yu
+ * 
+ */
 public class ForbiddenEditWindow{
     int posy=0;
     int lineheight=50;
@@ -25,6 +29,9 @@ public class ForbiddenEditWindow{
     public LinkedList<Integer> mark= new LinkedList<>();
     public Button home = new Button();
 
+    /**
+     * @return the scene with given style
+     */
     public Scene getScene(){
         pane.setMinWidth(1375);
         pane.getStyleClass().add("root");
@@ -42,10 +49,10 @@ public class ForbiddenEditWindow{
         scene.getStylesheets().add(ForbiddenEditWindow.class.getResource("index.css").toExternalForm());
         return scene;
     }
-    public ForbiddenEditWindow()
-    {
 
-    }
+    /**
+     * set the forbidden edit window
+     */
     public void refresh()
     {
         double posv=spane.getVvalue();
@@ -154,6 +161,9 @@ public class ForbiddenEditWindow{
             posv=spane.getVvalue();
         }
     }
+    /**
+     * save all the ingredient pair content displayed on the screen
+     */
     public void savedata()
     {
         for(int i=0;i<forbidenText1.size();i++)

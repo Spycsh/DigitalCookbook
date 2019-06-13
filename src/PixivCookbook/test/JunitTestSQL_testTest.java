@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
@@ -14,10 +13,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import PixivCookbook.Ingredient;
-import PixivCookbook.Recipe;
-import PixivCookbook.Step;
-import PixivCookbook.Model.SQL_test;
+import PixivCookbook.Model.Ingredient;
+import PixivCookbook.Model.Recipe;
+import PixivCookbook.Model.Step;
+import PixivCookbook.Model.DBController;
 
 /**
  * @author Spycsh
@@ -28,7 +27,7 @@ import PixivCookbook.Model.SQL_test;
  */
 @FixMethodOrder(MethodSorters.JVM)  // run the test function with given order
 class JunitTestSQL_testTest {
-	SQL_test aSql_test;
+	DBController aSql_test;
 	Recipe aRecipe;
 	Ingredient aIngredient;
 	
@@ -37,7 +36,7 @@ class JunitTestSQL_testTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		aSql_test = new SQL_test();
+		aSql_test = new DBController();
 		aSql_test.run();
 		testRecipe = new Recipe("testRecipe","Shanghai dish" , 4);
 		testRecipe.restoreImg("test0.jpg");

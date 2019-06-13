@@ -1,7 +1,7 @@
 package PixivCookbook.View;
 
-import PixivCookbook.Ingredient;
-import PixivCookbook.Step;
+import PixivCookbook.Model.Ingredient;
+import PixivCookbook.Model.Step;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
