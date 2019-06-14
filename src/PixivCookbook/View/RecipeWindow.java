@@ -643,37 +643,43 @@ public class RecipeWindow{
             wrongIngredientnum=new boolean[ingredients.size()];
             longIngredientname=new boolean[ingredients.size()];
             longIngredientunit=new boolean[ingredients.size()];
+            int cnt=0;
             for(int i=0;i<ingredients.size();i++)
             {
             	if(i>=ingredientText1.size()) break;
+            	cnt++;
                 wrongIngredientnum[i] = false;
                 if (!isDouble(ingredientText1.get(i).getText())) {
                 	int position = i+1;
-                    message.add("Ingredient "+position+": Ingredient number can only be rational number!");
+                    message.add("Ingredient "+cnt+": Ingredient number can only be rational number!");
                     wrongIngredientnum[i] = true;
                 }
                 if(!wrongIngredientnum[i]) {
                 	ingredients.get(i).setNum(Double.parseDouble(ingredientText1.get(i).getText()));
                 }
             }
+            cnt=0;
             for(int i=0;i<ingredients.size();i++)
             {
             	if(i>=ingredientText2.size()) break;
+            	cnt++;
                 longIngredientunit[i]=false;
                 if(ingredientText2.get(i).getText().length()>15)
                 {
-                    message.add("Ingredient "+i+1+": Ingredient unit is too long!");
+                    message.add("Ingredient "+cnt+": Ingredient unit is too long!");
                     longIngredientunit[i] = true;
                     ingredientText2.get(i).setText(ingredientText2.get(i).getText().substring(0,14));
                 }
             }
+            cnt=0;
             for(int i=0;i<ingredients.size();i++)
             {
             	if(i>=ingredientText3.size()) break;
                 longIngredientname[i]=false;
+                cnt++;
                 if(ingredientText3.get(i).getText().length()>30)
                 {
-                    message.add("Ingredient "+i+1+": Ingredient name is too long!");
+                    message.add("Ingredient "+cnt+": Ingredient name is too long!");
                     longIngredientname[i] = true;
                     ingredientText3.get(i).setText(ingredientText3.get(i).getText().substring(0,29));
                 }
@@ -682,12 +688,14 @@ public class RecipeWindow{
         if(markStep&&stepText!=null)
         {
             longStep=new boolean[step.size()];
+            int cnt=0;
             for(int i=0;i<step.size();i++)
             {
             	if(i>=stepText.size()) break;
+            	cnt++;
                 if(stepText.get(i).getText().length()>90)
                 {
-                    message.add("Step "+i+1+" is too long");
+                    message.add("Step "+cnt+" is too long");
                     stepText.get(i).setText(stepText.get(i).getText().substring(0,89));
                     longStep[i]=true;
                 }

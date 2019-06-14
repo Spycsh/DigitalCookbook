@@ -4,6 +4,7 @@
     <list default="true" id="a2b44ddb-5bf0-46cc-85ec-4d7dfd7949fb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,15 +24,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-771">
-              <caret line="480" column="78" lean-forward="true" selection-start-line="479" selection-start-column="44" selection-end-line="480" selection-end-column="78" />
+            <state relative-caret-position="217">
+              <caret line="715" column="46" lean-forward="true" selection-start-line="715" selection-start-column="46" selection-end-line="715" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#16881#16889#0" expanded="true" />
                 <element signature="e#16958#16966#0" expanded="true" />
                 <element signature="e#28343#28351#0" expanded="true" />
-                <element signature="e#40415#40416#0" expanded="true" />
+                <element signature="e#40094#40095#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/source/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="60" column="8" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -57,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-342">
-              <caret line="168" column="42" selection-start-line="168" selection-start-column="42" selection-end-line="168" selection-end-column="42" />
+            <state relative-caret-position="325">
+              <caret line="160" column="21" lean-forward="true" selection-start-line="160" selection-start-column="21" selection-end-line="160" selection-end-column="52" />
               <folding>
                 <element signature="e#1264#1265#0" expanded="true" />
                 <element signature="e#1286#1287#0" expanded="true" />
@@ -70,7 +80,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="380">
               <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -89,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10388">
-              <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+            <state relative-caret-position="500">
+              <caret line="681" column="49" selection-start-line="681" selection-start-column="49" selection-end-line="681" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1428#1440#0" expanded="true" />
@@ -321,7 +331,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fav</find>
       <find>Forb</find>
       <find>getIngredients</find>
       <find>setMinHeight</find>
@@ -347,10 +356,11 @@
       <find>ass</find>
       <find>assign</find>
       <find>illegal</find>
+      <find>addHomeAction</find>
+      <find>assi</find>
       <find>addRecipetoDatabase</find>
       <find>RecipeWindow</find>
-      <find>assi</find>
-      <find>addHomeAction</find>
+      <find>editImage</find>
     </findStrings>
     <replaceStrings>
       <replace>setContent</replace>
@@ -382,8 +392,8 @@
         <option value="$PROJECT_DIR$/src/PixivCookbook/Default.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/View/source/index.css" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" />
+        <option value="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" />
       </list>
     </option>
@@ -437,6 +447,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="PixivCookbook" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixivCookbook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixivCookbook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="PixivCookbook" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -598,7 +616,7 @@
       <workItem from="1560119001710" duration="17324000" />
       <workItem from="1560162757205" duration="586000" />
       <workItem from="1560424510311" duration="92000" />
-      <workItem from="1560436477551" duration="17181000" />
+      <workItem from="1560436477551" duration="20488000" />
     </task>
     <task id="LOCAL-00001" summary="addbutton">
       <created>1559911743771</created>
@@ -616,7 +634,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146820000" />
+    <option name="totallyTimeSpent" value="150127000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
@@ -787,13 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/source/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/test/JunitRecipe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -833,6 +844,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/source/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="60" column="8" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/CookBookApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -842,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342">
-          <caret line="168" column="42" selection-start-line="168" selection-start-column="42" selection-end-line="168" selection-end-column="42" />
+        <state relative-caret-position="325">
+          <caret line="160" column="21" lean-forward="true" selection-start-line="160" selection-start-column="21" selection-end-line="160" selection-end-column="52" />
           <folding>
             <element signature="e#1264#1265#0" expanded="true" />
             <element signature="e#1286#1287#0" expanded="true" />
@@ -853,8 +871,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10388">
-          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+        <state relative-caret-position="500">
+          <caret line="681" column="49" selection-start-line="681" selection-start-column="49" selection-end-line="681" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1428#1440#0" expanded="true" />
@@ -1052,21 +1070,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-771">
-          <caret line="480" column="78" lean-forward="true" selection-start-line="479" selection-start-column="44" selection-end-line="480" selection-end-column="78" />
+        <state relative-caret-position="217">
+          <caret line="715" column="46" lean-forward="true" selection-start-line="715" selection-start-column="46" selection-end-line="715" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#16881#16889#0" expanded="true" />
             <element signature="e#16958#16966#0" expanded="true" />
             <element signature="e#28343#28351#0" expanded="true" />
-            <element signature="e#40415#40416#0" expanded="true" />
+            <element signature="e#40094#40095#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="380">
           <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />

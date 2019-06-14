@@ -475,8 +475,6 @@ public class WindowController extends Application {
                 rmain.saveData();
                 if(!rmain.illegal)
                 try {
-                    if(!rmain.tf_RecipeName.getText().equals("Default")&&(!model.judgeRecipName(rmain.tf_RecipeName.getText())))
-                        rmain.name=rmain.tf_RecipeName.getText();
                     if(rmain.markIngredient)
                         model.addIngredientstoDatabase(rmain.ingredients, id);
                     if(rmain.markName)
@@ -711,23 +709,20 @@ public class WindowController extends Application {
      * @param rwin
      */
     public void editImage(RecipeWindow rwin) {
-        if(rwin.illegal) {
-            alertBoxFirst();
-            return;
-        }
         //System.out.println("sss");
     	rwin.title.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-            	System.out.println("click img");
-            	
+                if(rwin.illegal) {
+                    alertBoxFirst();
+                    return;
+                }
             	JFileChooser chooser = new JFileChooser();
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("JPEG or PNG file", "jpg", "jpeg","png");
 				chooser.setFileFilter(filter);
 				int returnVal = chooser.showOpenDialog(null);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					System.out.println("You choose to open this image: " + chooser.getSelectedFile().getPath());
 					if(rwin.name != "Default") {
 						rwin.editImgPath = chooser.getSelectedFile().getPath();
 						if(imgValid(rwin.editImgPath)) {
