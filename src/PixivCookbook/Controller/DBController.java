@@ -5,6 +5,9 @@ import PixivCookbook.Model.Ingredient;
 import PixivCookbook.Model.Recipe;
 import PixivCookbook.Model.Step;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -370,11 +373,22 @@ public class DBController {
 	 */
 	public void saveImagePath(int id, String newPath) {
 		PreparedStatement psql;
+		String savePath = "img"+"\\"+id+"haha.jpg";
 		try {
 			if(newPath != "") {
+				try
+				{
+					File input = new File(newPath);
+					BufferedImage bim = ImageIO.read(input);
+					File output = new File(savePath);
+					ImageIO.write(bim,"jpg",output);
+				}catch (Exception e)
+				{
+
+				}
 				String sql = "UPDATE cookbook.recipe SET imgAddress =? WHERE recipe_id = ?";
 				psql = this.connect.prepareStatement(sql);
-				psql.setString(1, newPath);
+				psql.setString(1, savePath);
 				psql.setInt(2, id);
 				psql.executeUpdate();
 			}else {

@@ -726,7 +726,8 @@ public class WindowController extends Application {
 						rwin.editImgPath = chooser.getSelectedFile().getPath();
 						if(imgValid(rwin.editImgPath)) {
 						    rwin.imgPath=rwin.editImgPath;
-							model.saveImagePath(id, rwin.editImgPath);
+						    System.out.println(rwin.imgPath);
+							model.saveImagePath(id+1, rwin.editImgPath);
 						}
 						else {
 							alertImgPathNotValid();
