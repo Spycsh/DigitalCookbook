@@ -725,6 +725,7 @@ public class WindowController extends Application {
 					if(rwin.name != "Default") {
 						rwin.editImgPath = chooser.getSelectedFile().getPath();
 						if(imgValid(rwin.editImgPath)) {
+						    rwin.imgPath=rwin.editImgPath;
 							model.saveImagePath(id, rwin.editImgPath);
 						}
 						else {
@@ -734,28 +735,24 @@ public class WindowController extends Application {
 																	// using the current image
 							}
 							else {
-							rwin.editImgPath = "";					// for add, if there does not exist a image
-																	// using default
+							    rwin.editImgPath = "";					// for add, if there does not exist a image
 							}
-							model.saveImagePath(id, rwin.editImgPath);
 							//System.out.println(rwin.editImgPath);
 						}
 					}else {
 						alertBoxDefault();
 					}
-					// if not invalid image path, then flush
-					if(rwin.editImgPath!="") {
-		                double posx=editStage.getX();
-		                double posy=editStage.getY();
-	//                    rwin.markImage = false;
-	                    rwin.saveData();
-	                    rwin.refresh();
-	                    initRecipeWindow(rwin);
-	                    editStage.setX(posx);;
-	                    editStage.setY(posy);
-	//					System.out.println(fileName);
-	//					System.out.println(filePath);
-					}
+                // if not invalid image path, then flush
+                    double posx=editStage.getX();
+                    double posy=editStage.getY();
+//                    rwin.markImage = false;
+                    rwin.saveData();
+                    rwin.refresh();
+                    initRecipeWindow(rwin);
+                    editStage.setX(posx);;
+                    editStage.setY(posy);
+//					System.out.println(fileName);
+//					System.out.println(filePath);
 				}
             }
 

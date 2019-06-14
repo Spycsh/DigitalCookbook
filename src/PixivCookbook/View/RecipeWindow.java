@@ -200,47 +200,31 @@ public class RecipeWindow{
         else
         {
         	Image image;
-        	if(this.editImgPath!=null) {
-        		//System.out.println(editImgPath);
-        		image = new Image(ClassLoader.getSystemResource("")+"..\\"+imgPath);
-                //System.out.println(editImgPath);
-        		title = new ImageView(image);
-	            title.setFitHeight(180*2);
-	            title.setFitWidth(320*2);
-	            title.setLayoutX(center);
-	            title.setLayoutY(posy+=lineheight);
-	            pane.getChildren().add(title);
-	            posy+=330;
-        	}
-        	else if(imgPath == null && editImgPath == null) {
-                System.out.println(imgPath);
-        	}
-        	else {
-	        		String patternstr = "([A-Z]{1}:)";
-	    			Pattern p = Pattern.compile(patternstr);
-	    			Matcher matcher = p.matcher(imgPath);
-	    			//System.out.println(imgPath);
-	    			if(matcher.find()) {
-	    				image = new Image("file:\\"+imgPath);
-	    				title = new ImageView(image);
-			            title.setFitHeight(180*2);
-			            title.setFitWidth(320*2);
-			            title.setLayoutX(center);
-			            title.setLayoutY(posy+=lineheight);
-			            pane.getChildren().add(title);
-			            posy+=330;
-	    			}else {
-	    				image = new Image(ClassLoader.getSystemResource("")+"..\\"+imgPath);
-	    				title = new ImageView(image);
-	    		        title.setFitHeight(180*2);
-	    		        title.setFitWidth(320*2);
-	    		        title.setLayoutX(center);
-	    		        title.setLayoutY(posy+=lineheight);
-	    		        pane.getChildren().add(title);
-	    		        posy+=330;
-	    			}
-        	}
-    }
+        	if(imgPath==null) imgPath="img\\addImage.png";
+            String patternstr = "([A-Z]{1}:)";
+            Pattern p = Pattern.compile(patternstr);
+            Matcher matcher = p.matcher(imgPath);
+            //System.out.println(imgPath);
+            if(matcher.find()) {
+                image = new Image("file:\\"+imgPath);
+                title = new ImageView(image);
+                title.setFitHeight(180*2);
+                title.setFitWidth(320*2);
+                title.setLayoutX(center);
+                title.setLayoutY(posy+=lineheight);
+                pane.getChildren().add(title);
+                posy+=330;
+            }else {
+                image = new Image(ClassLoader.getSystemResource("")+"..\\"+imgPath);
+                title = new ImageView(image);
+                title.setFitHeight(180*2);
+                title.setFitWidth(320*2);
+                title.setLayoutX(center);
+                title.setLayoutY(posy+=lineheight);
+                pane.getChildren().add(title);
+                posy+=330;
+            }
+     }
 
 //mark
         Label descripLabel = new Label();
