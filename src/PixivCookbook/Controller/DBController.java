@@ -118,10 +118,10 @@ public class DBController {
 			int cnt=0;
 			psql = this.connect.prepareStatement("select recipe_id from recipe");
 			ResultSet rs = psql.executeQuery();
-			System.out.println("haha");
+			//System.out.println("haha");
 			while(rs.next()) {
 			cnt=max(cnt, rs.getInt("recipe_id"));
-			System.out.println(cnt+1);
+			//System.out.println(cnt+1);
 			}
 			return cnt+1;
 		} catch (SQLException e) {

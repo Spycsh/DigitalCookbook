@@ -559,7 +559,7 @@ public class WindowController extends Application {
     {
     	if(rwin.illegal) {
             id = model.assignID();
-            System.out.println(id);
+           // System.out.println(id);
         	}else{
             id = model.getIDbyName(rwin.name);
         	}
@@ -608,7 +608,7 @@ public class WindowController extends Application {
             				alertBoxDefault();
             			}
             			else {
-                            System.out.println(newName);
+                            //System.out.println(newName);
                             if(model.judgeRecipName(newName)||newName.equals(rwin.name)) {
                                 model.saveRecipName(id, newName);
                                 rwin.name = newName;
@@ -639,7 +639,7 @@ public class WindowController extends Application {
                                 editStage.setX(posx);
                                 editStage.setY(posy);
                                 id=model.assignID();
-                                System.out.println("haha"+id);
+                                //System.out.println("haha"+id);
                                 //System.out.println(newName);
                                 model.addRecipetoDatabase(recipe, id);
                                 model.saveImagePath(id + 1, "");
@@ -738,6 +738,7 @@ public class WindowController extends Application {
 																	// using default
 							}
 							model.saveImagePath(id, rwin.editImgPath);
+							//System.out.println(rwin.editImgPath);
 						}
 					}else {
 						alertBoxDefault();
