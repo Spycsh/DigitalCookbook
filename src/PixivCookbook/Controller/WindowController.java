@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 /**
  * This is the controller class for
  * main window class
- * 
+ *
  */
 public class WindowController extends Application {
     DBController model = DBController.getInstance();
@@ -44,15 +44,15 @@ public class WindowController extends Application {
     Stage forbiddenStage = new Stage();
     MainWindow main;
 	private boolean displayForbidInfo = true;
-    
+
     static int id;
     static int alertSwitch = 0;
     static int alertDelete = 0;
     static int alertForbid = 0;
     static StringBuffer alertWrongType_SB = new StringBuffer("");
     static Alert alert;
-    
-    
+
+
     /**
      * start the stage by get recipes data 
      * from database and show them on the screen
@@ -77,12 +77,12 @@ public class WindowController extends Application {
         //primaryStage.close();
         //forbiddenStage.show();
     }
-    
-    
+
+
     /**
      *  alert box:
      *  duplicate recipe name
-     *  
+     *
      */
     public static void alertBoxDuplicate() {
     	alert = new Alert(Alert.AlertType.ERROR);
@@ -91,7 +91,7 @@ public class WindowController extends Application {
     	alert.show();
     	alertSwitch = 1;
     }
-    
+
     /**
      *  alert box
      *  recipe name cannot be default
@@ -115,7 +115,7 @@ public class WindowController extends Application {
         alert.show();
         alertSwitch = 1;
     }
-    
+
     /**
      * alert box
      * delete acknowledgement
@@ -124,7 +124,7 @@ public class WindowController extends Application {
     	alert = new Alert(Alert.AlertType.CONFIRMATION);
     	alert.setTitle("Warning");
     	alert.setContentText("Are you sure you want to delete this recipe?");
-    	
+
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
     		alertDelete = 1;
@@ -132,7 +132,7 @@ public class WindowController extends Application {
 
     	}
     }
-    
+
 //    public static void alertImgAddress() {
 //    	alert = new Alert(AlertType.ERROR);
 //    	alert.setTitle("Warning");
@@ -140,7 +140,7 @@ public class WindowController extends Application {
 //    	alert.show();
 //    	alertSwitch = 1;
 //    }
-    
+
     /**
      * alert box
      * illegal input in main Information
@@ -152,7 +152,7 @@ public class WindowController extends Application {
     	alert.show();
     	alertSwitch = 1;
     }
-    
+
     /**
      * alert box
      * illegal input in ingredient
@@ -164,39 +164,39 @@ public class WindowController extends Application {
     	alert.show();
     	alertSwitch = 1;
     }
-    
+
     /**
      * @param forbid1 one of the forbidden pair
      * @param forbid2 the other of the forbidden pair
      * alert box
      * ask whether user want to save ingredients in the database
      * although they may collide with each other
-     * 
+     *
      */
     public static void alertBoxForbidPair(String forbid1, String forbid2) {
     	alert = new Alert(Alert.AlertType.CONFIRMATION);
     	alert.setTitle("Warning");
     	alert.setContentText("Your ingredient list contains something not compatible with each other,("+
     							forbid1+":"+forbid2+"), are you sure to save them?");
-    	
+
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
     		alertForbid = 0;
     	}else {
-    		
+
     	}
     }
-    
+
     /**
      * @param forbidInfo the forbidden ingredient pair information
-     * 
+     *
      * alert box
      * user enter in some ingredients and 
      * offense the forbidden ingredient pair in database
      * this will alert user about which is the pair
-     * 
+     *
      * displayed when view the recipe
-     * 
+     *
      */
     public static void alertBoxForbidPairView(List<String> forbidInfo) {
     	alert = new Alert(AlertType.INFORMATION);
@@ -205,8 +205,8 @@ public class WindowController extends Application {
     							+"\n"+forbidInfo+" \n"+"please check them");
     	alert.show();
     }
-    
-    
+
+
     /**
      *  check if the image path is valid
      */
@@ -216,12 +216,12 @@ public class WindowController extends Application {
     	alert.setContentText("Please upload the right image format");
     	alert.show();
     }
-    
-    
+
+
     /**
      * alert box
      * show which has a wrong input
-     * 
+     *
      */
     public static void alertBoxWrongtypeDES() {
     	alert = new Alert(Alert.AlertType.ERROR);
@@ -229,19 +229,19 @@ public class WindowController extends Application {
     	alert.setContentText(alertWrongType_SB.toString());
     	alert.show();
     }
-    
-    
+
+
     /**
      * @param input	 given input string
      * @return true if denotes a double 
-     * 
+     *
      */
     public static boolean isDouble(String input){
     	Matcher mer = Pattern.compile("^[+]?[0-9.]+$").matcher(input);
     	return mer.find();
    	}
-    
-    
+
+
     /**
      * @param input  given input string
      * @return	 true if denotes an integer
@@ -250,7 +250,7 @@ public class WindowController extends Application {
     	Matcher mer = Pattern.compile("^[+]?[0-9]+$").matcher(input);
     	return mer.find();
     	}
-    
+
     /**
      * @param input
      * @return if the image suffix is valid
@@ -259,8 +259,8 @@ public class WindowController extends Application {
     	Matcher mer = Pattern.compile("^.*(.jpg|.JPG|.JPEG|.jpeg|.png|.PNG)$").matcher(input);
     	return mer.find();
     }
- 
-    
+
+
     /**
      * @param main
      * initialize the main window
@@ -277,8 +277,8 @@ public class WindowController extends Application {
         addAddAction(recipe,main );
         //main.getScene().getStylesheets().add(Main.class.getResource("index.css").toExternalForm());
     }
-    
-    
+
+
     /**
      * @param rwin
      * initialize the recipe window
@@ -287,21 +287,21 @@ public class WindowController extends Application {
     {
         addHomeAction(rwin);
         addEditAction(rwin);
-        
+
         if(displayForbidInfo  == true) {
 	        addForbidAction(rwin);
 	        displayForbidInfo = false;
         }
     }
-    
-    
+
+
     /**
      * bind actions on recommend button
      * flush, get 7 recipes by random from database
      * if in a search state
      * then eliminate the back button
      * clear the search box
-     * 
+     *
      * @param main
 
      */
@@ -414,17 +414,17 @@ public class WindowController extends Application {
                     }
                 });
     }
-    
+
     /**
      * set the 7 recipes on the main window with action
      * and prepare the information for display on the
      * recipe window
-     * 
+     *
      * @param recipe  a list of recipes displayed
      * @param main main window
-     * 
+     *
 
-     * 
+     *
      */
     public void addTempAction(List<Recipe> recipe, MainWindow main) {
     	for(int i = 0; i< Math.min(7,recipe.size());i++) {
@@ -433,7 +433,7 @@ public class WindowController extends Application {
                 new EventHandler<MouseEvent>() {
 		            @Override
 		            public void handle(MouseEvent e) {
-		            	int id = model.getIDbyName(recipe.get(tempCount).getRecipeName());  
+		            	int id = model.getIDbyName(recipe.get(tempCount).getRecipeName());
 		            	recipeWindow.description = model.getRecipeBySearchfromDatabase(id).getCuisineName();
 		            	recipeWindow.ingredients = (LinkedList<Ingredient>) model.getIngredientsfromDatabase(id);
 		            	recipeWindow.step = (LinkedList<Step>) model.getStepsfromDatabase(id);
@@ -513,14 +513,14 @@ public class WindowController extends Application {
             }
         });
     }
-    
+
     /**
-     * 
+     *
      * when view a recipe
      * it will check if the recipe contains a forbidden pair
-     * 
+     *
      * @param rwin recipe window
-     * 
+     *
      */
     public void addForbidAction(RecipeWindow rwin) {
     	List<String> forbidInfo = new LinkedList<String>();
@@ -542,18 +542,18 @@ public class WindowController extends Application {
         }
         if(alertForbid == 0)
 	        if((forbidInfo.size()!=0)) {
-	  
+
 	        	alertBoxForbidPairView(forbidInfo);
 	        }
     }
-    
+
     /**
      * control the actions and display
      * when edit a recipe
-     * 
+     *
      * @param rwin
-     * 
-     * 
+     *
+     *
      */
     public void addEditAction(RecipeWindow rwin)
     {
@@ -563,7 +563,7 @@ public class WindowController extends Application {
         	}else{
             id = model.getIDbyName(rwin.name);
         	}
-    	
+
     	// edit the title
     	editTitle(rwin);
     	// delete Button
@@ -576,10 +576,10 @@ public class WindowController extends Application {
         editIngredient(rwin);
         // edit step
         editStep(rwin);
-        
+
     }
-    
-    
+
+
     /**
      * bind title part with action
      * should be renamed
@@ -602,7 +602,7 @@ public class WindowController extends Application {
             		double posx=editStage.getX();
                     double posy=editStage.getY();
             		String newName=rwin.tf_RecipeName.getText();
-            		
+
             		if(!rwin.illegal) {
             			if(newName.matches("Default")|newName.matches("")) {
             				alertBoxDefault();
@@ -612,7 +612,6 @@ public class WindowController extends Application {
                             if(model.judgeRecipName(newName)||newName.equals(rwin.name)) {
                                 model.saveRecipName(id, newName);
                                 rwin.name = newName;
-                                rwin.saveData();
                                 rwin.markName = !rwin.markName;
                                 rwin.refresh();
                                 initRecipeWindow(rwin);
@@ -634,7 +633,6 @@ public class WindowController extends Application {
 	                		if(model.judgeRecipName(newName)) {
 	                		    rwin.illegal=false;
                                 rwin.name = newName;
-                                rwin.saveData();
                                 rwin.markName=!rwin.markName;
                                 rwin.refresh();
                                 initRecipeWindow(rwin);
@@ -653,11 +651,11 @@ public class WindowController extends Application {
             }
         });
 	}
-    
+
     /**
      * bind delete button action
      * @param rwin
-     * 
+     *
      */
     public void editDeleteButton(RecipeWindow rwin) {
     	rwin.delete.setOnAction(new EventHandler<ActionEvent>() {
@@ -695,17 +693,17 @@ public class WindowController extends Application {
             }
         });
 	}
-    
+
     /**
-     * 
-     * 
+     *
+     *
      * first check the title and make sure title valid
      * then bind image part with action
      * choose the image you want
      * add it to the recipe
      * if not in a valid image format
      * then not flush
-     * 
+     *
      * @param rwin
      */
     public void editImage(RecipeWindow rwin) {
@@ -759,14 +757,14 @@ public class WindowController extends Application {
 					}
 				}
             }
-            
+
     	});
     }
-    
+
 
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 * bind main information part with action
 	 * with different illegal input warning
 	 * @param rwin
@@ -782,17 +780,17 @@ public class WindowController extends Application {
             	if(rwin.markDescription == false) {
 	                double posx=editStage.getX();
 	                double posy=editStage.getY();
-	                
+
 	                rwin.markDescription=!rwin.markDescription;
 	                rwin.refresh();
 	                initRecipeWindow(rwin);
 	                editStage.setX(posx);;
-	                editStage.setY(posy);             
-            	}else { 	
+	                editStage.setY(posy);
+            	}else {
             		if(isInteger(rwin.tf_Serveing.getText()) && Integer.parseInt(rwin.tf_Serveing.getText()) <= 0) {
-        
+
             				alertWrongType_SB.append("Servings must be a positive integer!\n");
-      
+
             			if(!isDouble(rwin.tf_Cookingtime.getText())|!isDouble(rwin.tf_Preparation.getText())) {
 	            			if(!isDouble(rwin.tf_Preparation.getText())) {
 	            				alertWrongType_SB.append("Wrong type for preparation time!\n");
@@ -803,7 +801,7 @@ public class WindowController extends Application {
 	            			if(!isInteger(rwin.tf_Serveing.getText())) {
 	            				alertWrongType_SB.append("Wrong type for servings!\n");
 	            			}
-            			}	
+            			}
 	            			alertBoxWrongtypeDES();
 	            			alertWrongType_SB =new StringBuffer("");
 	            			double posx=editStage.getX();
@@ -854,12 +852,12 @@ public class WindowController extends Application {
             }
         });
     }
-    
+
     /**
      * bind action to the ingredients
      * @param rwin
-     * 
-     * 
+     *
+     *
      */
     public void editIngredient(RecipeWindow rwin) {
     	rwin.editIngredient.setOnAction(new EventHandler<ActionEvent>() {
@@ -874,7 +872,7 @@ public class WindowController extends Application {
                 rwin.saveData();
                 rwin.markIngredient=!rwin.markIngredient;
                 rwin.refresh();
-                
+
                 rwin.saveData();
                 if(rwin.markIngredient == false) {
 	                List<String> aList = new LinkedList<String>();
@@ -892,8 +890,8 @@ public class WindowController extends Application {
 	                	}
 	                }
                 }
-                if(alertForbid == 1) { 
-                	
+                if(alertForbid == 1) {
+
                 	alertForbid = 0;
 
                 initRecipeWindow(rwin);
@@ -914,11 +912,11 @@ public class WindowController extends Application {
             }
         });
     }
-    
+
     /**
      * bind action to step part
      * @param rwin
-     * 
+     *
      */
     public void editStep(RecipeWindow rwin) {
     	rwin.editStep.setOnAction(new EventHandler<ActionEvent>() {
@@ -943,7 +941,7 @@ public class WindowController extends Application {
                 initRecipeWindow(rwin);
                 editStage.setX(posx);;
                 editStage.setY(posy);
-                              
+
             }
         });
         for(int i=0;i<rwin.addStep.size();i++)
@@ -975,7 +973,7 @@ public class WindowController extends Application {
                     initRecipeWindow(rwin);
                     editStage.setX(posx);;
                     editStage.setY(posy);
-                    
+
                 }
             });
             rwin.upStep.get(i).setOnAction(new EventHandler<ActionEvent>() {
@@ -1033,7 +1031,7 @@ public class WindowController extends Application {
                     initRecipeWindow(rwin);
                     editStage.setX(posx);;
                     editStage.setY(posy);
-                    
+
                 }
             });
             rwin.deleteIngredient.get(i).setOnAction(new EventHandler<ActionEvent>() {
@@ -1050,23 +1048,23 @@ public class WindowController extends Application {
                     initRecipeWindow(rwin);
                     editStage.setX(posx);;
                     editStage.setY(posy);
-                    
+
                 }
             });
         }
     }
-    
 
 
 
-    /** 
+
+    /**
      * bind action to add recipe buttton on main window
      * initialization for the recipe window
      * @param recipe
      * @param main
-     * 
+     *
 
-     * 
+     *
      */
     public void addAddAction(List<Recipe> recipe, MainWindow main) {
     	 main.temp[Math.min(7,recipe.size())].addEventHandler(MouseEvent.MOUSE_CLICKED,
@@ -1087,10 +1085,10 @@ public class WindowController extends Application {
 							add(defaultStep);
 						}};
 						recipeWindow.name = "Default";
-						
+
 						recipeWindow.markImage = false; // wait for add image
 						recipeWindow.imgPath = "img\\addImage.png";  // set default image
-						
+
 						recipeWindow.markDescription = false;
 		            	recipeWindow.markName = true;
 		            	recipeWindow.markImage = false;
@@ -1102,23 +1100,24 @@ public class WindowController extends Application {
                         recipeWindow.ingredientText1= new LinkedList<TextField>();
                         recipeWindow.ingredientText2= new LinkedList<TextField>();
                         recipeWindow.ingredientText3= new LinkedList<TextField>();
+                         recipeWindow.stepText= new LinkedList<TextField>();
 						primaryStage.close();
 						editStage.show();
 						recipeWindow.editImgPath = null;
 						recipeWindow.refresh();
 						initRecipeWindow(recipeWindow);
                      }
-                     
+
                  });
     }
     /**
      * initialize the forbidden window
-     * @param forw 
+     * @param forw
      * @param forbiddenStage
      * @param model
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
     public void initEditForbidden(ForbiddenEditWindow forw,Stage forbiddenStage,DBController model)
     {
@@ -1133,7 +1132,7 @@ public class WindowController extends Application {
     /**
      * launch the PixivCookbook here
      * @param args
-     * 
+     *
      */
     public static void main(String[] args) {
         launch(args);
