@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2b44ddb-5bf0-46cc-85ec-4d7dfd7949fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/img/10haha.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/6haha.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/8haha.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/8haha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixivCookbook/View/source/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/View/source/search.png" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="397" column="26" selection-start-line="397" selection-start-column="26" selection-end-line="397" selection-end-column="26" />
+            <state relative-caret-position="406">
+              <caret line="794" column="36" selection-start-line="794" selection-start-column="36" selection-end-line="794" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -59,16 +57,100 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="206" column="14" selection-start-line="206" selection-start-column="14" selection-end-line="206" selection-end-column="14" />
+            <state relative-caret-position="463">
+              <caret line="636" column="37" selection-start-line="636" selection-start-column="37" selection-end-line="636" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#30996#30997#0" expanded="true" />
-                <element signature="e#31017#31018#0" expanded="true" />
-                <element signature="e#31196#31197#0" expanded="true" />
-                <element signature="e#31214#31215#0" expanded="true" />
-                <element signature="e#37088#37089#0" expanded="true" />
-                <element signature="e#37135#37136#0" expanded="true" />
+                <element signature="e#29399#29400#0" expanded="true" />
+                <element signature="e#29568#29569#0" expanded="true" />
+                <element signature="e#29675#29676#0" expanded="true" />
+                <element signature="e#29838#29839#0" expanded="true" />
+                <element signature="e#29930#29931#0" expanded="true" />
+                <element signature="e#30063#30064#0" expanded="true" />
+                <element signature="e#30152#30153#0" expanded="true" />
+                <element signature="e#30279#30280#0" expanded="true" />
+                <element signature="e#30368#30369#0" expanded="true" />
+                <element signature="e#30495#30496#0" expanded="true" />
+                <element signature="e#30570#30571#0" expanded="true" />
+                <element signature="e#30670#30671#0" expanded="true" />
+                <element signature="e#30754#30755#0" expanded="true" />
+                <element signature="e#30866#30867#0" expanded="true" />
+                <element signature="e#30943#30944#0" expanded="true" />
+                <element signature="e#31045#31046#0" expanded="true" />
+                <element signature="e#31143#31144#0" expanded="true" />
+                <element signature="e#31287#31288#0" expanded="true" />
+                <element signature="e#31373#31374#0" expanded="true" />
+                <element signature="e#31493#31494#0" expanded="true" />
+                <element signature="e#31570#31571#0" expanded="true" />
+                <element signature="e#31672#31673#0" expanded="true" />
+                <element signature="e#31749#31750#0" expanded="true" />
+                <element signature="e#31851#31852#0" expanded="true" />
+                <element signature="e#31934#31935#0" expanded="true" />
+                <element signature="e#32048#32049#0" expanded="true" />
+                <element signature="e#32128#32129#0" expanded="true" />
+                <element signature="e#32236#32237#0" expanded="true" />
+                <element signature="e#32328#32329#0" expanded="true" />
+                <element signature="e#32460#32461#0" expanded="true" />
+                <element signature="e#32570#32571#0" expanded="true" />
+                <element signature="e#32738#32739#0" expanded="true" />
+                <element signature="e#32845#32846#0" expanded="true" />
+                <element signature="e#33007#33008#0" expanded="true" />
+                <element signature="e#33096#33097#0" expanded="true" />
+                <element signature="e#33222#33223#0" expanded="true" />
+                <element signature="e#33329#33330#0" expanded="true" />
+                <element signature="e#33488#33489#0" expanded="true" />
+                <element signature="e#33598#33599#0" expanded="true" />
+                <element signature="e#33763#33764#0" expanded="true" />
+                <element signature="e#33873#33874#0" expanded="true" />
+                <element signature="e#34038#34039#0" expanded="true" />
+                <element signature="e#34148#34149#0" expanded="true" />
+                <element signature="e#34313#34314#0" expanded="true" />
+                <element signature="e#34414#34415#0" expanded="true" />
+                <element signature="e#34561#34562#0" expanded="true" />
+                <element signature="e#34644#34645#0" expanded="true" />
+                <element signature="e#34755#34756#0" expanded="true" />
+                <element signature="e#34853#34854#0" expanded="true" />
+                <element signature="e#34997#34998#0" expanded="true" />
+                <element signature="e#35111#35112#0" expanded="true" />
+                <element signature="e#35271#35272#0" expanded="true" />
+                <element signature="e#35358#35359#0" expanded="true" />
+                <element signature="e#35470#35471#0" expanded="true" />
+                <element signature="e#35577#35578#0" expanded="true" />
+                <element signature="e#35742#35743#0" expanded="true" />
+                <element signature="e#35837#35838#0" expanded="true" />
+                <element signature="e#35978#35979#0" expanded="true" />
+                <element signature="e#36064#36065#0" expanded="true" />
+                <element signature="e#36187#36188#0" expanded="true" />
+                <element signature="e#36291#36292#0" expanded="true" />
+                <element signature="e#36450#36451#0" expanded="true" />
+                <element signature="e#36539#36540#0" expanded="true" />
+                <element signature="e#36666#36667#0" expanded="true" />
+                <element signature="e#36782#36783#0" expanded="true" />
+                <element signature="e#36950#36951#0" expanded="true" />
+                <element signature="e#37048#37049#0" expanded="true" />
+                <element signature="e#37180#37181#0" expanded="true" />
+                <element signature="e#37305#37306#0" expanded="true" />
+                <element signature="e#37491#37492#0" expanded="true" />
+                <element signature="e#37598#37599#0" expanded="true" />
+                <element signature="e#37748#37749#0" expanded="true" />
+                <element signature="e#37843#37844#0" expanded="true" />
+                <element signature="e#37969#37970#0" expanded="true" />
+                <element signature="e#38070#38071#0" expanded="true" />
+                <element signature="e#38208#38209#0" expanded="true" />
+                <element signature="e#38333#38334#0" expanded="true" />
+                <element signature="e#38516#38517#0" expanded="true" />
+                <element signature="e#38641#38642#0" expanded="true" />
+                <element signature="e#38824#38825#0" expanded="true" />
+                <element signature="e#38949#38950#0" expanded="true" />
+                <element signature="e#39132#39133#0" expanded="true" />
+                <element signature="e#39236#39237#0" expanded="true" />
+                <element signature="e#39377#39378#0" expanded="true" />
+                <element signature="e#39451#39452#0" expanded="true" />
+                <element signature="e#39550#39551#0" expanded="true" />
+                <element signature="e#39642#39643#0" expanded="true" />
+                <element signature="e#39777#39778#0" expanded="true" />
+                <element signature="e#39857#39858#0" expanded="true" />
+                <element signature="e#39968#39969#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,8 +159,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
+            <state relative-caret-position="244">
+              <caret line="76" column="31" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -86,7 +168,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="293">
               <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -107,10 +189,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addRecommendButtonAction</find>
-      <find>id</find>
-      <find>addHome</find>
-      <find>addAdd</find>
       <find>MainWindow</find>
       <find>assinID</find>
       <find>saveRecip</find>
@@ -137,6 +215,10 @@
       <find>edit</find>
       <find>saveRe</find>
       <find>addSearchButtonAction</find>
+      <find>editT</find>
+      <find>alert</find>
+      <find>alertBoxFi</find>
+      <find>formV</find>
     </findStrings>
     <replaceStrings>
       <replace>setContent</replace>
@@ -167,9 +249,9 @@
         <option value="$PROJECT_DIR$/src/PixivCookbook/CookBookApp.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/Default.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/View/source/index.css" />
-        <option value="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" />
+        <option value="$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java" />
         <option value="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" />
       </list>
     </option>
@@ -185,8 +267,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -223,6 +303,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -380,7 +462,9 @@
       <workItem from="1560424510311" duration="92000" />
       <workItem from="1560436477551" duration="20944000" />
       <workItem from="1560517681199" duration="4051000" />
-      <workItem from="1560532481848" duration="5256000" />
+      <workItem from="1560532481848" duration="6026000" />
+      <workItem from="1560545917731" duration="76000" />
+      <workItem from="1560548783047" duration="3313000" />
     </task>
     <task id="LOCAL-00001" summary="addbutton">
       <created>1559911743771</created>
@@ -398,13 +482,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159890000" />
+    <option name="totallyTimeSpent" value="164049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17226666" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14826667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -625,13 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/EditForbiddenPairController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -639,42 +716,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="206" column="14" selection-start-line="206" selection-start-column="14" selection-end-line="206" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#30996#30997#0" expanded="true" />
-            <element signature="e#31017#31018#0" expanded="true" />
-            <element signature="e#31196#31197#0" expanded="true" />
-            <element signature="e#31214#31215#0" expanded="true" />
-            <element signature="e#37088#37089#0" expanded="true" />
-            <element signature="e#37135#37136#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="27" selection-start-column="27" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
+        <state relative-caret-position="244">
+          <caret line="76" column="31" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="397" column="26" selection-start-line="397" selection-start-column="26" selection-end-line="397" selection-end-column="26" />
+        <state relative-caret-position="406">
+          <caret line="794" column="36" selection-start-line="794" selection-start-column="36" selection-end-line="794" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/RecipeWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="636" column="37" selection-start-line="636" selection-start-column="37" selection-end-line="636" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#29399#29400#0" expanded="true" />
+            <element signature="e#29568#29569#0" expanded="true" />
+            <element signature="e#29675#29676#0" expanded="true" />
+            <element signature="e#29838#29839#0" expanded="true" />
+            <element signature="e#29930#29931#0" expanded="true" />
+            <element signature="e#30063#30064#0" expanded="true" />
+            <element signature="e#30152#30153#0" expanded="true" />
+            <element signature="e#30279#30280#0" expanded="true" />
+            <element signature="e#30368#30369#0" expanded="true" />
+            <element signature="e#30495#30496#0" expanded="true" />
+            <element signature="e#30570#30571#0" expanded="true" />
+            <element signature="e#30670#30671#0" expanded="true" />
+            <element signature="e#30754#30755#0" expanded="true" />
+            <element signature="e#30866#30867#0" expanded="true" />
+            <element signature="e#30943#30944#0" expanded="true" />
+            <element signature="e#31045#31046#0" expanded="true" />
+            <element signature="e#31143#31144#0" expanded="true" />
+            <element signature="e#31287#31288#0" expanded="true" />
+            <element signature="e#31373#31374#0" expanded="true" />
+            <element signature="e#31493#31494#0" expanded="true" />
+            <element signature="e#31570#31571#0" expanded="true" />
+            <element signature="e#31672#31673#0" expanded="true" />
+            <element signature="e#31749#31750#0" expanded="true" />
+            <element signature="e#31851#31852#0" expanded="true" />
+            <element signature="e#31934#31935#0" expanded="true" />
+            <element signature="e#32048#32049#0" expanded="true" />
+            <element signature="e#32128#32129#0" expanded="true" />
+            <element signature="e#32236#32237#0" expanded="true" />
+            <element signature="e#32328#32329#0" expanded="true" />
+            <element signature="e#32460#32461#0" expanded="true" />
+            <element signature="e#32570#32571#0" expanded="true" />
+            <element signature="e#32738#32739#0" expanded="true" />
+            <element signature="e#32845#32846#0" expanded="true" />
+            <element signature="e#33007#33008#0" expanded="true" />
+            <element signature="e#33096#33097#0" expanded="true" />
+            <element signature="e#33222#33223#0" expanded="true" />
+            <element signature="e#33329#33330#0" expanded="true" />
+            <element signature="e#33488#33489#0" expanded="true" />
+            <element signature="e#33598#33599#0" expanded="true" />
+            <element signature="e#33763#33764#0" expanded="true" />
+            <element signature="e#33873#33874#0" expanded="true" />
+            <element signature="e#34038#34039#0" expanded="true" />
+            <element signature="e#34148#34149#0" expanded="true" />
+            <element signature="e#34313#34314#0" expanded="true" />
+            <element signature="e#34414#34415#0" expanded="true" />
+            <element signature="e#34561#34562#0" expanded="true" />
+            <element signature="e#34644#34645#0" expanded="true" />
+            <element signature="e#34755#34756#0" expanded="true" />
+            <element signature="e#34853#34854#0" expanded="true" />
+            <element signature="e#34997#34998#0" expanded="true" />
+            <element signature="e#35111#35112#0" expanded="true" />
+            <element signature="e#35271#35272#0" expanded="true" />
+            <element signature="e#35358#35359#0" expanded="true" />
+            <element signature="e#35470#35471#0" expanded="true" />
+            <element signature="e#35577#35578#0" expanded="true" />
+            <element signature="e#35742#35743#0" expanded="true" />
+            <element signature="e#35837#35838#0" expanded="true" />
+            <element signature="e#35978#35979#0" expanded="true" />
+            <element signature="e#36064#36065#0" expanded="true" />
+            <element signature="e#36187#36188#0" expanded="true" />
+            <element signature="e#36291#36292#0" expanded="true" />
+            <element signature="e#36450#36451#0" expanded="true" />
+            <element signature="e#36539#36540#0" expanded="true" />
+            <element signature="e#36666#36667#0" expanded="true" />
+            <element signature="e#36782#36783#0" expanded="true" />
+            <element signature="e#36950#36951#0" expanded="true" />
+            <element signature="e#37048#37049#0" expanded="true" />
+            <element signature="e#37180#37181#0" expanded="true" />
+            <element signature="e#37305#37306#0" expanded="true" />
+            <element signature="e#37491#37492#0" expanded="true" />
+            <element signature="e#37598#37599#0" expanded="true" />
+            <element signature="e#37748#37749#0" expanded="true" />
+            <element signature="e#37843#37844#0" expanded="true" />
+            <element signature="e#37969#37970#0" expanded="true" />
+            <element signature="e#38070#38071#0" expanded="true" />
+            <element signature="e#38208#38209#0" expanded="true" />
+            <element signature="e#38333#38334#0" expanded="true" />
+            <element signature="e#38516#38517#0" expanded="true" />
+            <element signature="e#38641#38642#0" expanded="true" />
+            <element signature="e#38824#38825#0" expanded="true" />
+            <element signature="e#38949#38950#0" expanded="true" />
+            <element signature="e#39132#39133#0" expanded="true" />
+            <element signature="e#39236#39237#0" expanded="true" />
+            <element signature="e#39377#39378#0" expanded="true" />
+            <element signature="e#39451#39452#0" expanded="true" />
+            <element signature="e#39550#39551#0" expanded="true" />
+            <element signature="e#39642#39643#0" expanded="true" />
+            <element signature="e#39777#39778#0" expanded="true" />
+            <element signature="e#39857#39858#0" expanded="true" />
+            <element signature="e#39968#39969#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="293">
           <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />

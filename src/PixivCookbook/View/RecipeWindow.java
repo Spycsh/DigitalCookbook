@@ -495,10 +495,11 @@ public class RecipeWindow{
                 TextField tf = new TextField(step.get(i).getContent());
                 tf.setLayoutX(center+20);
                 tf.setLayoutY(posy);
+                tf.setMinWidth(620);
                 tf.getStyleClass().add("content");
                 pane.getChildren().add(tf);
                 Button button = new Button();
-                button.setLayoutX(center+300);
+                button.setLayoutX(center+700);
                 button.setLayoutY(posy);
                 button.setMinSize(36,36);
                 button.setMaxSize(36,36);
@@ -506,7 +507,7 @@ public class RecipeWindow{
                 addStep.add(button);
                 pane.getChildren().add(button);
                 button = new Button();
-                button.setLayoutX(center+340);
+                button.setLayoutX(center+740);
                 button.setLayoutY(posy);
                 button.setMinSize(36,36);
                 button.setMaxSize(36,36);
@@ -514,7 +515,7 @@ public class RecipeWindow{
                 deleteStep.add(button);
                 pane.getChildren().add(button);
                 button = new Button();
-                button.setLayoutX(center+260);
+                button.setLayoutX(center+660);
                 button.setLayoutY(posy);
                 button.setMinSize(36,18);
                 button.setMaxSize(36,18);
@@ -522,7 +523,7 @@ public class RecipeWindow{
                 upStep.add(button);
                 pane.getChildren().add(button);
                 button = new Button();
-                button.setLayoutX(center+260);
+                button.setLayoutX(center+660);
                 button.setLayoutY(posy+18);
                 button.setMinSize(36,18);
                 button.setMaxSize(36,18);
@@ -617,11 +618,29 @@ public class RecipeWindow{
                 tf_RecipeName.setText(tf_RecipeName.getText().substring(0,19));
                 this.name=tf_RecipeName.getText().substring(0,19);
             }
+        if(tf_Cookingtime!=null)
+            if(!isInt(tf_Cookingtime.getText()))
+            {
+                tf_Cookingtime.setText(""+this.cookingTime);
+                message.add("Cooking time can only be integer");
+            }
+        if(tf_Preparation!=null)
+            if(!isInt(tf_Preparation.getText()))
+            {
+                tf_Preparation.setText(""+this.preparationTime);
+                message.add("Preparation time can only be integer");
+            }
+        if(tf_Serveing!=null)
+            if(!isInt(tf_Serveing.getText()))
+            {
+                tf_Serveing.setText(""+this.servings);
+                message.add("Serveing can only be integer");
+            }
         if(markDescription&&tf_Description!=null) {
             if (tf_Description.getText().length() > 30) {
                 longDescription = true;
                 message.add("Description Name is too long!");
-                tf_RecipeName.setText(tf_Description.getText().substring(0, 29));
+                tf_Description.setText(tf_Description.getText().substring(0, 29));
             }
         }
         if(markIngredient&&ingredientText1!=null)
@@ -639,6 +658,7 @@ public class RecipeWindow{
                 	int position = i+1;
                     message.add("Ingredient "+cnt+": Ingredient number can only be rational number!");
                     wrongIngredientnum[i] = true;
+                    ingredientText1.get(i).setText(Double.toString(ingredients.get(i).getNum()));
                 }
                 if(!wrongIngredientnum[i]) {
                 	ingredients.get(i).setNum(Double.parseDouble(ingredientText1.get(i).getText()));
@@ -719,6 +739,7 @@ public class RecipeWindow{
      */
     public boolean isInt(String s)
     {
+        if(s.length()>9) return false;
         Pattern pattern = Pattern.compile("[0-9]*");
         return pattern.matcher(s).matches();
     }

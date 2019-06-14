@@ -74,6 +74,9 @@ public class WindowController extends Application {
         Scene forbiddenScene= forbidden.getScene();
         forbiddenStage.setScene(forbiddenScene);
         initEditForbidden(forbidden,forbiddenStage,model);
+        primaryStage.setTitle("Pixiv Cookbook");
+        editStage.setTitle("Pixiv Cookbook");
+        forbiddenStage.setTitle("Pixiv Cookbook");
         //primaryStage.close();
         //forbiddenStage.show();
     }
@@ -111,7 +114,7 @@ public class WindowController extends Application {
     public static void alertBoxFirst() {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Warning");
-        alert.setContentText("Please enter recipe name at first!");
+        alert.setContentText("Please enter recipe name and save it at first!");
         alert.show();
         alertSwitch = 1;
     }
@@ -610,8 +613,9 @@ public class WindowController extends Application {
             			else {
                             //System.out.println(newName);
                             if(model.judgeRecipName(newName)||newName.equals(rwin.name)) {
-                                model.saveRecipName(id, newName);
-                                rwin.name = newName;
+                                rwin.saveData();
+                                model.saveRecipName(id, rwin.name);
+                                //rwin.name = newName;
                                 rwin.markName = !rwin.markName;
                                 rwin.refresh();
                                 initRecipeWindow(rwin);
@@ -628,11 +632,10 @@ public class WindowController extends Application {
             			if(newName.matches("Default")|newName.matches("")) {
             				alertBoxDefault();
             			}else {
+            			    rwin.saveData();
 	            			//description by default is null, and serving is 4
-	                		Recipe recipe = new Recipe(newName,"",4);
-	                		if(model.judgeRecipName(newName)) {
+	                		if(model.judgeRecipName(rwin.name)) {
 	                		    rwin.illegal=false;
-                                rwin.name = newName;
                                 rwin.markName=!rwin.markName;
                                 rwin.refresh();
                                 initRecipeWindow(rwin);
@@ -641,7 +644,8 @@ public class WindowController extends Application {
                                 id=model.assignID();
                                 //System.out.println("haha"+id);
                                 //System.out.println(newName);
-                                System.out.println(id);
+                                //System.out.println(id);
+                                Recipe recipe = new Recipe(rwin.name,"",4);
                                 model.addRecipetoDatabase(recipe, id);
                                 id++;
                                 model.saveImagePath(id , "");
@@ -788,6 +792,7 @@ public class WindowController extends Application {
 	                editStage.setX(posx);;
 	                editStage.setY(posy);
             	}else {
+            	    rwin.saveData();
             		if(isInteger(rwin.tf_Serveing.getText()) && Integer.parseInt(rwin.tf_Serveing.getText()) <= 0) {
 
             				alertWrongType_SB.append("Servings must be a positive integer!\n");
