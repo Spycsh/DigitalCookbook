@@ -564,7 +564,8 @@ public class RecipeWindow{
     public void saveData()
     {
         formVerify();
-
+        if(markName&&tf_RecipeName!=null)
+            this.name=tf_RecipeName.getText();
         if(markDescription&&tf_Preparation!=null)
         {
         	formerServings = this.servings;
