@@ -237,7 +237,7 @@ public class WindowController extends Application {
      * 
      */
     public static boolean isDouble(String input){
-    	Matcher mer = Pattern.compile("^[+-]?[0-9.]+$").matcher(input);
+    	Matcher mer = Pattern.compile("^[+]?[0-9.]+$").matcher(input);
     	return mer.find();
    	}
     
@@ -247,7 +247,7 @@ public class WindowController extends Application {
      * @return	 true if denotes an integer
      */
     public static boolean isInteger(String input){
-    	Matcher mer = Pattern.compile("^[+-]?[0-9]+$").matcher(input);
+    	Matcher mer = Pattern.compile("^[+]?[0-9]+$").matcher(input);
     	return mer.find();
     	}
     
@@ -604,7 +604,7 @@ public class WindowController extends Application {
             		String newName=rwin.tf_RecipeName.getText();
             		
             		if(!rwin.illegal) {
-            			if(newName.matches("Default")) {
+            			if(newName.matches("Default")|newName.matches("")) {
             				alertBoxDefault();
             			}
             			else {
@@ -626,7 +626,7 @@ public class WindowController extends Application {
                             }
             			}
             		}else{
-            			if(newName.matches("Default")) {
+            			if(newName.matches("Default")|newName.matches("")) {
             				alertBoxDefault();
             			}else {
 	            			//description by default is null, and serving is 4
