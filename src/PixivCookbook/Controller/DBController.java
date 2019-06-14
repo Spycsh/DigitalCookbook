@@ -373,7 +373,14 @@ public class DBController {
 	 */
 	public void saveImagePath(int id, String newPath) {
 		PreparedStatement psql;
+		String subfix="jpg";
 		String savePath = "img"+"\\"+id+"haha.jpg";
+		if(newPath!="")
+		{
+			subfix = newPath.substring(newPath.length()-3,newPath.length());
+			savePath = "img"+"\\"+id+"haha."+subfix;
+			System.out.println(savePath);
+		}
 		try {
 			if(newPath != "") {
 				try
@@ -381,7 +388,7 @@ public class DBController {
 					File input = new File(newPath);
 					BufferedImage bim = ImageIO.read(input);
 					File output = new File(savePath);
-					ImageIO.write(bim,"jpg",output);
+					ImageIO.write(bim,subfix,output);
 				}catch (Exception e)
 				{
 
