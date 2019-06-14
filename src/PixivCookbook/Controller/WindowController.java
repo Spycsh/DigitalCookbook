@@ -103,6 +103,18 @@ public class WindowController extends Application {
     	alert.show();
     	alertSwitch = 1;
     }
+
+    /**
+     *  alert box
+     *  recipe name first
+     */
+    public static void alertBoxFirst() {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Warning");
+        alert.setContentText("Please enter recipe name at first!");
+        alert.show();
+        alertSwitch = 1;
+    }
     
     /**
      * alert box
@@ -435,6 +447,7 @@ public class WindowController extends Application {
 		            	recipeWindow.markName = false;
 		            	recipeWindow.markImage = false;
 		            	recipeWindow.markStep = false;
+                        recipeWindow.illegal=false;
 		            	recipeWindow.markIngredient = false;
 		            	recipeWindow.stepText= new LinkedList<TextField>();
 		                recipeWindow.ingredientText1= new LinkedList<TextField>();
@@ -459,7 +472,22 @@ public class WindowController extends Application {
         rmain.home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                rmain.saveData();
+                if(!rmain.illegal)
+                try {
+                    if(!rmain.tf_RecipeName.getText().equals("Default")&&(!model.judgeRecipName(rmain.tf_RecipeName.getText())))
+                        rmain.name=rmain.tf_RecipeName.getText();
+                    model.addIngredientstoDatabase(rmain.ingredients, id);
+                    model.saveRecipName(id, rmain.name);
+                    model.saveImagePath(id, rmain.imgPath);
+                    model.saveDescription(id, rmain.description);
+                    model.saveCooktime(id, rmain.cookingTime);
+                    model.savePreparationtime(id, rmain.preparationTime);
+                    model.saveServings(id, rmain.servings);
+                    model.addStepstoDatabase(rmain.step, id);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 editStage.close();
                 primaryStage.show();
                 String searchName = main.search.getText();
@@ -525,10 +553,11 @@ public class WindowController extends Application {
      */
     public void addEditAction(RecipeWindow rwin)
     {
-    	if(rwin.name != "Default") {
-        	id = model.getIDbyName(rwin.name);
-        	}else if(rwin.name =="Default") {
-        		id = model.assignID();
+    	if(rwin.illegal) {
+            id = model.assignID();
+            System.out.println(id);
+        	}else{
+            id = model.getIDbyName(rwin.name);
         	}
     	
     	// edit the title
@@ -568,45 +597,54 @@ public class WindowController extends Application {
             	}else {
             		double posx=editStage.getX();
                     double posy=editStage.getY();
-                    rwin.saveData();
             		String newName=rwin.tf_RecipeName.getText();
             		
-            		if(!rwin.name.matches("Default")) {
+            		if(!rwin.illegal) {
             			if(newName.matches("Default")) {
             				alertBoxDefault();
-            			}else {
-            			System.out.println(newName);
-            			model.saveRecipName(id, newName);
             			}
-            		}else if(rwin.name.matches("Default")) {
+            			else {
+                            System.out.println(newName);
+                            if(model.judgeRecipName(newName)||newName.equals(rwin.name)) {
+                                model.saveRecipName(id, newName);
+                                rwin.name = newName;
+                                rwin.saveData();
+                                rwin.markName = !rwin.markName;
+                                rwin.refresh();
+                                initRecipeWindow(rwin);
+                                editStage.setX(posx);
+                                editStage.setY(posy);
+                            }
+                            else
+                            {
+                                alertBoxDuplicate();
+                                rwin.tf_RecipeName.setText(rwin.name);
+                            }
+            			}
+            		}else{
             			if(newName.matches("Default")) {
             				alertBoxDefault();
             			}else {
 	            			//description by default is null, and serving is 4
 	                		Recipe recipe = new Recipe(newName,"",4);
-	                		rwin.name = newName;
-	                		model.addRecipetoDatabase(recipe,id);
-	                		model.saveImagePath(id+1, "");
+	                		if(model.judgeRecipName(newName)) {
+	                		    rwin.illegal=false;
+                                rwin.name = newName;
+                                rwin.saveData();
+                                rwin.markName=!rwin.markName;
+                                rwin.refresh();
+                                initRecipeWindow(rwin);
+                                editStage.setX(posx);
+                                editStage.setY(posy);
+                                id=model.assignID();
+                                System.out.println("haha"+id);
+                                //System.out.println(newName);
+                                model.addRecipetoDatabase(recipe, id);
+                                model.saveImagePath(id + 1, "");
+                            }
+	                		else alertBoxDuplicate();
             			}
                 	}
-            		
-            		if(alertSwitch == 1) {
-            			alertSwitch = 0;
-                        rwin.saveData();
-            			rwin.markName=!rwin.markName;
-                        rwin.refresh();
-                        initRecipeWindow(rwin);
-                        editStage.setX(posx);;
-                        editStage.setY(posy);
-            		}else{
-	            		rwin.name = newName;
-                        rwin.saveData();
-	            		rwin.markName=!rwin.markName;
-	                    rwin.refresh();
-	                    initRecipeWindow(rwin);
-	                    editStage.setX(posx);
-	                    editStage.setY(posy);
-            		}
             	}
             }
         });
@@ -621,6 +659,10 @@ public class WindowController extends Application {
     	rwin.delete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if(rwin.illegal) {
+                    alertBoxFirst();
+                    return;
+                }
             	if(rwin.name.matches("Default")) {
 
             	}else {
@@ -663,6 +705,11 @@ public class WindowController extends Application {
      * @param rwin
      */
     public void editImage(RecipeWindow rwin) {
+        if(rwin.illegal) {
+            alertBoxFirst();
+            return;
+        }
+        //System.out.println("sss");
     	rwin.title.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 new EventHandler<MouseEvent>() {
             @Override
@@ -719,6 +766,10 @@ public class WindowController extends Application {
     	rwin.editDescription.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if(rwin.illegal) {
+                    alertBoxFirst();
+                    return;
+                }
             	if(rwin.markDescription == false) {
 	                double posx=editStage.getX();
 	                double posy=editStage.getY();
@@ -805,6 +856,10 @@ public class WindowController extends Application {
     	rwin.editIngredient.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if(rwin.illegal) {
+                    alertBoxFirst();
+                    return;
+                }
                 double posx=editStage.getX();
                 double posy=editStage.getY();
                 rwin.saveData();
@@ -860,6 +915,10 @@ public class WindowController extends Application {
     	rwin.editStep.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if(rwin.illegal) {
+                    alertBoxFirst();
+                    return;
+                }
                 double posx=editStage.getX();
                 double posy=editStage.getY();
                 rwin.saveData();
@@ -1030,6 +1089,7 @@ public class WindowController extends Application {
 		            	recipeWindow.servings=2;
 		            	recipeWindow.favorite=false;
 		            	recipeWindow.markIngredient = false;
+		            	recipeWindow.illegal=true;
                         recipeWindow.ingredientText1= new LinkedList<TextField>();
                         recipeWindow.ingredientText2= new LinkedList<TextField>();
                         recipeWindow.ingredientText3= new LinkedList<TextField>();

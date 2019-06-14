@@ -8,6 +8,9 @@ import PixivCookbook.Model.Step;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
+
+import static java.lang.Math.max;
+
 /**
  * this is the interface class dealing with database
  * 
@@ -17,14 +20,7 @@ import java.util.List;
  * 
  */
 public class DBController {
-	private Connection connect;	
-	public Connection getConnect() {
-		return connect;
-	}
-
-	public void setConnect(Connection connect) {
-		this.connect = connect;
-	}
+	private Connection connect;
 	private final static DBController INSTANCE = new DBController();
 	private DBController()
 	{
@@ -33,6 +29,14 @@ public class DBController {
 	public static DBController getInstance(){
 		return INSTANCE;
 	}
+	public Connection getConnect() {
+		return connect;
+	}
+
+	public void setConnect(Connection connect) {
+		this.connect = connect;
+	}
+
 	public void run() {
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -69,6 +73,7 @@ public class DBController {
 	public void addRecipetoDatabase(Recipe input,int id){
 		PreparedStatement psql;
 		try {
+			System.out.println(input.getRecipeName());
 			psql = this.connect.prepareStatement("insert into recipe (recipe_id,name,servings,preparationTime,cookingTime,description,imgAddress)"+ "values(?,?,?,?,?,?,?)");
 			psql.setInt(1, id+1);
 			psql.setString(2,input.getRecipeName());
@@ -82,7 +87,7 @@ public class DBController {
 			}
 			catch (SQLException e) {
 			    if (e instanceof SQLIntegrityConstraintViolationException) {
-			        WindowController.alertBoxDuplicate();
+			        //WindowController.alertBoxDuplicate();
 			    } else {
 			        // Other SQL Exception
 			    }
@@ -110,16 +115,20 @@ public class DBController {
 	public int assignID() {
 		PreparedStatement psql;
 		try {
-			psql = this.connect.prepareStatement("SELECT COUNT(recipe_id) AS nums FROM recipe");
+			int cnt=0;
+			psql = this.connect.prepareStatement("select recipe_id from recipe");
 			ResultSet rs = psql.executeQuery();
+			System.out.println("haha");
 			while(rs.next()) {
-			return rs.getInt("nums");
+			cnt=max(cnt, rs.getInt("recipe_id"));
+			System.out.println(cnt+1);
 			}
+			return cnt+1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		return 1;
+		return -1;
 	}
 	
 	/**
@@ -244,7 +253,7 @@ public class DBController {
 			statement.execute(sql);
 			}catch (SQLException e) {
 			    if (e instanceof SQLIntegrityConstraintViolationException) {
-			        WindowController.alertBoxDuplicate();
+			        //WindowController.alertBoxDuplicate();
 			    } else {
 			        // Other SQL Exception
 			    }
@@ -254,7 +263,35 @@ public class DBController {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 *
+	 * update the recipe name to be the given one
+	 * @param newName	 the new name
+	 *
+	 */
+	public boolean judgeRecipName(String newName) {
+		Statement statement;
+		try {
+			statement = this.connect.createStatement();
+			int cnt=0;
+			String sql ="select * from recipe where name = '" + newName + "'";
+			try {
+				ResultSet rs = statement.executeQuery(sql);
+				while(rs.next()) {
+					cnt++;
+				}
+				if(cnt==0) return true;
+				else return false;
+			}catch (SQLException e) {
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	/**
 	 * update the description of the given recipe
 	 * @param id				 recipe id
