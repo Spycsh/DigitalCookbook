@@ -477,14 +477,20 @@ public class WindowController extends Application {
                 try {
                     if(!rmain.tf_RecipeName.getText().equals("Default")&&(!model.judgeRecipName(rmain.tf_RecipeName.getText())))
                         rmain.name=rmain.tf_RecipeName.getText();
-                    model.addIngredientstoDatabase(rmain.ingredients, id);
-                    model.saveRecipName(id, rmain.name);
-                    model.saveImagePath(id, rmain.imgPath);
-                    model.saveDescription(id, rmain.description);
-                    model.saveCooktime(id, rmain.cookingTime);
-                    model.savePreparationtime(id, rmain.preparationTime);
-                    model.saveServings(id, rmain.servings);
-                    model.addStepstoDatabase(rmain.step, id);
+                    if(rmain.markIngredient)
+                        model.addIngredientstoDatabase(rmain.ingredients, id);
+                    if(rmain.markName)
+                        model.saveRecipName(id, rmain.name);
+                    if(rmain.markImage)
+                        model.saveImagePath(id, rmain.imgPath);
+                    if(rmain.markDescription) {
+                        model.saveDescription(id, rmain.description);
+                        model.saveCooktime(id, rmain.cookingTime);
+                        model.savePreparationtime(id, rmain.preparationTime);
+                        model.saveServings(id, rmain.servings);
+                    }
+                    if(rmain.markStep)
+                        model.addStepstoDatabase(rmain.step, id);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

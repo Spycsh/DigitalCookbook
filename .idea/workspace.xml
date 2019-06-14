@@ -2,27 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2b44ddb-5bf0-46cc-85ec-4d7dfd7949fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/DBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/DBController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$19.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$20.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$21.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" afterDir="false" />
     </list>
@@ -44,14 +23,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="477" column="128" selection-start-line="477" selection-start-column="128" selection-end-line="477" selection-end-column="128" />
+            <state relative-caret-position="-771">
+              <caret line="480" column="78" lean-forward="true" selection-start-line="479" selection-start-column="44" selection-end-line="480" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#16881#16889#0" expanded="true" />
                 <element signature="e#16958#16966#0" expanded="true" />
                 <element signature="e#28343#28351#0" expanded="true" />
-                <element signature="e#40150#40151#0" expanded="true" />
+                <element signature="e#40415#40416#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,7 +70,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
+            <state relative-caret-position="209">
               <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -367,10 +346,10 @@
       <find>get</find>
       <find>ass</find>
       <find>assign</find>
-      <find>assi</find>
       <find>illegal</find>
       <find>addRecipetoDatabase</find>
       <find>RecipeWindow</find>
+      <find>assi</find>
       <find>addHomeAction</find>
     </findStrings>
     <replaceStrings>
@@ -619,7 +598,7 @@
       <workItem from="1560119001710" duration="17324000" />
       <workItem from="1560162757205" duration="586000" />
       <workItem from="1560424510311" duration="92000" />
-      <workItem from="1560436477551" duration="16788000" />
+      <workItem from="1560436477551" duration="17181000" />
     </task>
     <task id="LOCAL-00001" summary="addbutton">
       <created>1559911743771</created>
@@ -637,7 +616,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146427000" />
+    <option name="totallyTimeSpent" value="146820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
@@ -1073,21 +1052,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="477" column="128" selection-start-line="477" selection-start-column="128" selection-end-line="477" selection-end-column="128" />
+        <state relative-caret-position="-771">
+          <caret line="480" column="78" lean-forward="true" selection-start-line="479" selection-start-column="44" selection-end-line="480" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#16881#16889#0" expanded="true" />
             <element signature="e#16958#16966#0" expanded="true" />
             <element signature="e#28343#28351#0" expanded="true" />
-            <element signature="e#40150#40151#0" expanded="true" />
+            <element signature="e#40415#40416#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
+        <state relative-caret-position="209">
           <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
