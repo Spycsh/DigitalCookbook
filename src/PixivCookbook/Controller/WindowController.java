@@ -793,10 +793,10 @@ public class WindowController extends Application {
             				alertWrongType_SB.append("Servings must be a positive integer!\n");
 
             			if(!isDouble(rwin.tf_Cookingtime.getText())|!isDouble(rwin.tf_Preparation.getText())) {
-	            			if(!isDouble(rwin.tf_Preparation.getText())) {
+	            			if(!isInteger(rwin.tf_Preparation.getText())) {
 	            				alertWrongType_SB.append("Wrong type for preparation time!\n");
 	            			}
-	            			if(!isDouble(rwin.tf_Cookingtime.getText())) {
+	            			if(!isInteger(rwin.tf_Cookingtime.getText())) {
 	            				alertWrongType_SB.append("Wrong type for cooking time\n");
 	            			}
 	            			if(!isInteger(rwin.tf_Serveing.getText())) {
@@ -811,11 +811,11 @@ public class WindowController extends Application {
 		                    initRecipeWindow(rwin);
 		                    editStage.setX(posx);;
 		                    editStage.setY(posy);
-	            		}else if(!isDouble(rwin.tf_Cookingtime.getText())|!isDouble(rwin.tf_Preparation.getText())|!isInteger(rwin.tf_Serveing.getText())) {
-	            			if(!isDouble(rwin.tf_Preparation.getText())) {
+	            		}else if(!isInteger(rwin.tf_Cookingtime.getText())|!isInteger(rwin.tf_Preparation.getText())|!isInteger(rwin.tf_Serveing.getText())) {
+	            			if(!isInteger(rwin.tf_Preparation.getText())) {
 	            				alertWrongType_SB.append("Wrong type for preparation time!\n");
 	            			}
-	            			if(!isDouble(rwin.tf_Cookingtime.getText())) {
+	            			if(!isInteger(rwin.tf_Cookingtime.getText())) {
 	            				alertWrongType_SB.append("Wrong type for cooking time\n");
 	            			}
 	            			if(!isInteger(rwin.tf_Serveing.getText())) {
