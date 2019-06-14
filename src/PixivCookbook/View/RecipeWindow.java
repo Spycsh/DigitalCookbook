@@ -204,7 +204,7 @@ public class RecipeWindow{
             String patternstr = "([A-Z]{1}:)";
             Pattern p = Pattern.compile(patternstr);
             Matcher matcher = p.matcher(imgPath);
-            System.out.println(imgPath);
+            //System.out.println(imgPath);
             if(matcher.find()) {
                 image = new Image("file:\\"+imgPath);
                 title = new ImageView(image);

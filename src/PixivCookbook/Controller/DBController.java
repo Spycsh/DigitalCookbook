@@ -388,6 +388,10 @@ public class DBController {
 					File input = new File(newPath);
 					BufferedImage bim = ImageIO.read(input);
 					File output = new File(savePath);
+					while(output.exists())
+					{
+						output.delete();
+					}
 					ImageIO.write(bim,subfix,output);
 				}catch (Exception e)
 				{

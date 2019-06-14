@@ -83,7 +83,7 @@ public class MainWindow{
         pane.getChildren().add(search);
         pane.getChildren().add(searchButton);
 		backButton.setText("s");
-		backButton.setLayoutX(400);
+		backButton.setLayoutX(450);
 		backButton.setLayoutY(150);
 		backButton.getStyleClass().add("back");
 		pane.getChildren().add(backButton);

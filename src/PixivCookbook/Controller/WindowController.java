@@ -376,7 +376,7 @@ public class WindowController extends Application {
 			public void handle(MouseEvent e) {
 				if (!main.search.getText().isEmpty()) {
 				    main.backButton.setVisible(true);
-				    main.searchButton.setVisible(false);
+				    //main.searchButton.setVisible(false);
 					main.littleTitle.setText("Search Results");
 					String searchName = main.search.getText();
 					main.dropAllImageviews();
@@ -395,7 +395,7 @@ public class WindowController extends Application {
                     @Override
                     public void handle(MouseEvent e) {
                         main.backButton.setVisible(false);
-                        main.searchButton.setVisible(true);
+                        //main.searchButton.setVisible(true);
                         main.littleTitle.setText("");
                         main.dropAllImageviews();
                         List<Recipe> recipe = model.getRecipesForMainPage();
@@ -563,7 +563,7 @@ public class WindowController extends Application {
         	}else{
             id = model.getIDbyName(rwin.name);
         	}
-
+    	System.out.println(id);
     	// edit the title
     	editTitle(rwin);
     	// delete Button
@@ -641,8 +641,10 @@ public class WindowController extends Application {
                                 id=model.assignID();
                                 //System.out.println("haha"+id);
                                 //System.out.println(newName);
+                                System.out.println(id);
                                 model.addRecipetoDatabase(recipe, id);
-                                model.saveImagePath(id + 1, "");
+                                id++;
+                                model.saveImagePath(id , "");
                             }
 	                		else alertBoxDuplicate();
             			}
@@ -727,7 +729,7 @@ public class WindowController extends Application {
 						if(imgValid(rwin.editImgPath)) {
 						    rwin.imgPath=rwin.editImgPath;
 						    System.out.println(rwin.imgPath);
-							model.saveImagePath(id+1, rwin.editImgPath);
+							model.saveImagePath(id, rwin.editImgPath);
 						}
 						else {
 							alertImgPathNotValid();
