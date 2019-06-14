@@ -256,7 +256,7 @@ public class WindowController extends Application {
      * @return if the image suffix is valid
      */
     public static boolean imgValid(String input) {
-    	Matcher mer = Pattern.compile("^.*(.JPEG|.jpeg|.png|.PNG)$").matcher(input);
+    	Matcher mer = Pattern.compile("^.*(.jpg|.JPG|.JPEG|.jpeg|.png|.PNG)$").matcher(input);
     	return mer.find();
     }
  
@@ -723,6 +723,7 @@ public class WindowController extends Application {
 				chooser.setFileFilter(filter);
 				int returnVal = chooser.showOpenDialog(null);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
+					System.out.print(rwin.imgPath);
 					if(rwin.name != "Default") {
 						rwin.editImgPath = chooser.getSelectedFile().getPath();
 						if(imgValid(rwin.editImgPath)) {
@@ -730,7 +731,14 @@ public class WindowController extends Application {
 						}
 						else {
 							alertImgPathNotValid();
-							rwin.editImgPath = "";		// using default
+							if(rwin.imgPath!="img\\addImage.png") {
+								rwin.editImgPath = rwin.imgPath;		//for edit,if there exists a image
+																	// using the current image
+							}
+							else {
+							rwin.editImgPath = "";					// for add, if there does not exist a image
+																	// using default
+							}
 							model.saveImagePath(id, rwin.editImgPath);
 						}
 					}else {
