@@ -612,8 +612,8 @@ public class WindowController extends Application {
             			}
             			else {
                             //System.out.println(newName);
-                            rwin.saveData();
                             if(model.judgeRecipName(newName)||newName.equals(rwin.name)) {
+                                rwin.saveData();
                                 model.saveRecipName(id, rwin.name);
                                 //rwin.name = newName;
                                 rwin.markName = !rwin.markName;
@@ -626,6 +626,7 @@ public class WindowController extends Application {
                             {
                                 alertBoxDuplicate();
                                 rwin.tf_RecipeName.setText(rwin.name);
+                                rwin.saveData();
                             }
             			}
             		}else{

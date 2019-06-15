@@ -37,7 +37,7 @@
 //
 //	@BeforeEach
 //	public void setUp() throws Exception {
-//		aSql_test = new DBController();
+//		aSql_test = DBController.getInstance();
 //		aSql_test.run();
 //		testRecipe = new Recipe("testRecipe","Shanghai dish" , 4);
 //		testRecipe.restoreImg();
