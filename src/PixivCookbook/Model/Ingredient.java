@@ -48,6 +48,14 @@ public class Ingredient implements Serializable{
 		this.preparation=preparation;
 	}
 	
+	public Ingredient(Ingredient i) {
+		// TODO Auto-generated constructor stub
+		this.name=i.name;
+		this.num=i.num;
+		this.unit=i.unit;
+		this.preparation=i.preparation;
+	}
+	
 	/**
 	 * @return the name
 	 */

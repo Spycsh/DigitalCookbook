@@ -49,6 +49,7 @@ public class WindowController extends Application {
     static int alertSwitch = 0;
     static int alertDelete = 0;
     static int alertForbid = 0;
+    static int alertIngredient = 0;
     static StringBuffer alertWrongType_SB = new StringBuffer("");
     static Alert alert;
 
@@ -95,6 +96,13 @@ public class WindowController extends Application {
     	alertSwitch = 1;
     }
 
+    public static void alertBoxDuplicateIngredient() {
+    	alert = new Alert(Alert.AlertType.ERROR);
+    	alert.setTitle("Warning");
+    	alert.setContentText("Such ingredient has already existed");
+    	alert.show();
+    	alertIngredient = 1;
+    }
     /**
      *  alert box
      *  recipe name cannot be default
@@ -186,7 +194,7 @@ public class WindowController extends Application {
     	if(result.get() == ButtonType.OK) {
     		alertForbid = 0;
     	}else {
-
+    		alertForbid =1;
     	}
     }
 
@@ -290,11 +298,6 @@ public class WindowController extends Application {
     {
         addHomeAction(rwin);
         addEditAction(rwin);
-
-        if(displayForbidInfo  == true) {
-	        addForbidAction(rwin);
-	        displayForbidInfo = false;
-        }
     }
 
 
@@ -475,11 +478,24 @@ public class WindowController extends Application {
         rmain.home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+            	LinkedList<Ingredient> temp = new LinkedList<Ingredient>();
+            	for(int i=0;i<rmain.ingredients.size();i++)
+            	{
+            		temp.add(new Ingredient(rmain.ingredients.get(i)));
+            	}
                 rmain.saveData();
                 if(!rmain.illegal)
                 try {
                     if(rmain.markIngredient)
+                    {
                         model.addIngredientstoDatabase(rmain.ingredients, id);
+                        if(alertIngredient==1)
+                        {
+                        	alertIngredient=0;
+                        	rmain.ingredients=temp;
+                        	model.addIngredientstoDatabase(rmain.ingredients, id);
+                        }
+                    }
                     if(rmain.markName)
                         model.saveRecipName(id, rmain.name);
                     if(rmain.markImage)
@@ -529,9 +545,10 @@ public class WindowController extends Application {
     	List<String> forbidInfo = new LinkedList<String>();
     	// forbid pair info
     	List<String> aList = new LinkedList<String>();
-        for(int i=0;i<rwin.ingredients.size();i++)
+        for(int i=0;i<rwin.ingredientText3.size();i++)
         {
-        	String currentIngredient = rwin.ingredients.get(i).getName();
+        	if(i>rwin.ingredients.size()) break;
+        	String currentIngredient = rwin.ingredientText3.get(i).getText();
         	aList.add(currentIngredient);
         	List<String> opponentList =  model.getForbiddenPair(currentIngredient);
         	for(String e:aList) {
@@ -878,13 +895,28 @@ public class WindowController extends Application {
                 }
                 double posx=editStage.getX();
                 double posy=editStage.getY();
-                rwin.saveData();
-                rwin.markIngredient=!rwin.markIngredient;
-                rwin.refresh();
-
-                rwin.saveData();
                 if(rwin.markIngredient == false) {
-	                List<String> aList = new LinkedList<String>();
+                	System.out.println("bbb");
+                    rwin.markIngredient=!rwin.markIngredient;
+	                rwin.refresh();
+	                initRecipeWindow(rwin);
+                }
+                else 
+                {
+                	System.out.println("aaa");
+                	LinkedList<Ingredient> temp = new LinkedList<Ingredient>();
+                	for(int i=0;i<rwin.ingredients.size();i++)
+                	{
+                		temp.add(new Ingredient(rwin.ingredients.get(i)));
+                	}
+                	rwin.saveData();
+                	try {
+ 						model.addIngredientstoDatabase(rwin.ingredients, id);
+ 					} catch (SQLException e) {
+ 						// TODO Auto-generated catch block
+ 						e.printStackTrace();
+ 					}
+                	List<String> aList = new LinkedList<String>();
 	                for(int i=0;i<rwin.ingredientText3.size();i++)
 	                {
 	                	aList.add(rwin.ingredientText3.get(i).getText());
@@ -898,25 +930,25 @@ public class WindowController extends Application {
 	                		}
 	                	}
 	                }
-                }
-                if(alertForbid == 1) {
-
-                	alertForbid = 0;
-
-                initRecipeWindow(rwin);
-                editStage.setX(posx);;
-                editStage.setY(posy);
-                }
-                else {
-                	try {
- 						model.addIngredientstoDatabase(rwin.ingredients, id);
- 					} catch (SQLException e) {
- 						// TODO Auto-generated catch block
- 						e.printStackTrace();
- 					}
- 	                initRecipeWindow(rwin);
- 	                editStage.setX(posx);;
- 	                editStage.setY(posy);
+                	if(alertForbid == 1|alertIngredient == 1){
+                		rwin.ingredients=temp;
+                    	alertForbid = 0;
+                    	alertIngredient = 0;
+                    	rwin.refresh();
+    	                initRecipeWindow(rwin);
+    	                editStage.setX(posx);;
+    	                editStage.setY(posy);
+                    }
+                	else
+                	{
+                		rwin.markIngredient=!rwin.markIngredient;
+                		System.out.println("asd");
+                		rwin.saveData();
+                		rwin.refresh();
+	 	                initRecipeWindow(rwin);
+	 	                editStage.setX(posx);
+	 	                editStage.setY(posy);
+                	}
                 }
             }
         });

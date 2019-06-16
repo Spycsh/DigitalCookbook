@@ -195,7 +195,17 @@ public class DBController {
 			psql.setDouble(3,input.get(i).getNum());
 			psql.setString(4,input.get(i).getUnit());
 			psql.setString(5,input.get(i).getPreparation());			
-			psql.executeUpdate();
+			try {
+				psql.executeUpdate();
+			}
+			catch (SQLException e) {
+			    if (e instanceof SQLIntegrityConstraintViolationException) {
+			    	System.out.println("Right");
+			        WindowController.alertBoxDuplicateIngredient();
+			    } else {
+			        // Other SQL Exception
+			    }
+			}
 		}
 	}
 	
