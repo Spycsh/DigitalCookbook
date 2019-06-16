@@ -7,18 +7,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2b44ddb-5bf0-46cc-85ec-4d7dfd7949fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/PixivCookbook.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/DBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/DBController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/EditForbiddenPairController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController$22.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Controller/WindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/CookBookApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/CookBookApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Default.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Default.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Model/CookBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Model/CookBook.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Model/ForbiddenPair.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Model/ForbiddenPair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Model/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Model/Ingredient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Model/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Model/Recipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/Model/Step.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/Model/Step.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/View/ForbiddenEditWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/View/ForbiddenEditWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/View/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/View/MainWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/View/RecipeWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/View/RecipeWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PixivCookbook/test/JunitRecipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PixivCookbook/test/JunitRecipe.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/artifacts/PixivCookbook/PixivCookbook.jar" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/PixivCookbook/PixivCookbook.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixivcookbook.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/PixivCookbook/PixivCookbook.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/PixivCookbook/PixivCookbook.jnlp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/DBController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixivCookbook/test/JunitDBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixivCookbook/test/JunitDBController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="624" column="32" selection-start-line="624" selection-start-column="32" selection-end-line="624" selection-end-column="32" />
+            <state relative-caret-position="330">
+              <caret line="651" column="70" selection-start-line="651" selection-start-column="70" selection-end-line="651" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -59,6 +86,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -71,10 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>MainWindow</find>
-      <find>assinID</find>
-      <find>saveRecip</find>
-      <find>assig</find>
       <find>assignID</find>
       <find>addTempAction</find>
       <find>alertBoxDuplicate</find>
@@ -90,17 +122,21 @@
       <find>RecipeWindow</find>
       <find>editImage</find>
       <find>addAddAction</find>
-      <find>System.out.println</find>
       <find>editIm</find>
       <find>imgAddress</find>
       <find>editDes</find>
       <find>edit</find>
       <find>saveRe</find>
       <find>addSearchButtonAction</find>
-      <find>editT</find>
       <find>alert</find>
       <find>alertBoxFi</find>
       <find>formV</find>
+      <find>+1</find>
+      <find>model.</find>
+      <find>System.out.println</find>
+      <find>id</find>
+      <find>id =</find>
+      <find>editT</find>
     </findStrings>
     <replaceStrings>
       <replace>setContent</replace>
@@ -138,7 +174,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1612" />
@@ -149,7 +185,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,7 +222,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -351,7 +387,8 @@
       <workItem from="1560558031616" duration="745000" />
       <workItem from="1560590639381" duration="934000" />
       <workItem from="1560595299210" duration="2225000" />
-      <workItem from="1560609740677" duration="79000" />
+      <workItem from="1560609740677" duration="851000" />
+      <workItem from="1560699361242" duration="3413000" />
     </task>
     <task id="LOCAL-00001" summary="addbutton">
       <created>1559911743771</created>
@@ -369,13 +406,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170642000" />
+    <option name="totallyTimeSpent" value="174827000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15626666" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15786667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -793,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="76" column="31" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/ForbiddenEditWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -807,10 +837,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/PixivCookbook/View/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PixivCookbook/Controller/WindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="624" column="32" selection-start-line="624" selection-start-column="32" selection-end-line="624" selection-end-column="32" />
+        <state relative-caret-position="330">
+          <caret line="651" column="70" selection-start-line="651" selection-start-column="70" selection-end-line="651" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

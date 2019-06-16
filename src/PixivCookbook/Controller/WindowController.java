@@ -562,11 +562,12 @@ public class WindowController extends Application {
     {
     	if(rwin.illegal) {
             id = model.assignID();
-           // System.out.println(id);
+            System.out.println("asi"+id);
         	}else{
-            id = model.getIDbyName(rwin.name);
+                id = model.getIDbyName(rwin.name);
+                System.out.println("all"+rwin.name+" "+id);
         	}
-    	System.out.println(id);
+    	//System.out.println(id);
     	// edit the title
     	editTitle(rwin);
     	// delete Button
@@ -592,6 +593,7 @@ public class WindowController extends Application {
     	rwin.editTitle.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("now"+id);
             	if(rwin.markName == false) {
 	                double posx=editStage.getX();
 	                double posy=editStage.getY();
@@ -615,6 +617,7 @@ public class WindowController extends Application {
                             if(model.judgeRecipName(newName)||newName.equals(rwin.name)) {
                                 rwin.saveData();
                                 model.saveRecipName(id, rwin.name);
+                                //System.out.println("save : "+id+""+rwin.name);
                                 //rwin.name = newName;
                                 rwin.markName = !rwin.markName;
                                 rwin.refresh();
@@ -639,17 +642,16 @@ public class WindowController extends Application {
 	                		    rwin.illegal=false;
                                 rwin.markName=!rwin.markName;
                                 rwin.refresh();
-                                initRecipeWindow(rwin);
                                 editStage.setX(posx);
                                 editStage.setY(posy);
-                                id=model.assignID();
                                 //System.out.println("haha"+id);
                                 //System.out.println(newName);
                                 //System.out.println(id);
                                 Recipe recipe = new Recipe(rwin.name,"",4);
+                                System.out.println("save : "+id+""+rwin.name);
                                 model.addRecipetoDatabase(recipe, id);
-                                id++;
                                 model.saveImagePath(id , "");
+                                initRecipeWindow(rwin);
                             }
 	                		else alertBoxDuplicate();
             			}

@@ -78,7 +78,7 @@ public class DBController {
 		try {
 			System.out.println(input.getRecipeName());
 			psql = this.connect.prepareStatement("insert into recipe (recipe_id,name,servings,preparationTime,cookingTime,description,imgAddress)"+ "values(?,?,?,?,?,?,?)");
-			psql.setInt(1, id+1);
+			psql.setInt(1, id);
 			psql.setString(2,input.getRecipeName());
 			psql.setInt(3,input.getNumberOfEaters());
 			psql.setInt(4,input.getPreparationTime());
@@ -165,7 +165,7 @@ public class DBController {
 		PreparedStatement psql;
 		for(int i = 0; i<input.getIngredients().size();i++) {
 			psql = this.connect.prepareStatement("insert into ingredient (recipe_id,name,quantity,unit,description)"+ "values(?,?,?,?,?)");
-			psql.setInt(1, id+1);
+			psql.setInt(1, id);
 			psql.setString(2,input.getIngredients().get(i).getName());
 			psql.setDouble(3,input.getIngredients().get(i).getNum());
 			psql.setString(4,input.getIngredients().get(i).getUnit());
@@ -212,7 +212,7 @@ public class DBController {
 		PreparedStatement psql;
 		for(int i = 0; i<input.getSteps().size();i++) {
 			psql = this.connect.prepareStatement("insert into preparation_step (recipe_id,step,description)"+ "values(?,?,?)");
-			psql.setInt(1, id+1);
+			psql.setInt(1, id);
 			psql.setInt(2,input.getSteps().get(i).getStepNumber());
 			psql.setString(3,input.getSteps().get(i).getContent());			
 			psql.executeUpdate();
