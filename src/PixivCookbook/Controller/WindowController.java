@@ -298,6 +298,11 @@ public class WindowController extends Application {
     {
         addHomeAction(rwin);
         addEditAction(rwin);
+        
+        if(displayForbidInfo  == true) {
+	        addForbidAction(rwin);
+	        displayForbidInfo = false;
+        }
     }
 
 
